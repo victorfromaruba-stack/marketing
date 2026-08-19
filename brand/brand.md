@@ -80,7 +80,7 @@ Show all three. Nobody buys the top one; showing it is what makes the middle one
 
 **First-year bundle (push this):** Starter build + 12 months support = **$995 all-in.**
 One number, one payment, more cash up front, and it trains them that a site always costs
-something. Roughly 8% off versus paying monthly.
+something. Roughly 7% off versus paying monthly ($995 vs. $650 + 12×$35 = $1,070 paid month to month, a $75 saving).
 
 **Annual prepay on the monthly:** $350/year instead of $35/month (2 months free). Solves the
 recurring-billing problem in a market where card-on-file is awkward, and annual prepayers churn

@@ -154,7 +154,7 @@ ul{margin:0 0 3mm 5mm}li{margin-bottom:1.6mm;color:#2B3E4D}
     <div class="bundle">
       <h3>First year, all in: $995</h3>
       <p style="margin:0">The Starter build plus twelve months of support, as one payment.
-      About 8% cheaper than paying monthly, and you do not think about it again until next year.</p>
+      About 7% cheaper than paying monthly, and you do not think about it again until next year.</p>
     </div>
 
     <h2>What the monthly actually covers</h2>
