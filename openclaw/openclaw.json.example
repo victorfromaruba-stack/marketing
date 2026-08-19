@@ -6,8 +6,8 @@
     "anthropic": { "apiKey": "${ANTHROPIC_API_KEY}" }
   },
   "models": {
-    "default":  "claude-opus-4-6",
-    "cheap":    "claude-haiku-4-5",
+    "default":  "claude-opus-5",
+    "cheap":    "claude-haiku-4-5-20251001",
     "routing": {
       "scout": "cheap", "librarian": "cheap",
       "art-director": "default", "engineer": "default",
