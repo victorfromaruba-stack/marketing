@@ -14,6 +14,10 @@ SSH_PUBKEY="${SSH_PUBKEY:-}"          # required: your ~/.ssh/id_ed25519.pub con
 SSH_PORT="${SSH_PORT:-22}"
 
 [ -z "$SSH_PUBKEY" ] && { echo "Set SSH_PUBKEY first:  export SSH_PUBKEY=\"\$(cat ~/.ssh/id_ed25519.pub)\""; exit 1; }
+# This script disables root login and password auth. A malformed key here means a
+# locked-out box, so refuse rather than half-apply it.
+echo "$SSH_PUBKEY" | grep -qE '^(ssh-ed25519|ssh-rsa|ecdsa-sha2-nistp[0-9]+) AAAA[0-9A-Za-z+/]{20,}' \
+  || { echo "SSH_PUBKEY does not look like a valid public key. Refusing: this would lock you out."; exit 1; }
 [ "$(id -u)" -ne 0 ] && { echo "run as root"; exit 1; }
 
 echo "==> base packages"
@@ -79,7 +83,12 @@ echo "==> chromium deps for the QA gate"
 apt-get install -y -qq \
   libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 \
   libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libpango-1.0-0 \
-  libcairo2 libasound2t64 fonts-liberation fonts-dejavu-core || true
+  libcairo2 fonts-liberation fonts-dejavu-core || true
+# libasound2 was renamed libasound2t64 in the 64-bit time_t transition (Ubuntu 24.04+).
+# Try the new name, fall back to the old one so 22.04 and Debian 12 also get it.
+apt-get install -y -qq libasound2t64 2>/dev/null \
+  || apt-get install -y -qq libasound2 2>/dev/null \
+  || echo "WARNING: could not install libasound2, chromium audio libs missing" 
 
 echo "==> swap (4GB box + chromium + gateway runs tight)"
 if [ ! -f /swapfile ]; then
