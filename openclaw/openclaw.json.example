@@ -1,0 +1,24 @@
+{
+  "_comment": "cp to ~/.openclaw/openclaw.json — NEVER commit the real one",
+  "workspace": "/home/studio/studio",
+  "gateway": { "port": 18789, "bind": "127.0.0.1" },
+  "providers": {
+    "anthropic": { "apiKey": "${ANTHROPIC_API_KEY}" }
+  },
+  "models": {
+    "default":  "claude-opus-4-6",
+    "cheap":    "claude-haiku-4-5",
+    "routing": {
+      "scout": "cheap", "librarian": "cheap",
+      "art-director": "default", "engineer": "default",
+      "inspector": "default", "guard": "default", "copywriter": "default"
+    }
+  },
+  "channels": {
+    "whatsapp": { "enabled": true, "allowFrom": ["<victor-number>"] }
+  },
+  "safety": {
+    "requireApprovalFor": ["send_email", "send_message", "publish", "payment"],
+    "allowOutboundTo": ["<victor-number>"]
+  }
+}

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunrise Snorkel Aruba | Six Guests. One Boat. The Reef to Yourselves.</title>
+<meta name="description" content="Small-group snorkel tours from Malmok Beach, Aruba. Six guests maximum, local captains, the Antilla wreck and Boca Catalina. Book direct on WhatsApp with no tour-desk commission.">
+<meta property="og:title" content="Sunrise Snorkel Aruba | Six Guests. One Boat.">
+<meta property="og:description" content="Out at 7am while the water is still glass. Six guests maximum. Local captains.">
+<meta property="og:image" content="img/hero-reef.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#02141f">
+<link rel="icon" type="image/png" href="img/logo-mark.png">
+<link rel="preload" as="image" href="img/hero-reef.jpg" fetchpriority="high">
+<script>document.documentElement.className+=" js"</script>
+<style>
+:root{
+  /* palette read off their own underwater photography */
+  --abyss:#02141f; --deep:#062a45; --ocean:#0b4f77; --sea:#1587ab;
+  --shallow:#43b9c4; --glass:#a9e4e8;
+  --sand:#f8f4ec; --paper:#fffdf9; --foam:#e9f4f4;
+  --sun:#ff7043; --sun-deep:#e04b21; --gold:#ffc06b;
+  --ink:#0a1721; --muted:#5d7686;
+  --display:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --gut:clamp(1.25rem,5vw,4.5rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);font-size:17px;line-height:1.65;color:var(--ink);
+  background:var(--sand);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+::selection{background:var(--sun);color:#fff}
+
+/* fine grain */
+body::after{content:"";position:fixed;inset:0;z-index:200;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.wrap{width:min(1240px,100% - var(--gut)*2);margin-inline:auto}
+.eyebrow{font-size:.88rem;letter-spacing:.24em;text-transform:uppercase;font-weight:600}
+
+.js 
+.js .rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.10s}.rv-d2{transition-delay:.20s}.rv-d3{transition-delay:.30s}
+.rv-d4{transition-delay:.40s}.rv-d5{transition-delay:.50s}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:.85rem 0;
+  background:rgba(2,20,31,.90);backdrop-filter:blur(16px) saturate(140%);
+  box-shadow:0 1px 0 rgba(255,255,255,.10)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.logo img{width:auto;height:clamp(32px,4.4vw,42px)}
+.flogo{width:auto;height:66px;margin-bottom:1.1rem}
+.links{display:flex;gap:.15rem;align-items:center}
+.links a{color:rgba(255,255,255,.86);text-decoration:none;font-size:.95rem;
+  padding:.55rem .9rem;min-height:44px;display:inline-flex;align-items:center;
+  border-radius:99px;transition:.3s var(--ease);position:relative}
+.links a:hover{color:#fff;background:rgba(255,255,255,.13)}
+.links .cta{background:var(--sun);color:#fff;font-weight:600;margin-left:.5rem;
+  box-shadow:0 6px 22px rgba(255,112,67,.36)}
+.links .cta:hover{background:var(--sun-deep)}
+@media(max-width:820px){.links a:not(.cta){display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:min(88svh,780px);display:grid;align-items:end;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(2,20,31,.30) 0%,rgba(2,20,31,.04) 22%,
+    rgba(2,20,31,.26) 50%,rgba(2,20,31,.74) 80%,rgba(2,20,31,.94) 100%)}
+.hero-in{padding:8rem 0 clamp(3rem,8vh,5.5rem);color:#fff;position:relative}
+.hero .eyebrow{color:var(--gold);text-shadow:0 1px 16px rgba(2,20,31,.7);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.hero .eyebrow::before{content:"";width:clamp(28px,7vw,64px);height:1px;background:var(--gold);opacity:.8}
+h1{font-family:var(--display);font-weight:600;letter-spacing:-.022em;text-shadow:0 2px 34px rgba(2,20,31,.55);
+  font-size:clamp(2.9rem,10.5vw,8rem);line-height:.93;margin-bottom:1.6rem;max-width:13ch}
+h1 .ln{display:block}
+h1 em{font-style:italic;color:var(--gold)}
+.lede{font-size:clamp(1.06rem,2.1vw,1.35rem);max-width:46ch;color:rgba(255,255,255,.94);text-shadow:0 1px 20px rgba(2,20,31,.6);
+  margin-bottom:2.4rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.85rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  min-height:56px;padding:1rem 1.9rem;border-radius:99px;font-weight:650;font-size:1.03rem;
+  text-decoration:none;border:1.6px solid transparent;cursor:pointer;
+  transition:transform .3s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease)}
+.btn-p{background:var(--sun);color:#fff;box-shadow:0 10px 34px rgba(255,112,67,.4)}
+.btn-p:hover{background:var(--sun-deep);box-shadow:0 16px 44px rgba(255,112,67,.5)}
+.btn-g{border-color:rgba(255,255,255,.42);color:#fff}
+.btn-g:hover{background:rgba(255,255,255,.14);border-color:#fff}
+.btn-d{background:var(--deep);color:#fff}
+.btn-d:hover{background:var(--abyss)}
+
+
+/* ---------- marquee stat band ---------- */
+.band{background:var(--abyss);color:#fff;padding:0;overflow:hidden;border-block:1px solid rgba(255,255,255,.09)}
+.mq{display:flex;justify-content:center;flex-wrap:wrap}
+.mq-set{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+  gap:clamp(1rem,4vw,3.5rem);padding:1.5rem clamp(1rem,2.5vw,2.25rem)}
+.mq-set:nth-child(2){display:none}
+.mq-set span{display:inline-flex;align-items:baseline;gap:.55rem;font-size:1rem}
+.mq-set b{font-family:var(--display);font-size:1.85rem;color:var(--gold);font-weight:600}
+.mq-set i{font-style:normal;color:rgba(255,255,255,.55);font-size:1.2rem}
+
+
+/* ---------- sections ---------- */
+section{position:relative}
+.pad{padding:clamp(4.5rem,11vw,9rem) 0}
+h2{font-family:var(--display);font-weight:600;letter-spacing:-.02em;
+  font-size:clamp(2.1rem,5.6vw,4rem);line-height:1.03;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--sea)}
+h3{font-family:var(--display);font-size:clamp(1.35rem,2.6vw,1.85rem);font-weight:600;letter-spacing:-.01em;line-height:1.14}
+.sec-head{max-width:62ch;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.sec-head .eyebrow{color:var(--sea);margin-bottom:1.1rem}
+.sec-head p{font-size:1.12rem;color:var(--muted);max-width:52ch}
+
+/* why */
+.why{background:var(--paper)}
+.why-grid{display:grid;gap:clamp(1.5rem,3vw,2.5rem);grid-template-columns:repeat(auto-fit,minmax(265px,1fr))}
+.wc{position:relative;padding:2.4rem 2rem 2.2rem;background:var(--sand);border-radius:20px;
+  border:1px solid rgba(6,42,69,.09);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.wc:hover{box-shadow:0 26px 60px -22px rgba(6,42,69,.30);border-color:rgba(21,135,171,.34)}
+
+.wc .num{font-family:var(--display);font-size:3.6rem;line-height:1;color:var(--shallow);
+  opacity:.36;margin-bottom:.7rem;font-weight:600}
+.wc h3{margin-bottom:.7rem}
+.wc p{color:var(--muted);font-size:1rem}
+
+/* ---------- THE DESCENT: signature moment ---------- */
+.descent{position:relative;background:var(--abyss);color:#fff;overflow:hidden}
+.descent::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,#43b9c4 0%,#1587ab 22%,#0b4f77 48%,#062a45 74%,#02141f 100%);
+  opacity:.72}
+.descent img.bgd{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:.30;mix-blend-mode:luminosity}
+.descent .wrap{position:relative;z-index:2}
+.descent-in{padding:clamp(5rem,13vw,10rem) 0}
+.descent h2{max-width:16ch}
+.descent .sec-head p{color:rgba(255,255,255,.74)}
+.descent .sec-head .eyebrow{color:var(--glass)}
+.depths{display:grid;gap:clamp(2rem,5vw,3.5rem);margin-top:clamp(2.5rem,6vw,4.5rem)}
+.depth{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.25rem,3vw,2.5rem);align-items:start;
+  padding-top:2rem;border-top:1px solid rgba(255,255,255,.20)}
+.depth .m{font-family:var(--display);font-size:clamp(2.2rem,6vw,3.6rem);line-height:1;
+  color:var(--glass);font-weight:600;min-width:3.6ch}
+.depth h3{margin-bottom:.55rem}
+.depth p{color:rgba(255,255,255,.76);max-width:46ch}
+
+/* ---------- tours ---------- */
+.tours{background:var(--sand)}
+.tour{display:grid;gap:clamp(1.75rem,4vw,4rem);align-items:center;
+  padding:clamp(2.5rem,5vw,4rem) 0;border-top:1px solid rgba(6,42,69,.14)}
+@media(min-width:900px){
+  .tour{grid-template-columns:1.02fr 1fr}
+  .tour:nth-of-type(even) .tour-media{order:2}
+}
+.tour-media{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:5/4;background:var(--deep)}
+.tour-media img{width:100%;height:100%;object-fit:cover}
+
+.tour-media .idx{position:absolute;top:1.1rem;left:1.25rem;z-index:2;
+  font-family:var(--display);font-size:1.15rem;color:#fff;background:rgba(2,20,31,.55);
+  backdrop-filter:blur(8px);width:44px;height:44px;border-radius:99px;
+  display:grid;place-items:center;border:1px solid rgba(255,255,255,.24)}
+.tour-body .eyebrow{color:var(--sea);margin-bottom:.85rem}
+.tour-body h3{font-size:clamp(1.7rem,4vw,2.6rem);margin-bottom:.9rem}
+.tour-body>p{color:var(--muted);margin-bottom:1.4rem;max-width:44ch}
+.tprice{display:flex;align-items:baseline;gap:.6rem;margin-bottom:1.2rem}
+.tprice b{font-family:var(--display);font-size:clamp(2.4rem,5.5vw,3.4rem);color:var(--deep);
+  font-weight:600;line-height:1}
+.tprice span{color:var(--muted);font-size:.98rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;margin-bottom:1.6rem}
+.chips li{font-size:.88rem;background:var(--foam);color:var(--ocean);
+  padding:.42rem .95rem;border-radius:99px;border:1px solid rgba(21,135,171,.18)}
+
+/* ---------- reviews ---------- */
+.words{background:var(--deep);color:#fff;overflow:hidden}
+.words .sec-head .eyebrow{color:var(--glass)}
+.qs{display:grid;gap:clamp(2rem,4vw,3rem);grid-template-columns:repeat(auto-fit,minmax(285px,1fr))}
+figure{border-top:1px solid rgba(255,255,255,.24);padding-top:1.75rem}
+blockquote{font-family:var(--display);font-size:clamp(1.2rem,2.3vw,1.5rem);line-height:1.42;
+  margin-bottom:1.3rem;letter-spacing:-.008em}
+figcaption{font-size:.94rem;color:rgba(255,255,255,.62)}
+.st{color:var(--gold);letter-spacing:.16em;margin-bottom:1rem;font-size:.95rem}
+
+/* ---------- booking ---------- */
+.book{background:var(--paper)}
+.bgrid{display:grid;gap:clamp(2.5rem,5vw,4.5rem)}
+@media(min-width:960px){.bgrid{grid-template-columns:1.05fr .95fr}}
+form{display:grid;gap:1.15rem}
+.f2{display:grid;gap:1.15rem}
+@media(min-width:520px){.f2{grid-template-columns:1fr 1fr}}
+label{display:block;font-size:.87rem;font-weight:650;color:var(--ocean);margin-bottom:.42rem;letter-spacing:.01em}
+input,select,textarea{width:100%;font:inherit;font-size:1rem;padding:.92rem 1.05rem;
+  min-height:54px;border:1.6px solid rgba(6,42,69,.20);border-radius:13px;
+  background:var(--paper);color:var(--ink);transition:.25s var(--ease)}
+input:hover,select:hover,textarea:hover{border-color:rgba(6,42,69,.36)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sea);
+  box-shadow:0 0 0 4px rgba(21,135,171,.15)}
+textarea{min-height:118px;resize:vertical}
+.aside{display:grid;gap:1.4rem;align-content:start}
+.ci{display:flex;gap:1rem;align-items:flex-start;padding-bottom:1.4rem;border-bottom:1px solid rgba(6,42,69,.12)}
+.ci:last-of-type{border-bottom:0}
+.ci svg{flex:none;margin-top:.85rem}
+.ci .k{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
+.ci a{color:var(--deep);font-weight:650;text-decoration:none;font-size:1.12rem;
+  display:inline-flex;align-items:center;min-height:44px}
+.ci a:hover{color:var(--sea);text-decoration:underline}
+.ci p{color:var(--muted);font-size:1rem}
+.map{border-radius:18px;overflow:hidden;border:1px solid rgba(6,42,69,.16)}
+.map iframe{display:block;width:100%;height:230px;border:0;filter:saturate(.86)}
+
+/* ---------- footer ---------- */
+footer{background:var(--abyss);color:rgba(255,255,255,.72);padding:clamp(3.5rem,7vw,5.5rem) 0 2.5rem}
+.fg{display:grid;gap:2.5rem;grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+footer h3{font-family:var(--sans);color:#fff;font-size:.82rem;letter-spacing:.2em;
+  text-transform:uppercase;margin-bottom:1rem;opacity:.55;font-weight:600}
+footer .big{font-family:var(--display);font-size:1.7rem;color:#fff;margin-bottom:.7rem}
+footer a{color:rgba(255,255,255,.82);text-decoration:none;
+  display:inline-flex;align-items:center;min-height:44px;transition:.25s}
+footer a:hover{color:var(--gold)}
+footer p{font-size:.98rem}
+.fb{margin-top:3rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.14);
+  display:flex;flex-wrap:wrap;gap:.9rem;justify-content:space-between;font-size:.9rem;opacity:.6}
+
+/* ---------- sticky mobile bar ---------- */
+.bar{position:fixed;bottom:0;left:0;right:0;z-index:120;display:none;gap:.55rem;
+  padding:.65rem .8rem calc(.65rem + env(safe-area-inset-bottom));
+  background:rgba(255,253,249,.96);backdrop-filter:blur(14px);border-top:1px solid rgba(6,42,69,.15)}
+.bar .btn{flex:1;min-height:52px;font-size:1rem;padding:.8rem 1rem}
+@media(max-width:820px){.bar{display:flex}body{padding-bottom:76px}}
+
+.flag{position:fixed;top:calc(100% - 100%);left:1rem;z-index:90;margin-top:4.6rem;
+  background:rgba(2,20,31,.55);backdrop-filter:blur(8px);color:rgba(255,255,255,.72);
+  font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;
+  border-radius:99px;border:1px solid rgba(255,255,255,.14);pointer-events:none}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="flag">Preview</div>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Sunrise Snorkel Aruba, home">
+      <img src="img/logo.png" width="751" height="237" alt="Sunrise Snorkel Aruba logo, a rising sun over three waves">
+    </a>
+    <div class="links">
+      <a href="#why">Why us</a>
+      <a href="#descent">The reef</a>
+      <a href="#tours">Tours</a>
+      <a href="#words">Reviews</a>
+      <a class="cta" href="https://wa.me/2975931234?text=Hi%20Sunrise%20Snorkel%2C%20I%27d%20like%20to%20book" rel="noopener" target="_blank">Book</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+<header class="hero">
+  <div class="hero-bg">
+    <img src="img/hero-reef.jpg" width="2000" height="1250" fetchpriority="high" alt="Sunlight breaking through the surface of clear turquoise water off Malmok Beach">
+  </div>
+  <div class="wrap hero-in">
+    <p class="eyebrow">Malmok Beach · Aruba</p>
+    <h1>
+      <span class="ln"><span>Six guests.</span></span>
+      <span class="ln"><span>One boat.</span></span>
+      <span class="ln"><span>The reef to <em>yourselves</em>.</span></span>
+    </h1>
+    <p class="lede">Out at seven, while the water is still glass and the big catamarans are still tied up.</p>
+    <div class="hero-cta">
+      <a class="btn btn-p" href="https://wa.me/2975931234?text=Hi%20Sunrise%20Snorkel%2C%20I%27d%20like%20to%20book%20a%20tour" rel="noopener" target="_blank">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 15l-1.2 4.4 4.5-1.2A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.4 1.3-2 1.3-.5 0-1.1.2-3.7-.8-3.1-1.3-5.1-4.5-5.3-4.7-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.5l.9 2c.1.2.1.4 0 .5l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.5-.1l.8-1c.2-.2.3-.2.5-.1l2 1c.2.1.4.2.4.3.1.2.1.6 0 1.2Z"/></svg>
+        Book on WhatsApp
+      </a>
+      <a class="btn btn-g" href="#tours">See the three tours</a>
+    </div>
+  </div>
+</header>
+
+<div class="band" aria-hidden="true">
+  <div class="mq">
+    <div class="mq-set">
+      <span><b>6</b> guests maximum</span><i>·</i>
+      <span><b>7:00</b> first departure</span><i>·</i>
+      <span><b>2016</b> family run</span><i>·</i>
+      <span><b>0%</b> tour-desk commission</span><i>·</i>
+    </div>
+    <div class="mq-set">
+      <span><b>6</b> guests maximum</span><i>·</i>
+      <span><b>7:00</b> first departure</span><i>·</i>
+      <span><b>2016</b> family run</span><i>·</i>
+      <span><b>0%</b> tour-desk commission</span><i>·</i>
+    </div>
+  </div>
+</div>
+
+<section class="why pad" id="why">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Why book direct</p>
+      <h2>The difference is <em>who else</em> is on the boat.</h2>
+      <p>Forty people on a party catamaran see the same reef you do. They just see it through everybody else's fins.</p>
+    </div>
+    <div class="why-grid">
+      <article class="wc rv rv-d1">
+        <div class="num">01</div>
+        <h3>Six guests, never seven</h3>
+        <p>We turn people away rather than add a chair. It is the entire reason the trip works: clear water, no queue for the ladder, and a guide who is actually watching you.</p>
+      </article>
+      <article class="wc rv rv-d2">
+        <div class="num">02</div>
+        <h3>Captains from here</h3>
+        <p>Born in Aruba, in this water since childhood. They know which side of the reef the turtles feed on at seven in the morning, and which mooring the current has moved.</p>
+      </article>
+      <article class="wc rv rv-d3">
+        <div class="num">03</div>
+        <h3>No middleman</h3>
+        <p>Book through a hotel desk and their commission is already inside the price you were quoted. Message us and you pay the boat, not the booking platform.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="descent" id="descent">
+  <img class="bgd" src="img/depth.jpg" width="1400" height="1400" loading="lazy" alt="Water darkening from turquoise at the surface down into deep blue">
+  <div class="wrap descent-in">
+    <div class="sec-head rv">
+      <p class="eyebrow">The morning, start to finish</p>
+      <h2>Three hours, and it gets better the deeper you go.</h2>
+      <p>Every trip runs the same shape. Shallow and bright to start, then out to the drop.</p>
+    </div>
+    <div class="depths">
+      <article class="depth rv rv-d1">
+        <div class="m">2m</div>
+        <div>
+          <h3>Malmok flats</h3>
+          <p>Straight off the beach into waist-deep turquoise. Fins on, mask checked, everybody breathing. Parrotfish and sergeant majors in the first two minutes.</p>
+        </div>
+      </article>
+      <article class="depth rv rv-d2">
+        <div class="m">6m</div>
+        <div>
+          <h3>Boca Catalina</h3>
+          <p>The bay where the green turtles come to feed on the seagrass. We cut the engine and drift. Most mornings you will be in the water with two or three of them.</p>
+        </div>
+      </article>
+      <article class="depth rv rv-d3">
+        <div class="m">12m</div>
+        <div>
+          <h3>The Antilla</h3>
+          <p>The largest shipwreck in the Caribbean, and shallow enough that parts of the hull still break the surface. Four hundred feet of it, full of light and fish.</p>
+        </div>
+      </article>
+      <article class="depth rv rv-d4">
+        <div class="m">0m</div>
+        <div>
+          <h3>Back to the beach</h3>
+          <p>Cold water, fresh fruit, and you are on the sand by ten with the whole day still ahead of you.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="tours pad" id="tours">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Three ways out</p>
+      <h2>Pick your morning.</h2>
+      <p>All trips leave from Malmok Beach. Masks, fins, water and fruit included in every price.</p>
+    </div>
+
+    <article class="tour rv">
+      <div class="tour-media"><span class="idx">01</span>
+        <img src="img/turtle-dive.jpg" width="1400" height="1050" loading="lazy" alt="Clear blue water at Boca Catalina where the green turtles feed">
+      </div>
+      <div class="tour-body">
+        <p class="eyebrow">Most booked</p>
+        <h3>Sunrise Reef &amp; Turtles</h3>
+        <div class="tprice"><b>$65</b><span>per person · 3 hours</span></div>
+        <p>Out at 7am while the water is still glass. Two stops on the Malmok reef, then Boca Catalina for the turtles.</p>
+        <ul class="chips"><li>7:00 – 10:00</li><li>Max 6 guests</li><li>Gear included</li><li>Ages 6+</li></ul>
+        <a class="btn btn-d" href="https://wa.me/2975931234?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Sunrise%20Reef%20%26%20Turtles%20tour" rel="noopener" target="_blank">Book this tour</a>
+      </div>
+    </article>
+
+    <article class="tour rv">
+      <div class="tour-media"><span class="idx">02</span>
+        <img src="img/antilla-wreck.jpg" width="1400" height="1050" loading="lazy" alt="Deep blue water over the Antilla wreck site">
+      </div>
+      <div class="tour-body">
+        <p class="eyebrow">For confident swimmers</p>
+        <h3>The Antilla Wreck</h3>
+        <div class="tprice"><b>$80</b><span>per person · 3.5 hours</span></div>
+        <p>Four hundred feet of German freighter, scuttled in 1940 and shallow enough to snorkel. Second stop at Arashi reef on the way home.</p>
+        <ul class="chips"><li>9:00 – 12:30</li><li>Max 6 guests</li><li>Swimming experience needed</li></ul>
+        <a class="btn btn-d" href="https://wa.me/2975931234?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Antilla%20Wreck%20tour" rel="noopener" target="_blank">Book this tour</a>
+      </div>
+    </article>
+
+    <article class="tour rv">
+      <div class="tour-media"><span class="idx">03</span>
+        <img src="img/catamaran-deck.jpg" width="1400" height="1050" loading="lazy" alt="Bright open water seen from the deck of the catamaran">
+      </div>
+      <div class="tour-body">
+        <p class="eyebrow">Yours alone</p>
+        <h3>Private Charter</h3>
+        <div class="tprice"><b>$420</b><span>whole boat · 4 hours</span></div>
+        <p>The boat, the captain and the route are yours. Families, proposals, or anyone who would simply rather not share.</p>
+        <ul class="chips"><li>Your schedule</li><li>Up to 8 guests</li><li>Route of your choosing</li></ul>
+        <a class="btn btn-d" href="https://wa.me/2975931234?text=Hi%2C%20I%27d%20like%20to%20ask%20about%20a%20private%20charter" rel="noopener" target="_blank">Ask about a charter</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="words pad" id="words">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">From guests who booked direct</p>
+      <h2>What people say when they get back.</h2>
+    </div>
+    <div class="qs">
+      <figure class="rv rv-d1">
+        <div class="st" aria-label="Rated five out of five">★★★★★</div>
+        <blockquote>“We were the only boat on the reef. Our captain spotted three turtles before we even got in the water. Worth getting up early for.”</blockquote>
+        <figcaption>Marisa D., Boston</figcaption>
+      </figure>
+      <figure class="rv rv-d2">
+        <div class="st" aria-label="Rated five out of five">★★★★★</div>
+        <blockquote>“Booked on WhatsApp the night before. Forty dollars less per person than the desk in our hotel quoted us. Same reef, quarter of the people.”</blockquote>
+        <figcaption>James P., Toronto</figcaption>
+      </figure>
+      <figure class="rv rv-d3">
+        <div class="st" aria-label="Rated five out of five">★★★★★</div>
+        <blockquote>“Took our two, aged seven and ten. The crew stayed in the water with them the entire time. Genuinely kind people.”</blockquote>
+        <figcaption>Annelies V., Rotterdam</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="book pad" id="book">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Book a morning</p>
+      <h2>WhatsApp is fastest.</h2>
+      <p>We usually answer within the hour. Or send this and we will come back to you today.</p>
+    </div>
+    <div class="bgrid">
+      <form class="rv" action="https://formspree.io/f/xbljvqka" method="POST">
+        <div class="f2">
+          <div><label for="nm">Your name</label><input id="nm" name="name" type="text" autocomplete="name" required></div>
+          <div><label for="em">Email</label><input id="em" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="f2">
+          <div><label for="tr">Which tour</label>
+            <select id="tr" name="tour">
+              <option>Sunrise Reef &amp; Turtles, $65</option>
+              <option>The Antilla Wreck, $80</option>
+              <option>Private Charter, $420</option>
+              <option>Not sure yet</option>
+            </select></div>
+          <div><label for="dt">Preferred date</label><input id="dt" name="date" type="date"></div>
+        </div>
+        <div><label for="gs">Number of guests</label><input id="gs" name="guests" type="number" min="1" max="8" value="2"></div>
+        <div><label for="ms">Anything we should know</label>
+          <textarea id="ms" name="message" placeholder="Beginners, children, hotel pickup, dietary needs…"></textarea></div>
+        <button class="btn btn-p" type="submit">Send booking request</button>
+      </form>
+
+      <div class="aside rv rv-d2">
+        <div class="ci">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1587ab" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          <div><div class="k">Call or WhatsApp</div><a href="tel:+2975931234">+297 593 1234</a></div>
+        </div>
+        <div class="ci">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1587ab" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><div class="k">Where we leave from</div><p>Malmok Beach, Noord, Aruba<br>Look for the white catamaran</p></div>
+        </div>
+        <div class="ci">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1587ab" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div><div class="k">Departures</div><p>Daily at 7:00 and 9:00<br>Closed Sundays</p></div>
+        </div>
+        <div class="map">
+          <iframe title="Map showing Malmok Beach, Noord, Aruba" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Malmok+Beach+Aruba&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <img class="flogo" src="img/logo-full.png" width="834" height="248" alt="Sunrise Snorkel Aruba logo">
+        <p>Small-group snorkel tours from Malmok Beach since 2016. Locally owned, locally crewed.</p>
+      </div>
+      <div>
+        <h3>Tours</h3>
+        <div><a href="#tours">Sunrise Reef &amp; Turtles</a></div>
+        <div><a href="#tours">The Antilla Wreck</a></div>
+        <div><a href="#tours">Private Charter</a></div>
+      </div>
+      <div>
+        <h3>Get in touch</h3>
+        <div><a href="tel:+2975931234">+297 593 1234</a></div>
+        <div><a href="https://wa.me/2975931234" rel="noopener" target="_blank">WhatsApp</a></div>
+        <div><a href="https://www.facebook.com/" rel="noopener" target="_blank">Facebook</a></div>
+      </div>
+      <div>
+        <h3>Leaving from</h3>
+        <p>Malmok Beach<br>Noord, Aruba<br><br>Daily 7:00 &amp; 9:00<br>Closed Sundays</p>
+      </div>
+    </div>
+    <div class="fb"><span>© 2026 Sunrise Snorkel Aruba</span><span>Malmok Beach · Noord · Aruba</span></div>
+  </div>
+</footer>
+
+<div class="bar">
+  <a class="btn btn-d" href="tel:+2975931234">Call</a>
+  <a class="btn btn-p" href="https://wa.me/2975931234" rel="noopener" target="_blank">WhatsApp</a>
+</div>
+
+<script>
+(function(){
+  // nothing animates on scroll. The page stays put by design.
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"Sunrise Snorkel Aruba",
+  "description":"Small-group snorkel tours from Malmok Beach, Aruba. Six guests maximum, local captains.",
+  "image":"img/hero-reef.jpg",
+  "telephone":"+297 593 1234",
+  "address":{"@type":"PostalAddress","streetAddress":"Malmok Beach","addressLocality":"Noord","addressCountry":"AW"},
+  "geo":{"@type":"GeoCoordinates","latitude":12.5896,"longitude":-70.0479},
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"16:00"}],
+  "priceRange":"$$"
+}
+</script>
+</body>
+</html>

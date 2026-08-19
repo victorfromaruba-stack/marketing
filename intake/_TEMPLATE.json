@@ -1,0 +1,71 @@
+{
+  "slug": "business-name-slug",
+  "business_name": "Exact Legal/Trading Name — copy character for character",
+  "owner_name": "First name if known — used in the email greeting",
+  "sector": "Tours & Watersports | Guesthouse / Rental | Restaurant / Bar | Food Truck | Trades / Contractor | Auto / Car Rental | Professional Services | Health / Clinic | Retail / Boutique | Salon / Barber | Gym / Fitness | Events / Wedding",
+  "tier": "A",
+
+  "contact": {
+    "phone": "+297 XXX XXXX",
+    "whatsapp": "297XXXXXXX  (digits only, country code, no +)",
+    "email": "",
+    "address": "Street, District, Aruba",
+    "district": "Noord",
+    "maps_query": "Business Name Aruba",
+    "lat": null,
+    "lng": null
+  },
+
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "tripadvisor": "",
+    "current_website": ""
+  },
+
+  "identity": {
+    "_comment": "THIS IS THE MOST IMPORTANT BLOCK. Fill it by actually looking at their Instagram grid and Facebook photos. Vague answers here produce generic sites.",
+    "mood": "e.g. 'weathered beach shack, hand-painted signs, plastic chairs, family-run, unhurried'",
+    "palette_source": "e.g. 'faded turquoise on their door, warm sand, the orange of their fish tacos'",
+    "colors": ["#0A2F4E", "#3FA9B8", "#FF7A45"],
+    "type_feel": "e.g. 'hand-painted sign lettering -> warm humanist serif' or 'chrome logo -> clean geometric sans'",
+    "voice": "e.g. 'short, playful, lots of exclamation marks, mixes English and Papiamento'",
+    "proudest_of": "What do they post about most? This becomes the hero.",
+    "logo_file": "",
+    "photos": [
+      { "file": "img/hero.jpg", "alt": "Describe exactly what is in the photo", "source": "their Instagram post 2026-06-14" }
+    ]
+  },
+
+  "offering": {
+    "_comment": "ONLY real information. If you do not have it, leave it empty and it will be omitted from the site. Never invent prices.",
+    "tagline": "",
+    "description": "",
+    "items": [
+      { "name": "", "price": "", "unit": "", "description": "", "details": [] }
+    ],
+    "hours": "",
+    "years_in_business": "",
+    "languages": []
+  },
+
+  "reviews": [
+    { "text": "Exact quote, never paraphrased", "author": "Name as published", "source": "Google / TripAdvisor / Facebook", "rating": 5 }
+  ],
+
+  "the_hook": {
+    "_comment": "The specific, verifiable reason this business is losing money right now. Goes in the email.",
+    "search_term": "e.g. 'snorkel tour aruba'",
+    "who_outranks_them": ["Competitor A", "Viator"],
+    "commission_paid_to": "e.g. Viator 20-25%",
+    "observed_problem": "e.g. 'menu only exists as a Facebook photo from 2023'"
+  },
+
+  "build": {
+    "template_base": "booking | hospitality | services",
+    "primary_action": "book | call | whatsapp | reserve | menu",
+    "demo_url": "",
+    "built_on": "",
+    "qa_passed": false
+  }
+}

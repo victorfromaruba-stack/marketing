@@ -1,0 +1,13 @@
+{
+  "_comment": "The people behind the roles. Aruban names — the studio is local, and it should read that way.",
+  "chief":        { "name": "Sharina",  "role": "chief of staff" },
+  "scout":        { "name": "Rendell",  "role": "scout" },
+  "analyst":      { "name": "Kimberly", "role": "analyst" },
+  "art-director": { "name": "Xiomara",  "role": "art director" },
+  "copywriter":   { "name": "Dario",    "role": "copywriter" },
+  "engineer":     { "name": "Jeandro",  "role": "engineer" },
+  "inspector":    { "name": "Farah",    "role": "inspector" },
+  "guard":        { "name": "Orlando",  "role": "guard" },
+  "closer":       { "name": "Marisol",  "role": "closer" },
+  "librarian":    { "name": "Elvin",    "role": "librarian" }
+}

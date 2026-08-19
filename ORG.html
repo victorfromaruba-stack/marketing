@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aruba Web Studio — Organisation</title>
+<style>
+:root{
+  --abyss:#02141f; --deep:#0A2F4E; --ocean:#0b4f77; --sea:#1C7FA8;
+  --shallow:#43b9c4; --glass:#a9e4e8; --sun:#FF7A45; --gold:#ffc06b;
+  --sand:#F7F3EC; --paper:#FFFDF9; --foam:#EAF3F6;
+  --ink:#0B1A26; --muted:#5B7488;
+  --display:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-size:16px;line-height:1.62;color:var(--ink);background:var(--sand)}
+body::after{content:"";position:fixed;inset:0;z-index:99;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.wrap{width:min(1200px,100% - 3rem);margin-inline:auto}
+header{background:linear-gradient(150deg,var(--abyss) 0%,var(--deep) 52%,var(--ocean) 100%);
+  color:#fff;padding:4.5rem 0 3.6rem}
+.eyebrow{font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+h1{font-family:var(--display);font-size:clamp(2.3rem,6vw,4rem);line-height:1.02;font-weight:600;letter-spacing:-.02em;margin-bottom:1rem}
+h1 em{font-style:italic;color:var(--gold)}
+.lede{font-size:1.13rem;max-width:60ch;color:rgba(255,255,255,.86)}
+section{padding:clamp(3rem,6vw,5rem) 0}
+h2{font-family:var(--display);font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:600;letter-spacing:-.018em;margin-bottom:.6rem}
+.sub{color:var(--muted);max-width:62ch;margin-bottom:2.4rem}
+.owner{background:var(--deep);color:#fff;border-radius:16px;padding:1.5rem 2rem;text-align:center;max-width:340px;margin:0 auto 0}
+.owner b{font-family:var(--display);font-size:1.5rem;font-weight:600;display:block}
+.owner span{font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;opacity:.6}
+.stem{width:2px;height:36px;background:rgba(10,47,78,.28);margin:0 auto}
+.depts{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));align-items:start}
+.dept{background:var(--paper);border:1px solid rgba(10,47,78,.13);border-radius:16px;overflow:hidden}
+.dept h3{font-family:var(--sans);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+  padding:.9rem 1.2rem;color:#fff;font-weight:700}
+.d1 h3{background:var(--ocean)} .d2 h3{background:var(--sea)} .d3 h3{background:var(--deep)}
+.d4 h3{background:#8a3b1f} .d5 h3{background:#1d6b52}
+.role{padding:1.1rem 1.2rem;border-top:1px solid rgba(10,47,78,.10)}
+.role:first-of-type{border-top:0}
+.role b{font-family:var(--display);font-size:1.16rem;display:block;color:var(--deep)}
+.role p{font-size:.91rem;color:var(--muted);margin-top:.2rem}
+.role .no{font-size:.83rem;color:#a04a2c;margin-top:.45rem}
+.flow{background:var(--abyss);color:#fff}
+.flow h2{color:#fff}.flow .sub{color:rgba(255,255,255,.68)}
+.chain{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:2.6rem}
+.node{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);border-radius:99px;
+  padding:.55rem 1.1rem;font-size:.95rem;white-space:nowrap}
+.node.sec{background:rgba(255,122,69,.20);border-color:rgba(255,122,69,.55)}
+.arrow{color:var(--glass);opacity:.55}
+.loop{background:rgba(169,228,232,.09);border:1px solid rgba(169,228,232,.28);border-radius:16px;padding:1.7rem}
+.loop b{font-family:var(--display);font-size:1.3rem;color:var(--glass);display:block;margin-bottom:.5rem}
+.loop p{color:rgba(255,255,255,.8);max-width:70ch}
+.props{display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.prop{background:var(--paper);border:1px solid rgba(10,47,78,.13);border-radius:16px;padding:1.8rem;border-top:4px solid var(--sea)}
+.prop:nth-child(2){border-top-color:var(--sun)}
+.prop:nth-child(3){border-top-color:#1d6b52}
+.prop h3{font-family:var(--display);font-size:1.45rem;margin-bottom:.6rem;color:var(--deep)}
+.prop p{font-size:.96rem;color:var(--muted);margin-bottom:.8rem}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85em;
+  background:var(--foam);padding:.14em .45em;border-radius:5px;color:var(--ocean)}
+.gate{background:var(--foam);border-left:4px solid var(--sun);border-radius:0 12px 12px 0;padding:1.3rem 1.6rem;margin-top:1.4rem}
+.gate b{color:var(--deep)}
+table{width:100%;border-collapse:collapse;margin-top:1.6rem;font-size:.95rem}
+th{background:var(--deep);color:#fff;text-align:left;padding:.75rem 1rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+td{padding:.7rem 1rem;border-bottom:1px solid rgba(10,47,78,.11);vertical-align:top}
+tr:nth-child(even) td{background:var(--paper)}
+footer{background:var(--abyss);color:rgba(255,255,255,.6);padding:2.6rem 0;font-size:.9rem}
+@media(max-width:640px){.chain{flex-direction:column;align-items:stretch}.arrow{display:none}.node{text-align:center}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Aruba Web Studio</p>
+    <h1>Nine roles, one <em>memory</em>.</h1>
+    <p class="lede">A studio that does not depend on anyone remembering anything. Every role reads before it works and writes when it finishes, and the whole thing gets measurably better as outcomes come back.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="owner"><span>Owner · final call</span><b>Victor</b></div>
+    <div class="stem"></div>
+    <div class="depts">
+      <div class="dept d1">
+        <h3>Intelligence</h3>
+        <div class="role"><b>scout</b><p>Finds and ranks prospects worth pitching. Re-ranks sectors the moment the ledger disagrees with the original guess.</p><p class="no">Does not design or write copy.</p></div>
+        <div class="role"><b>analyst</b><p>Deep-researches one business into a complete brief. Owns the hook — the specific, verifiable thing they are losing.</p><p class="no">Invents nothing. Empty beats guessed.</p></div>
+      </div>
+      <div class="dept d2">
+        <h3>Creative</h3>
+        <div class="role"><b>art-director</b><p>Palette, type, layout, and the signature moment. Writes the decisions doc before any code exists.</p><p class="no">Writes no code.</p></div>
+        <div class="role"><b>copywriter</b><p>Every word on the site and in the email, in Victor's voice. Checks which hooks are actually getting replies first.</p><p class="no">No invented claims, prices or reviews.</p></div>
+      </div>
+      <div class="dept d3">
+        <h3>Production</h3>
+        <div class="role"><b>engineer</b><p>Builds to the decisions and the copy. Raises a conflict rather than resolving it silently.</p><p class="no">Does not redesign quietly.</p></div>
+        <div class="role"><b>inspector</b><p>Adversarial QA. Runs the 30-check gate, then hunts for what a script cannot see. Passes or blocks.</p><p class="no">Never passes "minor issues".</p></div>
+      </div>
+      <div class="dept d4">
+        <h3>Security</h3>
+        <div class="role"><b>guard</b><p>Last gate before anything is public. Secrets, third-party code, leaked build paths, headers, client data, dependencies.</p><p class="no">Cannot be skipped — including by Victor in a hurry.</p></div>
+      </div>
+      <div class="dept d5">
+        <h3>Revenue &amp; Learning</h3>
+        <div class="role"><b>closer</b><p>Outreach, replies, objection handling, the pricing ladder. Every reply aims at one thing: a meeting.</p><p class="no">Sends nothing before the demo is live.</p></div>
+        <div class="role"><b>librarian</b><p>Reads every outcome. Promotes what works into the playbook, retires what stops working.</p><p class="no">No rule on fewer than 5 observations.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow">
+  <div class="wrap">
+    <h2>The pipeline</h2>
+    <p class="sub">Each role hands off a defined artefact. Nothing skips a stage.</p>
+    <div class="chain">
+      <span class="node">scout</span><span class="arrow">→</span>
+      <span class="node">analyst</span><span class="arrow">→</span>
+      <span class="node">art-director</span><span class="arrow">→</span>
+      <span class="node">copywriter</span><span class="arrow">→</span>
+      <span class="node">engineer</span><span class="arrow">→</span>
+      <span class="node">inspector</span><span class="arrow">→</span>
+      <span class="node sec">guard</span><span class="arrow">→</span>
+      <span class="node">closer</span>
+    </div>
+    <div class="loop">
+      <b>↺ librarian — the loop that closes it</b>
+      <p>Every outcome, win or loss, is written to <code>memory/ledger/outcomes.jsonl</code>. The librarian measures reply and win rates by sector, hook, subject line and palette, then promotes anything with five or more observations that beats the baseline into <code>memory/playbook.md</code> — with the numbers inline. Every agent reads that playbook before it starts. Rules that stop performing are retired, not softened.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The three properties, made concrete</h2>
+    <p class="sub">Each one is a mechanism you can inspect, not a claim.</p>
+    <div class="props">
+      <div class="prop">
+        <h3>Never forgets</h3>
+        <p>Everything lives on disk in plain Markdown and JSONL. Nothing depends on a conversation staying open, a session persisting, or anyone remembering to mention it.</p>
+        <p>Agents read <code>memory/playbook.md</code> first, every time, and write what they learned when they finish.</p>
+      </div>
+      <div class="prop">
+        <h3>Self-improving</h3>
+        <p>Measured outcomes, a stated threshold, and a written rule. <code>distill.py</code> computes the rates; the librarian promotes only at ≥5 observations beating baseline.</p>
+        <p>That threshold is the whole point — it is what stops a good story from becoming a bad rule.</p>
+      </div>
+      <div class="prop">
+        <h3>Secure</h3>
+        <p>guard blocks a deploy on any secret in the repo, any third-party script, any hotlinked asset, any leaked build path, missing headers, or an undocumented dependency.</p>
+        <p>Client photos and logos are gitignored — they are other people's material, used only on that client's own demo.</p>
+      </div>
+    </div>
+    <div class="gate">
+      <b>Where the evidence stands today:</b> the playbook is empty, and it says so. Every sector priority in the system is currently labelled <code>[assumed]</code> — reasoned from global no-website rates and ROI logic, not from Aruban data. The structure is built; it has nothing to learn from until real emails go out and real replies come back.
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Running it</h2>
+    <table>
+      <tr><th>Command</th><th>What happens</th></tr>
+      <tr><td><code>/scout tours in Noord</code></td><td>Ranked shortlist, written to the ledger</td></tr>
+      <tr><td><code>/analyst &lt;slug&gt;</code></td><td>Research → intake brief, assets harvested, palette extracted, hook identified</td></tr>
+      <tr><td><code>/art-director &lt;slug&gt;</code></td><td>Decisions doc: palette traced to their material, type, the signature moment</td></tr>
+      <tr><td><code>/copywriter &lt;slug&gt;</code></td><td>Every string, plus the outreach email under 80 words</td></tr>
+      <tr><td><code>/engineer &lt;slug&gt;</code></td><td>The site, built to brief, still and self-contained</td></tr>
+      <tr><td><code>/inspector &lt;slug&gt;</code></td><td>PASS or BLOCKED with a numbered defect list</td></tr>
+      <tr><td><code>/guard &lt;slug&gt;</code></td><td>CLEARED or BLOCKED — security, no exceptions</td></tr>
+      <tr><td><code>/closer &lt;slug&gt;</code></td><td>Email + PDF, or a drafted reply aimed at a meeting</td></tr>
+      <tr><td><code>/librarian</code></td><td>Weekly — turn outcomes into rules, retire what died</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Aruba Web Studio · nine roles, one memory · the playbook outranks personal taste</div>
+</footer>
+</body>
+</html>

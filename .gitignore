@@ -1,0 +1,27 @@
+# secrets — never committed
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+token.json
+
+# other people's material
+intake/assets/
+memory/clients/
+sites/*/img/
+outreach/proposals/
+outreach/queue/
+
+# generated / local
+node_modules/
+.deploy/
+qa/screenshots/
+prospector/raw_places.json
+prospector/prospects.csv
+__pycache__/
+*.pyc
+.DS_Store
+
+# keep the template itself (contains no values)
+!.env.example

@@ -1,0 +1,102 @@
+{
+  "slug": "sunrise-snorkel",
+  "business_name": "Sunrise Snorkel Aruba",
+  "owner_name": "Ricardo",
+  "sector": "Tours & Watersports",
+  "tier": "A",
+  "contact": {
+    "phone": "+297 593 1234",
+    "whatsapp": "2975931234",
+    "email": "",
+    "address": "Malmok Beach, Noord, Aruba",
+    "district": "Noord",
+    "maps_query": "Malmok Beach Aruba",
+    "lat": 12.5896,
+    "lng": -70.0479
+  },
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "tripadvisor": "",
+    "current_website": ""
+  },
+  "identity": {
+    "mood": "early morning, quiet, unhurried; weathered white catamaran, deep blue water",
+    "palette_source": "extracted from their own logo and photos",
+    "colors": [
+      "#FFC06B",
+      "#021021",
+      "#0C4B73",
+      "#1D6F87",
+      "#2094B3",
+      "#4BABBC"
+    ],
+    "type_feel": "hand-lettered boat name -> warm serif for headlines",
+    "voice": "plain, confident, slightly understated",
+    "proudest_of": "being the only boat on the reef at 7am",
+    "photos": [
+      {
+        "file": "img/logo-full.png",
+        "alt": "",
+        "source": "harvested"
+      },
+      {
+        "file": "img/antilla-wreck.jpg",
+        "alt": "",
+        "source": "harvested"
+      },
+      {
+        "file": "img/depth.jpg",
+        "alt": "",
+        "source": "harvested"
+      },
+      {
+        "file": "img/catamaran-deck.jpg",
+        "alt": "",
+        "source": "harvested"
+      },
+      {
+        "file": "img/logo-mark.png",
+        "alt": "",
+        "source": "harvested"
+      },
+      {
+        "file": "img/reef-shallow.jpg",
+        "alt": "",
+        "source": "harvested"
+      },
+      {
+        "file": "img/hero-reef.jpg",
+        "alt": "",
+        "source": "harvested"
+      },
+      {
+        "file": "img/turtle-dive.jpg",
+        "alt": "",
+        "source": "harvested"
+      }
+    ],
+    "logo_file": "img/logo.png"
+  },
+  "offering": {
+    "tagline": "Six guests. One boat. The reef to yourselves.",
+    "hours": "Daily 7:00 and 9:00, closed Sundays"
+  },
+  "reviews": [],
+  "the_hook": {
+    "search_term": "snorkel tour aruba",
+    "who_outranks_them": [
+      "Viator",
+      "TripAdvisor",
+      "three competing operators"
+    ],
+    "commission_paid_to": "Viator 20-25%",
+    "observed_problem": "Bookings all come through the tour desk, which takes a cut of every one."
+  },
+  "build": {
+    "template_base": "booking",
+    "primary_action": "whatsapp",
+    "demo_url": "https://demo.arubawebstudio.com/sunrise-snorkel",
+    "qa_passed": true
+  }
+}
