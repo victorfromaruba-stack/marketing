@@ -1,0 +1,282 @@
+/* =========================================================================
+   Aruba Web Studio — design tokens
+   =========================================================================
+
+   Every project starts here. Client work overrides the three BRAND tokens
+   at the bottom and inherits everything else, which is the whole point:
+   the third site takes a fraction of the time the first one did.
+
+   Usage:
+     <link rel="stylesheet" href="tokens.css">
+     …then style only with var(--…), never with literal colours.
+
+   Contrast is verified by brand/check-contrast.py. Change a colour and run
+   it — every pair here meets its WCAG target with headroom, and two of them
+   only do so because that check caught them failing.
+   ========================================================================= */
+
+:root {
+  /* ---- colour · light (the default) ----------------------------------- */
+  --ground:    #F7F5F1;   /* page background — warm, sun-bleached          */
+  --panel:     #FFFFFF;   /* cards, raised surfaces                        */
+  --panel-2:   #EFEBE4;   /* tinted panels, sidebars                       */
+  --ink:       #101619;   /* body text — near-black, blue-biased           */
+  --ink-soft:  #414B51;   /* secondary text                     8.2:1      */
+  --muted:     #5F696F;   /* labels, captions                   5.2:1      */
+  --rule:      #DCD6CC;   /* hairlines and borders                         */
+  --sea:       #1B6CA8;   /* the accent. Links, marks           5.1:1      */
+  --sand:      #A8761F;   /* warnings, second accent            3.7:1      */
+
+  /* ---- semantic aliases ----------------------------------------------- */
+  /* Name things by role, not appearance. When a client's brand swaps the
+     accent, everything downstream follows without a find-and-replace.     */
+  --link:            var(--sea);
+  --focus:           var(--sea);
+  --border:          var(--rule);
+  --text:            var(--ink);
+  --text-secondary:  var(--ink-soft);
+  --text-tertiary:   var(--muted);
+  --surface:         var(--ground);
+  --surface-raised:  var(--panel);
+
+  /* ---- type ------------------------------------------------------------ */
+  --font-display: "Bricolage Grotesque", Archivo, system-ui, sans-serif;
+  --font-body:    Archivo, -apple-system, system-ui, "Helvetica Neue", sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  /* A 1.25 (major third) scale. Small enough steps that adjacent sizes are
+     distinguishable, large enough that hierarchy is obvious at a glance.   */
+  --text-xs:   0.75rem;   /* 12px — legal, dense metadata                   */
+  --text-sm:   0.875rem;  /* 14px — captions, table cells                   */
+  --text-base: 1.0625rem; /* 17px — body. Deliberately above the 16px norm  */
+  --text-lg:   1.25rem;   /* 20px — lede paragraphs                         */
+  --text-xl:   1.5rem;    /* 24px — card headings                           */
+  --text-2xl:  1.9rem;    /* 30px — section headings                        */
+  --text-3xl:  2.5rem;    /* 40px — page headings                           */
+  --text-4xl:  clamp(2.75rem, 8vw, 5.5rem); /* hero — fluid                 */
+
+  --leading-tight: 1.05;  /* display sizes                                  */
+  --leading-snug:  1.35;  /* headings                                       */
+  --leading-body:  1.62;  /* running text. Generous on purpose              */
+
+  --tracking-tight:  -0.035em;  /* large display type needs negative space  */
+  --tracking-normal: 0;
+  --tracking-wide:   0.14em;    /* uppercase mono labels only               */
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semi:   600;
+  --weight-bold:   800;
+
+  /* ---- space ----------------------------------------------------------- */
+  /* A 4px base. Every margin and padding in the system is one of these —
+     arbitrary values are how a layout starts looking accidental.           */
+  --space-1:  0.25rem;   /*  4px */
+  --space-2:  0.5rem;    /*  8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.5rem;    /* 24px */
+  --space-6:  2rem;      /* 32px */
+  --space-7:  3rem;      /* 48px */
+  --space-8:  4.5rem;    /* 72px */
+  --space-9:  6.5rem;    /* 104px — between major sections */
+
+  /* ---- layout ----------------------------------------------------------- */
+  --measure:      68ch;    /* max width of running text. Beyond ~75ch the
+                              eye loses the line return.                    */
+  --container:    1080px;
+  --container-sm: 720px;
+  --gutter:       var(--space-5);
+
+  /* ---- form ------------------------------------------------------------- */
+  /* Near-square corners. Heavy rounding reads as consumer-app; this work
+     should read as considered.                                             */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 6px;
+
+  --border-hair: 1px;
+  --border-firm: 2px;
+
+  /* Shadows are used sparingly — the system separates surfaces with rules
+     and tint rather than depth.                                            */
+  --shadow-sm: 0 1px 2px rgb(16 22 25 / 0.06);
+  --shadow-md: 0 4px 16px rgb(16 22 25 / 0.08);
+
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --ease: cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+/* ---- colour · dark ------------------------------------------------------
+   Not an inversion. Dark grounds need lower-chroma surfaces and a lifted
+   accent, or the same hues turn muddy and the accent stops reading.        */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:   #0D1215;
+    --panel:    #141B1F;
+    --panel-2:  #1B2429;
+    --ink:      #EDEFEF;
+    --ink-soft: #AEB8BD;
+    --muted:    #7F8B91;
+    --rule:     #232E34;
+    --sea:      #5AA6DC;
+    --sand:     #E7B75A;
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 16px rgb(0 0 0 / 0.5);
+  }
+}
+:root[data-theme="dark"] {
+  --ground:   #0D1215;
+  --panel:    #141B1F;
+  --panel-2:  #1B2429;
+  --ink:      #EDEFEF;
+  --ink-soft: #AEB8BD;
+  --muted:    #7F8B91;
+  --rule:     #232E34;
+  --sea:      #5AA6DC;
+  --sand:     #E7B75A;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 16px rgb(0 0 0 / 0.5);
+}
+
+/* =========================================================================
+   Base — the minimum every project wants, and nothing opinionated beyond it
+   ========================================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: var(--leading-snug);
+  margin: 0;
+  text-wrap: balance;
+}
+h1 { font-size: var(--text-4xl); font-weight: var(--weight-bold); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); }
+h2 { font-size: var(--text-2xl); font-weight: var(--weight-semi); letter-spacing: -0.02em; }
+h3 { font-size: var(--text-xl); font-weight: var(--weight-semi); letter-spacing: -0.015em; }
+
+p { margin: 0 0 var(--space-4); max-width: var(--measure); }
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Never remove the focus ring. Keyboard users navigate by it, and it is the
+   single most common accessibility regression in hand-built sites.         */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: var(--border-firm) solid var(--focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+img, svg, video { max-width: 100%; height: auto; display: block; }
+
+/* Respect the setting. Vestibular disorders are not an edge case.          */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================================================
+   Components — the handful that appear on every client site
+   ========================================================================= */
+
+.aws-container { max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+
+.aws-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--sea);
+}
+
+.aws-btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  border: var(--border-hair) solid var(--ink);
+  background: var(--ink);
+  color: var(--ground);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease),
+              border-color var(--duration-fast) var(--ease);
+}
+.aws-btn:hover { background: var(--sea); border-color: var(--sea); text-decoration: none; }
+.aws-btn--ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
+.aws-btn--ghost:hover { background: transparent; color: var(--ink); border-color: var(--ink); }
+
+.aws-card {
+  background: var(--panel);
+  border: var(--border-hair) solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: var(--space-5);
+}
+
+/* Grids share a rule rather than a gap, so the structure stays visible —
+   the house look. One border on the wrapper, 1px gaps filled by its bg.    */
+.aws-grid {
+  display: grid;
+  gap: var(--border-hair);
+  background: var(--rule);
+  border: var(--border-hair) solid var(--rule);
+}
+.aws-grid > * { background: var(--ground); padding: var(--space-5); }
+@media (min-width: 760px) {
+  .aws-grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .aws-grid--3 { grid-template-columns: repeat(3, 1fr); }
+  .aws-grid--4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+.aws-field {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font: inherit;
+  color: var(--ink);
+  background: var(--panel);
+  border: var(--border-hair) solid var(--rule);
+  border-radius: var(--radius-sm);
+}
+.aws-field::placeholder { color: var(--muted); }
+
+/* Wide content scrolls inside its own box. The page body must never scroll
+   sideways — it is the most common mobile bug in hand-built sites.         */
+.aws-scroll-x { overflow-x: auto; }
+
+/* =========================================================================
+   BRAND OVERRIDES — the only block a client project should edit
+   =========================================================================
+   Copy into the client's stylesheet, change these three, ship. Everything
+   above inherits. Run check-contrast.py against the new values first.
+
+   :root {
+     --sea:    #C8452E;   client accent
+     --ground: #FBFAF8;   client background
+     --ink:    #1A1A1A;   client text
+   }
+   ========================================================================= */

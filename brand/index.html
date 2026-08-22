@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aruba Web Studio — Theme Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* This page is styled almost entirely by tokens.css. What follows is only
+     what a documentation page needs and a client site would not. */
+  .doc { max-width: var(--container); margin-inline: auto; padding: 0 var(--gutter) var(--space-9); }
+
+  header.top { padding: var(--space-8) 0 var(--space-6); border-bottom: var(--border-firm) solid var(--ink); }
+  header.top .kicker { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--tracking-wide);
+                       text-transform: uppercase; color: var(--sea); margin-bottom: var(--space-4); }
+  header.top h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); }
+  header.top p { font-size: var(--text-lg); color: var(--ink-soft); margin-top: var(--space-4); }
+
+  section { padding-top: var(--space-8); }
+  .sechead { display: flex; align-items: baseline; gap: var(--space-3);
+             border-bottom: var(--border-hair) solid var(--ink); padding-bottom: var(--space-2);
+             margin-bottom: var(--space-5); }
+  .sechead .n { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--sea); letter-spacing: 0.12em; }
+  .note { color: var(--ink-soft); max-width: var(--measure); margin-bottom: var(--space-5); }
+
+  /* swatches */
+  .sw { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(178px, 1fr)); }
+  .sw figure { margin: 0; border: var(--border-hair) solid var(--rule); border-radius: var(--radius-sm); overflow: hidden; }
+  .sw .chip { height: 76px; }
+  .sw figcaption { padding: var(--space-3); background: var(--panel); }
+  .sw .nm { font-weight: var(--weight-semi); font-size: var(--text-sm); }
+  .sw .hx { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--muted); margin-top: 3px; }
+  .sw .ct { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--sea); margin-top: 5px; }
+
+  /* type specimens */
+  .spec { border-top: var(--border-hair) solid var(--rule); padding: var(--space-4) 0; display: grid; gap: var(--space-2); }
+  .spec:last-child { border-bottom: var(--border-hair) solid var(--rule); }
+  .spec .meta { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--muted); letter-spacing: 0.06em; }
+
+  /* spacing ruler */
+  .ruler { display: grid; gap: var(--space-2); }
+  .ruler div { display: flex; align-items: center; gap: var(--space-4); }
+  .ruler .bar { background: var(--sea); height: 13px; border-radius: 1px; }
+  .ruler .lbl { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--muted); white-space: nowrap; }
+
+  /* voice table */
+  table { border-collapse: collapse; width: 100%; }
+  th { text-align: left; font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em;
+       text-transform: uppercase; color: var(--muted); border-bottom: var(--border-firm) solid var(--ink);
+       padding: 0 var(--space-4) var(--space-2) 0; }
+  td { padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: var(--border-hair) solid var(--rule);
+       vertical-align: top; color: var(--ink-soft); }
+  td.yes { color: var(--ink); }
+  td.no  { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--sand); }
+
+  .demo { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+  code { font-family: var(--font-mono); font-size: 0.9em; background: var(--panel-2);
+         border: var(--border-hair) solid var(--rule); padding: 2px 5px; border-radius: var(--radius-sm); }
+  pre { background: var(--panel-2); border: var(--border-hair) solid var(--rule); border-radius: var(--radius-sm);
+        padding: var(--space-4); overflow-x: auto; font-family: var(--font-mono); font-size: var(--text-sm);
+        line-height: 1.55; }
+  pre code { background: none; border: 0; padding: 0; }
+  ul { color: var(--ink-soft); padding-left: var(--space-5); max-width: var(--measure); }
+  li { margin-bottom: var(--space-2); }
+  li strong { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<header class="top">
+  <p class="kicker">Aruba Web Studio · internal · v1</p>
+  <h1>Theme Book</h1>
+  <p>Every decision, once. This page is styled by the same <code>tokens.css</code> it
+  documents — if the system breaks, this page breaks with it.</p>
+</header>
+
+<section>
+  <div class="sechead"><span class="n">01</span><h2>The idea</h2></div>
+  <p class="note"><strong>Aruban light, technical structure.</strong> The ground is warm and
+  sun-bleached like limestone at midday. The accent is the deep blue of the flag, not the
+  turquoise gradient every Caribbean business defaults to. Structure is visible — hairline
+  rules, a real grid, monospace annotations — because the work is engineering and the design
+  should say so before the copy does.</p>
+  <p class="note">The tension is deliberate: an island studio that ships to app stores. Warm
+  light says where we are; the grid says what we can do.</p>
+</section>
+
+<section>
+  <div class="sechead"><span class="n">02</span><h2>Colour</h2></div>
+  <p class="note">Nine tokens. Every pair that carries text is verified against WCAG by
+  <code>check-contrast.py</code>, which runs in CI — two of these values exist only because
+  that check caught the originals failing. Ratios below are against <code>--ground</code>.</p>
+
+  <div class="sw">
+    <figure><div class="chip" style="background:var(--ground)"></div><figcaption>
+      <div class="nm">ground</div><div class="hx">#F7F5F1</div><div class="ct">page background</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--panel)"></div><figcaption>
+      <div class="nm">panel</div><div class="hx">#FFFFFF</div><div class="ct">cards</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--panel-2)"></div><figcaption>
+      <div class="nm">panel-2</div><div class="hx">#EFEBE4</div><div class="ct">tinted surfaces</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--ink)"></div><figcaption>
+      <div class="nm">ink</div><div class="hx">#101619</div><div class="ct">16.8:1</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--ink-soft)"></div><figcaption>
+      <div class="nm">ink-soft</div><div class="hx">#414B51</div><div class="ct">8.2:1</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--muted)"></div><figcaption>
+      <div class="nm">muted</div><div class="hx">#5F696F</div><div class="ct">5.2:1 · was failing</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--sea)"></div><figcaption>
+      <div class="nm">sea</div><div class="hx">#1B6CA8</div><div class="ct">5.1:1 · the accent</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--sand)"></div><figcaption>
+      <div class="nm">sand</div><div class="hx">#A8761F</div><div class="ct">3.7:1 · was failing</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--rule)"></div><figcaption>
+      <div class="nm">rule</div><div class="hx">#DCD6CC</div><div class="ct">hairlines</div></figcaption></figure>
+  </div>
+
+  <p class="note" style="margin-top:var(--space-5)"><strong>Rules.</strong> One accent per page —
+  <code>--sea</code> carries every link and mark. <code>--sand</code> appears at most twice and
+  never on text under 18px. Dark mode is not an inversion: surfaces drop chroma and the accent
+  lifts, or the blues turn muddy and stop reading as a link.</p>
+</section>
+
+<section>
+  <div class="sechead"><span class="n">03</span><h2>Type</h2></div>
+  <p class="note">Three faces, three jobs. <strong>Bricolage Grotesque</strong> has enough
+  character to be recognisable at a glance — the point of a display face. <strong>Archivo</strong>
+  is a workhorse that stays readable at 17px on a phone in sunlight, which is where most of this
+  work is actually read. <strong>IBM Plex Mono</strong> carries anything technical: labels,
+  specs, prices.</p>
+
+  <div class="spec">
+    <div class="meta">--text-4xl · display · 800 · tracking −0.035em</div>
+    <div style="font-family:var(--font-display);font-size:var(--text-3xl);font-weight:800;letter-spacing:-.035em;line-height:1.02">Built in Aruba.</div>
+  </div>
+  <div class="spec">
+    <div class="meta">--text-2xl · display · 600</div>
+    <div style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:600;letter-spacing:-.02em">Section heading</div>
+  </div>
+  <div class="spec">
+    <div class="meta">--text-base · body · 400 · 1.62 · max 68ch</div>
+    <div style="max-width:var(--measure)">We design and build websites, mobile apps and APIs for
+    businesses that need more than a template. Running text sits at 17px rather than 16 —
+    a small difference that matters on a phone held at arm's length in bright light.</div>
+  </div>
+  <div class="spec">
+    <div class="meta">--text-xs · mono · 500 · tracking 0.14em · uppercase</div>
+    <div class="aws-label">Oranjestad, Aruba · websites · apps · apis</div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><span class="n">04</span><h2>Space</h2></div>
+  <p class="note">A 4px base. Every margin in the system is one of these steps — arbitrary
+  values are how a layout starts looking accidental, and the difference is visible even to
+  people who cannot name it.</p>
+  <div class="ruler">
+    <div><span class="bar" style="width:4px"></span><span class="lbl">--space-1 · 4px · icon gaps</span></div>
+    <div><span class="bar" style="width:8px"></span><span class="lbl">--space-2 · 8px · label to value</span></div>
+    <div><span class="bar" style="width:12px"></span><span class="lbl">--space-3 · 12px · inside buttons</span></div>
+    <div><span class="bar" style="width:16px"></span><span class="lbl">--space-4 · 16px · paragraph rhythm</span></div>
+    <div><span class="bar" style="width:24px"></span><span class="lbl">--space-5 · 24px · card padding, gutters</span></div>
+    <div><span class="bar" style="width:32px"></span><span class="lbl">--space-6 · 32px · between blocks</span></div>
+    <div><span class="bar" style="width:48px"></span><span class="lbl">--space-7 · 48px · sub-sections</span></div>
+    <div><span class="bar" style="width:72px"></span><span class="lbl">--space-8 · 72px · section padding</span></div>
+    <div><span class="bar" style="width:104px"></span><span class="lbl">--space-9 · 104px · major breaks</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><span class="n">05</span><h2>Components</h2></div>
+  <p class="note">The handful that appear on every client site. All of them live in
+  <code>tokens.css</code> — nothing below is styled by this page.</p>
+
+  <div class="demo" style="margin-bottom:var(--space-5)">
+    <a class="aws-btn" href="#">Start a project</a>
+    <a class="aws-btn aws-btn--ghost" href="#">See the work</a>
+    <input class="aws-field" style="max-width:230px" placeholder="you@business.aw" aria-label="Email demo">
+  </div>
+
+  <div class="aws-grid aws-grid--3">
+    <div><p class="aws-label">Grid</p><p style="margin:var(--space-2) 0 0">Cells share a hairline
+    instead of a gap, so the structure stays visible. The house look.</p></div>
+    <div><p class="aws-label">Card</p><p style="margin:var(--space-2) 0 0">Raised surface, hairline
+    border, near-square corners. Heavy rounding reads consumer-app.</p></div>
+    <div><p class="aws-label">Focus</p><p style="margin:var(--space-2) 0 0">Never removed. Tab to
+    the button above and you will see it — that ring is the most commonly deleted accessibility
+    feature on hand-built sites.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="sechead"><span class="n">06</span><h2>Voice</h2></div>
+  <p class="note">How the studio writes. The test: would you say this out loud to a restaurant
+  owner across a table? If not, rewrite it.</p>
+  <table>
+    <thead><tr><th style="width:46%">We write</th><th>Not</th></tr></thead>
+    <tbody>
+      <tr><td class="yes">Live in a week, fixed price.</td><td class="no">Rapid turnaround, competitive rates</td></tr>
+      <tr><td class="yes">We would rather tell you it is not a fit.</td><td class="no">We tailor bespoke solutions to every client</td></tr>
+      <tr><td class="yes">Half up front, half when it is live.</td><td class="no">Flexible payment terms available</td></tr>
+      <tr><td class="yes">The piece tells its own story.</td><td class="no">Leveraging cutting-edge AR to drive engagement</td></tr>
+      <tr><td class="yes">Nos ta papia Papiamento.</td><td class="no">Multilingual support available</td></tr>
+    </tbody>
+  </table>
+  <ul style="margin-top:var(--space-5)">
+    <li><strong>Plain words.</strong> "We build" not "we architect". "Price" not "investment".</li>
+    <li><strong>Numbers over adjectives.</strong> "Fifteen artworks, four languages" beats "rich multilingual experience".</li>
+    <li><strong>Say the cost.</strong> Published prices filter out people who were never going to pay.</li>
+    <li><strong>Admit limits.</strong> "AR is quoted per project" is more credible than a made-up range.</li>
+    <li><strong>Never invent proof.</strong> No client we have not worked with, no metric we have not measured. An empty slot beats a fabricated one.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="sechead"><span class="n">07</span><h2>Using this on client work</h2></div>
+  <p class="note">This is the part that makes the studio faster over time. A client project
+  overrides three tokens and inherits everything else.</p>
+<pre><code>&lt;link rel="stylesheet" href="tokens.css"&gt;
+&lt;style&gt;
+  :root {
+    --sea:    #C8452E;   /* client accent  */
+    --ground: #FBFAF8;   /* client ground  */
+    --ink:    #1A1A1A;   /* client text    */
+  }
+&lt;/style&gt;</code></pre>
+  <ul>
+    <li>Run <code>python3 check-contrast.py</code> against the client's colours <strong>before</strong>
+    building. If their brand blue fails on their brand cream, better to raise it in week one than
+    at handover.</li>
+    <li>Style only with <code>var(--…)</code>. A literal hex in a client stylesheet is a future
+    bug — it will not follow a rebrand and it will not respond to dark mode.</li>
+    <li>Keep the semantic aliases. Write <code>var(--link)</code>, not <code>var(--sea)</code>,
+    so swapping an accent does not require reading every rule.</li>
+    <li>The third site should take a fraction of the first. If it does not, the system is not
+    being used — that is the signal to fix it, not to abandon it.</li>
+  </ul>
+</section>
+
+<footer style="margin-top:var(--space-9);padding-top:var(--space-5);border-top:var(--border-hair) solid var(--rule);
+               font-family:var(--font-mono);font-size:var(--text-sm);color:var(--muted)">
+  Aruba Web Studio · Theme Book v1 · contrast verified by brand/check-contrast.py
+</footer>
+
+</div>
+</body>
+</html>

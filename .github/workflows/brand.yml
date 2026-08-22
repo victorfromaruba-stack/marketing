@@ -1,0 +1,20 @@
+name: brand
+
+# The theme book claims contrast is verified in CI. This is what makes that
+# true — change a colour token and the build fails before it reaches a client.
+on:
+  push:
+    paths: ["brand/**", "index.html", ".github/workflows/brand.yml"]
+  pull_request:
+    paths: ["brand/**", "index.html"]
+
+jobs:
+  contrast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify WCAG contrast for every token pair
+        run: python3 brand/check-contrast.py
