@@ -57,41 +57,98 @@
     };
   }
 
-  /* Build the skeleton once. Each segment stores its rest angle and a
-     stiffness that falls off toward the tips, so wind moves the canopy far
-     more than the trunk — which is what makes it read as a real tree rather
-     than a rotating graphic. */
+  /* Build the skeleton once.
+
+     A divi-divi is not a symmetric tree with a lean. Measured off the logo
+     artwork, it is 1.38 times wider than tall, the trunk sits toward one
+     side, and the canopy mass runs 34/48/18 across the width — dense behind
+     the trunk, streaming downwind, thinning to nothing. Almost no growth
+     survives on the windward face.
+
+     So this is not a recursive fractal. It is a curving trunk plus a set of
+     near-horizontal limbs that all leave in the same direction, each carrying
+     flat canopy strata. Recursive branching gives a savanna acacia; this
+     gives the tree that actually grows here.
+
+     Stiffness still falls off outward, so wind moves the canopy far more
+     than the trunk. */
   function buildTree() {
     const rnd = mulberry32(20260822);
     const segs = [];
-    const baseLen = Math.min(H * 0.215, W * 0.105);
 
-    function grow(x, y, angle, len, depth, width, parent) {
-      if (depth > 6 || len < 7) return;
+    // Sized from width first — the tree is wider than tall.
+    const treeW = Math.min(W * 0.285, H * 0.44);
+    const treeH = treeW / 1.38;
+    const baseX = W * 0.545;          // trunk stands left of the tree's mass
+    const baseY = H * 0.94;
+    const DOWNWIND = 1;              // canopy streams to the right
+
+    function add(parent, angle, len, width, opts) {
       const idx = segs.length;
       segs.push({
-        x, y, angle, len, width,
-        depth, parent,
-        // Rigid at the base, whippy at the tips.
-        stiff: 0.05 + (6 - depth) * 0.10,
-        canopy: depth >= 4,
+        x: parent < 0 ? baseX : 0,
+        y: parent < 0 ? baseY : 0,
+        angle, len, width, parent,
+        stiff: (opts && opts.stiff) || 0.1,
+        canopy: !!(opts && opts.canopy),
+        spanX: (opts && opts.spanX) || 1,
+        depth: parent < 0 ? 0 : segs[parent].depth + 1,
       });
+      return idx;
+    }
 
-      const branches = depth < 2 ? 3 : 2;
-      for (let i = 0; i < branches; i++) {
-        // Persistent easterly bias baked into the growth itself — the tree
-        // is permanently bent, wind or no wind.
-        const lean = -0.30 - depth * 0.035;
-        const spread = (i - (branches - 1) / 2) * (0.46 - depth * 0.03);
-        const jitter = (rnd() - 0.5) * 0.30;
-        grow(0, 0, angle + spread + lean * 0.42 + jitter,
-             len * (0.70 + rnd() * 0.14), depth + 1,
-             width * 0.66, idx);
+    // Angles stored here are ABSOLUTE rest angles. draw() derives each
+    // segment's bend from (own angle - parent angle), so storing deltas makes
+    // the whole tree collapse — which it did, once.
+
+    // ---- trunk: a curve, not a pole. Leans harder the higher it goes. ----
+    const TRUNK = 5;
+    let prev = -1;
+    for (let i = 0; i < TRUNK; i++) {
+      const t = i / (TRUNK - 1);
+      // -82° at the base easing to -44°: pushed over from the ground up.
+      const ang = (-82 + t * 38) * Math.PI / 180;
+      prev = add(prev, ang,
+                 (treeH / TRUNK) * (1.22 - t * 0.26),
+                 Math.max(4, treeW * 0.075 * (1 - t * 0.48)),
+                 { stiff: 0.03 + t * 0.055 });
+    }
+    const crown = prev;
+    const crownAng = segs[crown].angle;
+
+    // ---- limbs: every one leaves downwind, near horizontal ---------------
+    const LIMBS = 11;
+    for (let i = 0; i < LIMBS; i++) {
+      const t = i / (LIMBS - 1);
+      // -34° to +6°: above horizontal at the top of the crown, drooping at
+      // the trailing edge. This spread is what makes the flag shape.
+      const ang = (-34 + t * 40) * Math.PI / 180;
+      // Hang the lowest limbs off the trunk a segment or two down, so the
+      // crown is not a single fan from one point.
+      const from = t > 0.7 ? Math.max(1, crown - 1) : crown;
+      const limbLen = treeW * (0.26 + (1 - Math.abs(t - 0.35)) * 0.17);
+
+      let node = add(from, ang, limbLen * 0.5,
+                     Math.max(2.5, treeW * 0.028 * (1 - t * 0.35)),
+                     { stiff: 0.13 });
+      let abs = ang;
+
+      // Each limb carries two or three canopy strata further downwind.
+      const strata = 3 + (rnd() < 0.55 ? 1 : 0);
+      for (let sI = 0; sI < strata; sI++) {
+        abs += (rnd() - 0.5) * 0.14 + 0.05 * DOWNWIND;
+        node = add(node, abs,
+                   limbLen * (0.32 - sI * 0.045),
+                   Math.max(1.5, treeW * 0.011),
+                   {
+                     stiff: 0.19 + sI * 0.085,
+                     canopy: true,
+                     // Wide and flat: the canopy is combed out, not clustered.
+                     spanX: 1.35 + rnd() * 0.75,
+                   });
       }
     }
 
-    grow(W * 0.735, H * 0.96, -Math.PI / 2 + 0.10, baseLen, 0,
-         Math.max(8, baseLen * 0.10), -1);
     return segs;
   }
 
@@ -168,15 +225,22 @@
       ctx.stroke();
     }
 
-    // Canopy as flat stacked lozenges — the logo's language, not a fluffy
-    // blob. The divi-divi's canopy is pressed flat by the same wind.
+    // Canopy as combed-out horizontal strata. The divi-divi's crown is not a
+    // cluster of blobs — it is layered sheets pressed flat and drawn downwind,
+    // widest behind the trunk and thinning to nothing at the tip. spanX
+    // stretches each stratum along the wind; the vertical radius stays small.
     ctx.fillStyle = TREE;
     for (let i = 0; i < pts.length; i++) {
       const p = pts[i];
       if (!p.seg.canopy) continue;
-      const r = p.seg.len * 0.70;
+      const rx = p.seg.len * p.seg.spanX;
+      const ry = Math.max(3, p.seg.len * 0.16);
+      // Centre the sheet downwind of the node rather than on it, so mass
+      // accumulates on the lee side the way it does on the real tree.
+      const cx = (p.x1 + p.x2) / 2 + rx * 0.28;
+      const cy = (p.y1 + p.y2) / 2;
       ctx.beginPath();
-      ctx.ellipse(p.x2, p.y2, r, r * 0.22, p.angle * 0.16 + 0.05, 0, Math.PI * 2);
+      ctx.ellipse(cx, cy, rx, ry, p.angle * 0.10 + 0.03, 0, Math.PI * 2);
       ctx.fill();
     }
 
