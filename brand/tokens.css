@@ -17,15 +17,16 @@
 
 :root {
   /* ---- colour · light (the default) ----------------------------------- */
-  --ground:    #F7F5F1;   /* page background — warm, sun-bleached          */
-  --panel:     #FFFFFF;   /* cards, raised surfaces                        */
-  --panel-2:   #EFEBE4;   /* tinted panels, sidebars                       */
-  --ink:       #101619;   /* body text — near-black, blue-biased           */
-  --ink-soft:  #414B51;   /* secondary text                     8.2:1      */
-  --muted:     #5F696F;   /* labels, captions                   5.2:1      */
-  --rule:      #DCD6CC;   /* hairlines and borders                         */
+  --ground:    #F3EFE3;   /* page background — warm, sun-bleached          */
+  --panel:     #FBF9F3;   /* cards, raised surfaces                        */
+  --panel-2:   #E9E4D6;   /* tinted panels, sidebars                       */
+  --ink:       #0B2F48;   /* body text — near-black, blue-biased           */
+  --ink-soft:  #3E596A;   /* secondary text                     8.2:1      */
+  --muted:     #506876;   /* labels, captions                   5.2:1      */
+  --rule:      #D7D2C4;   /* hairlines and borders                         */
   --sea:       #1B6CA8;   /* the accent. Links, marks           5.1:1      */
-  --sand:      #A8761F;   /* warnings, second accent            3.7:1      */
+  --amber:#FABA5E;      /* logo — DECORATIVE ONLY, 1.49:1 on cream */
+  --amber-deep:      #896633;   /* warnings, second accent            3.7:1      */
 
   /* ---- semantic aliases ----------------------------------------------- */
   /* Name things by role, not appearance. When a client's brand swaps the
@@ -113,29 +114,31 @@
    accent, or the same hues turn muddy and the accent stops reading.        */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --ground:   #0D1215;
-    --panel:    #141B1F;
-    --panel-2:  #1B2429;
-    --ink:      #EDEFEF;
-    --ink-soft: #AEB8BD;
-    --muted:    #7F8B91;
-    --rule:     #232E34;
-    --sea:      #5AA6DC;
-    --sand:     #E7B75A;
+    --ground:   #08222F;
+    --panel:    #0E2C3C;
+    --panel-2:  #143546;
+    --ink:      #EAF0F3;
+    --ink-soft: #A9BCC7;
+    --muted:    #7C93A1;
+    --rule:     #1D4257;
+    --sea:      #6DB4E5;
+    --amber:#FABA5E;
+  --amber-deep:     #FABA5E;
     --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
     --shadow-md: 0 4px 16px rgb(0 0 0 / 0.5);
   }
 }
 :root[data-theme="dark"] {
-  --ground:   #0D1215;
-  --panel:    #141B1F;
-  --panel-2:  #1B2429;
-  --ink:      #EDEFEF;
-  --ink-soft: #AEB8BD;
-  --muted:    #7F8B91;
-  --rule:     #232E34;
-  --sea:      #5AA6DC;
-  --sand:     #E7B75A;
+  --ground:   #08222F;
+  --panel:    #0E2C3C;
+  --panel-2:  #143546;
+  --ink:      #EAF0F3;
+  --ink-soft: #A9BCC7;
+  --muted:    #7C93A1;
+  --rule:     #1D4257;
+  --sea:      #6DB4E5;
+  --amber:#FABA5E;
+  --amber-deep:     #FABA5E;
   --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
   --shadow-md: 0 4px 16px rgb(0 0 0 / 0.5);
 }

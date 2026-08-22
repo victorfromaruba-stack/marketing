@@ -54,7 +54,7 @@
   td { padding: var(--space-3) var(--space-4) var(--space-3) 0; border-bottom: var(--border-hair) solid var(--rule);
        vertical-align: top; color: var(--ink-soft); }
   td.yes { color: var(--ink); }
-  td.no  { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--sand); }
+  td.no  { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--amber-deep); }
 
   .demo { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
   code { font-family: var(--font-mono); font-size: 0.9em; background: var(--panel-2);
@@ -72,14 +72,44 @@
 <div class="doc">
 
 <header class="top">
-  <p class="kicker">Aruba Web Studio · internal · v1</p>
+  <p class="kicker">Aruba Web Studio · internal · v2 · from the mark</p>
   <h1>Theme Book</h1>
   <p>Every decision, once. This page is styled by the same <code>tokens.css</code> it
   documents — if the system breaks, this page breaks with it.</p>
 </header>
 
 <section>
-  <div class="sechead"><span class="n">01</span><h2>The idea</h2></div>
+  <div class="sechead"><span class="n">01</span><h2>The mark</h2></div>
+  <p class="note">A <strong>divi-divi</strong> — the tree the trade winds bend permanently
+  southwest, and the thing on this island everyone recognises without being told. Not a palm.
+  It carries the whole positioning by itself: shaped by where it grows, and still standing.</p>
+
+  <div style="display:flex;flex-wrap:wrap;gap:var(--space-5);align-items:flex-end;margin-bottom:var(--space-5)">
+    <figure style="margin:0">
+      <img src="../icon-192.png" alt="The full mark" width="132" height="132" style="border-radius:50%">
+      <figcaption style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted);margin-top:var(--space-2)">full mark · 48px and up</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <img src="../icon-small-48.png" alt="The small-size mark" width="56" height="56" style="border-radius:var(--radius-sm)">
+      <figcaption style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted);margin-top:var(--space-2)">small · under 48px</figcaption>
+    </figure>
+  </div>
+
+  <p class="note"><strong>Two marks, on purpose.</strong> At 32px the ring goes fragile and the
+  canopy layers collapse into noise — so small sizes drop the ring and invert: cream tree on
+  navy, tree filling the frame. Verified by magnifying the rendered favicon rather than
+  assuming it scaled.</p>
+  <ul>
+    <li><strong>Clear space</strong> — at least the radius of the ring on every side. It is a
+    circular mark and it suffocates faster than a square one.</li>
+    <li><strong>Never</strong> recolour the tree, stretch the circle to an oval, add a shadow,
+    or place the full mark on a busy photograph. On imagery, use the navy small mark.</li>
+    <li><strong>Minimum size</strong> — full mark 48px, small mark 16px.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="sechead"><span class="n">02</span><h2>The idea</h2></div>
   <p class="note"><strong>Aruban light, technical structure.</strong> The ground is warm and
   sun-bleached like limestone at midday. The accent is the deep blue of the flag, not the
   turquoise gradient every Caribbean business defaults to. Structure is visible — hairline
@@ -90,40 +120,46 @@
 </section>
 
 <section>
-  <div class="sechead"><span class="n">02</span><h2>Colour</h2></div>
-  <p class="note">Nine tokens. Every pair that carries text is verified against WCAG by
-  <code>check-contrast.py</code>, which runs in CI — two of these values exist only because
-  that check caught the originals failing. Ratios below are against <code>--ground</code>.</p>
+  <div class="sechead"><span class="n">03</span><h2>Colour</h2></div>
+  <p class="note">Ten tokens, every one taken from or derived from the mark. The neutral
+  ramp is the logo navy mixed toward the logo cream, so every grey carries a trace of the brand
+  rather than being an imported neutral. Ratios are measured, not estimated, and verified in CI.</p>
 
   <div class="sw">
-    <figure><div class="chip" style="background:var(--ground)"></div><figcaption>
-      <div class="nm">ground</div><div class="hx">#F7F5F1</div><div class="ct">page background</div></figcaption></figure>
-    <figure><div class="chip" style="background:var(--panel)"></div><figcaption>
-      <div class="nm">panel</div><div class="hx">#FFFFFF</div><div class="ct">cards</div></figcaption></figure>
-    <figure><div class="chip" style="background:var(--panel-2)"></div><figcaption>
-      <div class="nm">panel-2</div><div class="hx">#EFEBE4</div><div class="ct">tinted surfaces</div></figcaption></figure>
     <figure><div class="chip" style="background:var(--ink)"></div><figcaption>
-      <div class="nm">ink</div><div class="hx">#101619</div><div class="ct">16.8:1</div></figcaption></figure>
+      <div class="nm">ink</div><div class="hx">#0B2F48</div><div class="ct">12.1:1 · from the tree</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--amber)"></div><figcaption>
+      <div class="nm">amber</div><div class="hx">#FABA5E</div><div class="ct">1.5:1 · decorative only</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--ground)"></div><figcaption>
+      <div class="nm">ground</div><div class="hx">#F3EFE3</div><div class="ct">from the mark</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--panel)"></div><figcaption>
+      <div class="nm">panel</div><div class="hx">#FBF9F3</div><div class="ct">cards</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--panel-2)"></div><figcaption>
+      <div class="nm">panel-2</div><div class="hx">#E9E4D6</div><div class="ct">tinted surfaces</div></figcaption></figure>
     <figure><div class="chip" style="background:var(--ink-soft)"></div><figcaption>
-      <div class="nm">ink-soft</div><div class="hx">#414B51</div><div class="ct">8.2:1</div></figcaption></figure>
+      <div class="nm">ink-soft</div><div class="hx">#3E596A</div><div class="ct">6.4:1</div></figcaption></figure>
     <figure><div class="chip" style="background:var(--muted)"></div><figcaption>
-      <div class="nm">muted</div><div class="hx">#5F696F</div><div class="ct">5.2:1 · was failing</div></figcaption></figure>
+      <div class="nm">muted</div><div class="hx">#506876</div><div class="ct">5.1:1</div></figcaption></figure>
     <figure><div class="chip" style="background:var(--sea)"></div><figcaption>
-      <div class="nm">sea</div><div class="hx">#1B6CA8</div><div class="ct">5.1:1 · the accent</div></figcaption></figure>
-    <figure><div class="chip" style="background:var(--sand)"></div><figcaption>
-      <div class="nm">sand</div><div class="hx">#A8761F</div><div class="ct">3.7:1 · was failing</div></figcaption></figure>
+      <div class="nm">sea</div><div class="hx">#1B6CA8</div><div class="ct">4.9:1 · links</div></figcaption></figure>
+    <figure><div class="chip" style="background:var(--amber-deep)"></div><figcaption>
+      <div class="nm">amber-deep</div><div class="hx">#896633</div><div class="ct">4.6:1 · amber as text</div></figcaption></figure>
     <figure><div class="chip" style="background:var(--rule)"></div><figcaption>
-      <div class="nm">rule</div><div class="hx">#DCD6CC</div><div class="ct">hairlines</div></figcaption></figure>
+      <div class="nm">rule</div><div class="hx">#D7D2C4</div><div class="ct">hairlines</div></figcaption></figure>
   </div>
 
-  <p class="note" style="margin-top:var(--space-5)"><strong>Rules.</strong> One accent per page —
-  <code>--sea</code> carries every link and mark. <code>--sand</code> appears at most twice and
-  never on text under 18px. Dark mode is not an inversion: surfaces drop chroma and the accent
-  lifts, or the blues turn muddy and stop reading as a link.</p>
+  <p class="note" style="margin-top:var(--space-5)"><strong>The one rule that matters.</strong>
+  The logo amber is <strong>1.49:1 on cream</strong> — it cannot carry text, at any size. It is
+  the ring, large graphic shapes, and marks on navy. Anything with words in it uses
+  <code>--amber-deep</code>. This is the constraint people break first, because amber is the
+  colour they remember from the logo.</p>
+  <p class="note">Beyond that: one accent per page — <code>--sea</code> carries every link.
+  Dark mode grounds in the navy rather than a neutral black, so the brand survives the theme
+  switch, and amber needs no darkened variant there because it has 9.6:1 against a dark ground.</p>
 </section>
 
 <section>
-  <div class="sechead"><span class="n">03</span><h2>Type</h2></div>
+  <div class="sechead"><span class="n">04</span><h2>Type</h2></div>
   <p class="note">Three faces, three jobs. <strong>Bricolage Grotesque</strong> has enough
   character to be recognisable at a glance — the point of a display face. <strong>Archivo</strong>
   is a workhorse that stays readable at 17px on a phone in sunlight, which is where most of this
@@ -151,7 +187,7 @@
 </section>
 
 <section>
-  <div class="sechead"><span class="n">04</span><h2>Space</h2></div>
+  <div class="sechead"><span class="n">05</span><h2>Space</h2></div>
   <p class="note">A 4px base. Every margin in the system is one of these steps — arbitrary
   values are how a layout starts looking accidental, and the difference is visible even to
   people who cannot name it.</p>
@@ -169,7 +205,7 @@
 </section>
 
 <section>
-  <div class="sechead"><span class="n">05</span><h2>Components</h2></div>
+  <div class="sechead"><span class="n">06</span><h2>Components</h2></div>
   <p class="note">The handful that appear on every client site. All of them live in
   <code>tokens.css</code> — nothing below is styled by this page.</p>
 
@@ -191,7 +227,7 @@
 </section>
 
 <section>
-  <div class="sechead"><span class="n">06</span><h2>Voice</h2></div>
+  <div class="sechead"><span class="n">07</span><h2>Voice</h2></div>
   <p class="note">How the studio writes. The test: would you say this out loud to a restaurant
   owner across a table? If not, rewrite it.</p>
   <table>
@@ -214,7 +250,7 @@
 </section>
 
 <section>
-  <div class="sechead"><span class="n">07</span><h2>Using this on client work</h2></div>
+  <div class="sechead"><span class="n">08</span><h2>Using this on client work</h2></div>
   <p class="note">This is the part that makes the studio faster over time. A client project
   overrides three tokens and inherits everything else.</p>
 <pre><code>&lt;link rel="stylesheet" href="tokens.css"&gt;

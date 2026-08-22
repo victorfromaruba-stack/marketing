@@ -14,6 +14,20 @@
 <meta property="og:description" content="Websites, apps and APIs. Built in Aruba, shipped everywhere.">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://arubawebstudio.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://arubawebstudio.com/og-image.png">
+
+<!-- Two icon sets on purpose. The full mark (tree in its ring) reads at large
+     sizes; at 32px the ring goes fragile and the canopy turns to noise, so the
+     small sizes use a tree-only silhouette on navy. -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-small-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0B2F48">
+
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,34 +54,37 @@
      gradient kitsch. Sand yellow appears exactly twice.
      --------------------------------------------------------------- */
   :root{
-    --ground:#F7F5F1;
-    --panel:#FFFFFF;
-    --panel-2:#EFEBE4;
-    --ink:#101619;
-    --ink-soft:#414B51;
-    --muted:#5F696F;
-    --rule:#DCD6CC;
+    --ground:#F3EFE3;
+    --panel:#FBF9F3;
+    --panel-2:#E9E4D6;
+    --ink:#0B2F48;
+    --ink-soft:#3E596A;
+    --muted:#506876;
+    --rule:#D7D2C4;
     --sea:#1B6CA8;
-    --sand:#A8761F;
+    --amber:#FABA5E;      /* logo — DECORATIVE ONLY, 1.49:1 on cream */
+  --amber-deep:#896633;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --ground:#0D1215;
-      --panel:#141B1F;
-      --panel-2:#1B2429;
-      --ink:#EDEFEF;
-      --ink-soft:#AEB8BD;
-      --muted:#7F8B91;
-      --rule:#232E34;
-      --sea:#5AA6DC;
+      --ground:#08222F;
+      --panel:#0E2C3C;
+      --panel-2:#143546;
+      --ink:#EAF0F3;
+      --ink-soft:#A9BCC7;
+      --muted:#7C93A1;
+      --rule:#1D4257;
+      --sea:#6DB4E5;
      
-      --sand:#E7B75A;
+      --amber:#FABA5E;
+  --amber-deep:#FABA5E;
     }
   }
   :root[data-theme="dark"]{
-    --ground:#0D1215; --panel:#141B1F; --panel-2:#1B2429;
-    --ink:#EDEFEF; --ink-soft:#AEB8BD; --muted:#7F8B91;
-    --rule:#232E34; --sea:#5AA6DC; --sand:#E7B75A;
+    --ground:#08222F; --panel:#0E2C3C; --panel-2:#143546;
+    --ink:#EAF0F3; --ink-soft:#A9BCC7; --muted:#7C93A1;
+    --rule:#1D4257; --sea:#6DB4E5; --amber:#FABA5E;
+  --amber-deep:#FABA5E;
   }
 
   *{box-sizing:border-box}
@@ -182,7 +199,7 @@
   .w p{font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0}
   .w.tbd{background:var(--panel-2)}
   .w.tbd h4{color:var(--muted)}
-  .w.tbd .k{color:var(--sand)}
+  .w.tbd .k{color:var(--amber-deep)}
 
   /* ---------- process ---------- */
   .steps{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
@@ -220,7 +237,7 @@
 
 <nav>
   <div class="nav-in">
-    <a class="logo" href="/">Aruba Web Studio<span class="dot">.</span></a>
+    <a class="logo" href="/"><img src="/icon-48.png" alt="" width="30" height="30" style="display:inline-block;vertical-align:-8px;margin-right:9px;border-radius:50%">Aruba Web Studio<span class="dot">.</span></a>
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#work">Work</a>

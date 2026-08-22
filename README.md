@@ -5,11 +5,23 @@ is deliberate: it loads instantly, cannot break at deploy time, and demonstrates
 thing we sell.
 
 ```
-index.html     the whole site
-Caddyfile      TLS + redirects + caching for the VPS
-robots.txt     crawler rules
-sitemap.xml    one URL, for now
+index.html          the whole site
+brand/              the design system — tokens, theme book, contrast check
+  tokens.css        every project starts here
+  index.html        the theme book
+  check-contrast.py runs in CI
+  logo/             the master artwork
+favicon.ico         built from the small-size mark
+icon-*.png          32/48/180/192/512 + small-size variants
+og-image.png        1200×630 social card
+site.webmanifest    installable web app
+Caddyfile           TLS + redirects + caching
+robots.txt · sitemap.xml
 ```
+
+Assets sit at the repo root, not in a `public/` folder — the site is served flat,
+and a nested folder meant every icon reference 404'd. Found by serving it, not by
+reading it.
 
 ## Preview locally
 
@@ -30,7 +42,8 @@ sudo systemctl reload caddy
 
 # every deploy
 rsync -avz --delete \
-  index.html robots.txt sitemap.xml \
+  index.html robots.txt sitemap.xml site.webmanifest \
+  favicon.ico icon-*.png og-image.png \
   user@<vps-ip>:/srv/arubawebstudio/
 ```
 
@@ -45,8 +58,7 @@ Three things are placeholders, marked in the source with `⚠`:
 1. **Three more projects.** The House of Mosaic case study is real and detailed;
    the other three cards are empty slots. Fill them with real clients or delete
    them — never invent one. An honest single case study beats four padded ones.
-2. **A social share image.** `og:image` is absent, so links currently unfurl as
-   plain text. A 1200×630 screenshot of the House of Mosaic app would do it.
+2. ~~A social share image.~~ **Done** — `og-image.png` is generated from the mark.
 3. **Prices.** The figures in the services section come from
    `system/service/OFFERS.md` in the other repo. Confirm they match what you will
    actually quote — a price on a public page is a promise.
