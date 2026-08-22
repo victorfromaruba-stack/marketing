@@ -86,19 +86,63 @@
 
   <div style="display:flex;flex-wrap:wrap;gap:var(--space-5);align-items:flex-end;margin-bottom:var(--space-5)">
     <figure style="margin:0">
-      <img src="../icon-192.png" alt="The full mark" width="132" height="132" style="border-radius:50%">
-      <figcaption style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted);margin-top:var(--space-2)">full mark · 48px and up</figcaption>
+      <img src="logo/logo-mark.svg" alt="The full mark" width="132" height="132">
+      <figcaption style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted);margin-top:var(--space-2)">logo-mark.svg · 48px and up</figcaption>
     </figure>
     <figure style="margin:0">
-      <img src="../icon-small-48.png" alt="The small-size mark" width="56" height="56" style="border-radius:var(--radius-sm)">
-      <figcaption style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted);margin-top:var(--space-2)">small · under 48px</figcaption>
+      <img src="logo/favicon.svg" alt="The small-size mark" width="56" height="56">
+      <figcaption style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted);margin-top:var(--space-2)">favicon.svg · under 48px</figcaption>
+    </figure>
+    <figure style="margin:0;background:var(--ink,#0B1A26);padding:var(--space-3);border-radius:var(--radius-sm)">
+      <img src="logo/logo-mark-dark.svg" alt="The mark on a dark ground" width="88" height="88">
+      <figcaption style="font-family:var(--font-mono);font-size:var(--text-xs);color:#8FA6B4;margin-top:var(--space-2)">logo-mark-dark.svg</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <img src="logo/logo-mark-mono.svg" alt="The mark in one colour" width="88" height="88">
+      <figcaption style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted);margin-top:var(--space-2)">logo-mark-mono.svg · one ink</figcaption>
+    </figure>
+    <figure style="margin:0;background:var(--ink,#0B1A26);padding:var(--space-3);border-radius:var(--radius-sm)">
+      <img src="logo/logo-mark-small-dark.svg" alt="The small mark on a dark ground" width="56" height="56">
+      <figcaption style="font-family:var(--font-mono);font-size:var(--text-xs);color:#8FA6B4;margin-top:var(--space-2)">logo-mark-small-dark.svg · no tile</figcaption>
     </figure>
   </div>
 
+  <p class="note"><strong>Vector, not raster.</strong> The mark is traced paths, so it is sharp
+  on any screen and at any print size, and the whole file is under 2&nbsp;KB — smaller than the
+  32px PNG it replaces. The PNG set stays for the places that still demand one: the
+  <code>.ico</code>, the Apple touch icon, the web manifest, and the social card.</p>
+
+  <div style="display:flex;flex-direction:column;gap:var(--space-4);margin:var(--space-5) 0">
+    <figure style="margin:0">
+      <img src="logo/logo-lockup.svg" alt="Horizontal lockup" style="width:100%;max-width:460px;height:auto">
+      <figcaption style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted);margin-top:var(--space-2)">logo-lockup.svg</figcaption>
+    </figure>
+    <figure style="margin:0;background:var(--ink,#0B1A26);padding:var(--space-4);border-radius:var(--radius-sm)">
+      <img src="logo/logo-lockup-dark.svg" alt="Horizontal lockup on a dark ground" style="width:100%;max-width:460px;height:auto">
+      <figcaption style="font-family:var(--font-mono);font-size:var(--text-xs);color:#8FA6B4;margin-top:var(--space-2)">logo-lockup-dark.svg</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <img src="logo/logo-lockup-strap.svg" alt="Lockup with the location strapline" style="width:100%;max-width:460px;height:auto">
+      <figcaption style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--muted);margin-top:var(--space-2)">logo-lockup-strap.svg · for print and profiles</figcaption>
+    </figure>
+  </div>
+
+  <p class="note"><strong>The lockup carries its own font.</strong> Bodoni Moda is embedded in
+  each lockup file, so it sets identically on a machine that has never heard of the typeface —
+  in a client's deck, an invoice, a partner's footer. That costs about 60&nbsp;KB per file,
+  which is why the lockups are for handing out and the site's own header sets the name in live
+  HTML instead. Regenerate them with <code>python3 brand/build-logo.py</code>.</p>
+
   <p class="note"><strong>Two marks, on purpose.</strong> At 32px the ring goes fragile and the
-  canopy layers collapse into noise — so small sizes drop the ring and invert: cream tree on
-  navy, tree filling the frame. Verified by magnifying the rendered favicon rather than
-  assuming it scaled.</p>
+  canopy layers collapse into noise — so small sizes drop the ring and let the tree fill the
+  frame. Verified by magnifying the rendered favicon rather than assuming it scaled. The site's
+  own header sets the mark at 30px and therefore uses the small one, not the full mark shrunk:
+  a rule the studio publishes and then breaks on its own homepage is not a rule.</p>
+
+  <p class="note">The small mark comes with a navy tile and without. The tile is for a favicon,
+  which lands on browser chrome of unknown colour and has to bring its own ground. Anywhere the
+  background is already known — the nav, a dark deck — use the transparent one, or the tile
+  shows up as a patch of not-quite-matching navy.</p>
   <ul>
     <li><strong>Clear space</strong> — at least the radius of the ring on every side. It is a
     circular mark and it suffocates faster than a square one.</li>

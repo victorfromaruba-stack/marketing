@@ -27,10 +27,16 @@ rsync -a \
   --exclude 'Caddyfile' \
   --exclude 'README.md' \
   --exclude 'brand/check-contrast.py' \
+  --exclude 'brand/build-logo.py' \
+  --exclude 'brand/logo/BodoniModa.ttf' \
+  --exclude 'brand/logo/logo-master.png' \
+  --exclude 'brand/logo/logo-square.png' \
   "$SRC/" "$STAGE/"
 
 # The brand theme book is part of the site (linked from the footer), so it
-# stays. Only the tooling that builds it is stripped above.
+# stays, and so do the vector logos it displays. Stripped above: the tooling,
+# the embedded font the tooling needs (it is already inside each lockup), and
+# the two master PNGs, which are a megabyte of source artwork nothing links to.
 
 rsync -a --delete "$STAGE/" "$DEST/"
 echo "deploy: published $(find "$DEST" -type f | wc -l) files to $DEST"

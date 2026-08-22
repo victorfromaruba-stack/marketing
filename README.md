@@ -10,7 +10,13 @@ brand/              the design system — tokens, theme book, contrast check
   tokens.css        every project starts here
   index.html        the theme book
   check-contrast.py runs in CI
-  logo/             the master artwork
+  build-logo.py     regenerates the vector logos below
+  logo/             the artwork
+    logo-mark*.svg        the mark: full, dark, mono, and the ringless small pair
+    logo-lockup*.svg      name beside mark, with the font embedded
+    favicon.svg           the small mark on a navy tile
+    BodoniModa.ttf        input to build-logo.py; not deployed
+    logo-*.png            the master raster artwork; not deployed
 favicon.ico         built from the small-size mark
 icon-*.png          32/48/180/192/512 + small-size variants
 og-image.png        1200×630 social card
@@ -22,6 +28,31 @@ robots.txt · sitemap.xml
 Assets sit at the repo root, not in a `public/` folder — the site is served flat,
 and a nested folder meant every icon reference 404'd. Found by serving it, not by
 reading it.
+
+## The logos are vector
+
+`brand/logo/*.svg` are traced paths — sharp at any size, under 2 KB each, and the
+source of truth for every raster icon in this repo. The PNG set stays for the
+places that still demand one: the `.ico`, the Apple touch icon, the manifest, and
+the social card.
+
+Two things about them are worth knowing before you edit one.
+
+**The lockups embed their own font.** Bodoni Moda is inlined as a data URI in each
+lockup file. An SVG loaded through `<img>` is sandboxed against external
+resources, so a lockup that merely *names* a webfont renders in whatever serif the
+viewer happens to have — which is what the original kit files did, in a macOS-only
+face. Embedding costs about 60 KB per lockup, which is why they are for handing
+out and the site's own header sets the name in live HTML instead.
+
+**Converting the type to outlines was tried and abandoned.** opentype.js does not
+apply this variable font's deltas correctly — its capital A came out as the
+crossbar with no diagonals, and it was only visible on render. The browser's font
+engine gets it right, so the browser is what draws it.
+
+```bash
+python3 brand/build-logo.py     # rebuilds favicon, small marks, and lockups
+```
 
 ## Preview locally
 
