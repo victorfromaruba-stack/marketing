@@ -214,6 +214,28 @@
   }
   footer .sp{margin-left:auto}
 
+
+  /* more work — three real sites, shown as screens */
+  .more{padding-top:clamp(56px,8vh,96px)}
+  .more .grid{display:grid;gap:2px;margin-top:clamp(30px,5vh,52px)}
+  @media(min-width:900px){.more .grid{grid-template-columns:repeat(3,1fr)}}
+  .site{position:relative;display:block;overflow:hidden;background:#0B2432}
+  .site img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center;
+            transition:transform .8s cubic-bezier(.2,0,.15,1),opacity .5s;opacity:.86}
+  .site:hover img{transform:scale(1.035);opacity:1}
+  .site .meta{padding:22px clamp(18px,2.4vw,28px) 26px}
+  .site .meta h4{
+    font-family:"Bodoni Moda",Georgia,serif;font-weight:400;font-size:clamp(1.25rem,2.1vw,1.75rem);
+    line-height:1.08;margin:9px 0 8px;letter-spacing:-.015em;
+  }
+  .site .meta p{margin:0;color:var(--cream-faint);font-size:14.5px;line-height:1.55}
+  .site .live{
+    display:inline-block;margin-top:13px;font:500 11px/1 "IBM Plex Mono",monospace;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--amber);
+    border-bottom:1px solid rgba(250,186,94,.4);padding-bottom:5px;
+  }
+  .site:hover .live{border-bottom-color:var(--amber)}
+
   /* one gesture, used consistently */
   .rise{opacity:0;transform:translateY(26px)}
   .rise.in{opacity:1;transform:none;
@@ -297,6 +319,49 @@
     <div class="rise"><div class="n">15</div><p>Artworks, each with its own recognition target and narration.</p></div>
     <div class="rise"><div class="n">4</div><p>Languages, Papiamento among them — written here, not outsourced.</p></div>
     <div class="rise"><div class="n">0</div><p>Downloads needed for the VR gallery. It runs in the browser.</p></div>
+  </div>
+
+  <div class="more">
+    <div style="padding:0 clamp(20px,4vw,54px)">
+      <p class="tag rise">Also built</p>
+      <p class="lead rise" style="margin-top:20px">Live sites, running on
+      <span class="q">their own domains.</span></p>
+    </div>
+
+    <div class="grid">
+      <a class="site rise" href="https://croesaccounting.com" target="_blank" rel="noopener">
+        <img src="/work/sites/croes.jpg" alt="Croes Accounting website" loading="lazy" width="1280" height="800">
+        <div class="meta">
+          <span class="tag">Accounting · Oranjestad</span>
+          <h4>Croes Accounting</h4>
+          <p>Bookkeeping, payroll and BBO filing for Aruban businesses. Four languages,
+          a client portal, and the filing deadline counted down on the page.</p>
+          <span class="live">croesaccounting.com</span>
+        </div>
+      </a>
+
+      <a class="site rise" href="https://arusalt.com" target="_blank" rel="noopener">
+        <img src="/work/sites/arusalt.jpg" alt="AruSalt website" loading="lazy" width="1280" height="800">
+        <div class="meta">
+          <span class="tag">Producer · e-commerce</span>
+          <h4>AruSalt</h4>
+          <p>Hand-harvested sea salt from Aruba. Product pages, cart and shipping for a
+          producer selling off the island.</p>
+          <span class="live">arusalt.com</span>
+        </div>
+      </a>
+
+      <a class="site rise" href="https://victorfromaruba-stack.github.io/mrz/" target="_blank" rel="noopener">
+        <img src="/work/sites/mrz.jpg" alt="MRZ Media website" loading="lazy" width="1280" height="800">
+        <div class="meta">
+          <span class="tag">Agency · redesign</span>
+          <h4>MRZ Media</h4>
+          <p>A full rebuild for a local photography and video team — single file, every
+          asset inlined, deploying on every push.</p>
+          <span class="live">View site</span>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
