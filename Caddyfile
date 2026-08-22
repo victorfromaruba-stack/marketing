@@ -1,0 +1,28 @@
+# Aruba Web Studio — static site.
+# Caddy obtains and renews TLS automatically; there is no cron to forget.
+#
+#   caddy run --config Caddyfile
+#   (or: cp Caddyfile /etc/caddy/ && systemctl reload caddy)
+
+arubawebstudio.com, www.arubawebstudio.com {
+	root * /srv/arubawebstudio
+	encode zstd gzip
+	file_server
+
+	# Send www to the bare domain so Google indexes one canonical host.
+	@www host www.arubawebstudio.com
+	redir @www https://arubawebstudio.com{uri} permanent
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options    "nosniff"
+		Referrer-Policy           "strict-origin-when-cross-origin"
+		X-Frame-Options           "SAMEORIGIN"
+		-Server
+	}
+
+	# The page is a single file; cache the fonts, not the HTML.
+	@static path *.css *.js *.svg *.woff2 *.jpg *.png *.webp
+	header @static Cache-Control "public, max-age=31536000, immutable"
+	header /index.html Cache-Control "no-cache"
+}

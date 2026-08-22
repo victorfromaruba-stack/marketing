@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aruba Web Studio — websites, apps and APIs, built in Aruba</title>
+<meta name="description" content="A small studio in Aruba building websites, mobile apps and APIs for businesses that need more than a template. Recent work: an augmented-reality gallery app shipped to the App Store, Google Play and the web.">
+<link rel="canonical" href="https://arubawebstudio.com/">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arubawebstudio.com/">
+<meta property="og:title" content="Aruba Web Studio">
+<meta property="og:description" content="Websites, apps and APIs. Built in Aruba, shipped everywhere.">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<!-- Local business structured data. Helps Google understand who and where you are. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Aruba Web Studio",
+  "url": "https://arubawebstudio.com",
+  "email": "info@arubawebstudio.com",
+  "areaServed": "Aruba",
+  "address": { "@type": "PostalAddress", "addressLocality": "Oranjestad", "addressCountry": "AW" },
+  "description": "Websites, mobile apps and APIs for businesses in Aruba and the Caribbean."
+}
+</script>
+
+<style>
+  /* ---------------------------------------------------------------
+     Aruban light, technical structure. Warm sun-bleached ground,
+     deep sea ink, one saturated blue from the flag — not turquoise
+     gradient kitsch. Sand yellow appears exactly twice.
+     --------------------------------------------------------------- */
+  :root{
+    --ground:#F7F5F1;
+    --panel:#FFFFFF;
+    --panel-2:#EFEBE4;
+    --ink:#101619;
+    --ink-soft:#414B51;
+    --muted:#6F7A80;
+    --rule:#DCD6CC;
+    --sea:#1B6CA8;
+    --sand:#D99A2B;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0D1215;
+      --panel:#141B1F;
+      --panel-2:#1B2429;
+      --ink:#EDEFEF;
+      --ink-soft:#AEB8BD;
+      --muted:#7F8B91;
+      --rule:#232E34;
+      --sea:#5AA6DC;
+     
+      --sand:#E7B75A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0D1215; --panel:#141B1F; --panel-2:#1B2429;
+    --ink:#EDEFEF; --ink-soft:#AEB8BD; --muted:#7F8B91;
+    --rule:#232E34; --sea:#5AA6DC; --sand:#E7B75A;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{
+    margin:0;background:var(--ground);color:var(--ink);
+    font:400 17px/1.62 Archivo,-apple-system,system-ui,"Helvetica Neue",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:"Bricolage Grotesque",Archivo,sans-serif;margin:0;text-wrap:balance}
+  p{margin:0 0 1rem}
+  a{color:var(--sea);text-decoration:none}
+  a:hover{text-decoration:underline;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset:3px;border-radius:2px}
+  img{max-width:100%;height:auto;display:block}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+  .eyebrow{
+    font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--sea);margin:0 0 18px;
+  }
+
+  /* ---------- nav ---------- */
+  nav{border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:40;
+      background:color-mix(in srgb,var(--ground) 93%,transparent);backdrop-filter:blur(8px)}
+  .nav-in{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:22px}
+  .logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:18px;letter-spacing:-.02em;color:var(--ink)}
+  .logo:hover{text-decoration:none}
+  .logo .dot{color:var(--sea)}
+  .nav-links{margin-left:auto;display:flex;gap:22px;align-items:center}
+  .nav-links a{font-size:15px;color:var(--ink-soft)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{
+    background:var(--ink);color:var(--ground)!important;padding:9px 16px;border-radius:2px;
+    font-weight:500;font-size:15px;
+  }
+  .nav-cta:hover{background:var(--sea);text-decoration:none}
+  @media(max-width:640px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:88px 0 20px}
+  h1{
+    font-size:clamp(44px,8.2vw,88px);font-weight:800;line-height:.96;letter-spacing:-.035em;
+  }
+  h1 .em{color:var(--sea)}
+  .hero p.sub{
+    font-size:clamp(18px,2.2vw,21px);line-height:1.5;color:var(--ink-soft);
+    max-width:56ch;margin:26px 0 0;
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:32px}
+  .btn{
+    display:inline-block;padding:13px 24px;border-radius:2px;font-weight:500;font-size:16px;
+    background:var(--ink);color:var(--ground);border:1px solid var(--ink);
+  }
+  .btn:hover{background:var(--sea);border-color:var(--sea);text-decoration:none}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+  .btn.ghost:hover{border-color:var(--ink);background:transparent;color:var(--ink)}
+
+  /* strip of facts, gridded like a drawing's title block */
+  .strip{display:flex;flex-wrap:wrap;margin-top:56px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .strip div{flex:1 1 165px;padding:17px 20px 17px 0;border-right:1px solid var(--rule)}
+  .strip div:last-child{border-right:0}
+  .strip b{display:block;font:500 21px/1 "IBM Plex Mono",monospace;color:var(--ink);font-variant-numeric:tabular-nums}
+  .strip span{display:block;font:400 12px/1.4 "IBM Plex Mono",monospace;letter-spacing:.09em;
+              text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+  section{padding:78px 0 0}
+  .head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--ink);padding-bottom:11px;margin-bottom:30px}
+  .head .n{font:500 12px/1 "IBM Plex Mono",monospace;color:var(--sea);letter-spacing:.12em}
+  .head h2{font-size:clamp(26px,3.6vw,34px);font-weight:600;letter-spacing:-.02em}
+  .lede{max-width:62ch;color:var(--ink-soft);font-size:18px;margin-bottom:34px}
+
+  /* ---------- services ---------- */
+  .svc{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  @media(min-width:760px){.svc{grid-template-columns:repeat(2,1fr)}}
+  .s{background:var(--ground);padding:28px 26px 30px}
+  .s .k{font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--sea)}
+  .s h3{font-size:22px;font-weight:600;margin:13px 0 9px;letter-spacing:-.015em}
+  .s p{font-size:15.5px;line-height:1.6;color:var(--ink-soft);margin:0 0 14px}
+  .s .price{font:500 14px/1 "IBM Plex Mono",monospace;color:var(--ink);padding-top:13px;border-top:1px solid var(--rule)}
+  .s .price em{font-style:normal;color:var(--muted)}
+
+  /* ---------- case study ---------- */
+  .case{border:1px solid var(--rule);background:var(--panel)}
+  .case-top{padding:32px 30px 26px;border-bottom:1px solid var(--rule)}
+  .case-top .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .chip{font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.09em;text-transform:uppercase;
+        color:var(--sea);border:1px solid var(--sea);padding:5px 9px;border-radius:2px}
+  .case-top h3{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-.028em;line-height:1.05}
+  .case-top .where{font:400 14px/1 "IBM Plex Mono",monospace;color:var(--muted);margin-top:12px}
+  .case-body{display:grid;gap:0}
+  @media(min-width:820px){.case-body{grid-template-columns:1.45fr 1fr}}
+  .case-main{padding:28px 30px 30px}
+  .case-main p{font-size:16.5px;line-height:1.65;color:var(--ink-soft)}
+  .case-main strong{color:var(--ink);font-weight:600}
+  .case-side{padding:28px 30px 30px;border-top:1px solid var(--rule);background:var(--panel-2)}
+  @media(min-width:820px){.case-side{border-top:0;border-left:1px solid var(--rule)}}
+  .spec{margin:0}
+  .spec dt{font:500 10.5px/1 "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:17px}
+  .spec dt:first-child{margin-top:0}
+  .spec dd{margin:7px 0 0;font-size:15px;line-height:1.5;color:var(--ink)}
+  .spec dd .mono{font-size:13.5px;color:var(--ink-soft)}
+
+  /* ---------- work grid ---------- */
+  .work{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:22px}
+  @media(min-width:700px){.work{grid-template-columns:repeat(3,1fr)}}
+  .w{background:var(--ground);padding:24px 22px 26px;min-height:158px;display:flex;flex-direction:column}
+  .w .k{font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .w h4{font-family:"Bricolage Grotesque",sans-serif;font-size:19px;font-weight:600;margin:11px 0 7px;letter-spacing:-.015em}
+  .w p{font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0}
+  .w.tbd{background:var(--panel-2)}
+  .w.tbd h4{color:var(--muted)}
+  .w.tbd .k{color:var(--sand)}
+
+  /* ---------- process ---------- */
+  .steps{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  @media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}}
+  .st{background:var(--ground);padding:24px 22px 28px}
+  .st .n{font:500 26px/1 "IBM Plex Mono",monospace;color:var(--sea);font-variant-numeric:tabular-nums}
+  .st h4{font-family:"Bricolage Grotesque",sans-serif;font-size:18px;font-weight:600;margin:14px 0 8px}
+  .st p{font-size:14.5px;line-height:1.55;color:var(--ink-soft);margin:0}
+
+  /* ---------- contact ---------- */
+  .contact{
+    border:1px solid var(--ink);background:var(--ink);color:var(--ground);
+    padding:46px 36px;margin-top:22px;
+  }
+  .contact h2{font-size:clamp(28px,4.4vw,42px);font-weight:800;letter-spacing:-.03em;color:var(--ground)}
+  .contact p{color:color-mix(in srgb,var(--ground) 76%,var(--ink));max-width:52ch;margin:16px 0 0;font-size:17.5px}
+  .contact .mail{
+    display:inline-block;margin-top:26px;font-family:"Bricolage Grotesque",sans-serif;
+    font-size:clamp(21px,3.4vw,31px);font-weight:600;color:var(--ground);
+    border-bottom:2px solid var(--sea);letter-spacing:-.02em;
+  }
+  .contact .mail:hover{border-bottom-color:var(--ground);text-decoration:none}
+  .contact .langs{
+    margin-top:30px;padding-top:20px;border-top:1px solid color-mix(in srgb,var(--ground) 22%,transparent);
+    font:400 13.5px/1.6 "IBM Plex Mono",monospace;color:color-mix(in srgb,var(--ground) 62%,var(--ink));
+  }
+
+  footer{margin-top:70px;border-top:1px solid var(--rule);padding:26px 0 60px;
+         display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+         font:400 14px/1.5 "IBM Plex Mono",monospace;color:var(--muted)}
+  footer .sp{margin-left:auto}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="/">Aruba Web Studio<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a class="nav-cta" href="mailto:info@arubawebstudio.com">Start a project</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Oranjestad, Aruba · websites · apps · APIs</p>
+    <h1>Built in Aruba.<br><span class="em">Shipped everywhere.</span></h1>
+    <p class="sub">We design and build websites, mobile apps and APIs for businesses that
+    need more than a template. Our last project put augmented reality in a guest's hands —
+    on iOS, Android and the web, from a single codebase.</p>
+    <div class="hero-cta">
+      <a class="btn" href="mailto:info@arubawebstudio.com">Start a project</a>
+      <a class="btn ghost" href="#work">See the work</a>
+    </div>
+
+    <div class="strip">
+      <div><b>1 week</b><span>Typical site build</span></div>
+      <div><b>2 stores</b><span>App Store &amp; Google Play</span></div>
+      <div><b>4</b><span>Languages shipped</span></div>
+      <div><b>Aruba</b><span>Local, not offshore</span></div>
+    </div>
+  </header>
+
+  <section id="services">
+    <div class="head"><span class="n">01</span><h2>What we build</h2></div>
+    <p class="lede">Four things, done properly. If your project does not fit one of these,
+    say so anyway — we would rather tell you it is not a fit than sell you the wrong thing.</p>
+
+    <div class="svc">
+      <div class="s">
+        <p class="k">Websites</p>
+        <h3>Sites that work on a phone</h3>
+        <p>Four to six pages, mobile first, a contact form that actually delivers, and your
+        Google Business Profile connected so people find you. Live in a week, fixed price,
+        and you see it before you pay.</p>
+        <p class="price">From $800 <em>· one week</em></p>
+      </div>
+      <div class="s">
+        <p class="k">Mobile apps</p>
+        <h3>iOS and Android, one codebase</h3>
+        <p>Native apps built once and shipped to both stores, sharing code with your website
+        instead of duplicating it. We have taken an app through both review processes —
+        including the parts nobody warns you about.</p>
+        <p class="price">From $4,500 <em>· four to eight weeks</em></p>
+      </div>
+      <div class="s">
+        <p class="k">APIs &amp; integrations</p>
+        <h3>Systems that talk to each other</h3>
+        <p>Your booking system, your POS and your website probably do not share data. We build
+        the layer that connects them — with authentication, rate limiting and usage metering
+        that hold up in production.</p>
+        <p class="price">From $1,200 <em>· two to four weeks</em></p>
+      </div>
+      <div class="s">
+        <p class="k">Immersive</p>
+        <h3>Augmented and virtual reality</h3>
+        <p>AR that recognises real objects through a phone camera, and 3D spaces that run in a
+        browser with nothing to install. Genuinely rare in this region, and much closer to
+        affordable than most people assume.</p>
+        <p class="price">Quoted per project</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="head"><span class="n">02</span><h2>Selected work</h2></div>
+    <p class="lede">The clearest way to judge a studio is what it has actually shipped.</p>
+
+    <article class="case">
+      <div class="case-top">
+        <div class="tagrow">
+          <span class="chip">Augmented reality</span>
+          <span class="chip">iOS + Android</span>
+          <span class="chip">WebXR</span>
+          <span class="chip">4 languages</span>
+        </div>
+        <h3>House of Mosaic Art Villa</h3>
+        <p class="where">Boutique art hotel &amp; gallery · Schotlandstraat 4, Oranjestad</p>
+      </div>
+
+      <div class="case-body">
+        <div class="case-main">
+          <p>A boutique art hotel with a gallery of original work, and a problem every gallery
+          has: the story behind a piece lives in the owner's head, not on the wall.</p>
+          <p>We built the official app. A guest points their phone at an artwork and
+          <strong>the piece tells its own story</strong> — narrated, in their language, triggered
+          by the artwork itself rather than a QR code stuck to the frame. A guided Story Mode
+          walks them through the collection and assembles a collectible mosaic as they go, and a
+          <strong>VR gallery runs in the browser</strong> with nothing to install.</p>
+          <p>Fifteen artworks, each with its own recognition target and narration in four
+          languages — English, Spanish, Dutch and <strong>Papiamento</strong>. One codebase
+          produces the iOS app, the Android app and the website, so a change to a story is
+          written once and appears in all three.</p>
+        </div>
+
+        <div class="case-side">
+          <dl class="spec">
+            <dt>Delivered</dt>
+            <dd>iOS app, Android app, web app<br><span class="mono">App Store · Google Play · web</span></dd>
+            <dt>Core technology</dt>
+            <dd><span class="mono">MindAR · Three.js · Capacitor · Vite</span></dd>
+            <dt>Languages</dt>
+            <dd>English · Español · Nederlands · Papiamento</dd>
+            <dt>Scope</dt>
+            <dd>15 AR artworks, guided Story Mode, collectible mosaic, WebXR gallery, room pages</dd>
+          </dl>
+        </div>
+      </div>
+    </article>
+
+    <!-- ⚠ REPLACE: three real projects. Keep the format, swap the words.
+         Do not invent clients — an empty slot is better than a fabricated one. -->
+    <div class="work">
+      <div class="w tbd">
+        <p class="k">⚠ To add</p>
+        <h4>Project two</h4>
+        <p>Client name, what you built, and the one thing about it you are proud of.</p>
+      </div>
+      <div class="w tbd">
+        <p class="k">⚠ To add</p>
+        <h4>Project three</h4>
+        <p>Even one line each is enough. Three named projects beats one long case study.</p>
+      </div>
+      <div class="w tbd">
+        <p class="k">⚠ To add</p>
+        <h4>Project four</h4>
+        <p>Ask each client if you may name them. Most say yes when the work went well.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="head"><span class="n">03</span><h2>How it goes</h2></div>
+    <p class="lede">No discovery phase you pay for before anything exists. You will know the
+    price and the date before we start.</p>
+
+    <div class="steps">
+      <div class="st">
+        <p class="n">01</p><h4>A conversation</h4>
+        <p>Twenty minutes, no charge. We ask what the business actually needs — which is
+        often not what was first asked for.</p>
+      </div>
+      <div class="st">
+        <p class="n">02</p><h4>A fixed quote</h4>
+        <p>One page. What you get, what it costs, and the date it is done. If the scope
+        changes, we requote rather than sending a surprise.</p>
+      </div>
+      <div class="st">
+        <p class="n">03</p><h4>We build</h4>
+        <p>You see it on a real link while it is being built, not at the end. One round of
+        revisions is included, and half the fee is due up front.</p>
+      </div>
+      <div class="st">
+        <p class="n">04</p><h4>Handover</h4>
+        <p>It goes live, and we show you how to change the things you will want to change.
+        Ongoing care is optional, never assumed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <h2>Tell us what you are building.</h2>
+      <p>A short email is enough — what the business does, and what is not working. We reply
+      to everything, usually the same day.</p>
+      <a class="mail" href="mailto:info@arubawebstudio.com">info@arubawebstudio.com</a>
+      <p class="langs">Nos ta papia Papiamento, Nederlands, Español and English.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>© <span id="yr">2026</span> Aruba Web Studio · Oranjestad, Aruba</span>
+    <span class="sp"><a href="mailto:info@arubawebstudio.com">info@arubawebstudio.com</a></span>
+  </footer>
+
+</main>
+
+<script>
+  // Only dynamic thing on the page: keep the copyright year honest without a rebuild.
+  document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
