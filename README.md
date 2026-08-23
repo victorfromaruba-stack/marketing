@@ -61,6 +61,35 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
+## This repo is public, and it is the website
+
+A `CNAME` file was added, which means GitHub Pages serves this repository at
+arubawebstudio.com. Two consequences worth holding onto:
+
+**Pages serves the whole repo, not just `index.html`.** Every file committed here
+is reachable as a URL on the studio's own domain. That is why the studio's
+operating machinery — the prospect list, pricing, cold-email templates, memory —
+lives in the private repo under `system/studio/` and not here. The test for
+adding a file is not "is this secret" but "would I be happy for this to answer a
+GET request on our domain".
+
+**`.nojekyll` is deliberate.** Without it Pages runs the files through Jekyll,
+which silently skips anything whose name starts with an underscore. Nothing here
+does today, and the empty file means nothing here ever has to.
+
+## Deploy
+
+Two paths exist and only one is live.
+
+**GitHub Pages — live.** Push to `main` and it publishes. Nothing else to do.
+
+**The VPS — set up, not in use.** `system/vps/deploy-agent.sh` in the private
+repo installs a systemd timer that pulls this branch over HTTPS and runs
+`deploy.sh`. It is the right answer if the site ever needs something Pages
+cannot do: server-side anything, a private staging host, or the studio's own
+tooling on the same box. Until then Pages is simpler and free, and the Caddyfile
+and `deploy.sh` below are dormant rather than wrong.
+
 ## Deploy to the VPS
 
 Caddy obtains and renews certificates automatically, so there is nothing to remember.
@@ -78,9 +107,12 @@ rsync -avz --delete \
   user@<vps-ip>:/srv/arubawebstudio/
 ```
 
-**Before it resolves:** the domain currently points at Namecheap parking
-(`162.255.119.156`). Change the A record to the VPS IP and add a `www` CNAME to the
-bare domain. DNS takes minutes to a few hours.
+**Before it resolves:** the domain pointed at Namecheap parking
+(`162.255.119.156`) when this was written. For **Pages**, point the apex at
+GitHub's four A records (185.199.108–111.153) and `www` at
+`victorfromaruba-stack.github.io`. For the **VPS** instead, point the apex at the
+server IP and `www` at the bare domain. Do one or the other, not both — split
+records are how a site half-works for half its visitors.
 
 ## Before this goes live
 
