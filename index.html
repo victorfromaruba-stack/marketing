@@ -195,6 +195,20 @@
   }
 
   /* contact */
+  /* How it works. The page published prices and durations and never said what
+     the buyer actually has to do, which is the question a shop owner asks
+     first. Numbered, because it is a sequence and the order is the promise. */
+  .how{max-width:1180px;margin-inline:auto;padding-top:clamp(70px,11vh,130px)}
+  .steps{display:grid;gap:0;margin-top:clamp(34px,5vh,56px)}
+  @media(min-width:860px){.steps{grid-template-columns:repeat(2,1fr);column-gap:64px}}
+  .step{padding:clamp(24px,3.4vh,34px) 0;border-top:1px solid var(--rule)}
+  .step .num{
+    font:500 12px/1 "IBM Plex Mono",monospace;color:var(--amber);
+    letter-spacing:.12em;display:block;margin-bottom:14px}
+  .step h4{
+    margin:0 0 10px;font-family:"Bodoni Moda",Georgia,serif;font-weight:400;
+    font-size:clamp(1.15rem,1.7vw,1.45rem);color:var(--cream);letter-spacing:-.01em}
+  .step p{margin:0;color:var(--cream-dim);font-size:15.5px;max-width:44ch}
   .contact{text-align:center;padding-block:clamp(96px,16vh,200px)}
   .contact h2{
     font-family:"Bodoni Moda",Georgia,serif;font-weight:400;
@@ -329,8 +343,8 @@
   <div class="more">
     <div style="padding:0 clamp(20px,4vw,54px)">
       <p class="tag rise">Also built</p>
-      <p class="lead rise" style="margin-top:20px">Live sites, running on
-      <span class="q">their own domains.</span></p>
+      <p class="lead rise" style="margin-top:20px">Live sites,
+      <span class="q">open one right now.</span></p>
     </div>
 
     <div class="grid">
@@ -378,7 +392,7 @@
   <div class="row rise">
     <h4>Websites</h4>
     <p>Four to six pages, mobile first, a contact form whose mail reaches your inbox, and your
-    Google listing wired up so people can find you. You see it before you pay.</p>
+    Google listing wired up so people can find you.</p>
     <p class="price">from $800<span>one week</span></p>
   </div>
   <div class="row rise">
@@ -399,6 +413,40 @@
     <p>AR that recognises real objects through a phone camera, and 3D that runs in a browser
     with nothing to install. We quote these one at a time, because no two are the same job.</p>
     <p class="price">quoted<span>per project</span></p>
+  </div>
+</section>
+
+<section class="how">
+  <p class="tag rise">How it works</p>
+  <p class="lead rise" style="margin:22px 0 0">Nobody pays us
+  <span class="q">to find out.</span></p>
+
+  <div class="steps">
+    <div class="step rise">
+      <span class="num">01</span>
+      <h4>Tell us what the business does</h4>
+      <p>An email or a call. What you sell, and what you want somebody to be able to do on the
+      site. That's the whole brief. You don't need to know what you want it to look like.</p>
+    </div>
+    <div class="step rise">
+      <span class="num">02</span>
+      <h4>We build one before you pay</h4>
+      <p>A working site on a real address, with your words and your photos. Not a mockup, and not
+      a template with your logo dropped on it. You look at it on your own phone.</p>
+    </div>
+    <div class="step rise">
+      <span class="num">03</span>
+      <h4>You decide</h4>
+      <p>If it isn't right, you owe nothing and we shake hands. If it is, half up front and half
+      the day it goes live. We write the scope down first, including how many rounds of changes,
+      so nobody is guessing by round four.</p>
+    </div>
+    <div class="step rise">
+      <span class="num">04</span>
+      <h4>It goes on your domain</h4>
+      <p>Your domain, your hosting account, your Google listing. One week for a website, longer
+      for the bigger work, and we tell you which before you commit to anything.</p>
+    </div>
   </div>
 </section>
 
