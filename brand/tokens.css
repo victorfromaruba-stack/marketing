@@ -41,7 +41,13 @@
   --surface-raised:  var(--panel);
 
   /* ---- type ------------------------------------------------------------ */
-  --font-display: "Bricolage Grotesque", Archivo, system-ui, sans-serif;
+  /* Bodoni Moda, not Bricolage Grotesque. The token claimed Bricolage while
+     the homepage set every heading in Bodoni and never loaded Bricolage at
+     all, so the design system and the shipped site disagreed about what the
+     studio's face is. The site is what clients see, so the site wins and the
+     token now says what is true. Bodoni wants size: it is specified at display
+     scale only, and anything below about 20px goes to the body face. */
+  --font-display: "Bodoni Moda", Georgia, "Times New Roman", serif;
   --font-body:    Archivo, -apple-system, system-ui, "Helvetica Neue", sans-serif;
   --font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
 
@@ -68,6 +74,13 @@
   --weight-medium: 500;
   --weight-semi:   600;
   --weight-bold:   800;
+  /* The display face has its own ceiling. 600 and 800 are right for Archivo,
+     which is a grotesque built to carry weight; Bodoni is not. Above 500 its
+     counters fill in and the thin strokes stop being thin, which is the only
+     reason to use a Bodoni. The site loads 400 and 500 and nothing else, so
+     asking for 800 gets a synthesised bold — the browser smears the glyph. */
+  --weight-display:      400;
+  --weight-display-semi: 500;
 
   /* ---- space ----------------------------------------------------------- */
   /* A 4px base. Every margin and padding in the system is one of these —
@@ -170,9 +183,10 @@ h1, h2, h3, h4 {
   margin: 0;
   text-wrap: balance;
 }
-h1 { font-size: var(--text-4xl); font-weight: var(--weight-bold); line-height: var(--leading-tight); letter-spacing: var(--tracking-tight); }
-h2 { font-size: var(--text-2xl); font-weight: var(--weight-semi); letter-spacing: -0.02em; }
-h3 { font-size: var(--text-xl); font-weight: var(--weight-semi); letter-spacing: -0.015em; }
+h1 { font-size: var(--text-4xl); font-weight: var(--weight-display); line-height: var(--leading-tight); letter-spacing: -0.015em; }
+h2 { font-size: var(--text-2xl); font-weight: var(--weight-display-semi); letter-spacing: -0.01em; }
+/* h3 lands near the size where Bodoni gives up. It takes the body face. */
+h3 { font-family: var(--font-body); font-size: var(--text-xl); font-weight: var(--weight-semi); letter-spacing: -0.015em; }
 
 p { margin: 0 0 var(--space-4); max-width: var(--measure); }
 

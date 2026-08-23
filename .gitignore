@@ -1,2 +1,14 @@
-*.png
+# A blanket *.png here meant every icon and the social card were silently
+# untracked, so the live site 404'd on /icon-180.png, /icon-small-32.png and
+# og-image.png while every local preview looked perfect — the files were on
+# disk, just never committed. Only fetching the deployed site found it.
+#
+# So: ignore by intent, not by extension. The site's own images are the site.
+
+# Master artwork. A megabyte of source PNG that nothing links to, and this repo
+# is served by Pages, so an unlinked file here is still a public URL.
+brand/logo/logo-master.png
+brand/logo/logo-square.png
+
 .DS_Store
+node_modules/
