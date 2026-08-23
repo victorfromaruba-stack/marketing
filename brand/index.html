@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aruba Web Studio — Theme Book</title>
+<title>Aruba Web Studio Theme Book</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;1,400&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -75,12 +75,12 @@
   <p class="kicker">Aruba Web Studio · internal · v2 · from the mark</p>
   <h1>Theme Book</h1>
   <p>Every decision, once. This page is styled by the same <code>tokens.css</code> it
-  documents — if the system breaks, this page breaks with it.</p>
+  documents. If the system breaks, this page breaks with it.</p>
 </header>
 
 <section>
   <div class="sechead"><span class="n">01</span><h2>The mark</h2></div>
-  <p class="note">A <strong>divi-divi</strong> — the tree the trade winds bend permanently
+  <p class="note">A <strong>divi-divi</strong>, the tree the trade winds bend permanently
   southwest, and the thing on this island everyone recognises without being told. Not a palm.
   It carries the whole positioning by itself: shaped by where it grows, and still standing.</p>
 
@@ -108,7 +108,7 @@
   </div>
 
   <p class="note"><strong>Vector, not raster.</strong> The mark is traced paths, so it is sharp
-  on any screen and at any print size, and the whole file is under 2&nbsp;KB — smaller than the
+  on any screen and at any print size, and the whole file is under 2&nbsp;KB. That's smaller than the
   32px PNG it replaces. The PNG set stays for the places that still demand one: the
   <code>.ico</code>, the Apple touch icon, the web manifest, and the social card.</p>
 
@@ -128,27 +128,27 @@
   </div>
 
   <p class="note"><strong>The lockup carries its own font.</strong> Bodoni Moda is embedded in
-  each lockup file, so it sets identically on a machine that has never heard of the typeface —
+  each lockup file, so it sets identically on a machine that has never heard of the typeface:
   in a client's deck, an invoice, a partner's footer. That costs about 60&nbsp;KB per file,
   which is why the lockups are for handing out and the site's own header sets the name in live
   HTML instead. Regenerate them with <code>python3 brand/build-logo.py</code>.</p>
 
   <p class="note"><strong>Two marks, on purpose.</strong> At 32px the ring goes fragile and the
-  canopy layers collapse into noise — so small sizes drop the ring and let the tree fill the
-  frame. Verified by magnifying the rendered favicon rather than assuming it scaled. The site's
+  canopy layers collapse into noise, so small sizes drop the ring and let the tree fill the
+  frame. We checked that by magnifying a 16px render, not by assuming it scaled. The site's
   own header sets the mark at 30px and therefore uses the small one, not the full mark shrunk:
   a rule the studio publishes and then breaks on its own homepage is not a rule.</p>
 
   <p class="note">The small mark comes with a navy tile and without. The tile is for a favicon,
   which lands on browser chrome of unknown colour and has to bring its own ground. Anywhere the
-  background is already known — the nav, a dark deck — use the transparent one, or the tile
+  background is already known, like the nav or a dark deck, use the transparent one. The tile
   shows up as a patch of not-quite-matching navy.</p>
   <ul>
-    <li><strong>Clear space</strong> — at least the radius of the ring on every side. It is a
+    <li><strong>Clear space.</strong> At least the radius of the ring on every side. It's a
     circular mark and it suffocates faster than a square one.</li>
     <li><strong>Never</strong> recolour the tree, stretch the circle to an oval, add a shadow,
     or place the full mark on a busy photograph. On imagery, use the navy small mark.</li>
-    <li><strong>Minimum size</strong> — full mark 48px, small mark 16px.</li>
+    <li><strong>Minimum size.</strong> Full mark 48px, small mark 16px.</li>
   </ul>
 </section>
 
@@ -156,8 +156,8 @@
   <div class="sechead"><span class="n">02</span><h2>The idea</h2></div>
   <p class="note"><strong>Aruban light, technical structure.</strong> The ground is warm and
   sun-bleached like limestone at midday. The accent is the deep blue of the flag, not the
-  turquoise gradient every Caribbean business defaults to. Structure is visible — hairline
-  rules, a real grid, monospace annotations — because the work is engineering and the design
+  turquoise gradient every Caribbean business defaults to. Structure is visible in the hairline
+  rules, the grid and the monospace annotations, because the work is engineering and the design
   should say so before the copy does.</p>
   <p class="note">The tension is deliberate: an island studio that ships to app stores. Warm
   light says where we are; the grid says what we can do.</p>
@@ -167,7 +167,7 @@
   <div class="sechead"><span class="n">03</span><h2>Colour</h2></div>
   <p class="note">Ten tokens, every one taken from or derived from the mark. The neutral
   ramp is the logo navy mixed toward the logo cream, so every grey carries a trace of the brand
-  rather than being an imported neutral. Ratios are measured, not estimated, and verified in CI.</p>
+  and is not an imported neutral. Ratios are measured, not estimated, and verified in CI.</p>
 
   <div class="sw">
     <figure><div class="chip" style="background:var(--ink)"></div><figcaption>
@@ -193,12 +193,12 @@
   </div>
 
   <p class="note" style="margin-top:var(--space-5)"><strong>The one rule that matters.</strong>
-  The logo amber is <strong>1.49:1 on cream</strong> — it cannot carry text, at any size. It is
+  The logo amber is <strong>1.49:1 on cream</strong>, so it can't carry text at any size. It is
   the ring, large graphic shapes, and marks on navy. Anything with words in it uses
   <code>--amber-deep</code>. This is the constraint people break first, because amber is the
   colour they remember from the logo.</p>
-  <p class="note">Beyond that: one accent per page — <code>--sea</code> carries every link.
-  Dark mode grounds in the navy rather than a neutral black, so the brand survives the theme
+  <p class="note">Beyond that: one accent per page, and <code>--sea</code> carries every link.
+  Dark mode grounds in the navy, not a neutral black, so the brand survives the theme
   switch, and amber needs no darkened variant there because it has 9.6:1 against a dark ground.</p>
 </section>
 
@@ -207,18 +207,18 @@
   <p class="note">Three faces, three jobs. <strong>Bodoni Moda</strong> is the display face:
   high contrast, fine hairlines, and enough character to be recognisable at a glance, which is
   the whole point of one. <strong>Archivo</strong> is a workhorse that stays readable at 17px on
-  a phone in sunlight, which is where most of this work is actually read. <strong>IBM Plex
+  a phone in sunlight, which is where most of this work gets read. <strong>IBM Plex
   Mono</strong> carries anything technical: labels, specs, prices.</p>
 
   <p class="note">This page said <em>Bricolage Grotesque</em> until recently, and loaded it,
   while the homepage set every heading in Bodoni and never loaded Bricolage at all. The design
   system and the shipped site disagreed about what the studio's face is. The site is what
-  clients actually see, so the site won.</p>
+  clients see, so the site won.</p>
 
   <p class="note"><strong>Bodoni needs size.</strong> Its thin strokes thicken and thin across a
   single letter, which is what makes it beautiful at 60px and mushy at 15px. Use it for display
-  only — headlines, section titles, the lockup. Below roughly 20px, or anywhere the text has to
-  be read rather than seen, Archivo. A weight of 500 is the ceiling; heavier fills the counters
+  only: headlines, section titles, the lockup. Below roughly 20px, or anywhere the text has to
+  be read instead of seen, use Archivo. A weight of 500 is the ceiling. Heavier fills the counters
   in and the elegance goes.</p>
 
   <div class="spec">
@@ -232,7 +232,7 @@
   <div class="spec">
     <div class="meta">--text-base · body · 400 · 1.62 · max 68ch</div>
     <div style="max-width:var(--measure)">We design and build websites, mobile apps and APIs for
-    businesses that need more than a template. Running text sits at 17px rather than 16 —
+    businesses that need more than a template. Running text sits at 17px, not 16, because
     a small difference that matters on a phone held at arm's length in bright light.</div>
   </div>
   <div class="spec">
@@ -243,7 +243,7 @@
 
 <section>
   <div class="sechead"><span class="n">05</span><h2>Space</h2></div>
-  <p class="note">A 4px base. Every margin in the system is one of these steps — arbitrary
+  <p class="note">A 4px base. Every margin in the system is one of these steps. Arbitrary
   values are how a layout starts looking accidental, and the difference is visible even to
   people who cannot name it.</p>
   <div class="ruler">
@@ -262,7 +262,7 @@
 <section>
   <div class="sechead"><span class="n">06</span><h2>Components</h2></div>
   <p class="note">The handful that appear on every client site. All of them live in
-  <code>tokens.css</code> — nothing below is styled by this page.</p>
+  <code>tokens.css</code>. Nothing below is styled by this page.</p>
 
   <div class="demo" style="margin-bottom:var(--space-5)">
     <a class="aws-btn" href="#">Start a project</a>
@@ -276,7 +276,7 @@
     <div><p class="aws-label">Card</p><p style="margin:var(--space-2) 0 0">Raised surface, hairline
     border, near-square corners. Heavy rounding reads consumer-app.</p></div>
     <div><p class="aws-label">Focus</p><p style="margin:var(--space-2) 0 0">Never removed. Tab to
-    the button above and you will see it — that ring is the most commonly deleted accessibility
+    the button above and you'll see it. That ring is the most commonly deleted accessibility
     feature on hand-built sites.</p></div>
   </div>
 </section>
@@ -289,12 +289,26 @@
     <thead><tr><th style="width:46%">We write</th><th>Not</th></tr></thead>
     <tbody>
       <tr><td class="yes">Live in a week, fixed price.</td><td class="no">Rapid turnaround, competitive rates</td></tr>
-      <tr><td class="yes">We would rather tell you it is not a fit.</td><td class="no">We tailor bespoke solutions to every client</td></tr>
-      <tr><td class="yes">Half up front, half when it is live.</td><td class="no">Flexible payment terms available</td></tr>
+      <tr><td class="yes">We'd rather tell you it's not a fit.</td><td class="no">We tailor bespoke solutions to every client</td></tr>
+      <tr><td class="yes">Half up front, half when it's live.</td><td class="no">Flexible payment terms available</td></tr>
       <tr><td class="yes">The piece tells its own story.</td><td class="no">Leveraging cutting-edge AR to drive engagement</td></tr>
       <tr><td class="yes">Nos ta papia Papiamento.</td><td class="no">Multilingual support available</td></tr>
     </tbody>
   </table>
+  <p class="note"><strong>No em dashes.</strong> Nobody reaches for one out loud or in a quick
+  email, so a page full of them reads as written by something that doesn't talk to people. Use a
+  full stop, a comma, or two sentences. This page had twenty and the homepage had five, which is
+  how the rule came to exist.</p>
+
+  <p class="note"><strong>Contract your verbs.</strong> "Your POS and your website probably do not
+  share data" is not a sentence anyone says. It was on the homepage, next to "we have been through
+  both review processes" and "tell us what you are building". No contractions anywhere is the
+  loudest tell there is, louder than any single word choice.</p>
+
+  <p class="note">Both are enforced by <code>brand/check-voice.py</code>, which runs in CI beside
+  the contrast check and for the same reason: this page claimed a standard the site did not meet,
+  and nobody caught it by reading.</p>
+
   <ul style="margin-top:var(--space-5)">
     <li><strong>Plain words.</strong> "We build" not "we architect". "Price" not "investment".</li>
     <li><strong>Numbers over adjectives.</strong> "Fifteen artworks, four languages" beats "rich multilingual experience".</li>
@@ -321,11 +335,11 @@
     building. If their brand blue fails on their brand cream, better to raise it in week one than
     at handover.</li>
     <li>Style only with <code>var(--…)</code>. A literal hex in a client stylesheet is a future
-    bug — it will not follow a rebrand and it will not respond to dark mode.</li>
+    bug. It won't follow a rebrand and it won't respond to dark mode.</li>
     <li>Keep the semantic aliases. Write <code>var(--link)</code>, not <code>var(--sea)</code>,
     so swapping an accent does not require reading every rule.</li>
     <li>The third site should take a fraction of the first. If it does not, the system is not
-    being used — that is the signal to fix it, not to abandon it.</li>
+    being used. That's the signal to fix it, not to abandon it.</li>
   </ul>
 </section>
 

@@ -18,3 +18,16 @@ jobs:
           python-version: "3.12"
       - name: Verify WCAG contrast for every token pair
         run: python3 brand/check-contrast.py
+
+  voice:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # Prose fails the way contrast does: every sentence looks fine alone and
+      # the tells only appear when you count them across a page. Five em dashes
+      # and not one contraction shipped without anyone noticing.
+      - name: Check the copy against the studio's own voice rules
+        run: python3 brand/check-voice.py
