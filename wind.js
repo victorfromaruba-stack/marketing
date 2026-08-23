@@ -99,51 +99,52 @@
     };
   }
 
-  /* Build the skeleton once.
+  /* Built from a photograph of the real tree, which corrected three things.
 
-     A divi-divi is not a symmetric tree with a lean, and it is not a fractal.
-     Measured off the logo artwork it is 1.38 times wider than tall, the trunk
-     stands toward the windward side, and the canopy runs 34/48/18 across the
-     width — dense just behind the trunk, streaming downwind, feathering to
-     nothing. Almost nothing survives on the windward face.
+     The previous version was a flag: canopy entirely downwind of the trunk,
+     nothing on the windward face, streaming off to one side. A divi-divi on
+     Eagle Beach does not do that. Its crown sits roughly ON the trunk and
+     spreads to BOTH sides, wider than it is tall, with a bottom edge so flat
+     it looks sheared and a top that domes and lumps. The wind shows in the
+     trunk and in a slight downwind bias of the crown's centre — not in the
+     canopy being blown off the tree.
 
-     Two things were wrong with the previous version and both showed up only
-     on render. The limbs all left from the top two trunk segments, so the
-     crown came out as two separate clumps with a gap between them instead of
-     one continuous mass. And the foliage was drawn as filled ellipses, which
-     at any size reads as smudges: the real crown is thousands of tiny
-     leaflets in flat layers, so it has a combed, feathered edge, not a blobby
-     one.
+     The trunk is short and thick, barely half the tree's height, and it does
+     not curve smoothly. It kinks: up, twist, back, out. A clean arc reads as
+     a drawn line, and that is what the old one was.
 
-     So limbs now leave from four points down the trunk and overlap, and the
-     foliage is drawn as fans of fine tapering strokes. Stiffness still falls
-     off outward, so the wind moves the canopy far more than the trunk. */
+     And it stands on a mess of exposed gnarled roots, spreading wider than
+     the trunk in both directions across the sand. There were none at all
+     before, which is a large part of why the tree looked planted in the page
+     rather than grown out of it.
+
+     Foliage is clumps, not feathers. The leaflets are tiny but they gather
+     into dense lobes with real gaps of sky between them, so the mass is drawn
+     as many small overlapping discs whose union has a naturally ragged edge.
+     Fine strokes then break up the perimeter. */
   function buildTree() {
-    const rnd = mulberry32(20260822);
+    const rnd = mulberry32(20260823);
     const segs = [];
 
     /* Two layouts, because a phone is not a narrow desktop.
 
        On a wide screen the tree stands to the right of the headline, rooted at
-       the bottom edge, and the copy has the left half to itself.
-
-       Scaling that same arrangement down gave a tree a third of the width,
-       tucked into the bottom corner behind the body copy, where it read as a
-       smudge and not as anything — while the top half of the screen sat empty.
-       So on a narrow screen it moves: much larger, rooted lower-left, filling
-       the space above the headline that the wide layout does not have. */
+       the bottom edge, and the copy has the left half to itself. Scaled down
+       that same arrangement drew a tree a third of the width tucked behind the
+       body copy, where it read as a smudge, while the top half of the screen
+       sat empty. So on a narrow screen it moves and grows. */
     const narrow = W < 700;
 
+    // Sized from the CANOPY width — that is the tree's real dimension.
     const treeW = narrow
-      ? Math.min(W * 0.86, H * 0.36)
-      : Math.min(W * 0.30, H * 0.46);
-    const treeH = treeW / 1.38;
-    const baseX = narrow ? W * 0.10 : W * 0.545;
-    // Wide: rooted at the bottom edge, so the foot is cropped. Narrow: rooted
-    // above the headline, where the foot is fully visible and has to be
-    // drawn as if it were.
-    const baseY = narrow ? H * 0.58 : H * 0.96;
-    const DOWNWIND = 1;              // canopy streams to the right
+      ? Math.min(W * 0.92, H * 0.40)
+      : Math.min(W * 0.38, H * 0.72);
+    const treeH = treeW / 1.40;          // measured off the photograph
+    const baseX = narrow ? W * 0.44 : W * 0.72;
+    // Rooted above the bottom edge, not on it. The root plate is half the
+    // character of this tree and it is worth nothing below the fold.
+    const baseY = narrow ? H * 0.52 : H * 0.92;
+    const DOWNWIND = 1;
 
     function add(parent, angle, len, width, opts) {
       const idx = segs.length;
@@ -152,6 +153,8 @@
         y: parent < 0 ? baseY : 0,
         angle, len, width, parent,
         stiff: (opts && opts.stiff) || 0.1,
+        root: !!(opts && opts.root),
+        clumps: (opts && opts.clumps) || null,
         sprays: (opts && opts.sprays) || null,
         depth: parent < 0 ? 0 : segs[parent].depth + 1,
       });
@@ -162,134 +165,156 @@
     // segment's bend from (own angle - parent angle), so storing deltas makes
     // the whole tree collapse — which it did, once.
 
-    // ---- trunk: a curve, not a pole, and it flares into the ground --------
-    const TRUNK = 7;
+    // ---- roots: a gnarled plate, wider than the trunk ---------------------
+    // They barely move in wind, so stiffness is near zero. Drawn first so the
+    // trunk overlaps them rather than the other way round.
+    const ROOTS = 7;
+    for (let r = 0; r < ROOTS; r++) {
+      const f = r / (ROOTS - 1);
+      // Fanned across the ground both ways, dipping slightly below the base.
+      /* Two fans, left and right, both tipping DOWN into the sand.
+
+         Sampling one arc from -14 to 194 degrees put the outermost roots
+         above horizontal, so they came out as a plank sticking off the side
+         of the trunk. In canvas coordinates y grows downward, so a root that
+         digs in has a small positive angle on the right and a little under
+         180 on the left — and nothing wants to be near 90, which is straight
+         down through the trunk's own foot. */
+      const right = r % 2 === 0;
+      const g = Math.floor(r / 2) / Math.max(1, Math.floor((ROOTS - 1) / 2));
+      const a = (right ? (4 + g * 34) : (176 - g * 34)) * Math.PI / 180
+                + (rnd() - 0.5) * 0.22;
+      let node = -1;
+      let abs = a;
+      // Four segments, tapering hard to a point. Three thick ones with a
+      // round cap ended in blunt stubs — a crab, not a root plate. A root
+      // reads as a root because it thins to nothing where it enters the sand.
+      const n = 4;
+      for (let k = 0; k < n; k++) {
+        // Roots kink harder than branches do.
+        abs += (rnd() - 0.5) * 0.7;
+        node = add(node < 0 ? -1 : node, abs,
+                   treeW * (0.10 - k * 0.018) * (0.7 + rnd() * 0.8),
+                   Math.max(1.2, treeW * 0.034 * Math.pow(1 - k / n, 1.9)),
+                   { stiff: 0.004, root: true });
+        if (k === 0) segs[node].x = baseX, segs[node].y = baseY;
+      }
+    }
+
+    // ---- trunk: short, thick, and kinked ---------------------------------
+    const TRUNK = 6;
+    const trunkH = treeH * 0.54;
+    // The kink is the point. Each entry is an absolute angle in degrees, and
+    // the sequence goes up, leans, twists back, then leans out again — traced
+    // off the photograph rather than eased between two numbers.
+    const TRUNK_ANGLES = [-96, -86, -62, -74, -58, -66];
     const trunkIdx = [];
     let prev = -1;
     for (let i = 0; i < TRUNK; i++) {
       const t = i / (TRUNK - 1);
-      // -84° at the base easing to -46°: pushed over from the ground up.
-      const ang = (-86 + t * 52) * Math.PI / 180;
-      // The base flare matters. A trunk of even width reads as a drawn line;
-      // a real one is widest where it meets the ground and the eye knows it.
-      //
-      // It was overdone. At 0.085 with a 1.35 multiplier and a round line cap,
-      // the foot drew a semicircular blob — a golf club, not a tree. The wide
-      // layout hid it by rooting the trunk past the bottom edge; the narrow
-      // layout, which shows the whole foot, did not.
-      const w = treeW * 0.058 * (1 - t * 0.58) * (i === 0 ? 1.18 : 1);
-      prev = add(prev, ang, (treeH / TRUNK) * (1.20 - t * 0.22), Math.max(3, w),
-                 { stiff: 0.022 + t * 0.05 });
+      const ang = TRUNK_ANGLES[i] * Math.PI / 180;
+      // Widest at the ground and tapering hard. The foot is cut flat rather
+      // than round-capped, or it domes into a golf club.
+      const w = treeW * 0.078 * (1 - t * 0.50) * (i === 0 ? 1.06 : 1);
+      prev = add(prev, ang, (trunkH / TRUNK) * (1.15 - t * 0.18), Math.max(3, w),
+                 { stiff: 0.016 + t * 0.038 });
       trunkIdx.push(prev);
     }
     const crown = prev;
 
-    /* The flag envelope.
+    /* The crown envelope, in tree units relative to the trunk top.
 
-       u runs 0 at the trunk to 1 at the downwind tip. The crown is not an
-       even wedge: it is thickest a quarter of the way out, because the
-       leading edge is stripped by the wind and the trailing edge has run out
-       of branch. This one curve is what makes the silhouette read as a
-       divi-divi rather than a windswept anything. */
-    function envelope(u) {
-      return Math.pow(Math.sin(Math.PI * Math.pow(u, 0.52)), 0.78);
-    }
+       Half-width is treeW/2 each side. Half-height is much less — the canopy
+       of this tree is well over twice as wide as it is tall. The centre sits
+       a little downwind and a little above the fork. */
+    const cw = treeW * 0.50;
+    const ch = treeW * 0.200;
+    const ccx = treeW * 0.07 * DOWNWIND;   // downwind bias, from the photo
+    const ccy = -treeH * 0.16;
 
-    // ---- limbs: every one leaves downwind, near horizontal ---------------
-    // They start from four points down the trunk, not one or two. A single
-    // origin fans out and leaves a hole under the crown; four overlap into
-    // one mass, which is what the tree actually does.
-    const LIMBS = 30;
-    for (let i = 0; i < LIMBS; i++) {
-      const t = i / (LIMBS - 1);
-      // -38° to +12°: above horizontal at the top of the crown, drooping at
-      // the trailing edge. This spread is what makes the flag shape.
-      const ang = (-38 + t * 50) * Math.PI / 180;
+    // ---- primary branches: radiating across, not streaming off ------------
+    const BRANCH = 14;
+    for (let i = 0; i < BRANCH; i++) {
+      // Spread across the whole horizontal, both sides of the trunk. Biased
+      // downwind by sampling non-uniformly rather than by cutting the
+      // windward side off, which is what made the old one a flag.
+      const u = i / (BRANCH - 1);
+      const biased = Math.pow(u, 0.82);
+      const deg = -168 + biased * 156;
+      const ang = deg * Math.PI / 180;
 
-      // Limbs leave from the top three trunk segments, and the mapping is
-      // deliberately not monotonic: neighbouring limbs start at different
-      // heights so they interleave. Ordered origins left a clean wedge of
-      // empty sky through the middle of the crown, which is the one thing a
-      // real canopy never has.
-      const from = trunkIdx[TRUNK - 1 - (i % 4)];
-      // Longest through the middle of the fan, short at both edges — the
-      // leading edge is wind-stripped, the trailing edge has run out of tree.
-      const limbLen = treeW * (0.20 + envelope(0.12 + t * 0.80) * 0.30);
+      // Reach out to the envelope in this direction, so the crown's outline
+      // is the envelope and every branch ends on it.
+      const ex = Math.cos(ang), ey = Math.sin(ang);
+      let reach = 1 / Math.sqrt((ex * ex) / (cw * cw) + (ey * ey) / (ch * ch));
+      // Every branch ending exactly on the envelope draws an ellipse, which is
+      // what the first pass did — a smooth bun. Uneven branches are what make
+      // a crown lobe, so the reach varies and neighbouring branches differ.
+      reach *= 0.74 + rnd() * 0.42;
 
-      let node = add(from, ang, limbLen * 0.38,
-                     Math.max(1.8, treeW * 0.024 * (1 - t * 0.3)),
-                     { stiff: 0.12 });
+      let node = crown;
       let abs = ang;
+      const STEPS = 3;
+      for (let sI = 0; sI < STEPS; sI++) {
+        // Gnarled: each step wanders, and the outer steps flatten toward
+        // horizontal because the crown's bottom edge is sheared flat.
+        abs += (rnd() - 0.5) * 0.34;
+        abs += (ang * 0.15 - abs * 0.15);
 
-      /* Where each limb settles once it is clear of the trunk.
+        const segLen = (reach / STEPS) * (1.15 - sI * 0.16) * (0.82 + rnd() * 0.36);
 
-         Limbs leave the trunk at a spread of angles, but they do not keep
-         going that way — every one of them turns downwind and runs close to
-         horizontal, which is why the crown of a divi-divi looks like stacked
-         shelves. Letting the angles persist made the whole canopy radiate
-         from one point like a shuttlecock, which is what it looked like.
-
-         The shelves fan by fourteen degrees across the crown, no more: enough
-         that they read as separate layers, little enough that they stay
-         parallel. */
-      const layerAng = (-9 + t * 14) * Math.PI / 180;
-
-      // Each limb runs downwind in four or five steps, carrying foliage the
-      // whole way. Fewer steps left the foliage bunched at the tips.
-      const steps = 4 + (rnd() < 0.55 ? 1 : 0);
-      for (let sI = 0; sI < steps; sI++) {
-        const u = (sI + 1) / steps;
-        // Pull hard toward the shelf angle rather than random-walking from
-        // wherever the limb left the trunk.
-        abs += (layerAng - abs) * 0.62 + (rnd() - 0.5) * 0.075 * DOWNWIND;
-
-        // Precompute the foliage fan here, not in draw(). The strokes must be
-        // identical every frame or the canopy boils.
-        // Many short strokes, not a few long ones. The first attempt used
-        // five or six at nearly the limb's own length and the result read as
-        // a fern — the density of a divi-divi crown comes from the sheer
-        // count of leaflets, so the count is where it has to come from here.
-        // Leaflet count follows the VIEWPORT, not the tree. Tying it to the
-        // tree's own size looked right and was not: the narrow layout draws a
-        // much bigger tree, so density went up exactly where the device is
-        // weakest and the frame rate halved. What a phone can afford depends
-        // on the phone.
-        const density = Math.min(1, Math.max(0.34, W / 1150));
-        const count = Math.round((11 + Math.floor(rnd() * 8)) * density);
-        const sprays = [];
-        const reach = envelope(Math.min(1, 0.14 + u * 0.78)) * treeW * 0.072;
-        for (let k = 0; k < count; k++) {
-          const f = count === 1 ? 0.5 : k / (count - 1);
-          sprays.push({
-            // Fanned along the wind and kept tight: the leaflets lie flat
-            // rather than standing out from the twig like a bottle brush.
-            off: (f - 0.5) * 0.30 + (rnd() - 0.5) * 0.07,
-            len: reach * (0.45 + rnd() * 0.75),
-            // Leaflets hang. Without this the fan reads as a feather duster.
-            droop: 0.12 + rnd() * 0.26,
-            // Width as one of three buckets, not a free value. draw() batches
-            // every stroke of a given width into a single path, and a path can
-            // only carry one lineWidth — so the quantisation here is what makes
-            // the batching possible. Three widths is plenty of variation to
-            // read as foliage.
-            wb: Math.floor(rnd() * 3),
-          });
+        // Foliage only on the outer two thirds — the inner crown of this tree
+        // is bare gnarled wood, clearly visible in the photograph.
+        let clumps = null, sprays = null;
+        if (sI > 0) {
+          clumps = [];
+          const n = Math.round((26 + rnd() * 18) * Math.min(1, Math.max(0.40, W / 1150)));
+          for (let k = 0; k < n; k++) {
+            clumps.push({
+              along: 0.08 + rnd() * 1.02,
+              perp: (rnd() - 0.5) * reach * 0.34,
+              // Small. A lobe is built out of many of these; at bubble size
+              // the union stops being foliage and becomes a cartoon cloud,
+              // which is what eight discs of 0.03 looked like.
+              // Wide variance on purpose. Discs of near-equal size read as
+              // broccoli; the range is what makes the edge look grown.
+              r: treeW * (0.006 + Math.pow(rnd(), 1.7) * 0.030),
+            });
+          }
+          // A few fine strokes so the perimeter is ragged rather than scalloped.
+          sprays = [];
+          const m = Math.round((9 + rnd() * 8) * Math.min(1, Math.max(0.40, W / 1150)));
+          for (let k = 0; k < m; k++) {
+            sprays.push({
+              off: (rnd() - 0.5) * 1.9,
+              len: treeW * (0.02 + rnd() * 0.045),
+              droop: 0.15 + rnd() * 0.3,
+              wb: Math.floor(rnd() * 3),
+            });
+          }
         }
 
-        node = add(node, abs,
-                   limbLen * (0.26 - sI * 0.030),
-                   Math.max(1.2, treeW * 0.010 * (1 - sI * 0.18)),
-                   { stiff: 0.17 + sI * 0.075, sprays });
+        node = add(node, abs, segLen,
+                   Math.max(1.4, treeW * 0.020 * (1 - sI * 0.30)),
+                   { stiff: 0.10 + sI * 0.085, clumps, sprays });
       }
     }
 
     segs.leafWidths = [
-      Math.max(0.7, treeW * 0.0034),
-      Math.max(0.9, treeW * 0.0048),
-      Math.max(1.1, treeW * 0.0064),
+      Math.max(0.7, treeW * 0.0032),
+      Math.max(0.9, treeW * 0.0046),
+      Math.max(1.1, treeW * 0.0062),
     ];
+    // The crown's bottom edge is sheared flat by the wind — the single most
+    // recognisable thing about this tree's silhouette after the lean. Clumps
+    // that would hang below it are lifted to sit on it.
+    segs.crownFloorAt = function (originY) {
+      return originY + ccy + ch * 0.92;
+    };
+    segs.crownMeta = { cw, ch, ccx, ccy };
     return segs;
   }
+
 
   // ---- wind -------------------------------------------------------------
   const pointer = { x: -9999, y: -9999, active: false };
@@ -336,37 +361,65 @@
       pts[i] = { x1: ox, y1: oy, x2, y2, angle: ang, seg: s };
     }
 
-    // Wood first, tapered. Everything with foliage on it is still a branch
-    // and still gets drawn — the previous version skipped those, which is
-    // part of why the crown floated free of the tree.
+    // Roots and wood. Roots first so the trunk sits over them, and the foot
+    // of the trunk is cut flat — a round cap on the widest segment of all
+    // domes it into a golf club.
     ctx.lineJoin = "round";
     ctx.strokeStyle = TREE;
-    for (let i = 0; i < pts.length; i++) {
-      const p = pts[i];
-      // A round cap on the widest segment of all domes the foot of the trunk.
-      // Cut it flat; every other segment wants the round cap so the joins
-      // between them disappear.
-      ctx.lineCap = p.seg.depth === 0 ? "butt" : "round";
-      ctx.beginPath();
-      ctx.lineWidth = p.seg.width;
-      ctx.moveTo(p.x1, p.y1);
-      ctx.lineTo(p.x2, p.y2);
-      ctx.stroke();
+    for (let pass = 0; pass < 2; pass++) {
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
+        if ((pass === 0) !== p.seg.root) continue;
+        ctx.lineCap = (p.seg.depth === 0 && !p.seg.root) ? "butt" : "round";
+        ctx.beginPath();
+        ctx.lineWidth = p.seg.width;
+        ctx.moveTo(p.x1, p.y1);
+        ctx.lineTo(p.x2, p.y2);
+        ctx.stroke();
+      }
     }
     ctx.lineCap = "round";
 
-    /* Foliage, as fans of fine strokes.
+    /* Foliage as overlapping discs.
 
-       The crown of a divi-divi is thousands of small leaflets lying flat in
-       layers, so its edge is combed and feathery. Filled shapes cannot do that
-       at any size — they read as smudges, which is exactly how the ellipse
-       version looked. Strokes can.
+       The leaflets of a divi-divi are tiny, but they gather into dense lobes
+       with real gaps of sky between them — so the crown is a lumpy mass with a
+       ragged edge, not a feather and not a smooth blob. Many small overlapping
+       circles give exactly that: their union has an edge nobody drew, which is
+       what makes it read as foliage rather than as a shape.
 
-       They are batched into three paths, one per width bucket. The first
-       version gave each stroke its own beginPath/stroke pair and measured 8
-       fps on a phone-sized viewport under 4x CPU throttling — the per-call
-       overhead, not the drawing, was the whole cost. Same pixels, three
-       stroke calls. */
+       Everything goes into ONE path and gets a single fill. Filling per circle
+       measured 8 fps on a throttled phone; the union is identical because they
+       all share a colour and overlap. */
+    const floorY = seedTree.crownFloorAt(seedTree[0].y);
+    ctx.fillStyle = TREE;
+    ctx.beginPath();
+    for (let i = 0; i < pts.length; i++) {
+      const p = pts[i];
+      const clumps = p.seg.clumps;
+      if (!clumps) continue;
+      const dx = p.x2 - p.x1, dy = p.y2 - p.y1;
+      const nx = -dy, ny = dx;                     // perpendicular, unnormalised
+      const nl = Math.hypot(nx, ny) || 1;
+
+      for (let k = 0; k < clumps.length; k++) {
+        const c = clumps[k];
+        const cx = p.x1 + dx * c.along + (nx / nl) * c.perp;
+        let cy = p.y1 + dy * c.along + (ny / nl) * c.perp;
+        // The crown's underside is sheared flat by the wind. Anything hanging
+        // below that line is lifted onto it rather than dangling — that flat
+        // bottom edge is the most recognisable thing about the silhouette
+        // after the lean itself.
+        if (cy > floorY) cy = floorY - (cy - floorY) * 0.18;
+        ctx.moveTo(cx + c.r, cy);
+        ctx.arc(cx, cy, c.r, 0, Math.PI * 2);
+      }
+    }
+    ctx.fill();
+
+    // Fine strokes at the perimeter, so the edge frays instead of scalloping.
+    // Batched into three paths by width; a path carries one lineWidth, which
+    // is why the widths were quantised into buckets at build time.
     const widths = seedTree.leafWidths;
     for (let b = 0; b < widths.length; b++) {
       ctx.beginPath();
@@ -374,14 +427,11 @@
         const p = pts[i];
         const sprays = p.seg.sprays;
         if (!sprays) continue;
-
         for (let k = 0; k < sprays.length; k++) {
           const sp = sprays[k];
           if (sp.wb !== b) continue;
           const a = p.angle + sp.off;
           const ca = Math.cos(a), sa = Math.sin(a);
-          // The tip falls away from the line of the spray, so each stroke is a
-          // shallow hanging curve rather than a spoke.
           ctx.moveTo(p.x2, p.y2);
           ctx.quadraticCurveTo(
             p.x2 + ca * sp.len * 0.55, p.y2 + sa * sp.len * 0.55,
