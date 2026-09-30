@@ -6,6 +6,7 @@ thing we sell.
 
 ```
 index.html          the whole site
+office/             Victor's private office page (built from the private ai-hq repo)
 brand/              the design system — tokens, theme book, contrast check
   tokens.css        every project starts here
   index.html        the theme book
@@ -72,6 +73,13 @@ operating machinery — the prospect list, pricing, cold-email templates, memory
 lives in the private repo under `system/studio/` and not here. The test for
 adding a file is not "is this secret" but "would I be happy for this to answer a
 GET request on our domain".
+
+**`office/` passes that test because it is only code.** It is the agency's office
+page, built by `scripts/build-site-office.py` in the private ai-hq repo; edit it
+there, not here. It shows nothing until someone pastes a GitHub key that can read
+the bots' private repo. The page then reads the reports straight from GitHub's API,
+and the key stays in that browser. No report, key or client name is committed
+here: the demo at `office/?demo` uses made-up clients.
 
 **`.nojekyll` is deliberate.** Without it Pages runs the files through Jekyll,
 which silently skips anything whose name starts with an underscore. Nothing here

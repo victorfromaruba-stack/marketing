@@ -1,0 +1,402 @@
+{
+  "demo": true,
+  "generated": "__NOW__",
+  "source": {
+    "repo": "demo",
+    "commit": "demo",
+    "commit_time": "__NOW__"
+  },
+  "bots": [
+    {
+      "id": "muddy",
+      "name": "Muddy",
+      "division": "chief",
+      "role": "Chief of staff",
+      "color": "#2FB36D",
+      "state": "working",
+      "task": "Putting together Friday's client pack",
+      "since": "-00:40",
+      "last_done": "Morning summary for Victor",
+      "last_done_at": "-03:10",
+      "note": "Shorter summaries get answered faster: kept to 5 lines."
+    },
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "division": "strategy",
+      "role": "Strategy & Research lead",
+      "color": "#1FB5A8",
+      "state": "working",
+      "task": "Client proposal and deck (due Tue)",
+      "since": "-01:20",
+      "last_done": "Client research file",
+      "last_done_at": "-20:00",
+      "note": "Lead with the money leak, not the software."
+    },
+    {
+      "id": "spark",
+      "name": "Spark",
+      "division": "strategy",
+      "role": "Idea finder",
+      "color": "#F04BA0",
+      "state": "lunch",
+      "task": "",
+      "since": "-00:30",
+      "last_done": "Five screened pop-up café ideas",
+      "last_done_at": "-05:00",
+      "note": ""
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "division": "strategy",
+      "role": "Market sizing",
+      "color": "#22C4B0",
+      "state": "studying",
+      "task": "Pricing research for the client pitch",
+      "since": "-00:25",
+      "last_done": "Competitor snapshot",
+      "last_done_at": "-22:00",
+      "note": "",
+      "learned": "Public price lists beat guesses",
+      "learned_at": "-01:10"
+    },
+    {
+      "id": "wire",
+      "name": "Wire",
+      "division": "strategy",
+      "role": "Morning news briefing",
+      "color": "#F59E2A",
+      "state": "off",
+      "task": "",
+      "since": "-06:00",
+      "last_done": "Weekday briefing",
+      "last_done_at": "-06:00",
+      "note": ""
+    },
+    {
+      "id": "hype",
+      "name": "Hype",
+      "division": "marketing",
+      "role": "Marketing lead",
+      "color": "#8B5CF6",
+      "state": "meeting",
+      "task": "Pop-up café positioning with Atlas",
+      "since": "-00:15",
+      "last_done": "Leave-behind v2",
+      "last_done_at": "-26:00",
+      "note": ""
+    },
+    {
+      "id": "buzz",
+      "name": "Buzz",
+      "division": "marketing",
+      "role": "Social content",
+      "color": "#2F7BF6",
+      "state": "working",
+      "task": "Two weeks of post drafts",
+      "since": "-00:50",
+      "last_done": "Content calendar",
+      "last_done_at": "-28:00",
+      "note": ""
+    },
+    {
+      "id": "rank",
+      "name": "Rank",
+      "division": "marketing",
+      "role": "SEO",
+      "color": "#F5932A",
+      "state": "waiting",
+      "task": "Needs a yes: target 'web design Aruba'?",
+      "since": "-02:00",
+      "last_done": "Starter keyword list",
+      "last_done_at": "-27:00",
+      "note": "One keyword at a time, so the test stays clean."
+    },
+    {
+      "id": "reel",
+      "name": "Reel",
+      "division": "marketing",
+      "role": "YouTube",
+      "color": "#14B8A6",
+      "state": "lunch",
+      "task": "",
+      "since": "-01:00",
+      "last_done": "Three channel concepts",
+      "last_done_at": "-30:00",
+      "note": ""
+    },
+    {
+      "id": "forge",
+      "name": "Forge",
+      "division": "product",
+      "role": "Product lead",
+      "color": "#A0703C",
+      "state": "working",
+      "task": "Client demo: booking tracker",
+      "since": "-01:05",
+      "last_done": "client-demo.html, 5 screens",
+      "last_done_at": "-19:00",
+      "note": "Label every made-up number as an example."
+    },
+    {
+      "id": "pixel",
+      "name": "Pixel",
+      "division": "product",
+      "role": "Design",
+      "color": "#D946EF",
+      "state": "working",
+      "task": "Office view visuals",
+      "since": "-00:35",
+      "last_done": "One-page style guide",
+      "last_done_at": "-24:00",
+      "note": ""
+    },
+    {
+      "id": "closer",
+      "name": "Closer",
+      "division": "sales",
+      "role": "Sales lead",
+      "color": "#8A5A3C",
+      "state": "stuck",
+      "task": "Pipeline tracker: needs the lead-form fields from Forge",
+      "since": "-04:00",
+      "last_done": "Ideal customer profile",
+      "last_done_at": "-29:00",
+      "note": "Asked Forge twice; no answer yet."
+    },
+    {
+      "id": "ledger",
+      "name": "Ledger",
+      "division": "finance",
+      "role": "Finance & Legal lead",
+      "color": "#EF4444",
+      "state": "studying",
+      "task": "Aruba invoicing rules (BBO)",
+      "since": "-00:20",
+      "last_done": "Books for September",
+      "last_done_at": "-31:00",
+      "note": "",
+      "learned": "BBO is not shown as a line on invoices",
+      "learned_at": "-20:00"
+    },
+    {
+      "id": "clerk",
+      "name": "Clerk",
+      "division": "finance",
+      "role": "Paperwork",
+      "color": "#9CA3AF",
+      "state": "lunch",
+      "task": "",
+      "since": "-02:00",
+      "last_done": "Formation checklist",
+      "last_done_at": "-30:00",
+      "note": ""
+    },
+    {
+      "id": "ticker",
+      "name": "Ticker",
+      "division": "finance",
+      "role": "Markets research (no trading)",
+      "color": "#EC4899",
+      "state": "working",
+      "task": "Weekday market brief",
+      "since": "-00:10",
+      "last_done": "Watchlist of 7",
+      "last_done_at": "-23:00",
+      "note": ""
+    },
+    {
+      "id": "eggbot",
+      "name": "dr eggbot",
+      "division": "chief",
+      "role": "Helper",
+      "color": "#E11D48",
+      "state": "off",
+      "task": "",
+      "since": "-10:00",
+      "last_done": "Cleanup request",
+      "last_done_at": "-40:00",
+      "note": ""
+    }
+  ],
+  "divisions": [
+    {
+      "id": "chief",
+      "name": "Chief of staff",
+      "head": "muddy"
+    },
+    {
+      "id": "strategy",
+      "name": "Strategy & Research",
+      "head": "atlas"
+    },
+    {
+      "id": "marketing",
+      "name": "Marketing",
+      "head": "hype"
+    },
+    {
+      "id": "product",
+      "name": "Product",
+      "head": "forge"
+    },
+    {
+      "id": "sales",
+      "name": "Sales",
+      "head": "closer"
+    },
+    {
+      "id": "finance",
+      "name": "Finance & Legal",
+      "head": "ledger"
+    }
+  ],
+  "board": {
+    "waiting": [
+      {
+        "id": "D-14",
+        "question": "Rank wants to target 'web design Aruba' first. Go?",
+        "from": "rank",
+        "asked_at": "-02:00",
+        "options": [
+          "Yes",
+          "No, pick another"
+        ]
+      },
+      {
+        "id": "D-15",
+        "question": "Pop-up café: shortlist of 3 is ready. Pick one this week?",
+        "from": "atlas",
+        "asked_at": "-05:00",
+        "options": [
+          "Show me",
+          "Later"
+        ]
+      }
+    ],
+    "shipped": [
+      {
+        "what": "Client research file (2 days early)",
+        "by": "scout",
+        "at": "-20:00"
+      },
+      {
+        "what": "client-demo.html: 5 screens, offline copy",
+        "by": "forge",
+        "at": "-19:00"
+      },
+      {
+        "what": "Books for September",
+        "by": "ledger",
+        "at": "-31:00"
+      },
+      {
+        "what": "Five screened pop-up café ideas",
+        "by": "spark",
+        "at": "-05:00"
+      }
+    ],
+    "in_progress": [
+      {
+        "what": "Client proposal and deck",
+        "owner": "atlas",
+        "due": "+72:00"
+      },
+      {
+        "what": "Booking tracker for the client demo",
+        "owner": "forge",
+        "due": "+48:00"
+      },
+      {
+        "what": "Two weeks of social posts",
+        "owner": "buzz",
+        "due": "+96:00"
+      }
+    ],
+    "stuck": [
+      {
+        "what": "Pipeline tracker",
+        "owner": "closer",
+        "why": "Needs the lead-form fields",
+        "needs": "forge",
+        "since": "-04:00"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "pitch",
+      "name": "Client pitch",
+      "status": "on track",
+      "owner": "atlas",
+      "next": "Practice run Thursday",
+      "due": "+80:00"
+    },
+    {
+      "id": "pop-up-cafe",
+      "name": "Pop-up café",
+      "status": "waiting on Victor",
+      "owner": "atlas",
+      "next": "Pick one of 3 ideas",
+      "due": ""
+    }
+  ],
+  "ideas": [
+    {
+      "title": "WhatsApp booking bot as a monthly service for small shops",
+      "by": "forge",
+      "score": 8.5,
+      "status": "shortlisted"
+    },
+    {
+      "title": "Tourist-season menu tests for the pop-up café",
+      "by": "spark",
+      "score": 7.0,
+      "status": "new"
+    }
+  ],
+  "study": [
+    {
+      "bot": "atlas",
+      "at": "-22:00",
+      "learned": "Proposals with one clear number up top win more replies."
+    },
+    {
+      "bot": "forge",
+      "at": "-21:00",
+      "learned": "An offline demo file saves a meeting when the Wi-Fi fails."
+    },
+    {
+      "bot": "scout",
+      "at": "-00:25",
+      "learned": "Public price lists beat guesses."
+    }
+  ],
+  "watchlist": {
+    "as_of": "-01:00",
+    "note": "Research only. Nothing is bought or sold without Victor.",
+    "items": [
+      {
+        "symbol": "MU",
+        "name": "Micron",
+        "note": "Earnings Sep 30"
+      },
+      {
+        "symbol": "NVDA",
+        "name": "Nvidia",
+        "note": "AI chips"
+      },
+      {
+        "symbol": "BTC",
+        "name": "Bitcoin",
+        "note": "Rate-sensitive"
+      }
+    ]
+  },
+  "inbox": {
+    "sent_today": 0,
+    "cap": 20
+  },
+  "_note": "Made-up data for the public website copy (arubawebstudio.com/office/?demo). No real clients, prices or plans: keep it that way."
+}
