@@ -98,7 +98,7 @@
   --display-accent:#896633;           /* large text only, 3.7:1 */
   --bezel:#0B1620;
   --shade:11 47 72;                   /* shadow tint, navy */
-  /* canvas, read by wind.js */
+  /* hero tree + sky */
   --tree:#0B2F48; --sky-top:#F6F2E8; --sky-low:#E6DFCC; --sun-rgb:250,186,94; --sun-a:1.25;
 
   --gut:clamp(20px,4.4vw,56px);
@@ -113,7 +113,7 @@
     --display-accent:#FABA5E;
     --bezel:#02090E;
     --shade:0 0 0;
-    --tree:#010810; --sky-top:#071A26; --sky-low:#123044; --sun-rgb:250,186,94; --sun-a:1;
+    --tree:#F3EFE3; --sky-top:#071A26; --sky-low:#123044; --sun-rgb:250,186,94; --sun-a:1;
   }
 }
 
@@ -161,9 +161,14 @@ p{text-wrap:pretty;margin:0}
 @media (max-width:380px){.mark span{font-size:.92rem}.nav .btn{padding:0 12px}}
 
 /* ---------------- hero ---------------- */
-.hero{position:relative;background:linear-gradient(var(--sky-top),var(--sky-low));overflow:hidden}
-#wind{display:block;width:100%;height:46svh;min-height:300px}
-.hero-in{position:relative;padding:8px var(--gut) 56px;background:linear-gradient(var(--sky-low),var(--bg))}
+.hero{position:relative;background:linear-gradient(var(--sky-top),var(--sky-low) 55%,var(--bg));overflow:hidden}
+/* The hero tree IS the logo mark (brand/logo/logo-mark-small.svg), only larger (Victor 25 Oct). */
+.hero-art{position:relative;display:flex;justify-content:center;align-items:flex-end;height:46svh;min-height:300px;padding:28px var(--gut) 0;
+  background:radial-gradient(ellipse 60% 55% at 50% 48%,rgba(var(--sun-rgb),.38),transparent 70%)}
+.hero-tree{width:min(92%,640px);height:100%;color:var(--tree);transform-origin:30% 100%;animation:sway 7s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(0deg)}to{transform:rotate(-1.4deg) skewX(-1deg)}}
+@media (prefers-reduced-motion:reduce){.hero-tree{animation:none}}
+.hero-in{position:relative;padding:8px var(--gut) 56px}
 .hero h1{font-size:clamp(3rem,13.4vw,8.4rem);line-height:.92;letter-spacing:-.028em;max-width:12ch}
 .hero h1 em{display:block;font-style:italic;color:var(--display-accent);padding-bottom:.06em}
 .hero p{margin-top:22px;max-width:36ch;font-size:clamp(1.0625rem,1.5vw,1.25rem);color:var(--fg-muted)}
@@ -171,7 +176,8 @@ p{text-wrap:pretty;margin:0}
 .hero .acts .link{font-size:1rem;padding:12px 0}
 @media (min-width:860px){
   .hero{min-height:min(100svh,980px);display:flex;align-items:flex-end}
-  #wind{position:absolute;inset:0;height:100%}
+  .hero-art{position:absolute;inset:0;height:100%;padding:13vh 5vw 30vh 54vw;align-items:center;background:radial-gradient(ellipse 34% 46% at 76% 40%,rgba(var(--sun-rgb),.38),transparent 70%)}
+  .hero-tree{width:100%;height:100%}
   .hero-in{width:100%;max-width:1320px;margin-inline:auto;padding:120px var(--gut) clamp(56px,9vh,104px);background:none}
 }
 
@@ -321,7 +327,7 @@ footer .end{margin-left:auto}
 
 <main id="main">
 <div class="hero">
-  <canvas id="wind" aria-hidden="true"></canvas>
+  <div class="hero-art" aria-hidden="true"><svg class="hero-tree" viewBox="13 41 214 158" focusable="false"><g transform="translate(120,120) scale(0.37591) translate(-532.0,-511.5)"><path d="M 286 381 L 282 390 L 325 390 L 326 395 L 311 416 L 271 423 L 258 436 L 307 437 L 310 463 L 322 490 L 415 634 L 433 677 L 433 695 L 354 695 L 354 710 L 606 710 L 606 695 L 542 695 L 393 508 L 387 483 L 395 473 L 435 472 L 480 488 L 511 509 L 514 518 L 563 542 L 548 561 L 756 561 L 741 545 L 700 541 L 678 529 L 633 527 L 593 538 L 558 525 L 557 518 L 806 518 L 794 505 L 742 499 L 732 487 L 719 483 L 720 478 L 775 478 L 754 462 L 667 458 L 658 445 L 549 448 L 539 442 L 539 436 L 738 436 L 721 422 L 649 415 L 640 404 L 610 395 L 611 390 L 661 390 L 648 377 L 601 372 L 585 362 L 548 354 L 549 349 L 613 349 L 593 334 L 524 330 L 519 317 L 508 313 L 415 316 L 374 325 L 334 343 L 330 349 L 364 350 L 359 361 L 342 372 Z M 504 479 L 568 478 L 588 492 L 558 494 L 530 504 Z M 415 444 L 425 436 L 469 436 L 508 445 L 520 455 L 482 469 L 447 454 L 416 449 Z M 336 437 L 377 436 L 378 441 L 352 470 Z M 462 402 L 468 390 L 505 391 L 496 403 Z M 344 414 L 362 390 L 440 391 L 431 403 L 372 403 L 363 415 Z" fill="currentColor"/></g></svg></div>
   <div class="hero-in">
     <h1>Shaped by the wind. <em>Still standing.</em></h1>
     <p>Websites, apps and AR for Aruban businesses, built in Oranjestad. Four of them are live below.</p>
@@ -499,7 +505,6 @@ footer .end{margin-left:auto}
   </div>
 </footer>
 
-<script src="wind.js" defer></script>
 <script>
 (function () {
   "use strict";
