@@ -3,486 +3,571 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aruba Web Studio — websites, apps and APIs, built in Aruba</title>
-<meta name="description" content="A studio in Aruba building websites, mobile apps and APIs. Recent work: an augmented-reality gallery app shipped to the App Store, Google Play and the web from one codebase.">
+<title>Aruba Web Studio | Websites, apps and AR built in Oranjestad</title>
+<meta name="description" content="Websites, mobile apps, APIs and AR for Aruban businesses, built in Oranjestad. Six live builds you can open, published prices, and we build yours before you pay.">
 <link rel="canonical" href="https://arubawebstudio.com/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F3EFE3">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#071A26">
 
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Aruba Web Studio">
 <meta property="og:url" content="https://arubawebstudio.com/">
-<meta property="og:title" content="Aruba Web Studio">
-<meta property="og:description" content="Websites, apps and APIs. Built in Aruba, shipped everywhere.">
+<meta property="og:title" content="Aruba Web Studio: websites, apps and AR from Oranjestad">
+<meta property="og:description" content="Six live builds you can open, published prices, and we build yours before you pay.">
 <meta property="og:image" content="https://arubawebstudio.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Aruba Web Studio divi-divi tree mark">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://arubawebstudio.com/og-image.png">
 
-<!-- SVG first: a browser that understands it uses it at every size, which is
-     why /brand/logo/favicon.svg is the small-size design (tree only, no ring)
-     rather than the full mark scaled down. The .ico stays for the crawlers and
-     older browsers that fetch it from the root by convention. -->
-<link rel="icon" type="image/svg+xml" href="/brand/logo/favicon.svg">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="/icon-small-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#071A26">
+<link rel="icon" type="image/svg+xml" href="brand/logo/favicon.svg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-small-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<link rel="manifest" href="site.webmanifest">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;1,300&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="preload" href="fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/bodoni-moda-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Aruba Web Studio",
-  "url": "https://arubawebstudio.com",
-  "email": "info@arubawebstudio.com",
-  "areaServed": "Aruba",
-  "address": { "@type": "PostalAddress", "addressLocality": "Oranjestad", "addressCountry": "AW" },
-  "description": "Websites, mobile apps and APIs for businesses in Aruba and the Caribbean."
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://arubawebstudio.com/#studio",
+      "name": "Aruba Web Studio",
+      "url": "https://arubawebstudio.com/",
+      "email": "info@arubawebstudio.com",
+      "logo": "https://arubawebstudio.com/icon-512.png",
+      "image": "https://arubawebstudio.com/og-image.png",
+      "description": "A studio in Oranjestad building websites, mobile apps, APIs and augmented reality for businesses in Aruba.",
+      "address": { "@type": "PostalAddress", "addressLocality": "Oranjestad", "addressCountry": "AW" },
+      "areaServed": { "@type": "Country", "name": "Aruba" },
+      "knowsLanguage": ["pap", "nl", "es", "en"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "What we build",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Websites", "description": "Four to six pages, mobile first, a working contact form and your Google listing. About one week." },
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 800, "priceCurrency": "USD" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile apps", "description": "Built once for iOS and Android, sharing code with your website. Four to eight weeks." },
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 4500, "priceCurrency": "USD" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "APIs", "description": "The layer that connects a booking system, a POS and a website. Two to four weeks." },
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": 1200, "priceCurrency": "USD" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Augmented reality", "description": "AR that recognises real objects through a phone camera, and 3D in the browser. Quoted per project." } }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://arubawebstudio.com/#website",
+      "url": "https://arubawebstudio.com/",
+      "name": "Aruba Web Studio",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://arubawebstudio.com/#studio" }
+    }
+  ]
 }
 </script>
 
 <style>
-  /* -------------------------------------------------------------------
-     Night, wind, and warm rooms. Same logo palette, grounded in the navy
-     rather than the cream — this is an evening, not a document.
-     ------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------
+   Day and night, from brand/tokens.css. The page follows the visitor's
+   system theme: a phone that switches to dark at sunset gets the evening
+   version, the same island by daylight otherwise. One accent per theme.
+   ---------------------------------------------------------------------- */
+@font-face{font-family:"Bodoni Moda";src:url(fonts/bodoni-moda.woff2) format("woff2");font-weight:400 500;font-style:normal;font-display:swap}
+@font-face{font-family:"Bodoni Moda";src:url(fonts/bodoni-moda-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:Archivo;src:url(fonts/archivo.woff2) format("woff2");font-weight:400 500;font-style:normal;font-display:swap}
+/* Metric-matched fallbacks, so the swap does not shove the hero around. */
+@font-face{font-family:"Bodoni fallback";src:local("Georgia"),local("Times New Roman");size-adjust:96%;ascent-override:92%;descent-override:24%}
+@font-face{font-family:"Archivo fallback";src:local("Arial"),local("Helvetica");size-adjust:101%}
+
+:root{
+  --display:"Bodoni Moda","Bodoni fallback",Georgia,serif;
+  --text:Archivo,"Archivo fallback",-apple-system,system-ui,sans-serif;
+
+  /* day */
+  --bg:#F3EFE3; --surface:#FBF9F3; --surface-2:#E9E4D6;
+  --fg:#0B2F48; --fg-muted:#3E596A; --fg-subtle:#506876;
+  --rule:#D7D2C4; --accent:#1B6CA8; --accent-ink:#FBF9F3;
+  --display-accent:#896633;           /* large text only, 3.7:1 */
+  --bezel:#0B1620;
+  --shade:11 47 72;                   /* shadow tint, navy */
+  /* canvas, read by wind.js */
+  --tree:#0B2F48; --sky-top:#F6F2E8; --sky-low:#E6DFCC; --sun-rgb:250,186,94; --sun-a:1.25;
+
+  --gut:clamp(20px,4.4vw,56px);
+  --ease:cubic-bezier(.22,1,.36,1);
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme: dark){
   :root{
-    --night:#071A26;
-    --cream:#F3EFE3;
-    --cream-dim:#C3C9C9;
-    --cream-faint:#8B9AA3;
-    --amber:#FABA5E;
-    --rule:rgba(243,239,227,.14);
-    --measure:60ch;
+    --bg:#071A26; --surface:#0B2432; --surface-2:#103042;
+    --fg:#F3EFE3; --fg-muted:#C3C9C9; --fg-subtle:#93A2AA;
+    --rule:rgba(243,239,227,.15); --accent:#FABA5E; --accent-ink:#071A26;
+    --display-accent:#FABA5E;
+    --bezel:#02090E;
+    --shade:0 0 0;
+    --tree:#010810; --sky-top:#071A26; --sky-low:#123044; --sun-rgb:250,186,94; --sun-a:1;
   }
+}
 
-  *,*::before,*::after{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;background:var(--night);color:var(--cream);
-    font:300 17px/1.65 Archivo,-apple-system,system-ui,sans-serif;
-    -webkit-font-smoothing:antialiased;overflow-x:hidden;
-  }
-  img{max-width:100%;height:auto;display:block}
-  a{color:inherit;text-decoration:none}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:4px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px;background:var(--bg)}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1.0625rem/1.6 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,video{display:block;max-width:100%;height:auto}
+figure{margin:0}
+a{color:inherit}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.02em;text-wrap:balance;margin:0}
+p{text-wrap:pretty;margin:0}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--fg);color:var(--bg);padding:12px 16px;text-decoration:none}
+.skip:focus{top:12px}
+.wrap{padding-inline:var(--gut);max-width:1320px;margin-inline:auto}
 
-  .tag{
-    font:500 11px/1 "IBM Plex Mono",monospace;letter-spacing:.24em;text-transform:uppercase;
-    color:var(--amber);
-  }
-  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+/* buttons: one primary shape, near-square like the brand */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:2px;
+  font:500 1rem/1 var(--text);text-decoration:none;white-space:nowrap;cursor:pointer;border:1px solid transparent;
+  transition:transform .12s var(--ease),background-color .16s var(--ease),border-color .16s var(--ease),color .16s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-quiet{border-color:var(--rule);color:var(--fg);background:transparent}
+@media (hover:hover){
+  .btn-primary:hover{background:color-mix(in oklab,var(--accent) 86%,var(--fg))}
+  .btn-quiet:hover{border-color:var(--fg)}
+}
+.link{text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px;text-decoration-color:color-mix(in oklab,currentColor 45%,transparent)}
+@media (hover:hover){.link:hover{text-decoration-color:currentColor}}
 
-  /* ================= nav ================= */
-  .nav{
-    position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;
-    padding:22px clamp(20px,4vw,54px);
-  }
-  /* The nav floats over full-bleed photography. Without a scrim the wordmark
-     lands on whatever happens to be bright in the image below it. */
-  .nav::before{
-    content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-    background:linear-gradient(to bottom,rgba(7,26,38,.78),rgba(7,26,38,0));
-  }
-  .nav .mark{display:flex;align-items:center;gap:11px;font:500 15px/1 Archivo,sans-serif}
-  .nav .mark img{width:30px;height:30px}
-  .nav .spacer{flex:1}
-  .nav .talk{
-    font:500 12px/1 "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;
-    border:1px solid var(--rule);padding:11px 18px;border-radius:100px;
-    transition:border-color .25s,color .25s;
-  }
-  .nav .talk:hover{border-color:var(--amber);color:var(--amber)}
+/* ---------------- nav ---------------- */
+.nav{position:fixed;inset:0 0 auto;z-index:50;height:68px;display:flex;align-items:center;gap:28px;padding-inline:max(var(--gut),calc((100vw - 1320px)/2 + var(--gut)))}
+.nav::before{content:"";position:absolute;inset:0 0 -18px;z-index:-1;pointer-events:none;
+  background:linear-gradient(to bottom,color-mix(in oklab,var(--bg) 94%,transparent) 55%,color-mix(in oklab,var(--bg) 0%,transparent))}
+.mark{display:flex;align-items:center;gap:10px;font:500 1rem/1 var(--text);text-decoration:none;min-height:44px;white-space:nowrap}
+.mark svg{width:30px;height:30px;flex:none}
+.nav nav{margin-left:auto}
+.nav ul{display:none;list-style:none;margin:0;padding:0;gap:26px}
+.nav ul a{text-decoration:none;font-size:.95rem;color:var(--fg-muted);padding:12px 0}
+@media (hover:hover){.nav ul a:hover{color:var(--fg)}}
+.nav .btn{margin-left:auto;min-height:42px;padding:0 16px;font-size:.95rem}
+@media (min-width:860px){.nav ul{display:flex}.nav .btn{margin-left:0}}
+@media (max-width:380px){.mark span{font-size:.92rem}.nav .btn{padding:0 12px}}
 
-  /* ================= hero ================= */
-  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
-  #wind{position:absolute;inset:0;width:100%;height:100%;z-index:1}
-  .hero::after{
-    /* Ground the tree so it does not float. */
-    content:"";position:absolute;left:0;right:0;bottom:0;height:40%;z-index:2;
-    background:linear-gradient(to top,var(--night) 14%,rgba(7,26,38,0) 100%);
-    pointer-events:none;
-  }
-  .hero-in{position:relative;z-index:3;width:100%;padding:0 clamp(20px,4vw,54px) clamp(46px,7vh,86px)}
-  .hero h1{
-    margin:0;font-family:"Bodoni Moda",Georgia,serif;font-weight:400;
-    font-size:clamp(3rem,10vw,9.6rem);line-height:.88;letter-spacing:-.025em;max-width:14ch;
-  }
-  .hero h1 em{font-style:italic;color:var(--amber)}
-  .hero .under{
-    display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,58px);align-items:flex-end;
-    margin-top:clamp(24px,4vh,44px);padding-top:24px;border-top:1px solid var(--rule);
-  }
-  .hero .under p{margin:0;max-width:44ch;color:var(--cream-dim);font-size:clamp(15px,1.5vw,17.5px)}
-  .hero .under .where{margin-left:auto}
+/* ---------------- hero ---------------- */
+.hero{position:relative;background:linear-gradient(var(--sky-top),var(--sky-low));overflow:hidden}
+#wind{display:block;width:100%;height:46svh;min-height:300px}
+.hero-in{position:relative;padding:8px var(--gut) 56px;background:linear-gradient(var(--sky-low),var(--bg))}
+.hero h1{font-size:clamp(3rem,13.4vw,8.4rem);line-height:.92;letter-spacing:-.028em;max-width:12ch}
+.hero h1 em{display:block;font-style:italic;color:var(--display-accent);padding-bottom:.06em}
+.hero p{margin-top:22px;max-width:36ch;font-size:clamp(1.0625rem,1.5vw,1.25rem);color:var(--fg-muted)}
+.hero .acts{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
+.hero .acts .link{font-size:1rem;padding:12px 0}
+@media (min-width:860px){
+  .hero{min-height:min(100svh,980px);display:flex;align-items:flex-end}
+  #wind{position:absolute;inset:0;height:100%}
+  .hero-in{width:100%;max-width:1320px;margin-inline:auto;padding:120px var(--gut) clamp(56px,9vh,104px);background:none}
+}
 
-  .scroll-hint{
-    position:absolute;right:clamp(20px,4vw,54px);top:50%;z-index:3;
-    writing-mode:vertical-rl;font:500 10.5px/1 "IBM Plex Mono",monospace;
-    letter-spacing:.28em;text-transform:uppercase;color:var(--cream-faint);
-  }
-  @media(max-width:720px){.scroll-hint{display:none}}
+/* ---------------- section rhythm ---------------- */
+section{padding-block:clamp(72px,11vw,148px)}
+.h2{font-size:clamp(2.1rem,5.2vw,4.2rem);line-height:1.02;max-width:16ch}
+.sub{margin-top:18px;color:var(--fg-muted);max-width:52ch;font-size:clamp(1.0625rem,1.4vw,1.2rem)}
 
-  /* ================= sections ================= */
-  section{padding:clamp(84px,13vh,170px) clamp(20px,4vw,54px)}
-  .lead{
-    font-family:"Bodoni Moda",Georgia,serif;font-weight:400;
-    font-size:clamp(1.7rem,3.6vw,3.15rem);line-height:1.12;letter-spacing:-.015em;
-    max-width:19ch;margin:0;
-  }
-  .lead .q{color:var(--amber);font-style:italic}
+/* ---------------- work rail (the lean) ---------------- */
+#work{padding-bottom:clamp(56px,8vw,104px)}
+.rail-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
+.rail-btns{display:none;gap:10px}
+.rail-btns button{width:48px;height:48px;border-radius:2px;border:1px solid var(--rule);background:transparent;color:var(--fg);cursor:pointer;
+  font:400 1.4rem/1 var(--display);display:grid;place-items:center;transition:border-color .16s var(--ease),opacity .16s}
+.rail-btns button:disabled{opacity:.35;cursor:default}
+@media (hover:hover){.rail-btns button:not(:disabled):hover{border-color:var(--fg)}}
+@media (min-width:860px){.rail-btns{display:flex}}
 
-  /* work — full bleed; the photography carries it */
-  .work{padding-inline:0}
-  .work .intro{padding:0 clamp(20px,4vw,54px);display:grid;gap:34px;margin-bottom:clamp(40px,6vh,72px)}
-  @media(min-width:900px){.work .intro{grid-template-columns:1.05fr .95fr;align-items:end}}
-  .work .intro .body{color:var(--cream-dim);max-width:var(--measure)}
-  .work .intro .body p{margin:0 0 15px}
-  .work .intro .body strong{color:var(--cream);font-weight:500}
-  .work .intro h3{
-    font-family:"Bodoni Moda",Georgia,serif;font-weight:400;
-    font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.03;margin:14px 0 0;letter-spacing:-.02em;
-  }
+.rail{list-style:none;margin:clamp(36px,5vw,56px) 0 0;padding:28px max(var(--gut),calc(50vw - 150px)) 12px;
+  display:grid;grid-auto-flow:column;grid-auto-columns:min(72vw,268px);gap:clamp(20px,3vw,40px);
+  overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.rail:focus-visible{outline-offset:-2px}
+@media (min-width:860px){.rail{padding-inline:max(var(--gut),calc((100vw - 1320px)/2 + var(--gut)));scroll-padding-inline:max(var(--gut),calc((100vw - 1320px)/2 + var(--gut)))}}
+.obj{scroll-snap-align:center}
+@media (min-width:860px){.obj{scroll-snap-align:start}}
 
-  .plate{position:relative;width:100%;overflow:hidden;margin:0}
-  .plate img{width:100%;object-fit:cover}
-  .plate.tall img{aspect-ratio:16/10}
-  .plate::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(to top,rgba(7,26,38,.84) 0%,rgba(7,26,38,.04) 48%);
-  }
-  .plate .cap{
-    position:absolute;left:clamp(20px,4vw,54px);bottom:clamp(20px,3vh,34px);z-index:2;
-    text-shadow:0 2px 22px rgba(0,0,0,.75);
-  }
-  .plate .cap h3{
-    font-family:"Bodoni Moda",Georgia,serif;font-weight:400;
-    font-size:clamp(1.4rem,3.2vw,2.7rem);line-height:1.06;margin:9px 0 0;letter-spacing:-.015em;
-  }
+.phone{display:block;margin:0;padding:7px;border-radius:38px;background:var(--bezel);aspect-ratio:390/844;
+  box-shadow:0 2px 4px rgb(var(--shade)/.10),0 18px 40px -12px rgb(var(--shade)/.32);transform-origin:50% 100%}
+.phone picture,.phone img{display:block;width:100%;height:100%;border-radius:31px;overflow:hidden;object-fit:cover;object-position:top}
+.obj .phone-link{display:block;border-radius:38px}
+.obj h3{margin-top:26px;font-size:1.65rem;line-height:1.08}
+.obj .kind{margin-top:6px;font-size:.95rem;color:var(--fg-subtle)}
+.obj .did{margin-top:12px;font-size:1rem;color:var(--fg-muted)}
+.obj .open{display:inline-block;margin-top:14px;padding:10px 0;font-weight:500;color:var(--fg)}
 
-  .strip{display:grid;gap:2px;margin-top:2px}
-  @media(min-width:760px){.strip{grid-template-columns:repeat(3,1fr)}}
-  .strip .plate img{aspect-ratio:3/4}
-  .strip .plate::after{background:linear-gradient(to top,rgba(7,26,38,.6),rgba(7,26,38,0) 54%)}
-  .strip .plate .cap{left:clamp(16px,2.2vw,26px);bottom:clamp(16px,2vh,26px)}
+/* The lean: each phone stands bent downwind, like the divi-divi, and
+   straightens as it reaches the middle of the rail. Scroll-driven, so the
+   visitor's own swipe is the wind. Off where unsupported or reduced. */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .obj .phone{animation:lean linear both;animation-timeline:view(inline);animation-range:cover}
+    @keyframes lean{
+      0%{transform:rotate(7deg) translateY(10px)}
+      38%,62%{transform:none}
+      100%{transform:rotate(5deg) translateY(8px)}
+    }
+  }
+}
 
-  .facts{padding:clamp(44px,6vh,72px) clamp(20px,4vw,54px) 0;display:grid;gap:30px}
-  @media(min-width:820px){.facts{grid-template-columns:repeat(4,1fr)}}
-  .facts .n{
-    font-family:"Bodoni Moda",Georgia,serif;font-size:clamp(2.1rem,4vw,3.2rem);
-    line-height:1;color:var(--amber);
-  }
-  .facts p{margin:11px 0 0;color:var(--cream-faint);font-size:14.5px;max-width:27ch}
+/* ---------------- House of Mosaic ---------------- */
+.case{display:grid;gap:clamp(40px,6vw,72px)}
+.case-copy p{margin-top:18px;max-width:58ch;color:var(--fg-muted)}
+.case-copy p strong{color:var(--fg);font-weight:500}
+.facts{list-style:none;margin:28px 0 0;padding:0;max-width:58ch}
+.facts li{padding:14px 0;border-top:1px solid var(--rule);color:var(--fg-muted)}
+.facts li:last-child{border-bottom:1px solid var(--rule)}
+.facts b{font:400 1.5rem/1 var(--display);color:var(--fg);margin-right:8px;font-variant-numeric:lining-nums tabular-nums}
+.tech{margin-top:18px;font-size:.9rem;color:var(--fg-subtle)}
+.case-media{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:end}
+.ar{width:min(100%,300px);justify-self:center}
+.ar .phone{aspect-ratio:auto;padding:7px}
+.ar video,.ar img{border-radius:31px;width:100%;aspect-ratio:390/386;object-fit:cover;background:var(--surface-2)}
+.ar figcaption,.rooms figcaption,.screens figcaption{margin-top:12px;font-size:.9rem;color:var(--fg-subtle)}
+.rooms{margin:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px}
+.rooms picture{display:block;min-width:0}
+.rooms img{width:100%;height:100%;object-fit:cover;border-radius:2px}
+.rooms .r1{grid-column:1/-1;aspect-ratio:3/2}
+.rooms picture:not(.r1){aspect-ratio:3/4}
+.rooms figcaption{grid-column:1/-1;margin-top:6px}
+@media (min-width:960px){
+  .case{grid-template-columns:minmax(0,4.4fr) minmax(0,7.6fr);align-items:center}
+  .case-media{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px;align-items:center}
+  .ar{justify-self:stretch;width:100%}
+}
 
-  /* build — an editorial list, not cards */
-  .build{max-width:1180px;margin-inline:auto}
-  .row{display:grid;gap:12px;padding:clamp(26px,4vh,42px) 0;border-top:1px solid var(--rule);align-items:baseline}
-  @media(min-width:860px){.row{grid-template-columns:.32fr .44fr .24fr;gap:38px}}
-  .row:last-of-type{border-bottom:1px solid var(--rule)}
-  .row h4{
-    margin:0;font-family:"Bodoni Moda",Georgia,serif;font-weight:400;
-    font-size:clamp(1.5rem,2.7vw,2.3rem);line-height:1.06;letter-spacing:-.01em;
-  }
-  .row p{margin:0;color:var(--cream-dim);font-size:15.5px;max-width:46ch}
-  .row .price{font:500 13px/1.5 "IBM Plex Mono",monospace;color:var(--amber);letter-spacing:.04em}
-  .row .price span{
-    display:block;color:var(--cream-faint);letter-spacing:.1em;font-size:11px;
-    text-transform:uppercase;margin-top:6px;
-  }
+/* ---------------- Pidi: the staff side ---------------- */
+.backstage{background:var(--surface)}
+.screens{list-style:none;margin:clamp(36px,5vw,56px) 0 0;padding:0;display:grid;gap:24px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.screens .phone{padding:5px;border-radius:26px}
+.screens .phone img{border-radius:21px}
+.screens li:nth-child(2){transform:translateY(clamp(16px,4vw,56px))}
+.screens figcaption{margin-top:12px}
+.backstage .note{margin-top:clamp(40px,6vw,84px);font-size:.9rem;color:var(--fg-subtle)}
+@media (max-width:640px){
+  .screens{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .screens figcaption{font-size:.8rem}
+}
+@media (min-width:960px){
+  .backstage .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:center}
+  .screens{margin-top:0}
+}
 
-  /* contact */
-  /* How it works. The page published prices and durations and never said what
-     the buyer actually has to do, which is the question a shop owner asks
-     first. Numbered, because it is a sequence and the order is the promise. */
-  .how{max-width:1180px;margin-inline:auto;padding-top:clamp(70px,11vh,130px)}
-  .steps{display:grid;gap:0;margin-top:clamp(34px,5vh,56px)}
-  @media(min-width:860px){.steps{grid-template-columns:repeat(2,1fr);column-gap:64px}}
-  .step{padding:clamp(24px,3.4vh,34px) 0;border-top:1px solid var(--rule)}
-  .step .num{
-    font:500 12px/1 "IBM Plex Mono",monospace;color:var(--amber);
-    letter-spacing:.12em;display:block;margin-bottom:14px}
-  .step h4{
-    margin:0 0 10px;font-family:"Bodoni Moda",Georgia,serif;font-weight:400;
-    font-size:clamp(1.15rem,1.7vw,1.45rem);color:var(--cream);letter-spacing:-.01em}
-  .step p{margin:0;color:var(--cream-dim);font-size:15.5px;max-width:44ch}
-  .contact{text-align:center;padding-block:clamp(96px,16vh,200px)}
-  .contact h2{
-    font-family:"Bodoni Moda",Georgia,serif;font-weight:400;
-    font-size:clamp(2.2rem,6vw,5.2rem);line-height:1.03;letter-spacing:-.02em;
-    margin:0 auto;max-width:16ch;
-  }
-  .contact h2 em{font-style:italic;color:var(--amber)}
-  .contact .mail{
-    display:inline-block;margin-top:clamp(30px,5vh,52px);
-    font:500 clamp(15px,2vw,19px)/1 "IBM Plex Mono",monospace;letter-spacing:.06em;
-    border-bottom:1px solid var(--amber);padding-bottom:9px;color:var(--amber);
-    transition:color .25s,border-color .25s;
-  }
-  .contact .mail:hover{color:var(--cream);border-color:var(--cream)}
-  .contact .langs{margin-top:clamp(34px,5vh,58px);color:var(--cream-faint);
-                  font:400 13.5px/1.7 "IBM Plex Mono",monospace}
+/* ---------------- prices ---------------- */
+.rows{margin-top:clamp(36px,5vw,64px)}
+.row{display:grid;gap:10px;padding:clamp(24px,3.4vw,40px) 0;border-top:1px solid var(--rule)}
+.row:last-child{border-bottom:1px solid var(--rule)}
+.row h3{font-size:clamp(1.6rem,2.8vw,2.3rem);line-height:1.05}
+.row p{color:var(--fg-muted);max-width:50ch}
+.price{font:400 clamp(1.5rem,2.4vw,2rem)/1.1 var(--display);font-variant-numeric:lining-nums tabular-nums;color:var(--fg)}
+.price small{display:block;margin-top:6px;font:400 .95rem/1.4 var(--text);color:var(--fg-subtle)}
+@media (min-width:860px){.row{grid-template-columns:3fr 5fr 2.4fr;gap:40px;align-items:baseline}.price{text-align:right}}
 
-  footer{
-    padding:26px clamp(20px,4vw,54px) 46px;border-top:1px solid var(--rule);
-    display:flex;flex-wrap:wrap;gap:14px;
-    font:400 12.5px/1.6 "IBM Plex Mono",monospace;color:var(--cream-faint);
-  }
-  footer .sp{margin-left:auto}
+/* ---------------- how it works ---------------- */
+.how{border-top:1px solid var(--rule)}
+.steps{list-style:none;margin:clamp(36px,5vw,64px) 0 0;padding:0;display:grid;gap:36px 64px}
+.steps li{display:grid;grid-template-columns:2.6rem 1fr;gap:4px 16px}
+.steps .n{grid-row:span 2;font:400 2.4rem/1 var(--display);color:var(--display-accent);font-variant-numeric:lining-nums}
+.steps h3{font-size:1.5rem;line-height:1.15}
+.steps p{color:var(--fg-muted);max-width:46ch;margin-top:6px}
+@media (min-width:860px){.steps{grid-template-columns:1fr 1fr}}
 
+/* ---------------- close ---------------- */
+.close{background:var(--surface-2)}
+.close h2{font-size:clamp(2.6rem,8vw,6.4rem);line-height:1.04;max-width:13ch;padding-bottom:.08em}
+.close p{margin-top:28px;color:var(--fg-muted);max-width:46ch;font-size:clamp(1.0625rem,1.4vw,1.2rem)}
+.mail{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
+.mail .addr{font:400 clamp(1.35rem,3.6vw,2.2rem)/1.2 var(--display);color:var(--fg);word-break:break-word}
+.mail .addr:focus-visible{outline-offset:6px}
+.status{min-height:1.6em;margin-top:10px;font-size:.95rem;color:var(--fg-muted)}
+.langs{margin-top:28px;font-size:1rem;color:var(--fg-subtle)}
 
-  /* more work — three real sites, shown as screens */
-  .more{padding-top:clamp(56px,8vh,96px)}
-  .more .grid{display:grid;gap:2px;margin-top:clamp(30px,5vh,52px)}
-  @media(min-width:900px){.more .grid{grid-template-columns:repeat(3,1fr)}}
-  .site{position:relative;display:block;overflow:hidden;background:#0B2432}
-  .site img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center;
-            transition:transform .8s cubic-bezier(.2,0,.15,1),opacity .5s;opacity:.86}
-  .site:hover img{transform:scale(1.035);opacity:1}
-  .site .meta{padding:22px clamp(18px,2.4vw,28px) 26px}
-  .site .meta h4{
-    font-family:"Bodoni Moda",Georgia,serif;font-weight:400;font-size:clamp(1.25rem,2.1vw,1.75rem);
-    line-height:1.08;margin:9px 0 8px;letter-spacing:-.015em;
-  }
-  .site .meta p{margin:0;color:var(--cream-faint);font-size:14.5px;line-height:1.55}
-  .site .live{
-    display:inline-block;margin-top:13px;font:500 11px/1 "IBM Plex Mono",monospace;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--amber);
-    border-bottom:1px solid rgba(250,186,94,.4);padding-bottom:5px;
-  }
-  .site:hover .live{border-bottom-color:var(--amber)}
-
-  /* one gesture, used consistently */
-  .rise{opacity:0;transform:translateY(26px)}
-  .rise.in{opacity:1;transform:none;
-           transition:opacity .95s cubic-bezier(.2,0,.15,1),transform .95s cubic-bezier(.2,0,.15,1)}
-  @media(prefers-reduced-motion:reduce){
-    .rise{opacity:1;transform:none;transition:none}
-    *{animation:none!important}
-  }
+footer{padding-block:28px 40px;border-top:1px solid var(--rule)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:.92rem;color:var(--fg-subtle)}
+footer a{padding:10px 0;display:inline-block}
+footer .end{margin-left:auto}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<nav class="nav">
-  <a class="mark" href="/"><img src="/brand/logo/logo-mark-small-dark.svg" alt="" width="30" height="30">Aruba Web Studio</a>
-  <span class="spacer"></span>
-  <a class="talk" href="mailto:info@arubawebstudio.com">Start a project</a>
-</nav>
-
-<header class="hero">
-  <canvas id="wind" aria-hidden="true"></canvas>
-  <span class="scroll-hint">Scroll</span>
-  <div class="hero-in">
-    <h1 class="rise in">Shaped by<br>the wind.<br><em>Still standing.</em></h1>
-    <div class="under rise in">
-      <p>We build websites, mobile apps and APIs from Oranjestad. The last one put
-      augmented reality in a guest's hands, on iOS, Android and the web, from one codebase.</p>
-      <p class="where tag">12°31′N&nbsp;&nbsp;70°02′W</p>
-    </div>
-  </div>
+<header class="nav">
+  <a class="mark" href="./" aria-label="Aruba Web Studio, home">
+    <svg viewBox="0 0 240 240" aria-hidden="true"><g transform="translate(120,120) scale(0.37591) translate(-532.0,-511.5)"><path fill="currentColor" fill-rule="evenodd" d="M 286 381 L 282 390 L 325 390 L 326 395 L 311 416 L 271 423 L 258 436 L 307 437 L 310 463 L 322 490 L 415 634 L 433 677 L 433 695 L 354 695 L 354 710 L 606 710 L 606 695 L 542 695 L 393 508 L 387 483 L 395 473 L 435 472 L 480 488 L 511 509 L 514 518 L 563 542 L 548 561 L 756 561 L 741 545 L 700 541 L 678 529 L 633 527 L 593 538 L 558 525 L 557 518 L 806 518 L 794 505 L 742 499 L 732 487 L 719 483 L 720 478 L 775 478 L 754 462 L 667 458 L 658 445 L 549 448 L 539 442 L 539 436 L 738 436 L 721 422 L 649 415 L 640 404 L 610 395 L 611 390 L 661 390 L 648 377 L 601 372 L 585 362 L 548 354 L 549 349 L 613 349 L 593 334 L 524 330 L 519 317 L 508 313 L 415 316 L 374 325 L 334 343 L 330 349 L 364 350 L 359 361 L 342 372 Z M 504 479 L 568 478 L 588 492 L 558 494 L 530 504 Z M 415 444 L 425 436 L 469 436 L 508 445 L 520 455 L 482 469 L 447 454 L 416 449 Z M 336 437 L 377 436 L 378 441 L 352 470 Z M 462 402 L 468 390 L 505 391 L 496 403 Z M 344 414 L 362 390 L 440 391 L 431 403 L 372 403 L 363 415 Z"/></g></svg>
+    <span>Aruba Web Studio</span>
+  </a>
+  <nav aria-label="Sections">
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#prices">Prices</a></li>
+      <li><a href="#how">How it works</a></li>
+    </ul>
+  </nav>
+  <a class="btn btn-primary" href="mailto:info@arubawebstudio.com?subject=A%20project%20for%20Aruba%20Web%20Studio">Start a project</a>
 </header>
 
-<section>
-  <p class="tag rise">The work</p>
-  <p class="lead rise" style="margin-top:22px">Judge a studio by what
-  <span class="q">it has shipped.</span></p>
-</section>
-
-<section class="work" style="padding-top:0">
-  <div class="intro">
-    <div class="rise">
-      <p class="tag">House of Mosaic Art Villa · Oranjestad</p>
-      <h3>A gallery that<br>tells its own stories.</h3>
+<main id="main">
+<div class="hero">
+  <canvas id="wind" aria-hidden="true"></canvas>
+  <div class="hero-in">
+    <h1>Shaped by the wind. <em>Still standing.</em></h1>
+    <p>Websites, apps and AR for Aruban businesses, built in Oranjestad. Six of them are live below.</p>
+    <div class="acts">
+      <a class="btn btn-primary" href="mailto:info@arubawebstudio.com?subject=A%20project%20for%20Aruba%20Web%20Studio">Start a project</a>
+      <a class="link" href="#work">See the work</a>
     </div>
-    <div class="body rise">
-      <p>A boutique art hotel with a problem every gallery has: the story behind a piece
-      lives in the owner's head, not on the wall.</p>
-      <p>A guest points a phone at an artwork and <strong>the piece starts talking</strong>,
-      in their own language. There is no QR code taped to the frame. The artwork itself is what
-      the camera recognises. Story Mode builds a collectible mosaic as they walk the collection,
-      and <strong>a VR gallery runs in the browser</strong> with nothing to install.</p>
-      <p class="mono" style="font-size:13px;color:var(--cream-faint);letter-spacing:.03em;margin-top:20px">
-        MindAR · Three.js · Capacitor · Vite</p>
+  </div>
+</div>
+
+<section id="work" aria-labelledby="work-h">
+  <div class="wrap rail-head">
+    <div>
+      <h2 class="h2" id="work-h">Judge a studio by what it has shipped.</h2>
+      <p class="sub">Six builds, all running today. Each one opens the real site.</p>
+    </div>
+    <div class="rail-btns">
+      <button type="button" data-dir="-1" aria-label="Previous build" aria-controls="rail">&#8249;</button>
+      <button type="button" data-dir="1" aria-label="Next build" aria-controls="rail">&#8250;</button>
     </div>
   </div>
 
-  <figure class="plate tall rise">
-    <img src="/work/hom-room.jpg" alt="A guest room at House of Mosaic Art Villa, warm-lit at night" loading="lazy" width="1800" height="1200">
-    <figcaption class="cap">
-      <span class="tag">15 artworks · 4 languages</span>
-      <h3>English · Español<br>Nederlands · Papiamento</h3>
-    </figcaption>
-  </figure>
-
-  <div class="strip">
-    <figure class="plate rise">
-      <img src="/work/hom-narnia.jpg" alt="The Narnia Suite" loading="lazy" width="1200" height="1599">
-      <figcaption class="cap"><span class="tag">Narnia Suite</span></figcaption>
-    </figure>
-    <figure class="plate rise">
-      <img src="/work/hom-velvet.jpg" alt="The Black Velvet room" loading="lazy" width="1200" height="1599">
-      <figcaption class="cap"><span class="tag">Black Velvet</span></figcaption>
-    </figure>
-    <figure class="plate rise">
-      <img src="/work/hom-azure.jpg" alt="The Azure room" loading="lazy" width="1200" height="1599">
-      <figcaption class="cap"><span class="tag">Azure</span></figcaption>
-    </figure>
-  </div>
-
-  <div class="facts">
-    <div class="rise"><div class="n">2</div><p>App stores. One codebase builds both, and the website too.</p></div>
-    <div class="rise"><div class="n">15</div><p>Artworks, each with its own recognition target and narration.</p></div>
-    <div class="rise"><div class="n">4</div><p>Languages, Papiamento included. Written here, not sent out.</p></div>
-    <div class="rise"><div class="n">0</div><p>Downloads needed for the VR gallery. It runs in the browser.</p></div>
-  </div>
-
-  <div class="more">
-    <div style="padding:0 clamp(20px,4vw,54px)">
-      <p class="tag rise">Also built</p>
-      <p class="lead rise" style="margin-top:20px">Live sites,
-      <span class="q">open one right now.</span></p>
-    </div>
-
-    <div class="grid">
-      <a class="site rise" href="https://croesaccounting.com" target="_blank" rel="noopener">
-        <img src="/work/sites/croes.jpg" alt="Croes Accounting website" loading="lazy" width="1280" height="800">
-        <div class="meta">
-          <span class="tag">Accounting · Oranjestad</span>
-          <h4>Croes Accounting</h4>
-          <p>Bookkeeping, payroll and BBO filing for Aruban businesses. Four languages,
-          a client portal, and the filing deadline counted down on the page.</p>
-          <span class="live">croesaccounting.com</span>
-        </div>
+  <ul class="rail" id="rail" tabindex="0" aria-label="Six live builds. Scroll sideways for more.">
+    <li class="obj">
+      <a class="phone-link" href="https://victorfromaruba-stack.github.io/app-test/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+        <figure class="phone"><picture><source type="image/avif" srcset="work/v2/site-hom-280.avif 280w, work/v2/site-hom-560.avif 560w" sizes="268px"><img src="work/v2/site-hom-280.webp" srcset="work/v2/site-hom-280.webp 280w, work/v2/site-hom-560.webp 560w" sizes="268px" width="280" height="606" alt="" loading="lazy" decoding="async"></picture></figure>
       </a>
-
-      <a class="site rise" href="https://arusalt.com" target="_blank" rel="noopener">
-        <img src="/work/sites/arusalt.jpg" alt="AruSalt website" loading="lazy" width="1280" height="800">
-        <div class="meta">
-          <span class="tag">Producer · e-commerce</span>
-          <h4>AruSalt</h4>
-          <p>Hand-harvested sea salt from Aruba. The crystal mark set over an aerial of
-          the reef it comes from, with the shop behind it.</p>
-          <span class="live">arusalt.com</span>
-        </div>
+      <h3>House of Mosaic Art Villa</h3>
+      <p class="kind">Art villa and gallery, Oranjestad</p>
+      <p class="did">The guest app. Point a phone at a piece and it tells its story.</p>
+      <a class="open link" href="https://victorfromaruba-stack.github.io/app-test/" target="_blank" rel="noopener">Open the app</a>
+    </li>
+    <li class="obj">
+      <a class="phone-link" href="https://victorfromaruba-stack.github.io/restaurant-/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+        <figure class="phone"><picture><source type="image/avif" srcset="work/v2/site-pidi-280.avif 280w, work/v2/site-pidi-560.avif 560w" sizes="268px"><img src="work/v2/site-pidi-280.webp" srcset="work/v2/site-pidi-280.webp 280w, work/v2/site-pidi-560.webp 560w" sizes="268px" width="280" height="606" alt="" loading="lazy" decoding="async"></picture></figure>
       </a>
-
-      <a class="site rise" href="https://victorfromaruba-stack.github.io/mrz/" target="_blank" rel="noopener">
-        <img src="/work/sites/mrz.jpg" alt="MRZ Media website" loading="lazy" width="1280" height="800">
-        <div class="meta">
-          <span class="tag">Agency · redesign</span>
-          <h4>MRZ Media</h4>
-          <p>A full rebuild for a local photography and video team. One file, every asset
-          inlined, deployed on every push.</p>
-          <span class="live">View site</span>
-        </div>
+      <h3>Pidi</h3>
+      <p class="kind">Late-night delivery, from 10 PM</p>
+      <p class="did">One order from several restaurants, one delivery fee. We built the ordering site, the kitchen screen and the driver app.</p>
+      <a class="open link" href="https://victorfromaruba-stack.github.io/restaurant-/" target="_blank" rel="noopener">Open Pidi</a>
+    </li>
+    <li class="obj">
+      <a class="phone-link" href="https://cheflifearuba.com" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+        <figure class="phone"><picture><source type="image/avif" srcset="work/v2/site-cheflife-280.avif 280w, work/v2/site-cheflife-560.avif 560w" sizes="268px"><img src="work/v2/site-cheflife-280.webp" srcset="work/v2/site-cheflife-280.webp 280w, work/v2/site-cheflife-560.webp 560w" sizes="268px" width="280" height="606" alt="" loading="lazy" decoding="async"></picture></figure>
       </a>
+      <h3>Chef Life Aruba</h3>
+      <p class="kind">Restaurant, Paseo Herencia, Palm Beach</p>
+      <p class="did">Open or closed, tonight’s sunset and a WhatsApp reservation, all on the first screen.</p>
+      <a class="open link" href="https://cheflifearuba.com" target="_blank" rel="noopener">cheflifearuba.com</a>
+    </li>
+    <li class="obj">
+      <a class="phone-link" href="https://croesaccounting.com" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+        <figure class="phone"><picture><source type="image/avif" srcset="work/v2/site-croes-280.avif 280w, work/v2/site-croes-560.avif 560w" sizes="268px"><img src="work/v2/site-croes-280.webp" srcset="work/v2/site-croes-280.webp 280w, work/v2/site-croes-560.webp 560w" sizes="268px" width="280" height="606" alt="" loading="lazy" decoding="async"></picture></figure>
+      </a>
+      <h3>Croes Accounting</h3>
+      <p class="kind">Accounting, Oranjestad</p>
+      <p class="did">Bookkeeping, payroll and BBO filing in four languages, a client portal, and the next filing deadline counted down on the page.</p>
+      <a class="open link" href="https://croesaccounting.com" target="_blank" rel="noopener">croesaccounting.com</a>
+    </li>
+    <li class="obj">
+      <a class="phone-link" href="https://arusalt.com" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+        <figure class="phone"><picture><source type="image/avif" srcset="work/v2/site-arusalt-280.avif 280w, work/v2/site-arusalt-560.avif 560w" sizes="268px"><img src="work/v2/site-arusalt-280.webp" srcset="work/v2/site-arusalt-280.webp 280w, work/v2/site-arusalt-560.webp 560w" sizes="268px" width="280" height="606" alt="" loading="lazy" decoding="async"></picture></figure>
+      </a>
+      <h3>AruSalt</h3>
+      <p class="kind">Sea salt producer</p>
+      <p class="did">Hand-harvested sea salt from Aruba. The crystal mark over the reef it comes from, with the shop behind it.</p>
+      <a class="open link" href="https://arusalt.com" target="_blank" rel="noopener">arusalt.com</a>
+    </li>
+    <li class="obj">
+      <a class="phone-link" href="https://victorfromaruba-stack.github.io/mrz/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+        <figure class="phone"><picture><source type="image/avif" srcset="work/v2/site-mrz-280.avif 280w, work/v2/site-mrz-560.avif 560w" sizes="268px"><img src="work/v2/site-mrz-280.webp" srcset="work/v2/site-mrz-280.webp 280w, work/v2/site-mrz-560.webp 560w" sizes="268px" width="280" height="606" alt="" loading="lazy" decoding="async"></picture></figure>
+      </a>
+      <h3>MRZ Media</h3>
+      <p class="kind">Photo and video team</p>
+      <p class="did">A full rebuild of their site, built around their own photography and video.</p>
+      <a class="open link" href="https://victorfromaruba-stack.github.io/mrz/" target="_blank" rel="noopener">Open MRZ Media</a>
+    </li>
+  </ul>
+</section>
+
+<section aria-labelledby="hom-h">
+  <div class="wrap case">
+    <div class="case-copy">
+      <h2 class="h2" id="hom-h">A gallery that tells its own stories.</h2>
+      <p>House of Mosaic Art Villa is a 1950 family home on Schotlandstraat that the artist Fernando Mansur has been covering in mosaics since 2004. The story behind each piece lived in his head, not on the wall.</p>
+      <p>Now a guest points a phone at an artwork and <strong>the piece starts talking</strong>. The camera recognises the artwork itself, so there is no QR code taped to the frame. Story Mode builds a collectible mosaic as they walk the house, and <strong>a VR gallery runs in the browser</strong> with nothing to install.</p>
+      <ul class="facts">
+        <li><b>13</b>artworks recognised and narrated so far.</li>
+        <li><b>5</b>languages on the app’s screens: Papiamento, Dutch, Spanish, French and English.</li>
+        <li><b>1</b>codebase for the web app you can open today and the iOS and Android builds.</li>
+      </ul>
+      <p class="tech">MindAR, Three.js, Capacitor, Vite</p>
+    </div>
+    <div class="case-media">
+      <figure class="ar">
+        <div class="phone">
+          <video id="ar" muted loop playsinline preload="none" width="390" height="386" poster="work/v2/hom-ar-poster-390.webp" aria-label="The Alto Vista Chapel artwork coming alive in the app">
+            <source src="work/v2/hom-ar-loop.webm" type="video/webm">
+            <source src="work/v2/hom-ar-loop.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption>Recorded from the test build: Theo Brinkman’s Alto Vista Chapel, seen through the app.</figcaption>
+      </figure>
+      <figure class="rooms">
+        <picture class="r1"><source type="image/avif" srcset="work/v2/hom-room-800.avif 800w, work/v2/hom-room-1400.avif 1400w" sizes="(min-width:960px) 40vw, 92vw"><img src="work/v2/hom-room-800.webp" srcset="work/v2/hom-room-800.webp 800w, work/v2/hom-room-1400.webp 1400w" sizes="(min-width:960px) 40vw, 92vw" width="800" height="533" alt="A guest room at House of Mosaic, red walls, carved beams and mosaic frames" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/avif" srcset="work/v2/hom-narnia-480.avif 480w, work/v2/hom-narnia-900.avif 900w" sizes="(min-width:960px) 20vw, 34vw"><img src="work/v2/hom-narnia-480.webp" srcset="work/v2/hom-narnia-480.webp 480w, work/v2/hom-narnia-900.webp 900w" sizes="(min-width:960px) 20vw, 34vw" width="480" height="640" alt="The entrance to the Narnia Suite, through a wardrobe" loading="lazy" decoding="async"></picture>
+        <picture><source type="image/avif" srcset="work/v2/hom-velvet-480.avif 480w, work/v2/hom-velvet-900.avif 900w" sizes="(min-width:960px) 20vw, 34vw"><img src="work/v2/hom-velvet-480.webp" srcset="work/v2/hom-velvet-480.webp 480w, work/v2/hom-velvet-900.webp 900w" sizes="(min-width:960px) 20vw, 34vw" width="480" height="640" alt="The Black Velvet room, dark walls and a chandelier" loading="lazy" decoding="async"></picture>
+        <figcaption>The rooms the app walks you through. Photos: House of Mosaic Art Villa.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section class="build">
-  <p class="tag rise">What we build</p>
-  <p class="lead rise" style="margin:22px 0 clamp(38px,6vh,64px)">Four things,
-  <span class="q">and nothing else.</span></p>
-
-  <div class="row rise">
-    <h4>Websites</h4>
-    <p>Four to six pages, mobile first, a contact form whose mail reaches your inbox, and your
-    Google listing wired up so people can find you.</p>
-    <p class="price">from $800<span>one week</span></p>
-  </div>
-  <div class="row rise">
-    <h4>Mobile apps</h4>
-    <p>Built once, shipped to both stores, sharing code with your website. We've been through
-    Apple and Google review, so we know what gets a build rejected before you write it.</p>
-    <p class="price">from $4,500<span>four to eight weeks</span></p>
-  </div>
-  <div class="row rise">
-    <h4>APIs</h4>
-    <p>Your booking system, your POS and your website probably don't talk to each other. We
-    build the layer between them, with the authentication and rate limiting that hold up once
-    real traffic arrives.</p>
-    <p class="price">from $1,200<span>two to four weeks</span></p>
-  </div>
-  <div class="row rise">
-    <h4>Augmented reality</h4>
-    <p>AR that recognises real objects through a phone camera, and 3D that runs in a browser
-    with nothing to install. We quote these one at a time, because no two are the same job.</p>
-    <p class="price">quoted<span>per project</span></p>
+<section class="backstage" aria-labelledby="pidi-h">
+  <div class="wrap">
+    <div>
+      <h2 class="h2" id="pidi-h">The part customers never see.</h2>
+      <p class="sub">Pidi takes late-night orders for several Aruban kitchens at once. Behind its ordering site we built the kitchen screen, where orders are accepted and marked ready, and the driver app, with the pickup list and one tap to Google Maps or Waze.</p>
+      <p class="note">All three screens show sample orders.</p>
+    </div>
+    <ul class="screens">
+      <li><figure><div class="phone"><picture><source type="image/avif" srcset="work/v2/pidi-kitchen-280.avif 280w, work/v2/pidi-kitchen-560.avif 560w" sizes="(min-width:960px) 200px, 30vw"><img src="work/v2/pidi-kitchen-280.webp" srcset="work/v2/pidi-kitchen-280.webp 280w, work/v2/pidi-kitchen-560.webp 560w" sizes="(min-width:960px) 200px, 30vw" width="280" height="606" alt="Pidi kitchen screen: order 27 waiting to be accepted" loading="lazy" decoding="async"></picture></div><figcaption>Kitchen: a new order to accept.</figcaption></figure></li>
+      <li><figure><div class="phone"><picture><source type="image/avif" srcset="work/v2/pidi-ready-280.avif 280w, work/v2/pidi-ready-560.avif 560w" sizes="(min-width:960px) 200px, 30vw"><img src="work/v2/pidi-ready-280.webp" srcset="work/v2/pidi-ready-280.webp 280w, work/v2/pidi-ready-560.webp 560w" sizes="(min-width:960px) 200px, 30vw" width="280" height="606" alt="Pidi kitchen screen: two orders ready, waiting for a driver" loading="lazy" decoding="async"></picture></div><figcaption>Kitchen: ready, waiting for a driver.</figcaption></figure></li>
+      <li><figure><div class="phone"><picture><source type="image/avif" srcset="work/v2/pidi-driver-280.avif 280w, work/v2/pidi-driver-560.avif 560w" sizes="(min-width:960px) 200px, 30vw"><img src="work/v2/pidi-driver-280.webp" srcset="work/v2/pidi-driver-280.webp 280w, work/v2/pidi-driver-560.webp 560w" sizes="(min-width:960px) 200px, 30vw" width="280" height="606" alt="Pidi driver app: the pickup list with Google Maps and Waze buttons" loading="lazy" decoding="async"></picture></div><figcaption>Driver: what to pick up, and where.</figcaption></figure></li>
+    </ul>
   </div>
 </section>
 
-<section class="how">
-  <p class="tag rise">How it works</p>
-  <p class="lead rise" style="margin:22px 0 0">Nobody pays us
-  <span class="q">to find out.</span></p>
-
-  <div class="steps">
-    <div class="step rise">
-      <span class="num">01</span>
-      <h4>Tell us what the business does</h4>
-      <p>An email or a call. What you sell, and what you want somebody to be able to do on the
-      site. That's the whole brief. You don't need to know what you want it to look like.</p>
-    </div>
-    <div class="step rise">
-      <span class="num">02</span>
-      <h4>We build one before you pay</h4>
-      <p>A working site on a real address, with your words and your photos. Not a mockup, and not
-      a template with your logo dropped on it. You look at it on your own phone.</p>
-    </div>
-    <div class="step rise">
-      <span class="num">03</span>
-      <h4>You decide</h4>
-      <p>If it isn't right, you owe nothing and we shake hands. If it is, half up front and half
-      the day it goes live. We write the scope down first, including how many rounds of changes,
-      so nobody is guessing by round four.</p>
-    </div>
-    <div class="step rise">
-      <span class="num">04</span>
-      <h4>It goes on your domain</h4>
-      <p>Your domain, your hosting account, your Google listing. One week for a website, longer
-      for the bigger work, and we tell you which before you commit to anything.</p>
+<section id="prices" aria-labelledby="prices-h">
+  <div class="wrap">
+    <h2 class="h2" id="prices-h">Four things, and nothing else.</h2>
+    <p class="sub">Published, so the first conversation starts past the awkward part.</p>
+    <div class="rows">
+      <div class="row">
+        <h3>Websites</h3>
+        <p>Four to six pages, mobile first, a contact form whose mail reaches your inbox, and your Google listing wired up so people can find you.</p>
+        <p class="price">from $800<small>one week</small></p>
+      </div>
+      <div class="row">
+        <h3>Mobile apps</h3>
+        <p>Built once, shipped to both stores, sharing code with your website. We know what gets a build rejected by Apple and Google review before you write it.</p>
+        <p class="price">from $4,500<small>four to eight weeks</small></p>
+      </div>
+      <div class="row">
+        <h3>APIs</h3>
+        <p>Your booking system, your POS and your website probably don’t talk to each other. We build the layer between them, with the authentication and rate limiting that hold up once real traffic arrives.</p>
+        <p class="price">from $1,200<small>two to four weeks</small></p>
+      </div>
+      <div class="row">
+        <h3>Augmented reality</h3>
+        <p>AR that recognises real objects through a phone camera, and 3D that runs in a browser with nothing to install. We quote these one at a time, because no two are the same job.</p>
+        <p class="price">quoted<small>per project</small></p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="contact">
-  <h2 class="rise">Tell us what<br>you're <em>building.</em></h2>
-  <a class="mail rise" href="mailto:info@arubawebstudio.com">info@arubawebstudio.com</a>
-  <p class="langs rise">Nos ta papia Papiamento · Nederlands · Español · English</p>
+<section id="how" class="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <h2 class="h2" id="how-h">Nobody pays us to find out.</h2>
+    <ol class="steps">
+      <li><span class="n" aria-hidden="true">1</span><h3>Tell us what the business does</h3>
+        <p>An email or a call. What you sell, and what you want somebody to be able to do on the site. That’s the whole brief. You don’t need to know what you want it to look like.</p></li>
+      <li><span class="n" aria-hidden="true">2</span><h3>We build one before you pay</h3>
+        <p>A working site on a real address, with your words and your photos. Not a mockup, and not a template with your logo dropped on it. You look at it on your own phone.</p></li>
+      <li><span class="n" aria-hidden="true">3</span><h3>You decide</h3>
+        <p>If it isn’t right, you owe nothing and we shake hands. If it is, half up front and half the day it goes live. We write the scope down first, including how many rounds of changes, so nobody is guessing by round four.</p></li>
+      <li><span class="n" aria-hidden="true">4</span><h3>It goes on your domain</h3>
+        <p>Your domain, your hosting account, your Google listing. One week for a website, longer for the bigger work, and we tell you which before you commit to anything.</p></li>
+    </ol>
+  </div>
 </section>
+
+<section id="contact" class="close" aria-labelledby="contact-h">
+  <div class="wrap">
+    <h2 id="contact-h">Tell us what you’re building.</h2>
+    <p>Two lines is enough: what the business sells, and what a customer should be able to do on the site.</p>
+    <div class="mail">
+      <a class="addr link" id="addr" href="mailto:info@arubawebstudio.com?subject=A%20project%20for%20Aruba%20Web%20Studio">info@arubawebstudio.com</a>
+      <button class="btn btn-quiet" type="button" id="copy">Copy address</button>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+    <p class="langs" lang="pap">Nos ta papia Papiamento, Nederlands, Español y English.</p>
+  </div>
+</section>
+</main>
 
 <footer>
-  <span>© <span id="yr">2026</span> Aruba Web Studio · Oranjestad, Aruba</span>
-  <span class="sp"><a href="mailto:info@arubawebstudio.com">info@arubawebstudio.com</a></span>
+  <div class="wrap">
+    <span>&copy; <span id="yr">2026</span> Aruba Web Studio, Oranjestad, Aruba</span>
+    <a class="link" href="brand/">Brand book</a>
+    <a class="link end" href="mailto:info@arubawebstudio.com">info@arubawebstudio.com</a>
+  </div>
 </footer>
 
-<script src="/wind.js" defer></script>
+<script src="wind.js" defer></script>
 <script>
+(function () {
+  "use strict";
   document.getElementById("yr").textContent = new Date().getFullYear();
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // One gesture, used consistently: content rises as it enters. Scattered
-  // effects are what make a page read as generated rather than composed.
-  (function () {
-    var items = document.querySelectorAll(".rise:not(.in)");
-    if (!("IntersectionObserver" in window)) {
-      Array.prototype.forEach.call(items, function (el) { el.classList.add("in"); });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e, i) {
-        if (!e.isIntersecting) return;
-        var el = e.target;
-        setTimeout(function () { el.classList.add("in"); }, (i % 4) * 85);
-        io.unobserve(el);
+  // Rail buttons: one build per press; disabled at either end.
+  var rail = document.getElementById("rail");
+  var btns = document.querySelectorAll(".rail-btns button");
+  var items = rail.children;
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var step = items[0].getBoundingClientRect().width + parseFloat(getComputedStyle(rail).columnGap || 24);
+      rail.scrollBy({ left: step * Number(b.dataset.dir), behavior: reduce ? "auto" : "smooth" });
+    });
+  });
+  if ("IntersectionObserver" in window) {
+    var edge = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var i = e.target === items[0] ? 0 : 1;
+        btns[i].disabled = e.intersectionRatio > 0.95;
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    Array.prototype.forEach.call(items, function (el) { io.observe(el); });
-  })();
+    }, { root: rail, threshold: [0, 0.95, 1] });
+    edge.observe(items[0]); edge.observe(items[items.length - 1]);
+  }
+
+  // The AR recording plays only while on screen, never under reduced motion.
+  var v = document.getElementById("ar");
+  if (v && !reduce && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () { /* poster stays: autoplay refused */ }); }
+        else v.pause();
+      });
+    }, { threshold: 0.4 }).observe(v);
+  }
+
+  // Copy address: the fallback for phones with no mail app behind mailto.
+  var copy = document.getElementById("copy"), status = document.getElementById("status");
+  var addr = "info@arubawebstudio.com";
+  copy.addEventListener("click", function () {
+    function done() { status.textContent = "Copied. Paste it into WhatsApp, Gmail or wherever you write from."; copy.textContent = "Copied"; setTimeout(function () { copy.textContent = "Copy address"; }, 2400); }
+    function failed() {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById("addr"));
+      var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+      status.textContent = "Your browser blocked copying. The address is selected: copy it from there.";
+    }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(addr).then(done, failed);
+    else failed();
+  });
+})();
 </script>
 </body>
 </html>

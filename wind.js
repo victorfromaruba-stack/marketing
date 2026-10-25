@@ -27,10 +27,16 @@
   // ---- palette (kept in step with tokens.css) --------------------------
   // A silhouette needs something to be silhouetted against. The sky is drawn
   // here rather than in CSS so the glow sits behind the tree, not over it.
-  const TREE = "#010810";      // near-black: a silhouette needs to read as one
-  const SKY_TOP = "#071A26";
-  const SKY_LOW = "#123044";
-  const SUN = "#FABA5E";
+  // Read from the page's CSS custom properties so the tree follows the
+  // day and night themes (prefers-color-scheme). The fallbacks are the night
+  // values, which is what this file hard-coded before.
+  let TREE = "#010810", SKY_TOP = "#071A26", SKY_LOW = "#123044", SUN_RGB = "250,186,94", SUN_A = 1;
+  function readPalette() {
+    const cs = getComputedStyle(canvas);
+    const v = function (n, d) { return (cs.getPropertyValue(n) || "").trim() || d; };
+    TREE = v("--tree", TREE); SKY_TOP = v("--sky-top", SKY_TOP); SKY_LOW = v("--sky-low", SKY_LOW);
+    SUN_RGB = v("--sun-rgb", SUN_RGB); SUN_A = parseFloat(v("--sun-a", "1")) || 1;
+  }
 
   let W = 0, H = 0, dpr = 1;
   let seedTree = null;
@@ -65,13 +71,13 @@
     // The glow follows the tree between layouts; a backlight in the wrong
     // place is just a smear.
     const narrow = W < 700;
-    const sx = narrow ? W * 0.62 : W * 0.72;
-    const sy = narrow ? H * 0.34 : H * 0.70;
+    const sx = narrow ? W * 0.56 : W * 0.72;
+    const sy = narrow ? H * 0.42 : H * 0.70;
     const sun = b.createRadialGradient(sx, sy, 0, sx, sy, Math.min(W, H) * 0.62);
-    sun.addColorStop(0, "rgba(250,186,94,0.40)");
-    sun.addColorStop(0.30, "rgba(250,186,94,0.19)");
-    sun.addColorStop(0.62, "rgba(250,186,94,0.055)");
-    sun.addColorStop(1, "rgba(250,186,94,0)");
+    sun.addColorStop(0, "rgba(" + SUN_RGB + "," + (0.40 * SUN_A) + ")");
+    sun.addColorStop(0.30, "rgba(" + SUN_RGB + "," + (0.19 * SUN_A) + ")");
+    sun.addColorStop(0.62, "rgba(" + SUN_RGB + "," + (0.055 * SUN_A) + ")");
+    sun.addColorStop(1, "rgba(" + SUN_RGB + ",0)");
     b.fillStyle = sun;
     b.fillRect(0, 0, W, H);
   }
@@ -83,6 +89,7 @@
     canvas.width = Math.floor(W * dpr);
     canvas.height = Math.floor(H * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    readPalette();
     paintSky();
     seedTree = buildTree();
   }
@@ -137,13 +144,15 @@
 
     // Sized from the CANOPY width — that is the tree's real dimension.
     const treeW = narrow
-      ? Math.min(W * 0.92, H * 0.40)
+      ? Math.min(W * 0.86, H * 1.05)
       : Math.min(W * 0.38, H * 0.72);
     const treeH = treeW / 1.40;          // measured off the photograph
     const baseX = narrow ? W * 0.44 : W * 0.72;
     // Rooted above the bottom edge, not on it. The root plate is half the
     // character of this tree and it is worth nothing below the fold.
-    const baseY = narrow ? H * 0.52 : H * 0.92;
+    // On a phone the canvas is its own block above the headline (it used to
+    // sit behind the type and the roots landed on the h1), so root it low.
+    const baseY = narrow ? H * 0.84 : H * 0.92;
     const DOWNWIND = 1;
 
     function add(parent, angle, len, width, opts) {
@@ -475,6 +484,9 @@
   }
 
   window.addEventListener("resize", resize, { passive: true });
+  // Day and night: repaint when the system theme flips.
+  const scheme = window.matchMedia("(prefers-color-scheme: dark)");
+  if (scheme.addEventListener) scheme.addEventListener("change", function () { resize(); if (reduced) draw(2400); });
 
   canvas.addEventListener("pointermove", function (e) {
     const r = canvas.getBoundingClientRect();
