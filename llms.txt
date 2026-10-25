@@ -1,4 +1,4 @@
-# Aruba Web Studio
+# Aruba Webstudio
 
 > A web and app studio in Oranjestad, Aruba. Builds websites, mobile apps, APIs and augmented reality for Aruban businesses. Contact: info@arubawebstudio.com. Works in Papiamento, Dutch, Spanish and English.
 
@@ -17,7 +17,5 @@
 ## Live work
 - House of Mosaic Art Villa, AR guest app: https://victorfromaruba-stack.github.io/app-test/
 - Pidi, late-night delivery (ordering site, kitchen screen, driver app): https://victorfromaruba-stack.github.io/restaurant-/
-- Chef Life Aruba: https://cheflifearuba.com
 - Croes Accounting: https://croesaccounting.com
 - AruSalt: https://arusalt.com
-- MRZ Media: https://victorfromaruba-stack.github.io/mrz/

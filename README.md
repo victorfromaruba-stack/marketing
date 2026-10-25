@@ -1,4 +1,4 @@
-# Aruba Web Studio — arubawebstudio.com
+# Aruba Webstudio — arubawebstudio.com
 
 The studio's own website. One static HTML file, no build step, no framework — which
 is deliberate: it loads instantly, cannot break at deploy time, and demonstrates the

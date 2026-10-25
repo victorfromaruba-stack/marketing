@@ -92,8 +92,8 @@ def build(mark_file, top, bottom, strap=None, strap_color=SEA, width=900):
             f'fill="{strap_color}">{strap}</text>'
         )
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" role="img" aria-label="Aruba Web Studio">
-<title>Aruba Web Studio</title>
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" role="img" aria-label="Aruba Webstudio">
+<title>Aruba Webstudio</title>
 <defs><style>
 @font-face{{font-family:"BodoniModaLockup";src:url({FONT_URI}) format("truetype");font-weight:400 700;}}
 .wm{{font-family:"BodoniModaLockup",Georgia,"Times New Roman",serif;font-size:{SIZE}px;letter-spacing:{TRACK}px;font-variation-settings:"opsz" 96,"wght" 500;}}
@@ -177,8 +177,8 @@ def small_mark(fill: str, ground: str | None) -> str:
 
     tile = f'<rect width="240" height="240" rx="40" fill="{ground}"/>\n' if ground else ""
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Aruba Web Studio">
-<title>Aruba Web Studio</title>
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Aruba Webstudio">
+<title>Aruba Webstudio</title>
 {tile}<g transform="translate(120,120) scale({scale}) translate({-cx},{-cy})">
 <path d="{tree}" fill="{fill}" fill-rule="evenodd"/>
 </g>
