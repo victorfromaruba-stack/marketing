@@ -140,6 +140,14 @@ hero follows (wind.js reads `--tree`, `--sky-*`, `--sun-*`).
 stand straight as they reach the middle (CSS scroll-driven animation, inline
 view timeline). No JS. Off under reduced motion and where unsupported.
 
+**The wind waits.** The tree draws one still frame at once and starts moving
+about four seconds after load (or when touched), and drops frames on a slow
+phone. A continuous canvas from the first frame kept Lighthouse TBT swinging
+between 20 ms and 5 s on this machine; with the wait it holds at ~100 ms.
+
+**Plain static, any host.** No build step, every URL relative, so the same
+folder serves from GitHub Pages, Cloudflare Pages or a subpath preview.
+
 **Google Fonts removed.** Self-hosted, so no third-party request and no
 render-blocking stylesheet.
 

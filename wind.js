@@ -457,14 +457,24 @@
   // ---- loop --------------------------------------------------------------
   let raf = null, running = false;
 
+  // Frame budget. A slow phone that cannot draw the tree in ~20 ms gets every
+  // second frame, and below that every third: the wind still moves, the main
+  // thread gets room for the visitor's taps. ema = moving average draw cost.
+  let ema = 0, tick = 0;
   function frame(t) {
-    gust *= 0.94;                 // pointer gusts decay
-    draw(t);
     raf = requestAnimationFrame(frame);
+    const every = ema > 40 ? 3 : ema > 20 ? 2 : 1;
+    if (tick++ % every) return;
+    gust *= 0.94;                 // pointer gusts decay
+    const t0 = performance.now();
+    draw(t);
+    ema = ema * 0.9 + (performance.now() - t0) * 0.1;
   }
 
+  let armed = false;                // set once the page is loaded and idle
   function start() {
-    if (running) return;
+    armed = true;
+    if (running || reduced) return;
     running = true;
     raf = requestAnimationFrame(frame);
   }
@@ -477,7 +487,7 @@
   // scrolled sections is battery someone else is paying for.
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { e.isIntersecting ? start() : stop(); });
+      entries.forEach(function (e) { e.isIntersecting ? (armed && start()) : stop(); });
     }, { threshold: 0.02 }).observe(canvas);
   } else {
     start();
@@ -500,10 +510,16 @@
 
   resize();
 
-  if (reduced) {
-    // Honour the setting: draw one still frame, mid-gust, and stop.
-    draw(2400);
-  } else {
-    start();
+  // One still frame at once (the hero is never empty), then the wind starts
+  // when the page has finished loading and the browser is idle, so the
+  // animation never competes with first paint or the first tap.
+  draw(2400);
+  if (!reduced) {
+    // The wind arrives a few seconds in (or at once if the visitor touches the
+    // tree). The first seconds belong to reading and tapping, not to drawing.
+    const go = function () { setTimeout(function () { (window.requestIdleCallback || setTimeout)(start, { timeout: 1500 }); }, 4000); };
+    if (document.readyState === "complete") go(); else window.addEventListener("load", go, { once: true });
+    canvas.addEventListener("pointerdown", start, { once: true, passive: true });
+    canvas.addEventListener("pointerenter", start, { once: true, passive: true });
   }
 })();
