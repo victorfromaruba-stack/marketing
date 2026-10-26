@@ -1,0 +1,57 @@
+{
+ "percent": 5,
+ "deltaToday": null,
+ "history": [
+  {
+   "date": "2026-10-26",
+   "percent": 5
+  }
+ ],
+ "breakdown": {
+  "rules": {
+   "count": 103,
+   "weight": 5
+  },
+  "incidents": {
+   "count": 50,
+   "weight": 5
+  },
+  "memory": {
+   "count": 170,
+   "weight": 3
+  },
+  "tests": {
+   "count": 159,
+   "weight": 3
+  },
+  "agents": {
+   "count": 15,
+   "weight": 10
+  },
+  "skills": {
+   "count": 1079,
+   "weight": 0.25
+  },
+  "reports": {
+   "count": 42,
+   "weight": 2
+  },
+  "testFiles": {
+   "passing": 159,
+   "total": 159
+  },
+  "replay": {
+   "pass": 143,
+   "cases": 158,
+   "nights": 5
+  },
+  "reads": {
+   "week": "2026-10-12",
+   "written": 1954,
+   "corrected": 34,
+   "accuracy": 0.9826
+  },
+  "quality": 0.8893
+ },
+ "updatedAt": "2026-10-26T18:47:13.138Z"
+}
