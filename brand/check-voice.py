@@ -35,7 +35,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 
 # Files whose visible text is customer-facing.
-TARGETS = ["index.html", "brand/index.html"]
+TARGETS = ["index.html", "brand/index.html", "pricing/index.html"]
 
 BANNED = {
     "—": "em dash. Use a full stop, a comma, or two sentences.",
@@ -154,7 +154,7 @@ def main() -> int:
         print("  The test: would you say this out loud to a restaurant owner")
         print("  across a table? If not, rewrite it.\n")
         return 1
-    print("\n  Both pages sound like a person wrote them.\n")
+    print("\n  Every page sounds like a person wrote it.\n")
     return 0
 
 

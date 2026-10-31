@@ -6,6 +6,7 @@ thing we sell.
 
 ```
 index.html          the whole site (HTML, CSS and ~60 lines of JS inline)
+pricing/            the price list: US$ and ƒ, tax included (Victor, 31 Oct); SF Pro stack, no JS
 wind.js             the divi-divi in the trade wind (canvas), colours from CSS vars
 fonts/              Bodoni Moda (roman + italic) and Archivo, woff2, latin, OFL
 work/v2/            every image the page uses: AVIF + WebP at two widths, the AR loop
