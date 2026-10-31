@@ -182,7 +182,11 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: var(--s2); min-
 .status { font-size: var(--t-sm); max-width: 54ch; }
 .status:empty { display: none; }
 .status[data-kind=ok] { padding: var(--s4); background: var(--panel-2); border-radius: var(--r-key); box-shadow: var(--sh-well); }
-.status[data-kind=err] { color: var(--ink); padding-left: var(--s3); border-left: 3px solid var(--led); }
+.status[data-kind=err] { color: var(--ink); padding: var(--s4); background: var(--panel-2); border-radius: var(--r-key); box-shadow: var(--sh-well); }
+.status[data-kind=err]::before { /* the LED, not a coloured side bar: the words say what is missing */
+  content: ""; display: inline-block; width: 10px; height: 4px; margin-right: 10px; vertical-align: middle; border-radius: 1px;
+  background: radial-gradient(ellipse at 50% 40%, var(--led-hot) 0 18%, var(--led) 60%); box-shadow: 0 1px 1px rgb(0 0 0 / .25);
+}
 .status a { font-weight: 600; }
 .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s3) var(--s6); padding-block: var(--s5) var(--s8); border-top: 1px solid var(--hair); }
 
