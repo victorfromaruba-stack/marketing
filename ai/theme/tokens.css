@@ -1,0 +1,197 @@
+/* PATTERN · production tokens. The course is a step sequencer; the red LED means done or now.
+   Source of truth for every Pattern surface: the comps (design/pattern/), the cards, the player skin
+   and the Starlight overrides all read these. Components never type a colour, size or duration.
+
+   Themes: light is the default. Dark applies when the OS asks for it (pages without a theme switch)
+   or when Starlight sets <html data-theme="dark">. The dark block appears twice for that reason;
+   theme/check.mjs fails if the two copies drift. Cards and print are always light. */
+
+:root {
+  color-scheme: light;
+
+  /* ── Neutral ramp: cool aluminium, hue 256, even OKLCH lightness. Roles point into it. ── */
+  --al-50:  #F4F5F6; /* oklch(97%   .002 256) */
+  --al-100: #EDEFF1; /* oklch(95%   .004 256) */
+  --al-200: #D7DADE; /* oklch(88.7% .006 256) */
+  --al-300: #C9CDD2; /* oklch(84.7% .008 256) */
+  --al-400: #B8BDC3; /* oklch(79.6% .010 256) */
+  --al-500: #80878F; /* oklch(62%   .015 256) */
+  --al-600: #444A53; /* oklch(40.7% .017 256) */
+  --al-700: #2A2F36; /* oklch(30.4% .014 256) */
+  --al-800: #181C22; /* oklch(22.5% .013 256) */
+  --al-900: #0F1216; /* oklch(18.2% .010 256) */
+  --al-950: #07090D; /* oklch(14%   .009 256) */
+
+  /* ── Surfaces: brushed panel, recessed well, raised reading face ── */
+  --panel: var(--al-200);
+  --panel-2: var(--al-300);        /* wells, switches, inline code ground */
+  --panel-3: var(--al-400);        /* screw heads, deepest recess */
+  --face: var(--al-50);            /* plates you read on */
+  --ink: var(--al-900);
+  --ink-soft: var(--al-600);       /* 6.4:1 on panel, 8.2:1 on face */
+  --hair: rgb(16 18 22 / .12);     /* hairline; never structure, only separation */
+  --brush: rgb(255 255 255 / .22); /* the grain: 1px lines every 3px */
+  --shadow: 216 14% 18%;           /* hsl() triplet, used as hsl(var(--shadow) / a) */
+  --highlight: rgb(255 255 255 / .65); /* the top edge catching light from above */
+
+  /* ── The four keys. Colour says WHERE in the course, never status. ── */
+  --key-a: #E4432A;   /* Level 1  oklch(61.5% .202 32) */
+  --key-b: #F0891B;   /* Level 2  oklch(72.7% .165 59) */
+  --key-c: #F3C417;   /* Level 3  oklch(83.8% .168 91) */
+  --key-d: #EEECE6;   /* certificate and the people you brought  oklch(94.3% .008 91) */
+  --key-off: #2B2F36; /* a step that is not open yet */
+  --on-key: #101216;
+  --on-key-off: #9AA1AB;
+  --keycap: var(--al-200);  /* neutral player and utility keys */
+
+  /* ── Light. The LED is the only thing that glows: done, or now. ── */
+  --led: #FF3A17;      /* oklch(65.2% .235 32) */
+  --led-hot: #FFD2C4;  /* the filament centre */
+  --led-off: rgb(16 18 22 / .26);
+
+  /* ── Status: never colour alone. Done = LED lit + tick + word. Failed = LED dark + the word
+       "failed". Attention = the yellow flag (same yellow Victor draws round a command on screen). ── */
+  --flag: var(--key-c);
+
+  /* ── Windows that stay dark in both themes: readout, code, video ── */
+  --seg-ground: #160E0B;
+  --seg-on: #FF4A24;
+  --seg-off: rgb(255 74 36 / .10);
+  --screen: #0E1013;
+  --screen-ink: #E8EBEE;
+  --screen-soft: #8E959F;
+  --screen-flag: #FFE27A;           /* highlighted words inside a dark window */
+
+  /* ── The record sleeve: the certificate's artwork stock, black in every theme ── */
+  --sleeve: #121418;
+  --sleeve-ink: #F2F3F5;
+  --sleeve-text: #B7BDC5;
+  --sleeve-soft: #9097A1;
+
+  /* ── Paper: printed cards and the certificate print view (always light, no ink floods) ── */
+  --paper: #FFFFFF;
+  --paper-ink: #0F1216;
+  --paper-soft: #444A53;
+  --paper-faint: #80878F;
+  --paper-rule: #D7DADE;
+  --paper-rule-strong: #B8BDC3;
+  --key-a-tint: #FCE7E3;  /* a printed key face before it is stamped */
+  --key-b-tint: #FDEEDC;
+  --key-d-tint: #F4F3EF;
+  --key-d-edge: #A9A59B;
+
+  /* ── The black key: the one primary action per screen ── */
+  --go: #15171B;
+  --go-ink: #F2F3F5;
+  --go-hover: #23262C;
+  --copy: #262A31;
+  --copy-ink: #F0F2F4;
+  --copy-hover: #30353D;
+  --focus: #101216;
+
+  /* ── Type ── */
+  --f-display: "Hubot Sans", "Hubot Sans Fallback", system-ui, sans-serif;           /* titles, silkscreen, keys */
+  --f-text: "Mona Sans", "Mona Sans Fallback", system-ui, -apple-system, "Segoe UI", sans-serif; /* reading */
+  --f-code: "Martian Mono", ui-monospace, Menlo, Consolas, monospace;      /* commands only */
+
+  --t-silk: 11px;    /* silkscreen labels, caps, wide */
+  --t-xs: 12.5px;
+  --t-sm: 14.5px;
+  --t-body: 16px;    /* never smaller on inputs: iOS zooms below 16 */
+  --t-lg: 19px;      /* step titles */
+  --t-xl: 22px;      /* section heads on phone */
+  --t-title: 44px;   /* phone page title */
+  --t-hero: clamp(52px, 2rem + 3.6vw, 90px);
+  --t-slide: 124px;  /* projector, 1920 wide */
+
+  /* Display weight, re-checked 24 Oct against 05 §1 (premium headlines sit at 250-600). Rendered
+     450 / 520 / 580 / 820 side by side: Hubot at 820 reads as a sports poster (the "toy" risk), and its
+     weight axis is steep, so 600+ already looks bold. 560 reads as engraved instrument lettering and
+     stays solid on a phone in sun. Width (86%) carries the signature, not weight. */
+  --w-display: 560;
+  --wd-display: 86%;        /* font-stretch: Hubot's narrow cut is the signature, not the weight */
+  --tr-display: -.03em;
+  --lh-display: .93;
+  --w-head: 600;            /* step titles, section heads */
+  --w-silk: 650;  --wd-silk: 118%;  --tr-silk: .1em;
+  --w-key: 700;   --wd-key: 110%;   /* small numerals on coloured keys need the weight */
+  --w-body: 400;  --lh-body: 1.55;
+  --measure: 62ch;
+
+  /* ── Space: 4px base. Gaps inside a group are at most half the gap between groups. ── */
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px;
+  --s7: 32px; --s8: 40px; --s9: 56px; --s10: 72px; --s11: 104px;
+  --tap: 44px;              /* minimum target */
+  --tap-key: 48px;          /* step keys and player keys */
+
+  /* ── Radius: sharp family. Nested = outer minus padding. ── */
+  --r-key: 4px;  --r-code: 6px;  --r-plate: 10px;  --r-phone: 38px;
+
+  /* ── Depth: light from above. No borders as structure, no coloured halos. ── */
+  --sh-plate: inset 0 1px 0 var(--highlight), 0 1px 2px hsl(var(--shadow) / .16), 0 18px 32px -20px hsl(var(--shadow) / .45);
+  --sh-well: inset 0 1px 3px hsl(var(--shadow) / .28), inset 0 -1px 0 rgb(255 255 255 / .35);
+  --sh-key: inset 0 1px 0 rgb(255 255 255 / .5), inset 0 -2px 0 rgb(0 0 0 / .14), 0 1px 1px hsl(var(--shadow) / .35), 0 7px 10px -7px hsl(var(--shadow) / .6);
+  --sh-key-down: inset 0 1px 0 rgb(255 255 255 / .4), inset 0 -1px 0 rgb(0 0 0 / .14), 0 0 0 hsl(var(--shadow) / .35), 0 3px 6px -5px hsl(var(--shadow) / .6);
+  --sh-cap: inset 0 1px 0 rgb(255 255 255 / .55), inset 0 -2px 0 rgb(0 0 0 / .1), 0 1px 1px hsl(var(--shadow) / .3), 0 6px 9px -7px hsl(var(--shadow) / .5);
+  --sh-go: inset 0 1px 0 rgb(255 255 255 / .14), inset 0 -2px 0 rgb(0 0 0 / .4), 0 1px 1px hsl(var(--shadow) / .4), 0 10px 16px -10px hsl(var(--shadow) / .8);
+  --sh-window: inset 0 1px 3px rgb(0 0 0 / .6), 0 1px 0 rgb(255 255 255 / .5);
+
+  /* ── Motion: discrete like a clock. The LED steps; keys press. Nothing bounces. ── */
+  --ease-out: cubic-bezier(.22, 1, .36, 1);      /* enters, releases: the default */
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);   /* things moving across the screen */
+  --ease-in: cubic-bezier(.55, 0, 1, .45);       /* exits only */
+  --d-press: 90ms;      /* key goes down */
+  --d-release: 150ms;   /* key comes back */
+  --d-hover: 150ms;
+  --d-cue: 300ms;       /* the copy strip sliding out under the video */
+  --d-sheet: 300ms;     /* sheets and the new bank sliding in at unlock */
+  --d-exit: 210ms;      /* ~70% of enter */
+  --d-page: 420ms;      /* page / view transition */
+  --d-step: 1s;         /* one tick of the chase light (animation uses steps, never easing) */
+  --d-stagger: 40ms;    /* unlock: keys take their colour one by one */
+  --d-fade: 120ms;      /* what replaces movement under reduced motion */
+}
+
+/* ── Dark, copy 1 of 2: Starlight's theme switch ── */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --panel: var(--al-900); --panel-2: #0A0C10; --panel-3: var(--al-950); --face: var(--al-800);
+  --ink: var(--al-100); --ink-soft: #A3AAB4;
+  --hair: rgb(237 239 242 / .12); --brush: rgb(255 255 255 / .025); --shadow: 220 30% 2%; --highlight: rgb(255 255 255 / .06);
+  --key-d: #DAD8D2; --key-off: #252A31; --keycap: #1C2027;
+  --led-off: rgb(16 18 22 / .45);
+  --go: #F0F1F3; --go-ink: #101216; --go-hover: #FFFFFF;
+  --focus: #EDEFF2;
+  --sh-plate: inset 0 1px 0 var(--highlight), 0 1px 2px hsl(var(--shadow) / .6), 0 18px 32px -20px hsl(var(--shadow) / .9);
+  --sh-well: inset 0 1px 3px rgb(0 0 0 / .6), inset 0 -1px 0 rgb(255 255 255 / .04);
+  --sh-cap: inset 0 1px 0 rgb(255 255 255 / .07), inset 0 -2px 0 rgb(0 0 0 / .4), 0 1px 1px rgb(0 0 0 / .5);
+  --sh-window: inset 0 1px 3px rgb(0 0 0 / .6), 0 1px 0 rgb(255 255 255 / .05);
+}
+/* ── Dark, copy 2 of 2: pages without a switch follow the OS ── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --panel: var(--al-900); --panel-2: #0A0C10; --panel-3: var(--al-950); --face: var(--al-800);
+    --ink: var(--al-100); --ink-soft: #A3AAB4;
+    --hair: rgb(237 239 242 / .12); --brush: rgb(255 255 255 / .025); --shadow: 220 30% 2%; --highlight: rgb(255 255 255 / .06);
+    --key-d: #DAD8D2; --key-off: #252A31; --keycap: #1C2027;
+    --led-off: rgb(16 18 22 / .45);
+    --go: #F0F1F3; --go-ink: #101216; --go-hover: #FFFFFF;
+    --focus: #EDEFF2;
+    --sh-plate: inset 0 1px 0 var(--highlight), 0 1px 2px hsl(var(--shadow) / .6), 0 18px 32px -20px hsl(var(--shadow) / .9);
+    --sh-well: inset 0 1px 3px rgb(0 0 0 / .6), inset 0 -1px 0 rgb(255 255 255 / .04);
+    --sh-cap: inset 0 1px 0 rgb(255 255 255 / .07), inset 0 -2px 0 rgb(0 0 0 / .4), 0 1px 1px rgb(0 0 0 / .5);
+    --sh-window: inset 0 1px 3px rgb(0 0 0 / .6), 0 1px 0 rgb(255 255 255 / .05);
+  }
+}
+/* A forced light page (cards, print) */
+:root[data-theme="light"] { color-scheme: light; }
+
+/* ── Reduced motion: still by default, taps still update everything. Movement becomes a short fade;
+     the chase light stops and the LED simply stays on (components.css). ── */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --d-press: 0ms; --d-release: 0ms; --d-hover: 0ms; --d-cue: var(--d-fade); --d-sheet: var(--d-fade);
+    --d-exit: 0ms; --d-page: var(--d-fade); --d-stagger: 0ms;
+  }
+}

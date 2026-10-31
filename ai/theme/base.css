@@ -1,0 +1,21 @@
+/* PATTERN · element base for standalone pages (comps, cards, certificate print, the landing).
+   Not imported into Starlight, which has its own reset; theme/pattern.css maps Starlight instead. */
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scrollbar-gutter: stable; }
+body {
+  margin: 0; color: var(--ink); font: var(--w-body) var(--t-body)/var(--lh-body) var(--f-text);
+  background-color: var(--panel);
+  background-image: repeating-linear-gradient(90deg, var(--brush) 0 1px, transparent 1px 3px); /* the grain of the metal */
+  -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; caret-color: var(--led);
+}
+::selection { background: var(--key-c); color: var(--on-key); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 1px; }
+h1, h2, h3 { font-family: var(--f-display); margin: 0; text-wrap: balance; letter-spacing: -.02em; }
+p { margin: 0; text-wrap: pretty; }
+code { font-family: var(--f-code); font-size: .86em; font-stretch: 85%; }
+.num { font-variant-numeric: tabular-nums; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+

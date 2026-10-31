@@ -3,560 +3,320 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>AI courses in Aruba, from your first prompt to your own agent · Aruba Web Studio</title>
-<meta name="description" content="Small-group AI courses in Aruba taught by someone who runs AI agents every day. Three levels, from no-code basics to building your own agents.">
+<title>AI courses in Aruba: build your own AI, then give it a job · Aruba Web Studio</title>
+<meta name="description" content="Small-group AI courses in Aruba, taught in person by someone who runs AI agents every day. Level 1 starts Tue 24 November, 18:30 to 20:30. ƒ225 for the first group.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#ECEBE5">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230B5D6B'/><path d='M9 23V9h3v14zM15 23V13h3v10zM21 23v-6h3v6z' fill='%23ECEBE5'/></svg>">
-<link rel="preload" href="fonts/Archivo-normal-300-800-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="scrollcraft.css">
-<style>
-  :root {
-    --sc-canvas: #ECEBE5;  --sc-surface: #F6F5F0;
-    --sc-ink: #15191C;     --sc-ink-soft: #4C5559;
-    --sc-accent: #0B5D6B;  --sc-accent-ink: #F4F3EE;
-    --sc-font-display: "Archivo", system-ui, sans-serif;
-    --sc-font-text: "Archivo", system-ui, sans-serif;
-    --sc-font-mono: "IBM Plex Mono", ui-monospace, monospace;
-    --sc-shadow-color: 190 20% 25%;
-    --stone: #DCDDD6;
-    --night: #0F1A1E;
-  }
-  body { background: var(--sc-canvas); color: var(--sc-ink); font-weight: 380; }
-
-  /* Grounds. Each chapter sits on its own ground and holds it (hard cuts).
-     Restating color with the token, or text keeps the body's ink. */
-  .g-paper { --sc-canvas: #ECEBE5; background: #ECEBE5; }
-  .g-stone { --sc-canvas: #DCDDD6; background: #DCDDD6; --sc-ink-soft: #434C50; color: var(--sc-ink); }
-  .g-night { --sc-canvas: #0F1A1E; background: #0F1A1E; --sc-ink: #ECEBE5; --sc-ink-soft: #A9B6B8;
-             --sc-accent: #6FCFC3; --sc-accent-ink: #0F1A1E; --sc-hairline: rgba(236,235,229,.16);
-             color: var(--sc-ink); font-weight: 400; letter-spacing: .005em; }
-  .g-night .sc-body { line-height: 1.68; }
-
-  .wrap { width: 100%; max-width: 76rem; margin-inline: auto; padding-inline: var(--sc-gutter); }
-  .mono { font-family: var(--sc-font-mono); }
-  a { color: inherit; text-underline-offset: .22em; text-decoration-thickness: 1px; }
-  a:hover { text-decoration-thickness: 2px; }
-  :focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 4px; border-radius: 2px; }
-  ::selection { background: var(--sc-accent); color: var(--sc-accent-ink); }
-
-  h2.head { font-family: var(--sc-font-display); font-weight: 650; font-stretch: 88%;
-            font-size: var(--sc-t-2xl); line-height: 1.04; letter-spacing: var(--sc-track-snug);
-            margin: 0 0 var(--sc-5); text-wrap: balance; max-width: 22ch; }
-  .lede { font-size: var(--sc-t-lg); line-height: 1.5; max-width: 40ch; margin: 0; text-wrap: pretty; }
-  p { margin: 0; }
-  .chapter { padding-block: var(--sc-section); }
-
-  /* ---------- title page ---------- */
-  .title { min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto;
-           padding-block: var(--sc-6) var(--sc-7); }
-  .mark { display: flex; align-items: center; gap: var(--sc-3); font-size: var(--sc-t-sm); font-weight: 500; }
-  .mark svg { width: 22px; height: 22px; flex: none; }
-  .title__body { align-self: center; padding-block: var(--sc-8); }
-  .title h1 { font-family: var(--sc-font-display); font-weight: 720; font-stretch: 82%;
-              font-size: clamp(2.6rem, 1.2rem + 6.4vw, 7rem); line-height: .96;
-              letter-spacing: -0.035em; margin: 0 0 var(--sc-6); max-width: 13ch; text-wrap: balance; }
-  .title h1 em { font-style: italic; font-weight: 400; font-stretch: 100%; color: var(--sc-accent); }
-  .title .lede { color: var(--sc-ink-soft); max-width: 36ch; margin-bottom: var(--sc-7); }
-  .cta { display: inline-flex; align-items: center; gap: var(--sc-3); min-height: 52px;
-         padding: 0 var(--sc-6); background: var(--sc-accent); color: var(--sc-accent-ink);
-         border-radius: var(--sc-r-sm); font-weight: 600; text-decoration: none; font-size: var(--sc-t-base);
-         box-shadow: var(--sc-e1); transition: transform var(--sc-d-fast) var(--sc-ease-out), background-color var(--sc-d-fast) var(--sc-ease-out); }
-  .cta:hover { background: color-mix(in oklab, var(--sc-accent) 86%, black); text-decoration: none; }
-  .cta:active { transform: scale(.97); }
-  .title__foot { display: flex; justify-content: space-between; gap: var(--sc-5); flex-wrap: wrap;
-                 border-top: 1px solid var(--sc-hairline-strong); padding-top: var(--sc-4);
-                 font-size: var(--sc-t-sm); color: var(--sc-ink-soft); }
-
-  /* ---------- why me: asymmetric spread ---------- */
-  .spread { display: grid; gap: var(--sc-7); }
-  @media (min-width: 900px) { .spread { grid-template-columns: 5fr 7fr; gap: var(--sc-9); align-items: start; } }
-  .story p + p { margin-top: var(--sc-4); }
-  .story { max-width: 58ch; }
-  .does { list-style: none; margin: var(--sc-6) 0 0; padding: 0; border-top: 1px solid var(--sc-hairline-strong); }
-  .does li { display: grid; grid-template-columns: 7.5rem 1fr; gap: var(--sc-4); padding: var(--sc-4) 0;
-             border-bottom: 1px solid var(--sc-hairline); }
-  .does .when { font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); color: var(--sc-accent); padding-top: .2em; letter-spacing: .02em; }
-  .aside { margin-top: var(--sc-5); font-size: var(--sc-t-sm); color: var(--sc-ink-soft); max-width: 52ch; }
-
-  /* ---------- lesson one: the prompt that builds itself (signature) ---------- */
-  .lesson [data-sc-stage] { display: grid; align-content: center; height: 100svh; }
-  .lesson__grid { display: grid; gap: var(--sc-6); align-items: center; }
-  @media (min-width: 900px) { .lesson__grid { grid-template-columns: 4fr 6fr; gap: var(--sc-9); } }
-  .sheet { background: var(--sc-surface); border-radius: var(--sc-r-md); box-shadow: var(--sc-e2), var(--sc-edge);
-           padding: clamp(1.1rem, 3vw, 2.25rem); font-family: var(--sc-font-mono); font-size: clamp(.8rem, .74rem + .3vw, 1rem);
-           line-height: 1.5; position: relative; }
-  .sheet__top { display: flex; justify-content: space-between; font-size: var(--sc-t-xs); color: var(--sc-ink-soft);
-                padding-bottom: var(--sc-4); margin-bottom: var(--sc-4); border-bottom: 1px dashed var(--sc-hairline-strong); }
-  .lazy { position: relative; display: inline-block; color: var(--sc-ink); margin-bottom: var(--sc-5); }
-  .lazy::after { content: ""; position: absolute; left: -2px; right: -2px; top: 54%; height: 2px; background: #B4442F;
-                 transform-origin: left center;
-                 transform: scaleX(clamp(0, calc((var(--sc-p, 1) - 0.06) * 7), 1)); }
-  .part { display: grid; grid-template-columns: 5.6rem 1fr; gap: var(--sc-3); padding: var(--sc-3) 0;
-          border-top: 1px solid var(--sc-hairline);
-          --k: clamp(0, calc((var(--sc-p, 1) - var(--t)) * 7), 1);
-          opacity: var(--k); transform: translateY(calc((1 - var(--k)) * 12px)); }
-  .part b { color: var(--sc-accent); font-weight: 500; }
-  .sheet__end { margin-top: var(--sc-5); font-family: var(--sc-font-text); font-size: var(--sc-t-sm); color: var(--sc-ink-soft);
-                --k: clamp(0, calc((var(--sc-p, 1) - .76) * 7), 1); opacity: var(--k); }
-  @media (prefers-reduced-motion: reduce) { .part { transform: none; } }
-
-  /* ---------- levels ---------- */
-  .levels-intro { padding-block: var(--sc-section) var(--sc-7); }
-  .level { padding-block: var(--sc-8) var(--sc-9); }
-  .level__grid { display: grid; gap: var(--sc-5) var(--sc-8); }
-  @media (min-width: 900px) { .level__grid { grid-template-columns: minmax(10rem, 3fr) 9fr; } }
-  .numeral { font-family: var(--sc-font-display); font-weight: 300; font-stretch: 70%; color: var(--sc-accent);
-             font-size: clamp(5.5rem, 3rem + 10vw, 12rem); line-height: 1; padding-bottom: .06em; margin: 0; }
-  .level h3 { font-family: var(--sc-font-display); font-weight: 650; font-stretch: 88%; font-size: var(--sc-t-xl);
-              line-height: 1.12; letter-spacing: var(--sc-track-snug); margin: 0 0 var(--sc-3); text-wrap: balance; max-width: 26ch; }
-  .level .lede { color: var(--sc-ink-soft); margin-bottom: var(--sc-6); }
-  .sessions { margin: 0 0 var(--sc-6); padding: 0; list-style: none; counter-reset: s; max-width: 46rem; }
-  .sessions li { counter-increment: s; display: grid; grid-template-columns: 2rem 1fr; gap: var(--sc-3);
-                 padding: var(--sc-3) 0; border-top: 1px solid var(--sc-hairline); }
-  .sessions li::before { content: counter(s); font-family: var(--sc-font-mono); font-size: var(--sc-t-sm); color: var(--sc-ink-soft); padding-top: .15em; }
-  .facts { display: grid; gap: var(--sc-5); max-width: 46rem; margin-bottom: var(--sc-6); }
-  @media (min-width: 640px) { .facts { grid-template-columns: 1fr 1fr; } }
-  .facts dt { font-size: var(--sc-t-xs); font-family: var(--sc-font-mono); color: var(--sc-ink-soft); margin-bottom: var(--sc-2); letter-spacing: .02em; }
-  .facts dd { margin: 0; font-size: var(--sc-t-sm); line-height: 1.55; }
-  .price { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sc-2) var(--sc-5); padding-top: var(--sc-5);
-           border-top: 1px solid var(--sc-hairline-strong); max-width: 46rem; font-variant-numeric: tabular-nums; }
-  .price .now { font-family: var(--sc-font-display); font-weight: 650; font-size: var(--sc-t-2xl); letter-spacing: -0.02em; line-height: 1; }
-  .price .then { color: var(--sc-ink-soft); font-size: var(--sc-t-sm); }
-
-  /* ---------- other ways ---------- */
-  .ways { display: grid; gap: var(--sc-7); }
-  @media (min-width: 900px) { .ways { grid-template-columns: 7fr 5fr; gap: var(--sc-9); } }
-  table.prices { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: var(--sc-t-sm); }
-  table.prices caption { text-align: left; font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); color: var(--sc-ink-soft); padding-bottom: var(--sc-3); }
-  table.prices th, table.prices td { text-align: left; padding: var(--sc-3) var(--sc-2) var(--sc-3) 0; border-top: 1px solid var(--sc-hairline); vertical-align: top; }
-  table.prices thead th { font-weight: 500; color: var(--sc-ink-soft); font-size: var(--sc-t-xs); }
-  table.prices td.n { white-space: nowrap; }
-  table.prices tbody th { font-weight: 500; }
-
-  /* ---------- rules ---------- */
-  .rules { list-style: none; padding: 0; margin: var(--sc-7) 0 0; display: grid; gap: 0; max-width: 60rem; }
-  .rules li { display: grid; gap: var(--sc-2) var(--sc-6); padding: var(--sc-5) 0; border-top: 1px solid var(--sc-hairline); }
-  @media (min-width: 760px) { .rules li { grid-template-columns: 22rem 1fr; } }
-  .rules strong { font-family: var(--sc-font-display); font-weight: 600; font-size: var(--sc-t-lg); line-height: 1.25; }
-  .rules span { color: var(--sc-ink-soft); }
-
-  /* ---------- questions ---------- */
-  .qa { max-width: 50rem; margin-top: var(--sc-6); }
-  .qa details { border-top: 1px solid var(--sc-hairline-strong); }
-  .qa details:last-child { border-bottom: 1px solid var(--sc-hairline-strong); }
-  .qa summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: var(--sc-4);
-                align-items: center; min-height: 56px; padding: var(--sc-3) 0; font-weight: 550; font-size: var(--sc-t-base); }
-  .qa summary::-webkit-details-marker { display: none; }
-  .qa summary::after { content: "+"; font-family: var(--sc-font-mono); color: var(--sc-accent); font-size: 1.25rem; transition: transform var(--sc-d-fast) var(--sc-ease-out); }
-  .qa details[open] summary::after { transform: rotate(45deg); }
-  .qa details p { padding: 0 0 var(--sc-5); color: var(--sc-ink-soft); max-width: 60ch; }
-
-  /* ---------- colophon / sign-up ---------- */
-  .colophon { padding-block: var(--sc-section) var(--sc-7); }
-  .colophon__grid { display: grid; gap: var(--sc-7); }
-  @media (min-width: 900px) { .colophon__grid { grid-template-columns: 5fr 7fr; gap: var(--sc-9); } }
-  form { display: grid; gap: var(--sc-5); }
-  label, legend { font-size: var(--sc-t-sm); font-weight: 550; }
-  .field { display: grid; gap: var(--sc-2); }
-  .hint { font-size: var(--sc-t-xs); color: var(--sc-ink-soft); font-weight: 400; }
-  input[type=text], input[type=email], textarea, select {
-    font: inherit; font-size: 1rem; color: var(--sc-ink); background: var(--sc-surface);
-    border: 1px solid var(--sc-hairline-strong); border-radius: var(--sc-r-sm); min-height: 48px; padding: var(--sc-3) var(--sc-4); width: 100%;
-    transition: border-color var(--sc-d-fast) var(--sc-ease-out); }
-  textarea { min-height: 88px; resize: vertical; }
-  input:hover, textarea:hover, select:hover { border-color: var(--sc-ink-soft); }
-  input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid var(--sc-accent); outline-offset: 1px; border-color: var(--sc-accent); }
-  fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: var(--sc-2); }
-  .choices { display: flex; flex-wrap: wrap; gap: var(--sc-2); }
-  .choice { position: relative; }
-  .choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
-  .choice span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--sc-4); border-radius: var(--sc-r-sm);
-                 border: 1px solid var(--sc-hairline-strong); font-size: var(--sc-t-sm); background: var(--sc-surface);
-                 transition: background-color var(--sc-d-fast) var(--sc-ease-out), border-color var(--sc-d-fast) var(--sc-ease-out); }
-  .choice input:checked + span { background: var(--sc-accent); color: var(--sc-accent-ink); border-color: var(--sc-accent); }
-  .choice input:focus-visible + span { outline: 2px solid var(--sc-accent); outline-offset: 2px; }
-  @media (hover: hover) and (pointer: fine) { .choice:hover span { border-color: var(--sc-ink-soft); } }
-  button.cta { border: 0; cursor: pointer; font: inherit; font-weight: 600; justify-self: start; }
-  button.cta:disabled { opacity: .5; cursor: not-allowed; }
-  .status { font-size: var(--sc-t-sm); max-width: 52ch; }
-  .status:empty { display: none; }
-  .status[data-kind=ok] { padding: var(--sc-4); background: var(--sc-surface); border-radius: var(--sc-r-sm); box-shadow: var(--sc-e1); }
-  .status[data-kind=err] { color: #A3341F; }
-  .status a { font-weight: 550; }
-  .small { font-size: var(--sc-t-xs); color: var(--sc-ink-soft); }
-  .foot { margin-top: var(--sc-9); padding-top: var(--sc-4); border-top: 1px solid var(--sc-hairline-strong);
-          display: flex; flex-wrap: wrap; gap: var(--sc-3) var(--sc-6); justify-content: space-between; }
-
-  /* ---------- folio: chapter + title in the margin ---------- */
-  .folio { position: fixed; z-index: 60; left: 0; right: 0; bottom: 0; pointer-events: none;
-           display: flex; justify-content: space-between; align-items: center;
-           padding: var(--sc-3) var(--sc-gutter) calc(var(--sc-3) + env(safe-area-inset-bottom));
-           font-family: var(--sc-font-mono); font-size: var(--sc-t-xs); letter-spacing: .02em; color: #15191C;
-           background: color-mix(in oklab, var(--folio-bg, #ECEBE5) 94%, transparent);
-           border-top: 1px solid color-mix(in oklab, currentColor 14%, transparent);
-           transition: opacity var(--sc-d-base) var(--sc-ease-out); }
-  .folio[data-ground=night] { color: #ECEBE5; --folio-bg: #0F1A1E; }
-  .folio[data-ground=stone] { --folio-bg: #DCDDD6; }
-  .folio[hidden] { display: flex; opacity: 0; }
-  .folio a { pointer-events: auto; min-height: 44px; display: inline-flex; align-items: center; font-family: var(--sc-font-text);
-             font-size: var(--sc-t-sm); font-weight: 600; letter-spacing: 0; }
-  .folio .ch { font-variant-numeric: tabular-nums; }
-
-  @media (max-width: 700px) {
-    .title__body { padding-block: var(--sc-7); }
-    .does li { grid-template-columns: 1fr; gap: var(--sc-1); }
-    .part { grid-template-columns: 4.6rem 1fr; }
-    .sheet__top span + span { display: none; }
-    .level { padding-block: var(--sc-7) var(--sc-8); }
-  }
-</style>
+<meta name="theme-color" content="#D7DADE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1216" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%273%27 y=%278%27 width=%275.5%27 height=%2716%27 rx=%271.5%27 fill=%27%23E4432A%27/%3E%3Crect x=%2710%27 y=%278%27 width=%275.5%27 height=%2716%27 rx=%271.5%27 fill=%27%23F0891B%27/%3E%3Crect x=%2717%27 y=%278%27 width=%275.5%27 height=%2716%27 rx=%271.5%27 fill=%27%23F3C417%27/%3E%3Crect x=%2724%27 y=%278%27 width=%275.5%27 height=%2716%27 rx=%271.5%27 fill=%27%23CFCCC4%27/%3E%3C/svg%3E">
+<meta property="og:title" content="AI courses in Aruba: build your own AI, then give it a job">
+<meta property="og:description" content="Small groups, in person. English, explained in Papiamento. Level 1 starts Tue 24 November, ƒ225 for the first group.">
+<meta property="og:image" content="https://arubawebstudio.com/ai/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arubawebstudio.com/ai/">
+<link rel="preload" href="theme/fonts/HubotSans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="theme/fonts/MonaSans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="theme/fonts/fonts.css">
+<link rel="stylesheet" href="theme/tokens.css">
+<link rel="stylesheet" href="theme/base.css">
+<link rel="stylesheet" href="theme/components.css">
+<link rel="stylesheet" href="landing.css">
+<script type="module" src="landing.js"></script>
 </head>
-<body>
+<body id="top">
+<a class="skip" href="#main">Skip to the content</a>
 
-<main id="top">
+<header class="top wrap">
+  <a class="brand" href="#top"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Aruba Web Studio · AI Courses</span></a>
+  <nav aria-label="On this page">
+    <ul>
+      <li><a href="#levels">Levels</a></li>
+      <li><a href="#rules">Safety</a></li>
+      <li><a href="#questions">Questions</a></li>
+      <li><a class="go" href="#join"><span class="led" aria-hidden="true"></span>Put your name down</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- Title page -->
-  <header class="g-paper" data-folio="0" data-folio-title="" data-ground="paper" data-sc-act="flow">
-    <div class="wrap title">
-      <div class="mark">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#0B5D6B"/><path d="M9 23V9h3v14zM15 23V13h3v10zM21 23v-6h3v6z" fill="#ECEBE5"/></svg>
-        <span>Aruba Web Studio · AI courses</span>
+<main id="main">
+
+  <!-- 1 Hero: the pitch, and a day of 24 keys you can give jobs to -->
+  <section class="hero wrap" aria-labelledby="h1">
+    <div class="engrave" id="ghost" data-seg="07:00" aria-hidden="true"></div>
+    <div class="pitch">
+      <h1 id="h1" class="display">Build your own AI. Then give it a job.</h1>
+      <p class="sub">Small groups in Aruba, in person. From your first prompt to your own assistant on your laptop.</p>
+      <div class="acts">
+        <a class="go" href="#join"><span class="led" aria-hidden="true"></span>Put your name down</a>
+        <a class="ghost" href="#levels">See the three levels</a>
       </div>
-      <div class="title__body">
-        <h1>I run my day with AI agents. <em>I'll show you how.</em></h1>
-        <p class="lede">Small-group AI courses in Aruba, from your first prompt to your own agent. English, Papiamento or Spanish.</p>
-        <a class="cta" href="#list">Join the list</a>
-      </div>
-      <div class="title__foot">
-        <span>Taught by Victor, in person, in small groups</span>
-        <span>First group: late November · dates go to the list first</span>
+      <div class="facts">
+        <p><b>Tue 24&nbsp;November</b>Level 1 starts, 18:30 to 20:30</p>
+        <p><b>ƒ225, cash</b>Level 1, paid at session 1</p>
+        <p><b>6&nbsp;to&nbsp;10 people</b>English, explained in Papiamento</p>
       </div>
     </div>
-  </header>
 
-  <!-- 1 Why me -->
-  <section class="chapter g-paper" id="why" data-folio="1" data-folio-title="Why me" data-ground="paper" data-sc-act="flow">
-    <div class="wrap spread">
-      <div data-sc-in data-sc-stagger="60">
-        <h2 class="head">Learn it from someone who uses it every day</h2>
-        <p class="lede">Most of what I'll teach you, I learned by building it for myself and fixing it when it broke.</p>
+    <div class="unit plate" role="group" aria-label="Try it: give your assistant a job at an hour">
+      <div class="readout">
+        <span class="seg" id="clock" data-seg="07:00"></span>
+        <p id="job" aria-live="polite">Weather, wind and today’s calendar, sent to your phone.</p>
       </div>
-      <div class="story" data-sc-in data-sc-stagger="60">
-        <p>I work full time in hospitality, and I build websites and apps for Aruba businesses through Aruba Web Studio. Around both, I set up a team of AI agents that run on my own server. They handle the boring, repeatable parts of my week, and they tell me when something needs a person.</p>
-        <p>You don't need a computer science degree for any of this. You need patience and a few good habits, and I can save you most of the mistakes I made.</p>
-        <ul class="does">
-          <li><span class="when">every morning</span><span>An agent opens a few of the websites I've built, the way a visitor would, and writes up anything that's wrong.</span></li>
-          <li><span class="when">all day</span><span>Agents read incoming email and messages, pull out what matters, and fill in spreadsheets I used to update by hand.</span></li>
-          <li><span class="when">when it matters</span><span>A serious problem sends an alert to my phone, so I don't have to keep checking.</span></li>
-          <li><span class="when">every job</span><span>Each agent writes down what it did, so I can see yesterday's work and catch it when it's wrong.</span></li>
-        </ul>
-        <p class="aside">They also get things wrong. A good part of what I teach is how to notice, and the safety rules I now follow because I learned them the hard way.</p>
+      <div class="day" id="day" role="group" aria-label="Hours of the day">
+        <button class="key a" type="button">00</button><button class="key a" type="button">01</button><button class="key a" type="button">02</button><button class="key a" type="button">03</button><button class="key a" type="button">04</button><button class="key a" type="button">05</button>
+        <button class="key b" type="button">06</button><button class="key b lit now" type="button">07</button><button class="key b" type="button">08</button><button class="key b lit" type="button">09</button><button class="key b" type="button">10</button><button class="key b" type="button">11</button>
+        <button class="key c" type="button">12</button><button class="key c lit" type="button">13</button><button class="key c" type="button">14</button><button class="key c" type="button">15</button><button class="key c" type="button">16</button><button class="key c" type="button">17</button>
+        <button class="key d lit" type="button">18</button><button class="key d" type="button">19</button><button class="key d" type="button">20</button><button class="key d" type="button">21</button><button class="key d" type="button">22</button><button class="key d" type="button">23</button>
+      </div>
+      <div class="banks silk" aria-hidden="true"><span>00 Night</span><span>06 Morning</span><span>12 Afternoon</span><span>18 Evening</span></div>
+      <p class="hint">Tap an hour to give it a job. In Level 3 you write your own.</p>
+      <div class="phone" aria-hidden="true">
+        <div class="glass">
+          <time id="ptime">07:00</time>
+          <p class="day-l">Thursday 26 November</p>
+          <div class="note" id="note"><header><b><i></i>My assistant</b><span>now</span></header><p id="msg">Morning. 30° and windy, 32 km/h from the east. Dentist at 10:30, Level 1 class at 18:30.</p></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 2 Lesson one (signature: the prompt builds itself as you scroll) -->
-  <section class="lesson g-stone" id="lesson" data-folio="2" data-folio-title="Lesson one" data-ground="stone" data-sc-act="pin" data-sc-span="2.4">
-    <div data-sc-stage>
+  <!-- 2 Why me -->
+  <section class="why wrap" id="why" aria-labelledby="why-h">
+    <div>
+      <h2 id="why-h" class="display h2">I run my day with AI agents.</h2>
+      <p class="lede">Most of what I’ll teach you, I learned by building it for myself and fixing it when it broke.</p>
+      <div class="story">
+        <p>I work full time in hospitality, and I build websites and apps for Aruba businesses through Aruba Web Studio. Around both, I set up a team of AI agents that run on my own server. They handle the boring, repeatable parts of my week, and they tell me when something needs a person.</p>
+        <p>You don’t need a computer science degree for any of this. You need patience and a few good habits, and I can save you most of the mistakes I made.</p>
+      </div>
+    </div>
+    <div>
+      <div class="screen">
+        <p class="silk"><span>My agents</span><span>What they do</span></p>
+        <ul>
+          <li><b>Every morning</b><span>An agent opens a few of the websites I’ve built, the way a visitor would, and writes up anything that’s wrong.</span></li>
+          <li><b>All day</b><span>Agents read incoming email and messages, pull out what matters, and fill in spreadsheets I used to update by hand.</span></li>
+          <li><b>When it matters</b><span>A serious problem sends an alert to my phone, so I don’t have to keep checking.</span></li>
+          <li><b>Every job</b><span>Each agent writes down what it did, so I can see yesterday’s work and catch it when it’s wrong.</span></li>
+        </ul>
+      </div>
+      <p class="aside">They also get things wrong. A good part of what I teach is how to notice, and the safety rules I now follow because I learned them the hard way.</p>
+    </div>
+  </section>
+
+  <!-- 3 Lesson one: the chase light steps through the four parts as you scroll -->
+  <section class="lesson" id="lesson" aria-labelledby="lesson-h">
+    <div class="lesson__stage">
       <div class="wrap lesson__grid">
         <div>
-          <h2 class="head">The first ten minutes change how you use it</h2>
+          <h2 id="lesson-h" class="display h2">The first ten minutes change how you use it</h2>
           <p class="lede">Most people type the lazy version and get a lazy answer. In session one you learn to say four things instead.</p>
+          <div class="steps" aria-hidden="true"><span class="key a">Who you are</span><span class="key a">Who it’s for</span><span class="key a">What you want</span><span class="key a">How it sounds</span></div>
         </div>
-        <div class="sheet" role="img" aria-label="A lazy request, 'write email to supplier late', crossed out and rewritten in four parts: who I am, who it is for, what I want, and how it should sound.">
-          <div class="sheet__top"><span>session 1 · exercise 1</span><span>the message you owe</span></div>
-          <div><span class="lazy">write email to supplier late</span></div>
-          <div class="part" style="--t:.2"><b>I am</b><span>the owner of a snack bar in Noord.</span></div>
-          <div class="part" style="--t:.34"><b>It's for</b><span>my bread supplier. I want to keep them.</span></div>
-          <div class="part" style="--t:.48"><b>I want</b><span>deliveries before 7:30, or I'll have to look elsewhere.</span></div>
-          <div class="part" style="--t:.62"><b>Make it</b><span>short, friendly and firm, as a WhatsApp message.</span></div>
-          <p class="sheet__end">The answer to the second version is one you would actually send. Everyone leaves session one with theirs ready to send.</p>
-        </div>
+        <figure class="term" aria-label="A lazy request, 'write email to supplier late', crossed out and rewritten in four parts: who I am, who it is for, what I want, and how it should sound.">
+          <p class="silk"><span>Session 1 · exercise 1</span><span>The message you owe</span></p>
+          <p class="lazy">write email to supplier late</p>
+          <ol class="parts">
+            <li class="part"><b>I am</b><span>the owner of a snack bar in Noord.</span></li>
+            <li class="part"><b>It’s for</b><span>my bread supplier. I want to keep them.</span></li>
+            <li class="part"><b>I want</b><span>deliveries before 7:30, or I’ll have to look elsewhere.</span></li>
+            <li class="part"><b>Make it</b><span>short, friendly and firm, as a WhatsApp message.</span></li>
+          </ol>
+          <p class="end">The answer to the second version is one you would actually send. Everyone leaves session one with theirs ready to send.</p>
+        </figure>
       </div>
     </div>
   </section>
 
-  <!-- 3 The levels -->
-  <section class="g-paper levels-intro" id="levels" data-folio="3" data-folio-title="Three levels" data-ground="paper" data-sc-act="flow">
-    <div class="wrap" data-sc-in data-sc-stagger="60">
-      <h2 class="head">Three levels. Start where you are.</h2>
-      <p class="lede">Level 1 needs nothing but a phone or a laptop. Levels 2 and 3 are for people who want an assistant of their own.</p>
+  <!-- 4 Three levels -->
+  <section class="levels wrap" id="levels" aria-labelledby="levels-h">
+    <h2 id="levels-h" class="display h2">Three levels. Start where you are.</h2>
+    <p class="lede">Level 1 needs nothing but a phone or a laptop. Levels 2 and 3 are for people who want an assistant of their own.</p>
+
+    <article class="level plate" id="level-1" data-level="1" aria-labelledby="l1-h">
+      <div>
+        <h3 id="l1-h">AI basics that save you hours</h3>
+        <p class="meta">Level 1 · 4 evenings of 2 hours</p>
+        <p class="what">No code. You learn to write, read, sort and check with the AI tools you already have on your phone.</p>
+      </div>
+      <div>
+        <div class="row" style="--n:4" aria-hidden="true"><span class="key a">1</span><span class="key a">2</span><span class="key a">3</span><span class="key a">4</span></div>
+        <ol class="sessions">
+          <li><span>1</span><span>Your first useful hour: one real message you’ve been putting off, written in three languages</span></li>
+          <li><span>2</span><span>Read, sort, check: catch the AI’s mistakes, and turn a messy list into a spreadsheet</span></li>
+          <li><span>3</span><span>Photos, voice and your phone: receipts, menus and voice notes</span></li>
+          <li><span>4</span><span>Your own saved assistant, plus one weekly task of yours done start to finish</span></li>
+        </ol>
+        <dl class="specs">
+          <div><dt class="silk">First group</dt><dd>Tue 24 Nov, Thu 26 Nov, Tue 1 Dec and Thu 3 Dec, 18:30 to 20:30</dd></div>
+          <div><dt class="silk">You leave with</dt><dd>Your best prompts, a saved assistant that knows your business, and 30 days of questions in our WhatsApp group</dd></div>
+          <div><dt class="silk">You need</dt><dd>A phone or laptop and a free ChatGPT, Claude or Gemini account. We set it up together.</dd></div>
+        </dl>
+        <p class="price"><span class="now" data-price="L1-launch">ƒ225</span><span class="then">first group, paid in cash at session 1 · then <span data-price="L1-regular">ƒ295</span></span></p>
+        <p class="fine">If session 1 isn’t for you, tell me before session 2 and you get your money back.</p>
+      </div>
+    </article>
+
+    <article class="level plate" id="level-2" data-level="2" aria-labelledby="l2-h">
+      <div>
+        <h3 id="l2-h">Set up your own assistant: OpenClaw and Claude on your own machine</h3>
+        <p class="meta">Level 2 · 4 evenings of 2.5 hours + 1 hour 1:1 · 18+</p>
+        <p class="what">You install a personal AI assistant on a computer you control, and talk to it from your phone.</p>
+      </div>
+      <div>
+        <div class="row" style="--n:5" aria-hidden="true"><span class="key b">1</span><span class="key b">2</span><span class="key b">3</span><span class="key b">4</span><span class="key d">1:1</span></div>
+        <ol class="sessions">
+          <li><span>1</span><span>Install it tonight: OpenClaw running on your machine, connected to Claude, answering you</span></li>
+          <li><span>2</span><span>Make it yours: give it a name, see what it costs you, and finish any install that went wrong</span></li>
+          <li><span>3</span><span>Talk to it from your phone, and decide who’s allowed to talk to it</span></li>
+          <li><span>4</span><span>A job, a memory, an off switch: a daily job, what it knows about you, and how to stop it</span></li>
+          <li><span>1:1</span><span>One hour with me, on your own setup, within two weeks</span></li>
+        </ol>
+        <dl class="specs">
+          <div><dt class="silk">You leave with</dt><dd>Your own assistant running and reachable from your phone, plus a written record of your setup and a safety checklist</dd></div>
+          <div><dt class="silk">You need</dt><dd>Level 1 or regular AI use, a laptop you’re allowed to install software on, and your own Claude API account with a monthly limit you set</dd></div>
+        </dl>
+        <p class="price"><span class="now" data-price="L2-launch">ƒ450</span><span class="then">first group · then <span data-price="L2-regular">ƒ595</span></span></p>
+      </div>
+    </article>
+
+    <article class="level plate" id="level-3" data-level="3" aria-labelledby="l3-h">
+      <div>
+        <h3 id="l3-h">Build your first agents: tools, schedules, memory, safety</h3>
+        <p class="meta">Level 3 · 5 evenings of 2.5 hours · 18+</p>
+        <p class="what">You build an agent that does one real job for you every week, keeps a log, and tells you when it fails.</p>
+      </div>
+      <div>
+        <div class="row" style="--n:5" aria-hidden="true"><span class="key c">1</span><span class="key c">2</span><span class="key c">3</span><span class="key c">4</span><span class="key c">5</span></div>
+        <ol class="sessions">
+          <li><span>1</span><span>From assistant to agent: write your agent’s job description</span></li>
+          <li><span>2</span><span>Tools: build what it needs with Claude Code</span></li>
+          <li><span>3</span><span>Schedules and logs: run it on a timer and know when it fails</span></li>
+          <li><span>4</span><span>Memory and instructions that stay short and stay true</span></li>
+          <li><span>5</span><span>Safety: we try to break each other’s agents, then you demo yours</span></li>
+        </ol>
+        <dl class="specs">
+          <div><dt class="silk">You leave with</dt><dd>One working agent with a schedule, a log, a failure alert and an off switch, and a template for the next one</dd></div>
+          <div><dt class="silk">You need</dt><dd>Level 2 or a working setup of your own, and some comfort with a terminal</dd></div>
+        </dl>
+        <p class="price"><span class="now" data-price="L3-launch">ƒ625</span><span class="then">first group · then <span data-price="L3-regular">ƒ795</span></span></p>
+      </div>
+    </article>
+  </section>
+
+  <!-- 5 One to one and teams -->
+  <section class="ways wrap" id="ways" aria-labelledby="ways-h">
+    <div>
+      <h2 id="ways-h" class="display h2">Just you, or your whole team</h2>
+      <p class="lede">If a group doesn’t suit you, I can set it up with you one to one, at your place or mine. Companies can book a half-day workshop at their office, built around their own tasks. It ends with a one-page AI policy the team can follow.</p>
+    </div>
+    <div class="plate">
+      <table>
+        <caption class="silk">Prices in florins. The first price is for the first group.</caption>
+        <thead><tr><th scope="col" class="silk">What</th><th scope="col" class="silk">First group</th><th scope="col" class="silk">Then</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Level 1 · 8 hours</th><td class="n" data-price="L1-launch">ƒ225</td><td class="n" data-price="L1-regular">ƒ295</td></tr>
+          <tr><th scope="row">Level 2 · 11 hours</th><td class="n" data-price="L2-launch">ƒ450</td><td class="n" data-price="L2-regular">ƒ595</td></tr>
+          <tr><th scope="row">Level 3 · 12.5 hours</th><td class="n" data-price="L3-launch">ƒ625</td><td class="n" data-price="L3-regular">ƒ795</td></tr>
+          <tr><th scope="row">1:1 setup · 2 hours</th><td class="n" data-price="1to1-launch">ƒ275</td><td class="n" data-price="1to1-regular">ƒ350</td></tr>
+          <tr><th scope="row">Company workshop · half a day, up to 12 people</th><td class="n" data-price="co-launch">ƒ1,500</td><td class="n" data-price="co-regular">ƒ1,950</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <article class="level g-paper" id="level-1" data-folio="3" data-folio-title="Level 1" data-ground="paper" data-sc-act="flow" data-level="1">
-    <div class="wrap level__grid">
-      <div data-sc-reveal="up" data-sc-reveal-at="0.04 0.3"><p class="numeral" aria-hidden="true">1</p></div>
-      <div data-sc-in data-sc-stagger="50">
-        <h3>AI basics that save you hours</h3>
-        <p class="lede">No code. You learn to write, read, sort and check with the AI tools you already have on your phone.</p>
-        <ol class="sessions">
-          <li>Your first useful hour: one real message you've been putting off, written in three languages</li>
-          <li>Read, sort, check: catch the AI's mistakes, and turn a messy list into a spreadsheet</li>
-          <li>Photos, voice and your phone: receipts, menus and voice notes</li>
-          <li>Your own saved assistant, plus one weekly task of yours done start to finish</li>
-        </ol>
-        <dl class="facts">
-          <div><dt>you leave with</dt><dd>Your best prompts, a saved assistant that knows your business, and 30 days of questions in our WhatsApp group</dd></div>
-          <div><dt>you need</dt><dd>A phone or laptop and a free ChatGPT, Claude or Gemini account. We set it up together.</dd></div>
-        </dl>
-        <p class="price"><span class="now" data-price="L1-launch">ƒ225</span><span class="then">first group · then <span data-price="L1-regular">ƒ295</span> · 4 sessions of 2 hours</span></p>
-      </div>
-    </div>
-  </article>
-
-  <article class="level g-stone" id="level-2" data-folio="3" data-folio-title="Level 2" data-ground="stone" data-sc-act="flow" data-level="2">
-    <div class="wrap level__grid">
-      <div data-sc-reveal="up" data-sc-reveal-at="0.04 0.3"><p class="numeral" aria-hidden="true">2</p></div>
-      <div data-sc-in data-sc-stagger="50">
-        <h3>Set up your own assistant: OpenClaw and Claude on your own machine</h3>
-        <p class="lede">You install a personal AI assistant on a computer you control, and talk to it from your phone.</p>
-        <ol class="sessions">
-          <li>How an assistant works, and how to set up a safe machine for it</li>
-          <li>Install OpenClaw and connect it to Claude</li>
-          <li>Reach it from your phone, and decide who's allowed to talk to it</li>
-          <li>Give it a daily job, teach it about you, and learn how to switch it off</li>
-        </ol>
-        <dl class="facts">
-          <div><dt>you leave with</dt><dd>Your own assistant running and reachable from your phone, plus a written record of your setup and a safety checklist</dd></div>
-          <div><dt>you need</dt><dd>Level 1 or regular AI use, a laptop you're allowed to install software on, and your own Claude API account with a monthly limit you set</dd></div>
-        </dl>
-        <p class="price"><span class="now" data-price="L2-launch">ƒ450</span><span class="then">first group · then <span data-price="L2-regular">ƒ595</span> · 4 sessions of 2.5 hours, plus one hour 1:1</span></p>
-      </div>
-    </div>
-  </article>
-
-  <article class="level g-night" id="level-3" data-folio="3" data-folio-title="Level 3" data-ground="night" data-sc-act="flow" data-level="3">
-    <div class="wrap level__grid">
-      <div data-sc-reveal="up" data-sc-reveal-at="0.04 0.3"><p class="numeral" aria-hidden="true">3</p></div>
-      <div data-sc-in data-sc-stagger="50">
-        <h3>Build your first agents: tools, schedules, memory, safety</h3>
-        <p class="lede">You build an agent that does one real job for you every week, keeps a log, and tells you when it fails.</p>
-        <ol class="sessions">
-          <li>From assistant to agent: write your agent's job description</li>
-          <li>Tools: build what it needs with Claude Code</li>
-          <li>Schedules and logs: run it on a timer and know when it fails</li>
-          <li>Memory and instructions that stay short and stay true</li>
-          <li>Safety: we try to break each other's agents, then you demo yours</li>
-        </ol>
-        <dl class="facts">
-          <div><dt>you leave with</dt><dd>One working agent with a schedule, a log, a failure alert and an off switch, and a template for the next one</dd></div>
-          <div><dt>you need</dt><dd>Level 2 or a working setup of your own, and some comfort with a terminal</dd></div>
-        </dl>
-        <p class="price"><span class="now" data-price="L3-launch">ƒ625</span><span class="then">first group · then <span data-price="L3-regular">ƒ795</span> · 5 sessions of 2.5 hours</span></p>
-      </div>
-    </div>
-  </article>
-
-  <!-- 4 Other ways -->
-  <section class="chapter g-paper" id="ways" data-folio="4" data-folio-title="1:1 and teams" data-ground="paper" data-sc-act="flow">
-    <div class="wrap ways">
-      <div data-sc-in data-sc-stagger="60">
-        <h2 class="head">Just you, or your whole team</h2>
-        <p class="lede">If a group doesn't suit you, I can set it up with you one to one, at your place or mine. Companies can book a half-day workshop at their office, built around their own tasks. It ends with a one-page AI policy the team can follow.</p>
-      </div>
-      <div data-sc-in>
-        <table class="prices">
-          <caption>Prices in florins. The first price is for the first group.</caption>
-          <thead><tr><th scope="col">What</th><th scope="col">First group</th><th scope="col">Then</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Level 1 · 8 hours</th><td class="n" data-price="L1-launch">ƒ225</td><td class="n" data-price="L1-regular">ƒ295</td></tr>
-            <tr><th scope="row">Level 2 · 11 hours</th><td class="n" data-price="L2-launch">ƒ450</td><td class="n" data-price="L2-regular">ƒ595</td></tr>
-            <tr><th scope="row">Level 3 · 12.5 hours</th><td class="n" data-price="L3-launch">ƒ625</td><td class="n" data-price="L3-regular">ƒ795</td></tr>
-            <tr><th scope="row">1:1 setup · 2 hours</th><td class="n" data-price="1to1-launch">ƒ275</td><td class="n" data-price="1to1-regular">ƒ350</td></tr>
-            <tr><th scope="row">Company workshop · half a day, up to 12 people</th><td class="n" data-price="co-launch">ƒ1,500</td><td class="n" data-price="co-regular">ƒ1,950</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5 Rules -->
-  <section class="chapter g-night" id="rules" data-folio="5" data-folio-title="Safety first" data-ground="night" data-sc-act="flow">
+  <!-- 6 The rules: the one dark band -->
+  <section class="rules" id="rules" aria-labelledby="rules-h">
     <div class="wrap">
-      <div data-sc-in data-sc-stagger="60">
-        <h2 class="head">The rules come before the tools</h2>
-        <p class="lede">An assistant that can act for you can also act against you. These are the first things every level teaches.</p>
-      </div>
-      <ol class="rules" data-sc-in data-sc-stagger="50">
-        <li><strong>Keys never go in a chat</strong><span>Passwords and API keys live on your machine. You won't paste them into a message, a screenshot or a shared document.</span></li>
-        <li><strong>No spending power</strong><span>Your agent never gets a card, a bank login or a way to buy things, and every account it uses has a monthly limit.</span></li>
-        <li><strong>Other people's data stays out</strong><span>Clients, guests, patients and staff don't go into an AI tool without their agreement. In class we only use made-up data.</span></li>
-        <li><strong>It asks before it sends</strong><span>No messages, posts or deletions without your yes, at least until you've watched it work for weeks.</span></li>
-        <li><strong>It isn't open to the internet</strong><span>Its dashboard and controls stay private to you. We set up the firewall together and check it from outside.</span></li>
-        <li><strong>You can always switch it off</strong><span>You know the one command that stops it, and you can read what it did yesterday.</span></li>
+      <h2 id="rules-h" class="display h2">The rules come before the tools</h2>
+      <p class="lede">An assistant that can act for you can also act against you. These are the first things every level teaches.</p>
+      <ol>
+        <li><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></svg><div><strong>Keys never go in a chat</strong><span>Passwords and API keys live on your machine. You won’t paste them into a message, a screenshot or a shared document.</span></div></li>
+        <li><span></span><div><strong>No spending power</strong><span>Your agent never gets a card, a bank login or a way to buy things, and every account it uses has a monthly limit.</span></div></li>
+        <li><span></span><div><strong>Other people’s data stays out</strong><span>Clients, guests, patients and staff don’t go into an AI tool without their agreement. In class we only use made-up data.</span></div></li>
+        <li><span></span><div><strong>It asks before it sends</strong><span>No messages, posts or deletions without your yes, at least until you’ve watched it work for weeks.</span></div></li>
+        <li><span></span><div><strong>It isn’t open to the internet</strong><span>Its dashboard and controls stay private to you. We set up the firewall together and check it from outside.</span></div></li>
+        <li><span></span><div><strong>You can always switch it off</strong><span>You know the one command that stops it, and you can read what it did yesterday.</span></div></li>
       </ol>
     </div>
   </section>
 
-  <!-- 6 Questions -->
-  <section class="chapter g-stone" id="questions" data-folio="6" data-folio-title="Questions" data-ground="stone" data-sc-act="flow">
-    <div class="wrap">
-      <h2 class="head">Questions people ask</h2>
-      <div class="qa">
-        <details><summary>Do I need to know how to code?</summary><p>Not for Level 1. Level 2 means typing a few commands, and I'll walk you through each one. Level 3 is where you build things, with Claude Code doing most of the writing.</p></details>
-        <details><summary>Which language are the classes in?</summary><p>The tools and handouts are in English. In the room we can talk in Papiamento, Spanish or English. Tell me which you prefer in the form. The AI handles English and Spanish well, and its Papiamento needs checking, which we practise.</p></details>
-        <details><summary>Mac or Windows?</summary><p>Level 1 works on anything, including a phone. Level 2 needs a Mac, a Windows 11 laptop or a Linux machine you're allowed to install software on. A locked work laptop won't do. If yours can't run it, you can rent a small server in your own name for the length of the course.</p></details>
-        <details><summary>Is there anything to pay on top?</summary><p>Not for Level 1: we use free accounts. For Levels 2 and 3 you need your own Claude API account, paid by you, with a hard monthly limit that you choose before anything runs. If you'd rather use a small rented server than your laptop, you rent it in your own name for a few dollars a month.</p></details>
-        <details><summary>When and where?</summary><p>Weekday evenings or Saturday mornings, in person in Aruba. Dates and the place go to the list first, before anywhere else.</p></details>
-      </div>
+  <!-- 7 Questions -->
+  <section class="qa wrap" id="questions" aria-labelledby="qa-h">
+    <h2 id="qa-h" class="display h2">Questions people ask</h2>
+    <div class="list">
+      <details><summary>Do I need to know how to code?</summary><p>Not for Level 1. Level 2 means typing a few commands, and I’ll walk you through each one. Level 3 is where you build things, with Claude Code doing most of the writing.</p></details>
+      <details><summary>Which language are the classes in?</summary><p>The tools and handouts are in English. In the room we can talk in Papiamento, Spanish or English. Tell me which you prefer in the form. The AI handles English and Spanish well, and its Papiamento needs checking, which we practise.</p></details>
+      <details><summary>Mac or Windows?</summary><p>Level 1 works on anything, including a phone. Level 2 needs a Mac, a Windows 11 laptop or a Linux machine you’re allowed to install software on. A locked work laptop won’t do. If yours can’t run it, you can rent a small server in your own name for the length of the course.</p></details>
+      <details><summary>How do I pay?</summary><p>The first Level 1 group pays ƒ225 in cash at session 1. If session 1 isn’t for you, tell me before session 2 and you get your money back.</p></details>
+      <details><summary>Is there anything to pay on top?</summary><p>Not for Level 1: we use free accounts. For Levels 2 and 3 you need your own Claude API account, paid by you, with a hard monthly limit that you choose before anything runs. If you’d rather use a small rented server than your laptop, you rent it in your own name for a few dollars a month.</p></details>
+      <details><summary>When and where?</summary><p>The first Level 1 group meets on Tue 24 Nov, Thu 26 Nov, Tue 1 Dec and Thu 3 Dec, 18:30 to 20:30, in person in Aruba. The place goes to the list first, before anywhere else.</p></details>
     </div>
   </section>
 
-  <!-- Colophon + sign-up -->
-  <section class="colophon g-paper" id="list" data-folio="7" data-folio-title="Join the list" data-ground="paper" data-sc-act="flow">
-    <div class="wrap">
-      <div class="colophon__grid">
-        <div>
-          <h2 class="head">Put your name down</h2>
-          <p class="lede">Groups are small. The list hears about dates first, and the first group of each level pays the lower price.</p>
-          <p class="small" style="margin-top: var(--sc-5)">Pressing the button opens your own email app with your answers filled in. Nothing is sent until you press send there, and this page stores nothing on a server.</p>
+  <!-- 8 Put your name down -->
+  <section class="join wrap" id="join" aria-labelledby="join-h">
+    <div>
+      <h2 id="join-h" class="display h2">Put your name down</h2>
+      <p class="lede">Groups are small. The list hears about dates first, and the first group of each level pays the lower price.</p>
+      <div class="taster plate">
+        <span class="seg" data-seg="14.11" aria-label="14 November"></span>
+        <p><b>Free 45-minute taster, Sat 14 Nov</b><span>See one thing built live before you decide. Time and place go to the list first.</span></p>
+      </div>
+      <p class="small" style="margin-top: var(--s5)">Pressing the button opens your own email app with your answers filled in. Nothing is sent until you press send there, and this page stores nothing on a server.</p>
+    </div>
+    <form id="interest" class="plate" novalidate>
+      <div class="field">
+        <label for="f-name">Your name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80">
+      </div>
+      <div class="field">
+        <label for="f-contact">Email or WhatsApp number</label>
+        <input id="f-contact" name="contact" type="text" autocomplete="email" required maxlength="120">
+      </div>
+      <fieldset>
+        <legend>I’m interested in <span class="opt">(pick any)</span></legend>
+        <div class="picks">
+          <label class="pick"><input type="checkbox" name="interest" value="Level 1"><span>Level 1</span></label>
+          <label class="pick"><input type="checkbox" name="interest" value="Level 2"><span>Level 2</span></label>
+          <label class="pick"><input type="checkbox" name="interest" value="Level 3"><span>Level 3</span></label>
+          <label class="pick"><input type="checkbox" name="interest" value="1:1 setup"><span>1:1 setup</span></label>
+          <label class="pick"><input type="checkbox" name="interest" value="Company workshop"><span>Company workshop</span></label>
         </div>
-        <form id="interest" novalidate>
-          <div class="field">
-            <label for="f-name">Your name</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80">
-          </div>
-          <div class="field">
-            <label for="f-contact">Email or WhatsApp number</label>
-            <input id="f-contact" name="contact" type="text" autocomplete="email" required maxlength="120">
-          </div>
-          <fieldset>
-            <legend>I'm interested in <span class="hint">(pick any)</span></legend>
-            <div class="choices">
-              <label class="choice"><input type="checkbox" name="interest" value="Level 1"><span>Level 1</span></label>
-              <label class="choice"><input type="checkbox" name="interest" value="Level 2"><span>Level 2</span></label>
-              <label class="choice"><input type="checkbox" name="interest" value="Level 3"><span>Level 3</span></label>
-              <label class="choice"><input type="checkbox" name="interest" value="1:1 setup"><span>1:1 setup</span></label>
-              <label class="choice"><input type="checkbox" name="interest" value="Company workshop"><span>Company workshop</span></label>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>I'd like it in</legend>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="language" value="English" checked><span>English</span></label>
-              <label class="choice"><input type="radio" name="language" value="Papiamento"><span>Papiamento</span></label>
-              <label class="choice"><input type="radio" name="language" value="Spanish"><span>Spanish</span></label>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Best time</legend>
-            <div class="choices">
-              <label class="choice"><input type="checkbox" name="time" value="Weekday evening"><span>Weekday evening</span></label>
-              <label class="choice"><input type="checkbox" name="time" value="Saturday morning"><span>Saturday morning</span></label>
-            </div>
-          </fieldset>
-          <div class="field">
-            <label for="f-note">Anything you'd like it to help with? <span class="hint">(optional)</span></label>
-            <textarea id="f-note" name="note" maxlength="600"></textarea>
-          </div>
-          <button class="cta" type="submit">Join the list</button>
-          <p class="status" id="status" role="status" aria-live="polite"></p>
-        </form>
+      </fieldset>
+      <fieldset>
+        <legend>I’d like it in</legend>
+        <div class="picks">
+          <label class="pick"><input type="radio" name="language" value="English" checked><span>English</span></label>
+          <label class="pick"><input type="radio" name="language" value="Papiamento"><span>Papiamento</span></label>
+          <label class="pick"><input type="radio" name="language" value="Spanish"><span>Spanish</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Best time</legend>
+        <div class="picks">
+          <label class="pick"><input type="checkbox" name="time" value="Weekday evening"><span>Weekday evening</span></label>
+          <label class="pick"><input type="checkbox" name="time" value="Saturday morning"><span>Saturday morning</span></label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="f-note">Anything you’d like it to help with? <span class="opt">(optional)</span></label>
+        <textarea id="f-note" name="note" maxlength="600"></textarea>
       </div>
-      <div class="foot small">
-        <span>Victor · Aruba Web Studio · <a href="mailto:info@arubawebstudio.com">info@arubawebstudio.com</a></span>
-        <span id="saved"></span>
+      <div class="send">
+        <button class="go" type="submit"><span class="led" aria-hidden="true"></span>Put my name down</button>
+        <button class="wa" id="wa" type="button" hidden>Message me on WhatsApp</button>
       </div>
-    </div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </form>
   </section>
 
+  <footer class="foot wrap small">
+    <span>Victor · Aruba Web Studio · <a href="mailto:info@arubawebstudio.com">info@arubawebstudio.com</a></span>
+    <span id="saved"></span>
+  </footer>
 </main>
-
-<nav class="folio" aria-label="Where you are" hidden>
-  <span class="ch" id="folio-ch"></span>
-  <a href="#list">Join the list</a>
-</nav>
-
-<script src="scrollcraft.js"></script>
-<script>
-ScrollCraft.mount(document.body);
-
-/* Folio: the chapter you're in, and which ground it sits on. */
-(function () {
-  var folio = document.querySelector('.folio'), ch = document.getElementById('folio-ch');
-  var parts = Array.prototype.slice.call(document.querySelectorAll('[data-folio]'));
-  function update() {
-    var probe = innerHeight * 0.85, cur = parts[0];
-    for (var i = 0; i < parts.length; i++) if (parts[i].getBoundingClientRect().top <= probe) cur = parts[i];
-    var n = cur.getAttribute('data-folio'), t = cur.getAttribute('data-folio-title');
-    var list = document.getElementById('list').getBoundingClientRect().top < innerHeight * 0.6;
-    folio.hidden = n === '0' || list;
-    ch.textContent = n === '0' ? '' : n + '  ' + t;
-    folio.setAttribute('data-ground', cur.getAttribute('data-ground'));
-  }
-  addEventListener('scroll', update, { passive: true });
-  addEventListener('resize', update);
-  update();
-})();
-
-/* Sign-up: kept on this device and handed to the visitor's own email app.
-   No server, no form service. Victor can collect sign-ups on his own phone at
-   a taster and download them as JSON from the footer. */
-(function () {
-  var KEY = 'aiCoursesInterest', TO = 'info@arubawebstudio.com';
-  // Taster mode: open the page with ?collect on Victor's own phone or laptop and each sign-up
-  // is also kept in this browser, with a JSON download in the footer. Otherwise nothing is stored.
-  var COLLECT = /[?&]collect\b/.test(location.search);
-  var form = document.getElementById('interest'), status = document.getElementById('status'), saved = document.getElementById('saved');
-  function all() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
-  function jsonLink(data, name, text) {
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }));
-    a.download = name; a.textContent = text; return a;
-  }
-  function showSaved() {
-    saved.textContent = '';
-    var list = COLLECT ? all() : [];
-    if (!list.length) return;
-    saved.append(list.length + (list.length === 1 ? ' sign-up' : ' sign-ups') + ' saved on this device · ');
-    saved.append(jsonLink(list, 'ai-courses-interest.json', 'download JSON'));
-  }
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var fd = new FormData(form);
-    var entry = {
-      name: (fd.get('name') || '').trim(),
-      contact: (fd.get('contact') || '').trim(),
-      interest: fd.getAll('interest'),
-      language: fd.get('language'),
-      time: fd.getAll('time'),
-      note: (fd.get('note') || '').trim(),
-      at: new Date().toISOString()
-    };
-    status.textContent = '';
-    if (!entry.name || !entry.contact) {
-      status.dataset.kind = 'err';
-      status.textContent = 'Add your name and an email or WhatsApp number, so I can tell you the dates.';
-      (entry.name ? form.contact : form.name).focus();
-      return;
-    }
-    if (COLLECT) {
-      var list = all(); list.push(entry);
-      try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (err) { /* private mode: the email still carries it */ }
-    }
-    var body = [
-      'Name: ' + entry.name,
-      'Email or WhatsApp: ' + entry.contact,
-      'Interested in: ' + (entry.interest.join(', ') || 'not sure yet'),
-      'Language: ' + entry.language,
-      'Best time: ' + (entry.time.join(', ') || 'any'),
-      entry.note ? 'Help with: ' + entry.note : ''
-    ].filter(Boolean).join('\n');
-    var href = 'mailto:' + TO + '?subject=' + encodeURIComponent('AI courses list: ' + entry.name) + '&body=' + encodeURIComponent(body);
-    window.__lastMailto = href;
-    status.dataset.kind = 'ok';
-    status.innerHTML = '';
-    status.append('Your email app should open now with your answers filled in. It is only sent when you press send there. If nothing opened, email ');
-    var m = document.createElement('a'); m.href = href; m.textContent = TO; status.append(m, ' or ');
-    status.append(jsonLink(entry, 'my-ai-courses-answers.json', 'save your answers'), '.');
-    showSaved();
-    location.href = href;
-  });
-  showSaved();
-})();
-</script>
 </body>
 </html>
