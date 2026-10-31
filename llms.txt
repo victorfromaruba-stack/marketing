@@ -1,0 +1,21 @@
+# Aruba Webstudio
+
+> A web and app studio in Oranjestad, Aruba. Builds websites, mobile apps, APIs and augmented reality for Aruban businesses. Contact: info@arubawebstudio.com · WhatsApp +297 747 7794. Works in Papiamento, Dutch, Spanish and English.
+
+## What we build, and the published price
+- Websites: from $800, about one week. Four to six pages, mobile first, a working contact form, Google listing set up.
+- Mobile apps: from $4,500, four to eight weeks. One build for iOS and Android, sharing code with the website.
+- APIs: from $1,200, two to four weeks. Connects booking systems, POS and websites.
+- Augmented reality: quoted per project.
+
+## How a project works
+1. Tell us what the business does (email or call).
+2. We build a working site before you pay.
+3. If it is not right you owe nothing; if it is, half up front and half at launch.
+4. It goes live on your own domain and hosting account.
+
+## Live work
+- House of Mosaic Art Villa, AR guest app: https://victorfromaruba-stack.github.io/app-test/
+- Pidi, late-night delivery (ordering site, kitchen screen, driver app): https://victorfromaruba-stack.github.io/restaurant-/
+- Croes Accounting: https://croesaccounting.com
+- AruSalt: https://arusalt.com

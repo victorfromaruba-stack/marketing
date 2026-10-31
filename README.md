@@ -1,30 +1,24 @@
-# Aruba Web Studio — arubawebstudio.com
+# Aruba Webstudio — arubawebstudio.com
 
 The studio's own website. One static HTML file, no build step, no framework — which
 is deliberate: it loads instantly, cannot break at deploy time, and demonstrates the
 thing we sell.
 
 ```
-index.html          the whole site
-brand/              the design system — tokens, theme book, contrast check
-  tokens.css        every project starts here
-  index.html        the theme book
-  check-contrast.py runs in CI
-  build-logo.py     regenerates the vector logos below
-  logo/             the artwork
-    logo-mark*.svg        the mark: full, dark, mono, and the ringless small pair
-    logo-lockup*.svg      name beside mark, with the font embedded
-    favicon.svg           the small mark on a navy tile
-    BodoniModa.ttf        input to build-logo.py; not deployed
-    logo-*.png            the master raster artwork; not deployed
+index.html          the whole site (HTML, CSS and ~60 lines of JS inline)
+wind.js             the divi-divi in the trade wind (canvas), colours from CSS vars
+fonts/              Bodoni Moda (roman + italic) and Archivo, woff2, latin, OFL
+work/v2/            every image the page uses: AVIF + WebP at two widths, the AR loop
+brand/              the design system: tokens, theme book, contrast check
+  logo/             the vector marks and lockups
 favicon.ico         built from the small-size mark
 icon-*.png          32/48/180/192/512 + small-size variants
-og-image.png        1200×630 social card
-site.webmanifest    installable web app
-Caddyfile           TLS + redirects + caching
-robots.txt · sitemap.xml
+og-image.png        1200x630 social card
+site.webmanifest    installable web app (relative paths: works on a subpath)
+llms.txt            plain-text summary of offer, prices and live work for AI search
+Caddyfile           TLS + redirects + caching (VPS path, dormant)
+robots.txt, sitemap.xml
 ```
-
 Assets sit at the repo root, not in a `public/` folder — the site is served flat,
 and a nested folder meant every icon reference 404'd. Found by serving it, not by
 reading it.
@@ -114,17 +108,17 @@ GitHub's four A records (185.199.108–111.153) and `www` at
 server IP and `www` at the bare domain. Do one or the other, not both — split
 records are how a site half-works for half its visitors.
 
-## Before this goes live
+## What the page claims, and where each claim comes from
 
-Three things are placeholders, marked in the source with `⚠`:
+Every number on the page is read from code or a live site, never estimated.
+House of Mosaic: 13 artworks = `app-test/content/artworks/`, 5 interface
+languages = `app-test/src/i18n/`. Store release is NOT claimed: the Play
+developer account is still open in `STORE-LISTING.md`. Client descriptions
+match what each live site shows. Re-check them when a client site changes.
 
-1. **Three more projects.** The House of Mosaic case study is real and detailed;
-   the other three cards are empty slots. Fill them with real clients or delete
-   them — never invent one. An honest single case study beats four padded ones.
-2. ~~A social share image.~~ **Done** — `og-image.png` is generated from the mark.
-3. **Prices.** The figures in the services section come from
-   `system/service/OFFERS.md` in the other repo. Confirm they match what you will
-   actually quote — a price on a public page is a promise.
+Screens in the work rail are captures of the live sites at 390px
+(tools in the scratch folder: capture.mjs, img.mjs). Pidi kitchen and driver
+screens show sample orders and say so.
 
 ## Decisions worth keeping
 
@@ -138,8 +132,24 @@ them. Add them when a client asks.
 **Prices published.** Most studios hide them. Publishing filters out people who were
 never going to pay, and starts every conversation past the awkward part.
 
-**Dark mode included.** Roughly half of phone users have it on, and a site that
-ignores it looks broken to them.
+**Day and night.** The page follows the system theme. Night is the original
+navy and amber; day is the brand's cream and sea blue, and the tree in the
+hero follows (wind.js reads `--tree`, `--sky-*`, `--sun-*`).
+
+**The lean.** Phones in the work rail lean downwind like the divi-divi and
+stand straight as they reach the middle (CSS scroll-driven animation, inline
+view timeline). No JS. Off under reduced motion and where unsupported.
+
+**The wind waits.** The tree draws one still frame at once and starts moving
+about four seconds after load (or when touched), and drops frames on a slow
+phone. A continuous canvas from the first frame kept Lighthouse TBT swinging
+between 20 ms and 5 s on this machine; with the wait it holds at ~100 ms.
+
+**Plain static, any host.** No build step, every URL relative, so the same
+folder serves from GitHub Pages, Cloudflare Pages or a subpath preview.
+
+**Google Fonts removed.** Self-hosted, so no third-party request and no
+render-blocking stylesheet.
 
 **AR led with, not buried.** It is the one thing on this page a competitor in this
 market probably cannot match. It belongs in the first paragraph.
