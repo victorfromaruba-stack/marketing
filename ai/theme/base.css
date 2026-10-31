@@ -15,7 +15,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 1px; }
 h1, h2, h3 { font-family: var(--f-display); margin: 0; text-wrap: balance; letter-spacing: -.02em; }
 p { margin: 0; text-wrap: pretty; }
-code { font-family: var(--f-code); font-size: .86em; font-stretch: 85%; }
+code { font-family: var(--f-code); font-size: .86em; }
 .num { font-variant-numeric: tabular-nums; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 

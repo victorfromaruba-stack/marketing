@@ -30,7 +30,7 @@
   --ink: var(--al-900);
   --ink-soft: var(--al-600);       /* 6.4:1 on panel, 8.2:1 on face */
   --hair: rgb(16 18 22 / .12);     /* hairline; never structure, only separation */
-  --brush: rgb(255 255 255 / .22); /* the grain: 1px lines every 3px */
+  --brush: rgb(255 255 255 / .13); /* the grain: 1px lines every 3px, felt more than seen */
   --shadow: 216 14% 18%;           /* hsl() triplet, used as hsl(var(--shadow) / a) */
   --highlight: rgb(255 255 255 / .65); /* the top edge catching light from above */
 
@@ -89,32 +89,35 @@
   --copy-hover: #30353D;
   --focus: #101216;
 
-  /* ── Type ── */
-  --f-display: "Hubot Sans", "Hubot Sans Fallback", system-ui, sans-serif;           /* titles, silkscreen, keys */
-  --f-text: "Mona Sans", "Mona Sans Fallback", system-ui, -apple-system, "Segoe UI", sans-serif; /* reading */
-  --f-code: "Martian Mono", ui-monospace, Menlo, Consolas, monospace;      /* commands only */
+  /* ── Type: Apple's own font on every surface (Victor, 29 Oct: "use the exact same font ALWAYS WITH ALL THINGS").
+       -apple-system is real SF Pro on iPhone, iPad and Mac; SF Pro may not be self-hosted, so nothing downloads.
+       Hubot / Mona / Martian (the 24 Oct comps) are retired with that rule; the step sequencer stays. ── */
+  --f-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --f-display: var(--f-sans);   /* titles, silkscreen, keys */
+  --f-text: var(--f-sans);      /* reading */
+  --f-code: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; /* commands only */
 
-  --t-silk: 11px;    /* silkscreen labels, caps, wide */
+  --t-silk: 11px;    /* silkscreen labels, caps, tracked */
   --t-xs: 12.5px;
   --t-sm: 14.5px;
   --t-body: 16px;    /* never smaller on inputs: iOS zooms below 16 */
+  --t-lede: 19px;    /* the line under a title */
   --t-lg: 19px;      /* step titles */
   --t-xl: 22px;      /* section heads on phone */
-  --t-title: 44px;   /* phone page title */
-  --t-hero: clamp(52px, 2rem + 3.6vw, 90px);
+  --t-h2: clamp(24px, 1.2rem + 0.9vw, 30px);
+  --t-title: clamp(34px, 1.5rem + 2.4vw, 52px);   /* page title: 34 on a 390 phone, 52 at 1440 */
+  --t-hero: clamp(42px, 1.6rem + 4vw, 80px);
   --t-slide: 124px;  /* projector, 1920 wide */
 
-  /* Display weight, re-checked 24 Oct against 05 §1 (premium headlines sit at 250-600). Rendered
-     450 / 520 / 580 / 820 side by side: Hubot at 820 reads as a sports poster (the "toy" risk), and its
-     weight axis is steep, so 600+ already looks bold. 560 reads as engraved instrument lettering and
-     stays solid on a phone in sun. Width (86%) carries the signature, not weight. */
-  --w-display: 560;
-  --wd-display: 86%;        /* font-stretch: Hubot's narrow cut is the signature, not the weight */
-  --tr-display: -.03em;
-  --lh-display: .93;
+  /* Display: Apple headline recipe (semibold, tight but not crushed). Safari already applies SF's own
+     tracking table to -apple-system, so the extra tracking stays small. */
+  --w-display: 600;
+  --wd-display: 100%;
+  --tr-display: -.015em;
+  --lh-display: 1.06;
   --w-head: 600;            /* step titles, section heads */
-  --w-silk: 650;  --wd-silk: 118%;  --tr-silk: .1em;
-  --w-key: 700;   --wd-key: 110%;   /* small numerals on coloured keys need the weight */
+  --w-silk: 600;  --wd-silk: 100%;  --tr-silk: .07em;
+  --w-key: 600;   --wd-key: 100%;
   --w-body: 400;  --lh-body: 1.55;
   --measure: 62ch;
 
