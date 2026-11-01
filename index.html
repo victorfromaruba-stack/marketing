@@ -89,7 +89,6 @@
   --bg:#F3EFE3; --surface:#FBF9F3; --surface-2:#E9E4D6;
   --fg:#0B2F48; --fg-muted:#3E596A; --fg-subtle:#506876;
   --rule:#D7D2C4; --accent:#1B6CA8; --accent-ink:#FBF9F3;
-  --display-accent:#896633;           /* large text only, 3.7:1 */
   --bezel:#0B1620;
   --shade:11 47 72;                   /* shadow tint, navy */
   /* hero tree + sky */
@@ -104,7 +103,6 @@
     --bg:#071A26; --surface:#0B2432; --surface-2:#103042;
     --fg:#F3EFE3; --fg-muted:#C3C9C9; --fg-subtle:#93A2AA;
     --rule:rgba(243,239,227,.15); --accent:#FABA5E; --accent-ink:#071A26;
-    --display-accent:#FABA5E;
     --bezel:#02090E;
     --shade:0 0 0;
     --tree:#F3EFE3; --sky-top:#071A26; --sky-low:#123044; --sun-rgb:250,186,94; --sun-a:1;
@@ -283,7 +281,7 @@ section{padding-block:clamp(72px,11vw,148px)}
 .how{border-top:1px solid var(--rule)}
 .steps{list-style:none;margin:clamp(36px,5vw,64px) 0 0;padding:0;display:grid;gap:36px 64px}
 .steps li{display:grid;grid-template-columns:2.6rem 1fr;gap:4px 16px}
-.steps .n{grid-row:span 2;font:600 2.25rem/1 var(--sf-display);letter-spacing:-.02em;color:var(--display-accent);font-variant-numeric:lining-nums}
+.steps .n{grid-row:span 2;font:600 2.25rem/1 var(--sf-display);letter-spacing:-.02em;color:var(--accent);font-variant-numeric:lining-nums}
 .steps h3{font-size:1.375rem;line-height:1.2}
 .steps p{color:var(--fg-muted);max-width:46ch;margin-top:6px}
 @media (min-width:860px){.steps{grid-template-columns:1fr 1fr}}
