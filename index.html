@@ -28,10 +28,6 @@
 <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
 <link rel="manifest" href="site.webmanifest">
 
-<link rel="preload" href="fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/bodoni-moda-italic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -81,16 +77,13 @@
    system theme: a phone that switches to dark at sunset gets the evening
    version, the same island by daylight otherwise. One accent per theme.
    ---------------------------------------------------------------------- */
-@font-face{font-family:"Bodoni Moda";src:url(fonts/bodoni-moda.woff2) format("woff2");font-weight:400 500;font-style:normal;font-display:swap}
-@font-face{font-family:"Bodoni Moda";src:url(fonts/bodoni-moda-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
-@font-face{font-family:Archivo;src:url(fonts/archivo.woff2) format("woff2");font-weight:400 500;font-style:normal;font-display:swap}
-/* Metric-matched fallbacks, so the swap does not shove the hero around. */
-@font-face{font-family:"Bodoni fallback";src:local("Georgia"),local("Times New Roman");size-adjust:96%;ascent-override:92%;descent-override:24%}
-@font-face{font-family:"Archivo fallback";src:local("Arial"),local("Helvetica");size-adjust:101%}
-
 :root{
-  --display:"Bodoni Moda","Bodoni fallback",Georgia,serif;
-  --text:Archivo,"Archivo fallback",-apple-system,system-ui,sans-serif;
+  /* Apple's own type, nothing downloaded (Victor, 29 and 31 Oct: SF Pro on
+     everything). -apple-system is SF Pro on iPhone and Mac and switches to the
+     Display cut at 20px and up, the way apple.com pairs Display and Text.
+     Headings name Display first for Macs that have SF Pro installed. */
+  --sf:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --sf-display:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
 
   /* day */
   --bg:#F3EFE3; --surface:#FBF9F3; --surface-2:#E9E4D6;
@@ -121,13 +114,13 @@
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:84px;background:var(--bg)}
 @media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
-body{margin:0;background:var(--bg);color:var(--fg);font:400 1.0625rem/1.6 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1.0625rem/1.5 var(--sf);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,video{display:block;max-width:100%;height:auto}
 figure{margin:0}
 a{color:inherit}
 ::selection{background:var(--accent);color:var(--accent-ink)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
-h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h1,h2,h3{font-family:var(--sf-display);font-weight:600;letter-spacing:-.012em;text-wrap:balance;margin:0}
 p{text-wrap:pretty;margin:0}
 .skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--fg);color:var(--bg);padding:12px 16px;text-decoration:none}
 .skip:focus{top:12px}
@@ -135,7 +128,7 @@ p{text-wrap:pretty;margin:0}
 
 /* buttons: one primary shape, near-square like the brand */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:2px;
-  font:500 1rem/1 var(--text);text-decoration:none;white-space:nowrap;cursor:pointer;border:1px solid transparent;
+  font:500 1rem/1 var(--sf);text-decoration:none;white-space:nowrap;cursor:pointer;border:1px solid transparent;
   transition:transform .12s var(--ease),background-color .16s var(--ease),border-color .16s var(--ease),color .16s var(--ease)}
 .btn:active{transform:scale(.97)}
 .btn-primary{background:var(--accent);color:var(--accent-ink)}
@@ -151,7 +144,7 @@ p{text-wrap:pretty;margin:0}
 .nav{position:fixed;inset:0 0 auto;z-index:50;height:68px;display:flex;align-items:center;gap:28px;padding-inline:max(var(--gut),calc((100vw - 1320px)/2 + var(--gut)))}
 .nav::before{content:"";position:absolute;inset:0 0 -18px;z-index:-1;pointer-events:none;
   background:linear-gradient(to bottom,color-mix(in oklab,var(--bg) 94%,transparent) 55%,color-mix(in oklab,var(--bg) 0%,transparent))}
-.mark{display:flex;align-items:center;gap:10px;font:500 1rem/1 var(--text);text-decoration:none;min-height:44px;white-space:nowrap}
+.mark{display:flex;align-items:center;gap:10px;font:500 1rem/1 var(--sf);text-decoration:none;min-height:44px;white-space:nowrap}
 .mark svg{width:30px;height:30px;flex:none}
 .nav nav{margin-left:auto}
 .nav ul{display:none;list-style:none;margin:0;padding:0;gap:26px}
@@ -170,8 +163,9 @@ p{text-wrap:pretty;margin:0}
 @keyframes sway{from{transform:rotate(0deg)}to{transform:rotate(-1.4deg) skewX(-1deg)}}
 @media (prefers-reduced-motion:reduce){.hero-tree{animation:none}}
 .hero-in{position:relative;padding:8px var(--gut) 56px}
-.hero h1{font-size:clamp(3rem,13.4vw,8.4rem);line-height:.92;letter-spacing:-.028em;max-width:12ch}
-.hero h1 em{display:block;font-style:italic;color:var(--display-accent);padding-bottom:.06em}
+.hero h1{font-size:clamp(3rem,1rem + 9vw,7rem);line-height:1;letter-spacing:-.034em;max-width:12ch}
+/* Apple's two-tone headline: the second sentence steps back in grey, no italic, no accent. */
+.hero h1 em{display:block;font-style:normal;color:var(--fg-subtle)}
 .hero p{margin-top:22px;max-width:36ch;font-size:clamp(1.0625rem,1.5vw,1.25rem);color:var(--fg-muted)}
 .hero .acts{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
 .hero .acts .link{font-size:1rem;padding:12px 0}
@@ -184,7 +178,7 @@ p{text-wrap:pretty;margin:0}
 
 /* ---------------- section rhythm ---------------- */
 section{padding-block:clamp(72px,11vw,148px)}
-.h2{font-size:clamp(2.1rem,5.2vw,4.2rem);line-height:1.02;max-width:16ch}
+.h2{font-size:clamp(2rem,1.2rem + 3.4vw,3.5rem);line-height:1.04;letter-spacing:-.03em;max-width:20ch}
 .sub{margin-top:18px;color:var(--fg-muted);max-width:52ch;font-size:clamp(1.0625rem,1.4vw,1.2rem)}
 
 /* ---------------- work rail (the lean) ---------------- */
@@ -192,7 +186,7 @@ section{padding-block:clamp(72px,11vw,148px)}
 .rail-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
 .rail-btns{display:none;gap:10px}
 .rail-btns button{width:48px;height:48px;border-radius:2px;border:1px solid var(--rule);background:transparent;color:var(--fg);cursor:pointer;
-  font:400 1.4rem/1 var(--display);display:grid;place-items:center;transition:border-color .16s var(--ease),opacity .16s}
+  font:400 1.5rem/1 var(--sf);display:grid;place-items:center;transition:border-color .16s var(--ease),opacity .16s}
 .rail-btns button:disabled{opacity:.35;cursor:default}
 .rail-btns:has(button[data-dir="-1"]:disabled):has(button[data-dir="1"]:disabled){visibility:hidden}
 @media (hover:hover){.rail-btns button:not(:disabled):hover{border-color:var(--fg)}}
@@ -211,7 +205,7 @@ section{padding-block:clamp(72px,11vw,148px)}
   box-shadow:0 2px 4px rgb(var(--shade)/.10),0 18px 40px -12px rgb(var(--shade)/.32);transform-origin:50% 100%}
 .phone picture,.phone img{display:block;width:100%;height:100%;border-radius:31px;overflow:hidden;object-fit:cover;object-position:top}
 .obj .phone-link{display:block;border-radius:38px}
-.obj h3{margin-top:26px;font-size:1.65rem;line-height:1.08}
+.obj h3{margin-top:26px;font-size:1.5rem;line-height:1.15}
 .obj .kind{margin-top:6px;font-size:.95rem;color:var(--fg-subtle)}
 .obj .did{margin-top:12px;font-size:1rem;color:var(--fg-muted)}
 .obj .open{display:inline-block;margin-top:14px;padding:10px 0;font-weight:500;color:var(--fg)}
@@ -237,7 +231,7 @@ section{padding-block:clamp(72px,11vw,148px)}
 .facts{list-style:none;margin:28px 0 0;padding:0;max-width:58ch}
 .facts li{padding:14px 0;border-top:1px solid var(--rule);color:var(--fg-muted)}
 .facts li:last-child{border-bottom:1px solid var(--rule)}
-.facts b{font:400 1.5rem/1 var(--display);color:var(--fg);margin-right:8px;font-variant-numeric:lining-nums tabular-nums}
+.facts b{font:600 1.5rem/1 var(--sf-display);letter-spacing:-.02em;color:var(--fg);margin-right:8px;font-variant-numeric:lining-nums tabular-nums}
 .tech{margin-top:18px;font-size:.9rem;color:var(--fg-subtle)}
 .case-media{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:end}
 .ar{width:min(100%,300px);justify-self:center}
@@ -277,10 +271,10 @@ section{padding-block:clamp(72px,11vw,148px)}
 .rows{margin-top:clamp(36px,5vw,64px)}
 .row{display:grid;gap:10px;padding:clamp(24px,3.4vw,40px) 0;border-top:1px solid var(--rule)}
 .row:last-child{border-bottom:1px solid var(--rule)}
-.row h3{font-size:clamp(1.6rem,2.8vw,2.3rem);line-height:1.05}
+.row h3{font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.1;letter-spacing:-.02em}
 .row p{color:var(--fg-muted);max-width:50ch}
-.price{font:400 clamp(1.5rem,2.4vw,2rem)/1.1 var(--display);font-variant-numeric:lining-nums tabular-nums;color:var(--fg)}
-.price small{display:block;margin-top:6px;font:400 .95rem/1.4 var(--text);color:var(--fg-subtle)}
+.price{font:600 clamp(1.5rem,2.4vw,2rem)/1.1 var(--sf-display);letter-spacing:-.02em;font-variant-numeric:lining-nums tabular-nums;color:var(--fg)}
+.price small{display:block;margin-top:6px;font:400 .95rem/1.4 var(--sf);letter-spacing:0;color:var(--fg-subtle)}
 @media (min-width:860px){.row{grid-template-columns:3fr 5fr 2.4fr;gap:40px;align-items:baseline}.price{text-align:right}}
 .more{margin-top:24px}
 .more a{display:inline-flex;align-items:center;min-height:44px}
@@ -289,17 +283,17 @@ section{padding-block:clamp(72px,11vw,148px)}
 .how{border-top:1px solid var(--rule)}
 .steps{list-style:none;margin:clamp(36px,5vw,64px) 0 0;padding:0;display:grid;gap:36px 64px}
 .steps li{display:grid;grid-template-columns:2.6rem 1fr;gap:4px 16px}
-.steps .n{grid-row:span 2;font:400 2.4rem/1 var(--display);color:var(--display-accent);font-variant-numeric:lining-nums}
-.steps h3{font-size:1.5rem;line-height:1.15}
+.steps .n{grid-row:span 2;font:600 2.25rem/1 var(--sf-display);letter-spacing:-.02em;color:var(--display-accent);font-variant-numeric:lining-nums}
+.steps h3{font-size:1.375rem;line-height:1.2}
 .steps p{color:var(--fg-muted);max-width:46ch;margin-top:6px}
 @media (min-width:860px){.steps{grid-template-columns:1fr 1fr}}
 
 /* ---------------- close ---------------- */
 .close{background:var(--surface-2)}
-.close h2{font-size:clamp(2.6rem,8vw,6.4rem);line-height:1.04;max-width:13ch;padding-bottom:.08em}
+.close h2{font-size:clamp(2.625rem,1.2rem + 6vw,4.75rem);line-height:1.02;letter-spacing:-.034em;max-width:13ch}
 .close p{margin-top:28px;color:var(--fg-muted);max-width:46ch;font-size:clamp(1.0625rem,1.4vw,1.2rem)}
 .mail{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
-.mail .addr{font:400 clamp(1.35rem,3.6vw,2.2rem)/1.2 var(--display);color:var(--fg);word-break:break-word}
+.mail .addr{font:500 clamp(1.25rem,3vw,1.875rem)/1.25 var(--sf-display);letter-spacing:-.015em;color:var(--fg);word-break:break-word}
 .mail .addr:focus-visible{outline-offset:6px}
 .status{min-height:1.6em;margin-top:10px;font-size:.95rem;color:var(--fg-muted)}
 .langs{margin-top:28px;font-size:1rem;color:var(--fg-subtle)}

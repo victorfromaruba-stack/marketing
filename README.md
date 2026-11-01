@@ -8,7 +8,6 @@ thing we sell.
 index.html          the whole site (HTML, CSS and ~60 lines of JS inline)
 pricing/            the price list: US$ and ƒ, tax included (Victor, 31 Oct); SF Pro stack, no JS
 wind.js             the divi-divi in the trade wind (canvas), colours from CSS vars
-fonts/              Bodoni Moda (roman + italic) and Archivo, woff2, latin, OFL
 work/v2/            every image the page uses: AVIF + WebP at two widths, the AR loop
 brand/              the design system: tokens, theme book, contrast check
   logo/             the vector marks and lockups
@@ -149,8 +148,10 @@ between 20 ms and 5 s on this machine; with the wait it holds at ~100 ms.
 **Plain static, any host.** No build step, every URL relative, so the same
 folder serves from GitHub Pages, Cloudflare Pages or a subpath preview.
 
-**Google Fonts removed.** Self-hosted, so no third-party request and no
-render-blocking stylesheet.
+**No webfonts at all.** Every page sets type in Apple's SF Pro from the visitor's
+device (`-apple-system` stack, Victor 29 and 31 Oct), so there is no font file,
+no font request and no swap. Bodoni Moda and Archivo were retired on 31 Oct; the
+logo lockups keep their embedded Bodoni wordmark because a logo is artwork.
 
 **AR led with, not buried.** It is the one thing on this page a competitor in this
 market probably cannot match. It belongs in the first paragraph.

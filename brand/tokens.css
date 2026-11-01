@@ -41,15 +41,16 @@
   --surface-raised:  var(--panel);
 
   /* ---- type ------------------------------------------------------------ */
-  /* Bodoni Moda, not Bricolage Grotesque. The token claimed Bricolage while
-     the homepage set every heading in Bodoni and never loaded Bricolage at
-     all, so the design system and the shipped site disagreed about what the
-     studio's face is. The site is what clients see, so the site wins and the
-     token now says what is true. Bodoni wants size: it is specified at display
-     scale only, and anything below about 20px goes to the body face. */
-  --font-display: "Bodoni Moda", Georgia, "Times New Roman", serif;
-  --font-body:    Archivo, -apple-system, system-ui, "Helvetica Neue", sans-serif;
-  --font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+  /* SF Pro, Apple's own, from the device and never downloaded (Victor, 29 Oct:
+     the font Apple uses, on everything; 31 Oct: nothing else on the studio's
+     site). Bodoni Moda and Archivo were retired that day. -apple-system is SF
+     Pro on iPhone and Mac and takes the Display cut at 20px and up, the way
+     apple.com pairs Display and Text; Windows and Android fall back to
+     Helvetica or Arial. Apple's licence forbids hosting SF Pro as a webfont,
+     so there is no font file to load. */
+  --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body:    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", SFMono-Regular, Menlo, Monaco, monospace;
 
   /* A 1.25 (major third) scale. Small enough steps that adjacent sizes are
      distinguishable, large enough that hierarchy is obvious at a glance.   */
@@ -64,7 +65,7 @@
 
   --leading-tight: 1.05;  /* display sizes                                  */
   --leading-snug:  1.35;  /* headings                                       */
-  --leading-body:  1.62;  /* running text. Generous on purpose              */
+  --leading-body:  1.5;   /* running text, SF Text at 17px                 */
 
   --tracking-tight:  -0.035em;  /* large display type needs negative space  */
   --tracking-normal: 0;
@@ -74,13 +75,9 @@
   --weight-medium: 500;
   --weight-semi:   600;
   --weight-bold:   800;
-  /* The display face has its own ceiling. 600 and 800 are right for Archivo,
-     which is a grotesque built to carry weight; Bodoni is not. Above 500 its
-     counters fill in and the thin strokes stop being thin, which is the only
-     reason to use a Bodoni. The site loads 400 and 500 and nothing else, so
-     asking for 800 gets a synthesised bold — the browser smears the glyph. */
-  --weight-display:      400;
-  --weight-display-semi: 500;
+  /* Headlines are 600, as apple.com sets them. Heavier reads as shouting. */
+  --weight-display:      600;
+  --weight-display-semi: 600;
 
   /* ---- space ----------------------------------------------------------- */
   /* A 4px base. Every margin and padding in the system is one of these —
@@ -183,10 +180,9 @@ h1, h2, h3, h4 {
   margin: 0;
   text-wrap: balance;
 }
-h1 { font-size: var(--text-4xl); font-weight: var(--weight-display); line-height: var(--leading-tight); letter-spacing: -0.015em; }
-h2 { font-size: var(--text-2xl); font-weight: var(--weight-display-semi); letter-spacing: -0.01em; }
-/* h3 lands near the size where Bodoni gives up. It takes the body face. */
-h3 { font-family: var(--font-body); font-size: var(--text-xl); font-weight: var(--weight-semi); letter-spacing: -0.015em; }
+h1 { font-size: var(--text-4xl); font-weight: var(--weight-display); line-height: var(--leading-tight); letter-spacing: -0.034em; }
+h2 { font-size: var(--text-2xl); font-weight: var(--weight-display-semi); letter-spacing: -0.02em; }
+h3 { font-size: var(--text-xl); font-weight: var(--weight-semi); letter-spacing: -0.012em; }
 
 p { margin: 0 0 var(--space-4); max-width: var(--measure); }
 

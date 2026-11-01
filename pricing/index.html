@@ -36,6 +36,7 @@
    ---------------------------------------------------------------------- */
 :root{
   --sf:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --sf-display:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
 
   /* day */
   --bg:#F3EFE3; --surface:#FBF9F3; --surface-2:#E9E4D6;
@@ -60,7 +61,7 @@ body{margin:0;background:var(--bg);color:var(--fg);font:400 1.0625rem/1.5 var(--
 a{color:inherit}
 ::selection{background:var(--accent);color:var(--accent-ink)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
-h1,h2{font-weight:600;letter-spacing:-.022em;line-height:1.08;text-wrap:balance;margin:0}
+h1,h2{font-family:var(--sf-display);font-weight:600;letter-spacing:-.022em;line-height:1.08;text-wrap:balance;margin:0}
 p,dl,dd{margin:0}
 p,dd{text-wrap:pretty}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
