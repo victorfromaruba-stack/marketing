@@ -6,6 +6,7 @@ thing we sell.
 
 ```
 index.html          the whole site (HTML, CSS and ~60 lines of JS inline)
+404.html            "page not found"; Cloudflare Pages serves it with status 404 for any unknown address
 pricing/            the price list: US$ and ƒ, tax included (Victor, 31 Oct); SF Pro stack, no JS
 wind.js             the divi-divi in the trade wind (canvas), colours from CSS vars
 work/v2/            every image the page uses: AVIF + WebP at two widths, the AR loop

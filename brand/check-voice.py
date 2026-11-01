@@ -35,7 +35,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 
 # Files whose visible text is customer-facing.
-TARGETS = ["index.html", "brand/index.html", "pricing/index.html"]
+TARGETS = ["index.html", "brand/index.html", "pricing/index.html", "404.html"]
 
 BANNED = {
     "—": "em dash. Use a full stop, a comma, or two sentences.",

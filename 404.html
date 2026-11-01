@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found | Aruba Webstudio</title>
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F3EFE3">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#071A26">
+<!-- Cloudflare Pages serves this file, with status 404, for any address that
+     doesn't exist, at any depth. So every URL here starts at the root. -->
+<link rel="icon" type="image/svg+xml" href="/brand/logo/favicon.svg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png">
+
+<style>
+/* The home page's tokens (brand/tokens.css), day and night, and Apple's own
+   type: nothing is downloaded (Victor, 29 and 31 Oct). */
+:root{
+  --sf:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --sf-display:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+
+  /* day */
+  --bg:#F3EFE3; --fg:#0B2F48; --fg-muted:#3E596A; --fg-subtle:#506876;
+  --rule:#D7D2C4; --accent:#1B6CA8; --accent-ink:#FBF9F3;
+  --sky-top:#F6F2E8; --sky-low:#E6DFCC; --sun-rgb:250,186,94;
+
+  --gut:clamp(20px,4.4vw,56px);
+  --ease:cubic-bezier(.22,1,.36,1);
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#071A26; --fg:#F3EFE3; --fg-muted:#C3C9C9; --fg-subtle:#93A2AA;
+    --rule:rgba(243,239,227,.15); --accent:#FABA5E; --accent-ink:#071A26;
+    --sky-top:#071A26; --sky-low:#123044;
+  }
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+body{margin:0;min-height:100svh;display:flex;flex-direction:column;background:var(--bg);color:var(--fg);font:400 1.0625rem/1.5 var(--sf);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+p{margin:0;text-wrap:pretty}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--fg);color:var(--bg);padding:12px 16px;text-decoration:none}
+.skip:focus{top:12px}
+.wrap{padding-inline:var(--gut);max-width:1320px;margin-inline:auto;width:100%}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:2px;
+  font:500 1rem/1 var(--sf);text-decoration:none;white-space:nowrap;cursor:pointer;border:1px solid transparent;
+  transition:transform .12s var(--ease),background-color .16s var(--ease),border-color .16s var(--ease)}
+.btn:active{transform:scale(.97)}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:active{transform:none}}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-quiet{border-color:var(--rule);color:var(--fg);background:transparent}
+@media (hover:hover){
+  .btn-primary:hover{background:color-mix(in oklab,var(--accent) 86%,var(--fg))}
+  .btn-quiet:hover{border-color:var(--fg)}
+}
+.link{text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px;text-decoration-color:color-mix(in oklab,currentColor 45%,transparent)}
+@media (hover:hover){.link:hover{text-decoration-color:currentColor}}
+
+/* nav: the same bar as every other page */
+.nav{position:absolute;inset:0 0 auto;z-index:50;height:68px;display:flex;align-items:center;gap:28px;padding-inline:max(var(--gut),calc((100vw - 1320px)/2 + var(--gut)))}
+.mark{display:flex;align-items:center;gap:10px;font:500 1rem/1 var(--sf);text-decoration:none;min-height:44px;white-space:nowrap}
+.mark svg{width:30px;height:30px;flex:none}
+.nav nav{margin-left:auto}
+.nav ul{display:none;list-style:none;margin:0;padding:0;gap:26px}
+.nav ul a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;font-size:.95rem;color:var(--fg-muted)}
+@media (hover:hover){.nav ul a:hover{color:var(--fg)}}
+.nav .btn{margin-left:auto;min-height:44px;padding:0 16px;font-size:.95rem}
+@media (min-width:860px){.nav ul{display:flex}.nav .btn{margin-left:0}}
+@media (max-width:380px){.mark span{font-size:.92rem}.nav .btn{padding:0 12px}}
+
+/* the page: the hero's sky and sun, the type doing the rest */
+main{flex:1;display:flex;align-items:flex-end;
+  background:radial-gradient(ellipse 70% 45% at 78% 30%,rgba(var(--sun-rgb),.30),transparent 70%),linear-gradient(var(--sky-top),var(--sky-low) 60%,var(--bg))}
+.lost{padding-block:calc(68px + clamp(72px,16vh,200px)) clamp(64px,11vh,128px)}
+.code{color:var(--fg-subtle);font-size:.9375rem;font-variant-numeric:tabular-nums}
+h1{margin:14px 0 0;font:600 clamp(2.625rem,1.2rem + 6vw,4.75rem)/1.02 var(--sf-display);letter-spacing:-.034em;text-wrap:balance;max-width:12ch}
+h1 span{display:block;color:var(--fg-subtle)}
+.lost p:not(.code){margin-top:22px;max-width:40ch;font-size:clamp(1.0625rem,1.5vw,1.25rem);line-height:1.45;color:var(--fg-muted)}
+.acts{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
+
+footer{padding-block:28px 40px;border-top:1px solid var(--rule)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:.92rem;color:var(--fg-subtle)}
+footer a{padding:10px 0;display:inline-block}
+footer .end{margin-left:auto}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <a class="mark" href="/" aria-label="Aruba Webstudio, home">
+    <svg viewBox="0 0 240 240" aria-hidden="true"><g transform="translate(120,120) scale(0.37591) translate(-532.0,-511.5)"><path fill="currentColor" fill-rule="evenodd" d="M 286 381 L 282 390 L 325 390 L 326 395 L 311 416 L 271 423 L 258 436 L 307 437 L 310 463 L 322 490 L 415 634 L 433 677 L 433 695 L 354 695 L 354 710 L 606 710 L 606 695 L 542 695 L 393 508 L 387 483 L 395 473 L 435 472 L 480 488 L 511 509 L 514 518 L 563 542 L 548 561 L 756 561 L 741 545 L 700 541 L 678 529 L 633 527 L 593 538 L 558 525 L 557 518 L 806 518 L 794 505 L 742 499 L 732 487 L 719 483 L 720 478 L 775 478 L 754 462 L 667 458 L 658 445 L 549 448 L 539 442 L 539 436 L 738 436 L 721 422 L 649 415 L 640 404 L 610 395 L 611 390 L 661 390 L 648 377 L 601 372 L 585 362 L 548 354 L 549 349 L 613 349 L 593 334 L 524 330 L 519 317 L 508 313 L 415 316 L 374 325 L 334 343 L 330 349 L 364 350 L 359 361 L 342 372 Z M 504 479 L 568 478 L 588 492 L 558 494 L 530 504 Z M 415 444 L 425 436 L 469 436 L 508 445 L 520 455 L 482 469 L 447 454 L 416 449 Z M 336 437 L 377 436 L 378 441 L 352 470 Z M 462 402 L 468 390 L 505 391 L 496 403 Z M 344 414 L 362 390 L 440 391 L 431 403 L 372 403 L 363 415 Z"/></g></svg>
+    <span>Aruba Webstudio</span>
+  </a>
+  <nav aria-label="Sections">
+    <ul>
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/pricing/">Prices</a></li>
+      <li><a href="/#how">How it works</a></li>
+    </ul>
+  </nav>
+  <a class="btn btn-primary" href="https://wa.me/2977477794?text=Hi%20Aruba%20Webstudio%2C%20I%20was%20looking%20for%20something%20on%20your%20site%20and%20couldn%27t%20find%20it." target="_blank" rel="noopener">WhatsApp us</a>
+</header>
+
+<main id="main">
+  <div class="wrap lost">
+    <p class="code">404 · Page not found</p>
+    <h1>This page isn’t here. <span>We are.</span></h1>
+    <p>The link may be old, or the address has a typo. Start again from the home page, or send us a WhatsApp and we’ll find what you were after.</p>
+    <div class="acts">
+      <a class="btn btn-primary" href="/">Back to the home page</a>
+      <a class="btn btn-quiet" href="https://wa.me/2977477794?text=Hi%20Aruba%20Webstudio%2C%20I%20was%20looking%20for%20something%20on%20your%20site%20and%20couldn%27t%20find%20it." target="_blank" rel="noopener">WhatsApp +297 747 7794</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Aruba Webstudio, Oranjestad, Aruba</span>
+    <a class="link" href="/pricing/">Prices</a>
+    <a class="link" href="/brand/">Brand book</a>
+    <a class="link end" href="mailto:info@arubawebstudio.com">info@arubawebstudio.com</a>
+  </div>
+</footer>
+</body>
+</html>

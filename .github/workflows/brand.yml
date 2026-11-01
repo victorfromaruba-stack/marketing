@@ -4,9 +4,9 @@ name: brand
 # true — change a colour token and the build fails before it reaches a client.
 on:
   push:
-    paths: ["brand/**", "index.html", "pricing/**", ".github/workflows/brand.yml"]
+    paths: ["brand/**", "index.html", "404.html", "pricing/**", ".github/workflows/brand.yml"]
   pull_request:
-    paths: ["brand/**", "index.html", "pricing/**"]
+    paths: ["brand/**", "index.html", "404.html", "pricing/**"]
 
 jobs:
   contrast:
