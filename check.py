@@ -104,10 +104,13 @@ with sync_playwright() as pw:
         if w == 390:   # our page's errors are judged before the click; WhatsApp's own page logs its own
             if errs: fails.append(f'{w}: console errors {errs}')
             errs.clear()
-            with pg.expect_navigation(url=re.compile(r'whatsapp\.com/'), wait_until='commit', timeout=30000): pg.locator('a.cta').first.click()
-            q = parse_qs(urlsplit(pg.url).query)
-            if q.get('text') != [BRIEF] or q.get('phone') != ['2977477794']: fails.append(f'WhatsApp opened as {unquote(pg.url)[:200]}')
-            else: print('WhatsApp opened with the brief intact:', pg.url.split('?')[0], repr(q['text'][0]))
+            try:
+                with pg.expect_navigation(url=re.compile(r'whatsapp\.com/'), wait_until='commit', timeout=30000):
+                    pg.locator('a.cta', has_text='Start a project').first.click(timeout=5000)
+                q = parse_qs(urlsplit(pg.url).query)
+                if q.get('text') != [BRIEF] or q.get('phone') != ['2977477794']: fails.append(f'WhatsApp opened as {unquote(pg.url)[:200]}')
+                else: print('WhatsApp opened with the brief intact:', pg.url.split('?')[0], repr(q['text'][0]))
+            except Exception as e: fails.append(f'Start a project did not open WhatsApp: {str(e).splitlines()[0]}')
             errs.clear()
             pg.goto(BASE, wait_until='networkidle')
             outside = J("[...new Set([...document.querySelectorAll('a[href^=\"http\"]')].map(a=>a.href))].filter(h=>!h.includes('wa.me/'))")
