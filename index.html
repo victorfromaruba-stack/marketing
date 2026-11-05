@@ -2,32 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aruba Webstudio | Websites, apps and AR built in Oranjestad</title>
-<meta name="description" content="Websites, mobile apps, APIs and AR for Aruban businesses, built in Oranjestad. Four live builds you can open, published prices, and we build yours before you pay.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aruba Webstudio: websites, apps and AR built in Oranjestad</title>
+<meta name="description" content="Websites, apps, APIs and AR for Aruban businesses, built in Oranjestad. Four live builds you can open, published prices, and we build yours before you pay.">
 <link rel="canonical" href="https://arubawebstudio.com/">
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F3EFE3">
+<meta name="color-scheme" content="dark light">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#071A26">
-
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F3EFE3">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Aruba Webstudio">
 <meta property="og:url" content="https://arubawebstudio.com/">
 <meta property="og:title" content="Aruba Webstudio: websites, apps and AR from Oranjestad">
 <meta property="og:description" content="Four live builds you can open, published prices, and we build yours before you pay.">
-<meta property="og:image" content="https://arubawebstudio.com/og-image.png">
+<meta property="og:image" content="https://arubawebstudio.com/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The Aruba Webstudio divi-divi tree mark">
+<meta property="og:image:alt" content="Shaped by the wind. Still standing. Contour lines of an island on night navy, and a Start a project button.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://arubawebstudio.com/og-image.png">
-
+<meta name="twitter:image" content="https://arubawebstudio.com/assets/og.jpg">
 <link rel="icon" type="image/svg+xml" href="brand/logo/favicon.svg">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="icon-small-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
 <link rel="manifest" href="site.webmanifest">
-
+<link rel="preload" href="assets/familjen-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/martian-mono.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -40,7 +39,7 @@
       "email": "info@arubawebstudio.com",
       "telephone": "+297 747 7794",
       "logo": "https://arubawebstudio.com/icon-512.png",
-      "image": "https://arubawebstudio.com/og-image.png",
+      "image": "https://arubawebstudio.com/assets/og.jpg",
       "description": "A studio in Oranjestad building websites, mobile apps, APIs and augmented reality for businesses in Aruba.",
       "address": { "@type": "PostalAddress", "addressLocality": "Oranjestad", "addressCountry": "AW" },
       "areaServed": { "@type": "Country", "name": "Aruba" },
@@ -70,490 +69,932 @@
   ]
 }
 </script>
-
+<!--
+  arubawebstudio.com, the live site since 5 Nov 2026 (was demo C), now the whole site on one page: the hero, then Work, How it works, Prices and Contact.
+  Direction: ../../c-DIRECTION.md. All words, figures and client work are copied from arubawebstudio.com and
+  arubawebstudio.com/pricing/ (read 5 Nov 2026); the photos and screenshots are the live site's own files.
+  The land is our own WebGL rebuild of the "Topography" background from React Bits
+  (github.com/DavidHDev/react-bits, src/content/Backgrounds/Topography, read 5 Nov 2026; MIT + Commons Clause,
+  which allows use inside a website). Kept from it: contour lines drawn from the height field's screen-space slope,
+  a heavier index line every fifth level, a flattened foreground, lift under the pointer, a pulse on tap.
+  Not kept: its React wrapper, WebGL2 field textures, bloom pass, markers and glitch. The terrain function, the wind
+  drift, the drawn ridge that the wind carries off and the knockout of lines behind the words are ours.
+  The two chapter breaks and the island at the close are the real Aruba: contours traced from the Copernicus DEM GLO-30
+  (tiles N12 W070 and W071, read 5 Nov 2026), coastline from OpenStreetMap natural=coastline (the aruba-gold research
+  pull), drawn once into static paths in 10 m units. Credits for both are in the footer.
+  Fonts: Familjen Grotesk and Martian Mono, SIL Open Font License, subset to Latin-1; martian-mono-florin.woff2 is the
+  same Martian Mono instance cut down to the one florin sign. WhatsApp glyph: Simple Icons, CC0.
+-->
 <style>
-/* ----------------------------------------------------------------------
-   Day and night, from brand/tokens.css. The page follows the visitor's
-   system theme: a phone that switches to dark at sunset gets the evening
-   version, the same island by daylight otherwise. One accent per theme.
-   ---------------------------------------------------------------------- */
+@font-face{font-family:"Familjen Grotesk";src:url(assets/familjen-grotesk.woff2) format("woff2");font-weight:400 600;font-display:swap}
+@font-face{font-family:"Martian Mono";src:url(assets/martian-mono.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Martian Mono";src:url(assets/martian-mono-florin.woff2) format("woff2");font-weight:400;font-display:swap;unicode-range:U+0192}
+@font-face{font-family:"Familjen fallback";src:local("Helvetica Neue"),local("Helvetica"),local("Arial");size-adjust:97%}
+@font-face{font-family:"Martian fallback";src:local("Menlo"),local("Courier New");size-adjust:108%}
+
 :root{
-  /* Apple's own type, nothing downloaded (Victor, 29 and 31 Oct: SF Pro on
-     everything). -apple-system is SF Pro on iPhone and Mac and switches to the
-     Display cut at 20px and up, the way apple.com pairs Display and Text.
-     Headings name Display first for Macs that have SF Pro installed. */
-  --sf:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --sf-display:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
-
-  /* day */
-  --bg:#F3EFE3; --surface:#FBF9F3; --surface-2:#E9E4D6;
-  --fg:#0B2F48; --fg-muted:#3E596A; --fg-subtle:#506876;
-  --rule:#D7D2C4; --accent:#1B6CA8; --accent-ink:#FBF9F3;
-  --bezel:#0B1620;
-  --shade:11 47 72;                   /* shadow tint, navy */
-  /* hero tree + sky */
-  --tree:#0B2F48; --sky-top:#F6F2E8; --sky-low:#E6DFCC; --sun-rgb:250,186,94; --sun-a:1.25;
-
-  --gut:clamp(20px,4.4vw,56px);
-  --ease:cubic-bezier(.22,1,.36,1);
-  color-scheme:light dark;
+  color-scheme:dark light;
+  /* night: the brand navy, limestone type, amber only on the button and under a finger */
+  --bg:#071A26; --bg-top:#04111A; --bg-low:#08202E;
+  --fg:#F3EFE3; --fg-muted:#B4BEBF; --fg-subtle:#8FA6B4;
+  --rule:#1D4257;
+  --accent:#FABA5E; --accent-hover:#FCC676; --accent-fg:#071A26;
+  --focus:#F3EFE3;
+  --land-lit:#F4E8CF; --land-shade:#6F95AB; --land-heat:#FABA5E;
+  --land-mode:1; /* 1 = light lines on a dark ground, 0 = ink on limestone */
+  --map-minor:.3; --map-index:.56; --map-coast:.72; --pin:#FABA5E;  /* the real island: contours, index contours, coast, Oranjestad */
+  --shot:0 0 0 1px rgb(243 239 227 / .09),0 2px 4px rgb(0 0 0 / .25),0 28px 56px -28px rgb(0 0 0 / .75);
+  --font-display:"Familjen Grotesk","Familjen fallback",Helvetica,Arial,sans-serif;
+  --font-note:"Martian Mono","Martian fallback",Menlo,monospace;
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --gutter:24px;
 }
-@media (prefers-color-scheme: dark){
+@media (prefers-color-scheme:light){
   :root{
-    --bg:#071A26; --surface:#0B2432; --surface-2:#103042;
-    --fg:#F3EFE3; --fg-muted:#C3C9C9; --fg-subtle:#93A2AA;
-    --rule:rgba(243,239,227,.15); --accent:#FABA5E; --accent-ink:#071A26;
-    --bezel:#02090E;
-    --shade:0 0 0;
-    --tree:#F3EFE3; --sky-top:#071A26; --sky-low:#123044; --sun-rgb:250,186,94; --sun-a:1;
+    --bg:#F3EFE3; --bg-top:#EAE5D7; --bg-low:#F6F3EA;
+    --fg:#0B2F48; --fg-muted:#3E596A; --fg-subtle:#506876;
+    --rule:#D7D2C4;
+    --accent:#0B2F48; --accent-hover:#123D5C; --accent-fg:#F3EFE3;
+    --focus:#0B2F48;
+    --land-lit:#3E596A; --land-shade:#0B2F48; --land-heat:#896633;
+    --land-mode:0;
+    --map-minor:.3; --map-index:.55; --map-coast:.7; --pin:#896633;
+    --shot:0 0 0 1px rgb(11 47 72 / .08),0 2px 4px rgb(11 47 72 / .07),0 28px 56px -30px rgb(11 47 72 / .42);
   }
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:84px;background:var(--bg)}
-@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
-body{margin:0;background:var(--bg);color:var(--fg);font:400 1.0625rem/1.5 var(--sf);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-img,video{display:block;max-width:100%;height:auto}
-figure{margin:0}
+html{background:var(--bg);-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:8px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  margin:0;color:var(--fg);font-family:var(--font-display);font-size:1.0625rem;line-height:1.5;background:var(--bg);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip;
+}
+::selection{background:var(--accent);color:var(--accent-fg)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+p,figure,ul,ol{margin:0}
 a{color:inherit}
-::selection{background:var(--accent);color:var(--accent-ink)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
-h1,h2,h3{font-family:var(--sf-display);font-weight:600;letter-spacing:-.012em;text-wrap:balance;margin:0}
-p{text-wrap:pretty;margin:0}
-.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--fg);color:var(--bg);padding:12px 16px;text-decoration:none}
-.skip:focus{top:12px}
-.wrap{padding-inline:var(--gut);max-width:1320px;margin-inline:auto}
+img,video{display:block;max-width:100%}
+.skip{position:absolute;z-index:3;top:12px;left:var(--gutter);padding:12px 20px;border-radius:999px;background:var(--fg);color:var(--bg);font-weight:600;text-decoration:none;transform:translateY(-160%)}
+.skip:focus{transform:none}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
-/* buttons: one primary shape, near-square like the brand */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:2px;
-  font:500 1rem/1 var(--sf);text-decoration:none;white-space:nowrap;cursor:pointer;border:1px solid transparent;
-  transition:transform .12s var(--ease),background-color .16s var(--ease),border-color .16s var(--ease),color .16s var(--ease)}
-.btn:active{transform:scale(.97)}
-.btn-primary{background:var(--accent);color:var(--accent-ink)}
-.btn-quiet{border-color:var(--rule);color:var(--fg);background:transparent}
-@media (hover:hover){
-  .btn-primary:hover{background:color-mix(in oklab,var(--accent) 86%,var(--fg))}
-  .btn-quiet:hover{border-color:var(--fg)}
+/* ================= the hero: unchanged composition, the land now lives inside the first screen ================= */
+.hero{position:relative;isolation:isolate;background:linear-gradient(180deg,var(--bg-top) 0%,var(--bg) 46%,var(--bg-low) 100%)}
+.land,.still{position:absolute;inset:0;width:100%;height:100%;-webkit-mask-image:linear-gradient(180deg,#000 calc(100% - 96px),transparent);mask-image:linear-gradient(180deg,#000 calc(100% - 96px),transparent)}
+/* pan-y: a vertical swipe scrolls the page, a tap, a hold or a sideways drag still lifts the land */
+.land{display:block;touch-action:pan-y;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;opacity:0;transition:opacity .9s var(--ease-out)}
+.land.on{opacity:1}
+.still{pointer-events:none;color:var(--land-lit)}
+.still svg{display:block;width:100%;height:100%}
+.still .ix{color:var(--land-lit)}
+
+.page{
+  position:relative;z-index:1;min-height:100svh;pointer-events:none;
+  display:grid;grid-template-rows:auto 1fr;
+  padding:max(16px,env(safe-area-inset-top)) var(--gutter) max(24px,calc(env(safe-area-inset-bottom) + 8px));
 }
-.link{text-decoration:underline;text-underline-offset:.22em;text-decoration-thickness:1px;text-decoration-color:color-mix(in oklab,currentColor 45%,transparent)}
-@media (hover:hover){.link:hover{text-decoration-color:currentColor}}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:8px;min-height:44px;margin:0;font-size:1.0625rem;font-weight:600;letter-spacing:-.012em}
+.brand svg{width:26px;height:26px;flex:none;fill:currentColor}
+.bar nav{pointer-events:auto;display:flex;margin-right:-10px}
+.bar nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;color:var(--fg-muted);text-decoration:none;font-size:.9375rem;letter-spacing:-.005em;transition:color .16s var(--ease-out)}
+.bar nav a.wide{display:none}
+@media (hover:hover){.bar nav a:hover{color:var(--fg)}}
 
-/* ---------------- nav ---------------- */
-.nav{position:fixed;inset:0 0 auto;z-index:50;height:68px;display:flex;align-items:center;gap:28px;padding-inline:max(var(--gut),calc((100vw - 1320px)/2 + var(--gut)))}
-.nav::before{content:"";position:absolute;inset:0 0 -18px;z-index:-1;pointer-events:none;
-  background:linear-gradient(to bottom,color-mix(in oklab,var(--bg) 94%,transparent) 55%,color-mix(in oklab,var(--bg) 0%,transparent))}
-.mark{display:flex;align-items:center;gap:10px;font:500 1rem/1 var(--sf);text-decoration:none;min-height:44px;white-space:nowrap}
-.mark svg{width:30px;height:30px;flex:none}
-.nav nav{margin-left:auto}
-.nav ul{display:none;list-style:none;margin:0;padding:0;gap:26px}
-.nav ul a{text-decoration:none;font-size:.95rem;color:var(--fg-muted);padding:12px 0}
-@media (hover:hover){.nav ul a:hover{color:var(--fg)}}
-.nav .btn{margin-left:auto;min-height:42px;padding:0 16px;font-size:.95rem}
-@media (min-width:860px){.nav ul{display:flex}.nav .btn{margin-left:0}}
-@media (max-width:380px){.mark span{font-size:.92rem}.nav .btn{padding:0 12px}}
-
-/* ---------------- hero ---------------- */
-.hero{position:relative;background:linear-gradient(var(--sky-top),var(--sky-low) 55%,var(--bg));overflow:hidden}
-/* The hero tree IS the logo mark (brand/logo/logo-mark-small.svg), only larger (Victor 25 Oct). */
-.hero-art{position:relative;display:flex;justify-content:center;align-items:flex-end;height:46svh;min-height:300px;padding:28px var(--gut) 0;
-  background:radial-gradient(ellipse 60% 55% at 50% 48%,rgba(var(--sun-rgb),.38),transparent 70%)}
-.hero-tree{width:min(92%,640px);height:100%;color:var(--tree);transform-origin:30% 100%;animation:sway 7s ease-in-out infinite alternate}
-@keyframes sway{from{transform:rotate(0deg)}to{transform:rotate(-1.4deg) skewX(-1deg)}}
-@media (prefers-reduced-motion:reduce){.hero-tree{animation:none}}
-.hero-in{position:relative;padding:8px var(--gut) 56px}
-.hero h1{font-size:clamp(3rem,1rem + 9vw,7rem);line-height:1;letter-spacing:-.034em;max-width:12ch}
-/* Apple's two-tone headline: the second sentence steps back in grey, no italic, no accent. */
-.hero h1 em{display:block;font-style:normal;color:var(--fg-subtle)}
-.hero p{margin-top:22px;max-width:36ch;font-size:clamp(1.0625rem,1.5vw,1.25rem);color:var(--fg-muted)}
-.hero .acts{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
-.hero .acts .link{font-size:1rem;padding:12px 0}
-@media (min-width:860px){
-  .hero{min-height:min(100svh,980px);display:flex;align-items:flex-end}
-  .hero-art{position:absolute;inset:0;height:100%;padding:13vh 5vw 30vh 54vw;align-items:center;background:radial-gradient(ellipse 34% 46% at 76% 40%,rgba(var(--sun-rgb),.38),transparent 70%)}
-  .hero-tree{width:100%;height:100%}
-  .hero-in{width:100%;max-width:1320px;margin-inline:auto;padding:120px var(--gut) clamp(56px,9vh,104px);background:none}
+h1{
+  margin:clamp(20px,6.5svh,64px) 0 0;font-weight:600;
+  font-size:clamp(2.6rem,1.15rem + 9.9vw,3.7rem);line-height:.95;letter-spacing:-.043em;
 }
+h1 span{display:block;text-wrap:balance}
 
-/* ---------------- section rhythm ---------------- */
-section{padding-block:clamp(72px,11vw,148px)}
-.h2{font-size:clamp(2rem,1.2rem + 3.4vw,3.5rem);line-height:1.04;letter-spacing:-.03em;max-width:20ch}
-.sub{margin-top:18px;color:var(--fg-muted);max-width:52ch;font-size:clamp(1.0625rem,1.4vw,1.2rem)}
-
-/* ---------------- work rail (the lean) ---------------- */
-#work{padding-bottom:clamp(56px,8vw,104px)}
-.rail-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
-.rail-btns{display:none;gap:10px}
-.rail-btns button{width:48px;height:48px;border-radius:2px;border:1px solid var(--rule);background:transparent;color:var(--fg);cursor:pointer;
-  font:400 1.5rem/1 var(--sf);display:grid;place-items:center;transition:border-color .16s var(--ease),opacity .16s}
-.rail-btns button:disabled{opacity:.35;cursor:default}
-.rail-btns:has(button[data-dir="-1"]:disabled):has(button[data-dir="1"]:disabled){visibility:hidden}
-@media (hover:hover){.rail-btns button:not(:disabled):hover{border-color:var(--fg)}}
-@media (min-width:860px){.rail-btns{display:flex}}
-
-.rail{list-style:none;margin:clamp(36px,5vw,56px) 0 0;padding:28px max(var(--gut),calc(50vw - 150px)) 12px;
-  display:grid;grid-auto-flow:column;grid-auto-columns:min(72vw,268px);gap:clamp(20px,3vw,40px);
-  overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none}
-.rail::-webkit-scrollbar{display:none}
-.rail:focus-visible{outline-offset:-2px}
-@media (min-width:860px){.rail{padding-inline:max(var(--gut),calc((100vw - 1320px)/2 + var(--gut)));scroll-padding-inline:max(var(--gut),calc((100vw - 1320px)/2 + var(--gut)))}}
-.obj{scroll-snap-align:center}
-@media (min-width:860px){.obj{scroll-snap-align:start}}
-
-.phone{display:block;margin:0;padding:7px;border-radius:38px;background:var(--bezel);aspect-ratio:390/844;
-  box-shadow:0 2px 4px rgb(var(--shade)/.10),0 18px 40px -12px rgb(var(--shade)/.32);transform-origin:50% 100%}
-.phone picture,.phone img{display:block;width:100%;height:100%;border-radius:31px;overflow:hidden;object-fit:cover;object-position:top}
-.obj .phone-link{display:block;border-radius:38px}
-.obj h3{margin-top:26px;font-size:1.5rem;line-height:1.15}
-.obj .kind{margin-top:6px;font-size:.95rem;color:var(--fg-subtle)}
-.obj .did{margin-top:12px;font-size:1rem;color:var(--fg-muted)}
-.obj .open{display:inline-block;margin-top:14px;padding:10px 0;font-weight:500;color:var(--fg)}
-
-/* The lean: each phone stands bent downwind, like the divi-divi, and
-   straightens as it reaches the middle of the rail. Scroll-driven, so the
-   visitor's own swipe is the wind. Off where unsupported or reduced. */
-@supports (animation-timeline: view()){
-  @media (prefers-reduced-motion: no-preference){
-    .obj .phone{animation:lean linear both;animation-timeline:view(inline);animation-range:cover}
-    @keyframes lean{
-      0%{transform:rotate(7deg) translateY(10px)}
-      38%,62%{transform:none}
-      100%{transform:rotate(5deg) translateY(8px)}
-    }
-  }
+.page .intro{display:grid;grid-template-rows:auto 1fr auto}
+.foot{grid-row:3;display:grid;gap:16px}
+.note{
+  margin:0;max-width:34ch;font-family:var(--font-note);font-size:.8125rem;line-height:1.62;
+  color:var(--fg-muted);letter-spacing:-.01em;text-wrap:pretty;
 }
-
-/* ---------------- House of Mosaic ---------------- */
-.case{display:grid;gap:clamp(40px,6vw,72px)}
-.case-copy p{margin-top:18px;max-width:58ch;color:var(--fg-muted)}
-.case-copy p strong{color:var(--fg);font-weight:500}
-.facts{list-style:none;margin:28px 0 0;padding:0;max-width:58ch}
-.facts li{padding:14px 0;border-top:1px solid var(--rule);color:var(--fg-muted)}
-.facts li:last-child{border-bottom:1px solid var(--rule)}
-.facts b{font:600 1.5rem/1 var(--sf-display);letter-spacing:-.02em;color:var(--fg);margin-right:8px;font-variant-numeric:lining-nums tabular-nums}
-.tech{margin-top:18px;font-size:.9rem;color:var(--fg-subtle)}
-.case-media{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:end}
-.ar{width:min(100%,300px);justify-self:center}
-.ar .phone{aspect-ratio:auto;padding:7px}
-.ar video,.ar img{border-radius:31px;width:100%;aspect-ratio:390/386;object-fit:cover;background:var(--surface-2)}
-.ar figcaption,.rooms figcaption,.screens figcaption{margin-top:12px;font-size:.9rem;color:var(--fg-subtle)}
-.rooms{margin:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px}
-.rooms picture{display:block;min-width:0}
-.rooms img{width:100%;height:100%;object-fit:cover;border-radius:2px}
-.rooms .r1{grid-column:1/-1;aspect-ratio:3/2}
-.rooms picture:not(.r1){aspect-ratio:3/4}
-.rooms figcaption{grid-column:1/-1;margin-top:6px}
-@media (min-width:960px){
-  .case{grid-template-columns:minmax(0,4.4fr) minmax(0,7.6fr);align-items:center}
-  .case-media{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px;align-items:center}
-  .ar{justify-self:stretch;width:100%}
+.cta{
+  pointer-events:auto;display:flex;align-items:center;justify-content:center;gap:10px;
+  min-height:56px;padding:0 32px;border-radius:999px;
+  background:var(--accent);color:var(--accent-fg);text-decoration:none;
+  font-size:1.125rem;font-weight:600;letter-spacing:-.01em;
+  box-shadow:0 1px 0 rgb(255 255 255 / .22) inset;
+  transition:transform .16s var(--ease-out),background-color .16s var(--ease-out);
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
 }
+.cta svg{width:20px;height:20px;fill:currentColor;flex:none}
+.cta:active{transform:scale(.97);transition-duration:.09s}
+.cta:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+@media (hover:hover){.cta:hover{background:var(--accent-hover)}}
 
-/* ---------------- Pidi: the staff side ---------------- */
-.backstage{background:var(--surface)}
-.screens{list-style:none;margin:clamp(36px,5vw,56px) 0 0;padding:0;display:grid;gap:24px;grid-template-columns:repeat(3,minmax(0,1fr))}
-.screens .phone{padding:5px;border-radius:26px}
-.screens .phone img{border-radius:21px}
-.screens li:nth-child(2){transform:translateY(clamp(16px,4vw,56px))}
-.screens figcaption{margin-top:12px}
-.backstage .note{margin-top:clamp(40px,6vw,84px);font-size:.9rem;color:var(--fg-subtle)}
-@media (max-width:640px){
-  .screens{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-  .screens figcaption{font-size:.8rem}
+/* ================= the sheet below: the same voice, quieter ================= */
+main > section{position:relative;padding-inline:var(--gutter)}
+.work{background:linear-gradient(180deg,var(--bg-low),var(--bg) 320px)}
+.head{position:relative;padding:96px 0 40px}
+h2{margin:0;font-weight:600;font-size:clamp(2.25rem,1.5rem + 3.4vw,2.75rem);line-height:1;letter-spacing:-.04em;text-wrap:balance}
+.lede{margin-top:16px;max-width:34ch;color:var(--fg-muted);text-wrap:pretty}
+h3{margin:0;font-weight:600;line-height:1.1;letter-spacing:-.026em;text-wrap:balance}
+
+/* survey notes and map labels: the brand book's technical voice, in mono */
+.tag,.cap,.mono,.fine,.langs,.pin,.mark,.credit{font-family:var(--font-note);font-size:.75rem;line-height:1.6;letter-spacing:-.01em;color:var(--fg-muted);text-wrap:pretty}
+.tag b{display:block;font-weight:400;color:var(--fg)}
+.go{display:inline-flex;align-items:center;min-height:44px;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.26em;text-decoration-color:var(--fg-subtle);
+  transition:text-decoration-color .16s var(--ease-out),opacity .16s var(--ease-out);-webkit-tap-highlight-color:transparent}
+.go:active{opacity:.6;transition-duration:.09s}
+@media (hover:hover){.go:hover{text-decoration-color:currentColor}}
+
+/* the real island. Contours from the Copernicus 30 m elevation model, coastline from OpenStreetMap,
+   drawn once at build time into static paths (10 m units, north up). No script, no animation. */
+.relief,.isle-map{color:var(--land-lit)}
+.relief path,.isle-map path{vector-effect:non-scaling-stroke}
+.mi{stroke-opacity:var(--map-minor);stroke-width:.8}
+.ix{stroke-opacity:var(--map-index);stroke-width:1.2}
+.co{stroke-opacity:var(--map-coast);stroke-width:1.3}
+/* a chapter break is a strip cut across a real hill, centred on its summit */
+.relief{position:relative;height:120px;margin-inline:calc(-1 * var(--gutter));--r:24px;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 28%,#000 72%,transparent);mask-image:linear-gradient(180deg,transparent,#000 28%,#000 72%,transparent)}
+.relief svg{display:block;width:100%;height:100%}
+/* labels sit on a soft plate of the page colour, so the lines part around them the way the hero's lines part around its words */
+.pin,.mark{position:absolute;white-space:nowrap;padding:0 2px;border-radius:6px;background:var(--bg);box-shadow:0 0 6px 5px var(--bg)}
+.pin{left:calc(50% + var(--r));top:50%;transform:translateY(-50%)}
+.pin b,.mark b{font-weight:400;color:var(--fg)}
+
+/* phone screens keep the phone's own corner; photographs stay square-cut */
+.shot img{width:100%;height:auto;aspect-ratio:280/606;border-radius:9% / 4.16%;box-shadow:var(--shot);background:var(--rule)}
+
+/* ---- Work ---- */
+.build{padding-top:56px}
+.build .txt h3{margin-top:16px;font-size:1.875rem}
+.build .txt p:not(.tag){margin-top:16px;max-width:58ch;text-wrap:pretty}
+.arv{margin-top:40px}
+.arv video{width:100%;max-width:390px;height:auto;aspect-ratio:390/386;border-radius:2px;background:var(--rule);box-shadow:var(--shot)}
+.cap{margin-top:12px;max-width:44ch}
+.spots{list-style:none;padding:0;margin-top:48px;display:grid;gap:20px}
+.spots li{display:grid;grid-template-columns:72px 1fr;column-gap:12px;align-items:baseline}
+.spots b{font-weight:600;font-size:3.0625rem;line-height:.9;letter-spacing:-.045em;font-variant-numeric:tabular-nums}
+.spots span{font-size:.9375rem;line-height:1.45;color:var(--fg-muted)}
+.rooms{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rooms picture:first-child{grid-column:1 / -1}
+.rooms img{width:100%;height:100%;object-fit:cover;border-radius:2px;background:var(--rule)}
+.rooms picture:first-child img{aspect-ratio:3/2}
+.rooms picture:not(:first-child) img{aspect-ratio:3/4}
+.rooms .cap{grid-column:1 / -1;margin-top:4px}
+.end{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 24px}
+
+.pidi{padding-top:120px}
+.strip{list-style:none;margin:40px calc(-1 * var(--gutter)) 0;padding:0 var(--gutter) 8px;display:grid;grid-auto-flow:column;grid-auto-columns:54%;gap:16px;
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);overscroll-behavior-x:contain;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.strip li{scroll-snap-align:start}
+.strip .cap{margin-top:16px}
+
+.pair{padding:120px 0 96px;display:grid;gap:64px}
+.mini{display:grid;grid-template-columns:116px minmax(0,1fr);column-gap:20px;align-items:start}
+.mini .go{overflow-wrap:anywhere}
+.mini h3{font-size:1.5rem}
+.mini .tag{margin-top:6px}
+.mini p:not(.tag){margin-top:12px;font-size:.9375rem;line-height:1.5}
+.mini .go{margin-top:4px}
+
+/* ---- How it works ---- */
+.how .head{padding:40px 0 16px}
+.steps{list-style:none;padding:0 0 32px;counter-reset:step}
+.steps li{counter-increment:step;display:grid;grid-template-columns:44px 1fr;padding:28px 0 32px;border-top:1px solid var(--rule)}
+.steps li::before{content:counter(step);grid-row:span 2;font-weight:600;font-size:1.5625rem;line-height:1;letter-spacing:-.03em;color:var(--fg-subtle);font-variant-numeric:tabular-nums}
+.steps h3{font-size:1.375rem;line-height:1.14}
+.steps p{margin-top:10px;color:var(--fg-muted);max-width:52ch;text-wrap:pretty}
+
+/* ---- Prices ---- */
+.prices{padding-top:64px}
+.prices .head{padding-top:40px}
+.items{list-style:none;padding:0}
+.items li{padding:32px 0 28px;border-top:1px solid var(--rule)}
+.items h3{font-size:1.375rem}
+.price{margin-top:14px;display:flex;align-items:baseline;gap:10px;font-variant-numeric:tabular-nums}
+.price .from{font-size:.9375rem;color:var(--fg-muted)}
+.price .amt{font-weight:600;font-size:2.75rem;line-height:1;letter-spacing:-.045em}
+.meta{margin-top:10px}
+.what{margin-top:14px;max-width:52ch;color:var(--fg-muted);text-wrap:pretty}
+.say .go{margin-top:8px}
+.fine{padding:24px 0 0;border-top:1px solid var(--rule);max-width:46ch}
+
+/* ---- Contact: the whole island, Oranjestad marked, and the one button ---- */
+.close{padding-top:136px;padding-bottom:40px}
+.close h2{font-size:clamp(2.6rem,1.15rem + 9.9vw,3.7rem);line-height:.95;letter-spacing:-.043em;max-width:9ch}
+.isle{margin-top:40px;max-width:480px}
+.isle-map{position:relative;aspect-ratio:2499 / 2654;margin-left:44px}   /* room in the sea for the Oranjestad label on a narrow phone */
+.isle-map svg{display:block;width:100%;height:100%}
+.mark{left:var(--x);top:var(--y);transform:translate(12px,-50%)}
+.mark::before{content:"";position:absolute;left:-12px;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--fg-muted)}
+.mark.town,.mark.low{transform:translate(calc(-100% - 12px),-50%)}
+.mark.town::before,.mark.low::before{left:auto;right:-12px;margin:-2.5px -2.5px 0 0}
+.mark.town{color:var(--fg)}
+.mark.town::before{width:7px;height:7px;margin:-3.5px -3.5px 0 0;background:var(--pin)}
+.isle .cap{margin-top:16px}
+.close .foot{grid-row:auto;padding-top:40px}
+.close .langs{margin-top:4px}
+
+.colophon{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0 24px;
+  padding:16px var(--gutter) max(16px,env(safe-area-inset-bottom));border-top:1px solid var(--rule);font-size:.875rem;color:var(--fg-muted)}
+.colophon a{display:inline-flex;align-items:center;min-height:44px;text-underline-offset:.26em;text-decoration-color:var(--fg-subtle)}
+.colophon .credit{flex:1 0 100%;padding:4px 0 8px;font-size:.6875rem;color:var(--fg-subtle)}
+
+/* Tablet: the phone composition with a bigger headline and a button that is not a full-width bar. */
+@media (min-width:600px){
+  :root{--gutter:40px}
+  h1{font-size:clamp(3.7rem,1rem + 7vw,5.25rem)}
+  .cta{justify-self:start;min-width:240px}
+  .bar nav a.wide{display:inline-flex}
+  .strip{grid-auto-columns:32%}
+  .relief{height:144px;--r:30px}
 }
-@media (min-width:960px){
-  .backstage .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:center}
-  .screens{margin-top:0}
+/* Laptop and up: a separate composition, not the phone stretched. Headline across the fog, note low left, button low right. */
+@media (min-width:900px) and (min-height:560px){
+  :root{--gutter:clamp(40px,6.5vw,120px)}
+  .page{padding:32px var(--gutter) 48px}
+  .brand{font-size:1.125rem;gap:12px}
+  .brand svg{width:28px;height:28px}
+  .bar nav a{font-size:1rem;padding:0 14px}
+  .bar nav{margin-right:-14px}
+  h1{margin-top:clamp(40px,9svh,110px);font-size:clamp(4.4rem,.6rem + 7.6vw,9.25rem);line-height:.93;letter-spacing:-.048em}
+  h1 span{text-wrap:nowrap}
+  .page .foot{grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:48px}
+  .note{font-size:.9375rem;max-width:33ch}
+  .cta{min-height:64px;padding:0 32px;font-size:1.1875rem}
 }
+/* The sheet on a wide screen: a 12-column grid, set off-centre on purpose. */
+@media (min-width:900px){
+  .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+  .head{padding:152px 0 56px}
+  h2{font-size:clamp(3.25rem,1.4rem + 3.6vw,4.75rem);letter-spacing:-.045em}
+  .head h2{grid-column:1 / span 8}
+  .head .lede{grid-column:1 / span 5;font-size:1.1875rem}
+  .tag,.cap,.mono,.fine,.langs,.pin,.mark{font-size:.8125rem}
+  .relief{height:176px;--r:44px}
 
-/* ---------------- prices ---------------- */
-.rows{margin-top:clamp(36px,5vw,64px)}
-.row{display:grid;gap:10px;padding:clamp(24px,3.4vw,40px) 0;border-top:1px solid var(--rule)}
-.row:last-child{border-bottom:1px solid var(--rule)}
-.row h3{font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.1;letter-spacing:-.02em}
-.row p{color:var(--fg-muted);max-width:50ch}
-.price{font:600 clamp(1.5rem,2.4vw,2rem)/1.1 var(--sf-display);letter-spacing:-.02em;font-variant-numeric:lining-nums tabular-nums;color:var(--fg)}
-.price small{display:block;margin-top:6px;font:400 .95rem/1.4 var(--sf);letter-spacing:0;color:var(--fg-subtle)}
-@media (min-width:860px){.row{grid-template-columns:3fr 5fr 2.4fr;gap:40px;align-items:baseline}.price{text-align:right}}
-.more{margin-top:24px}
-.more a{display:inline-flex;align-items:center;min-height:44px}
+  .hom{align-items:start;row-gap:64px}
+  .hom .txt{grid-column:1 / span 5}
+  .hom .txt h3{font-size:2.75rem}
+  .hom .arv{grid-column:7 / span 5;margin:8px 0 0}
+  .hom .spots{grid-column:1 / span 4;grid-row:2;margin:0}
+  .hom .rooms{grid-column:5 / -1;grid-row:2;margin:0;grid-template-columns:2fr 1fr 1fr}
+  .hom .rooms picture:first-child{grid-column:auto}
+  .hom .end{grid-column:1 / span 4;grid-row:3;margin:0;flex-direction:column;align-items:flex-start}
 
-/* ---------------- how it works ---------------- */
-.how{border-top:1px solid var(--rule)}
-.steps{list-style:none;margin:clamp(36px,5vw,64px) 0 0;padding:0;display:grid;gap:36px 64px}
-.steps li{display:grid;grid-template-columns:2.6rem 1fr;gap:4px 16px}
-.steps .n{grid-row:span 2;font:600 2.25rem/1 var(--sf-display);letter-spacing:-.02em;color:var(--accent);font-variant-numeric:lining-nums}
-.steps h3{font-size:1.375rem;line-height:1.2}
-.steps p{color:var(--fg-muted);max-width:46ch;margin-top:6px}
-@media (min-width:860px){.steps{grid-template-columns:1fr 1fr}}
+  .pidi{padding-top:168px;align-items:start}
+  .pidi .txt{grid-column:1 / span 4}
+  .pidi .txt h3{font-size:2.75rem}
+  .pidi .strip{grid-column:6 / -1;grid-row:1 / span 2;margin:0;padding:0;grid-auto-flow:row;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;overflow:visible}
+  .strip li:nth-child(2){margin-top:72px}
+  .strip li:nth-child(3){margin-top:144px}
+  .pidi .end{grid-column:1 / span 4;grid-row:2;align-self:end;margin:0;flex-direction:column;align-items:flex-start}
 
-/* ---------------- close ---------------- */
-.close{background:var(--surface-2)}
-.close h2{font-size:clamp(2.625rem,1.2rem + 6vw,4.75rem);line-height:1.02;letter-spacing:-.034em;max-width:13ch}
-.close p{margin-top:28px;color:var(--fg-muted);max-width:46ch;font-size:clamp(1.0625rem,1.4vw,1.2rem)}
-.mail{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
-.mail .addr{font:500 clamp(1.25rem,3vw,1.875rem)/1.25 var(--sf-display);letter-spacing:-.015em;color:var(--fg);word-break:break-word}
-.mail .addr:focus-visible{outline-offset:6px}
-.status{min-height:1.6em;margin-top:10px;font-size:.95rem;color:var(--fg-muted)}
-.langs{margin-top:28px;font-size:1rem;color:var(--fg-subtle)}
+  .pair{padding:168px 0 136px;grid-template-columns:1fr 1fr;column-gap:24px}
+  .mini{grid-template-columns:minmax(120px,180px) minmax(0,1fr);column-gap:32px}
+  .mini h3{font-size:1.875rem}
+  .mini p:not(.tag){font-size:1.0625rem}
 
-footer{padding-block:28px 40px;border-top:1px solid var(--rule)}
-footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:.92rem;color:var(--fg-subtle)}
-footer a{padding:10px 0;display:inline-block}
-footer .end{margin-left:auto}
+  .how .head{padding:64px 0 40px}
+  .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:24px;padding-bottom:112px}
+  .steps li{display:block;padding:32px 24px 0 0}
+  .steps li::before{display:block;font-size:3.0625rem;margin-bottom:40px}
+  .steps h3{font-size:1.5rem}
+
+  .prices{padding-top:72px}
+  .prices .head{padding-top:64px}
+  .items li{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:baseline;padding:40px 0 36px}
+  .items h3{grid-column:1 / span 3;font-size:1.75rem}
+  .items .cost{grid-column:4 / span 4}
+  .items .say{grid-column:8 / span 5}
+  .items .price,.items .what{margin:0}
+  .price .amt{font-size:clamp(2.5rem,1.2rem + 2.2vw,3.0625rem)}
+  .fine{margin-left:calc((100% - 11 * 24px) / 12 * 7 + 7 * 24px)}
+
+  .close{padding-top:184px;padding-bottom:88px;align-items:start}
+  .close h2{grid-column:1 / span 6;grid-row:1;max-width:none;font-size:clamp(3.75rem,1rem + 4.6vw,5.75rem)}
+  .close .isle{grid-column:7 / -1;grid-row:1 / span 2;margin:0;max-width:none}
+  .isle-map{margin-left:0}
+  .close .foot{grid-column:1 / span 5;grid-row:2;align-self:end;padding:0;gap:20px}
+  .close .cta{justify-self:start}
+}
+/* Phone held sideways: keep the first screen on one screen. */
+@media (max-height:520px){
+  h1{font-size:clamp(2.2rem,10.5svh,3.4rem);margin-top:8px}
+  .page .foot{grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px}
+  .page .cta{min-height:48px}
+}
+@media (prefers-reduced-motion:reduce){
+  .land{display:none}
+  .cta,.cta:active{transition:none;transform:none}
+}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#work">Skip to the work</a>
+<main>
+<div class="hero" id="top">
+<canvas class="land" id="land" aria-hidden="true"></canvas>
+<div class="still" id="still" aria-hidden="true"></div>
 
-<header class="nav">
-  <a class="mark" href="./" aria-label="Aruba Webstudio, home">
-    <svg viewBox="0 0 240 240" aria-hidden="true"><g transform="translate(120,120) scale(0.37591) translate(-532.0,-511.5)"><path fill="currentColor" fill-rule="evenodd" d="M 286 381 L 282 390 L 325 390 L 326 395 L 311 416 L 271 423 L 258 436 L 307 437 L 310 463 L 322 490 L 415 634 L 433 677 L 433 695 L 354 695 L 354 710 L 606 710 L 606 695 L 542 695 L 393 508 L 387 483 L 395 473 L 435 472 L 480 488 L 511 509 L 514 518 L 563 542 L 548 561 L 756 561 L 741 545 L 700 541 L 678 529 L 633 527 L 593 538 L 558 525 L 557 518 L 806 518 L 794 505 L 742 499 L 732 487 L 719 483 L 720 478 L 775 478 L 754 462 L 667 458 L 658 445 L 549 448 L 539 442 L 539 436 L 738 436 L 721 422 L 649 415 L 640 404 L 610 395 L 611 390 L 661 390 L 648 377 L 601 372 L 585 362 L 548 354 L 549 349 L 613 349 L 593 334 L 524 330 L 519 317 L 508 313 L 415 316 L 374 325 L 334 343 L 330 349 L 364 350 L 359 361 L 342 372 Z M 504 479 L 568 478 L 588 492 L 558 494 L 530 504 Z M 415 444 L 425 436 L 469 436 L 508 445 L 520 455 L 482 469 L 447 454 L 416 449 Z M 336 437 L 377 436 L 378 441 L 352 470 Z M 462 402 L 468 390 L 505 391 L 496 403 Z M 344 414 L 362 390 L 440 391 L 431 403 L 372 403 L 363 415 Z"/></g></svg>
-    <span>Aruba Webstudio</span>
-  </a>
-  <nav aria-label="Sections">
-    <ul>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#prices">Prices</a></li>
-      <li><a href="#how">How it works</a></li>
-    </ul>
-  </nav>
-  <a class="btn btn-primary" href="mailto:info@arubawebstudio.com?subject=A%20project%20for%20Aruba%20Webstudio">Start a project</a>
-</header>
-
-<main id="main">
-<div class="hero">
-  <div class="hero-art" aria-hidden="true"><svg class="hero-tree" viewBox="13 41 214 158" focusable="false"><g transform="translate(120,120) scale(0.37591) translate(-532.0,-511.5)"><path d="M 286 381 L 282 390 L 325 390 L 326 395 L 311 416 L 271 423 L 258 436 L 307 437 L 310 463 L 322 490 L 415 634 L 433 677 L 433 695 L 354 695 L 354 710 L 606 710 L 606 695 L 542 695 L 393 508 L 387 483 L 395 473 L 435 472 L 480 488 L 511 509 L 514 518 L 563 542 L 548 561 L 756 561 L 741 545 L 700 541 L 678 529 L 633 527 L 593 538 L 558 525 L 557 518 L 806 518 L 794 505 L 742 499 L 732 487 L 719 483 L 720 478 L 775 478 L 754 462 L 667 458 L 658 445 L 549 448 L 539 442 L 539 436 L 738 436 L 721 422 L 649 415 L 640 404 L 610 395 L 611 390 L 661 390 L 648 377 L 601 372 L 585 362 L 548 354 L 549 349 L 613 349 L 593 334 L 524 330 L 519 317 L 508 313 L 415 316 L 374 325 L 334 343 L 330 349 L 364 350 L 359 361 L 342 372 Z M 504 479 L 568 478 L 588 492 L 558 494 L 530 504 Z M 415 444 L 425 436 L 469 436 L 508 445 L 520 455 L 482 469 L 447 454 L 416 449 Z M 336 437 L 377 436 L 378 441 L 352 470 Z M 462 402 L 468 390 L 505 391 L 496 403 Z M 344 414 L 362 390 L 440 391 L 431 403 L 372 403 L 363 415 Z" fill="currentColor"/></g></svg></div>
-  <div class="hero-in">
-    <h1>Shaped by the wind. <em>Still standing.</em></h1>
-    <p>Websites, apps and AR for Aruban businesses, built in Oranjestad. Four of them are live below.</p>
-    <div class="acts">
-      <a class="btn btn-primary" href="mailto:info@arubawebstudio.com?subject=A%20project%20for%20Aruba%20Webstudio">Start a project</a>
-      <a class="link" href="#work">See the work</a>
+<div class="page">
+  <header class="bar">
+    <p class="brand"><svg viewBox="70 70 100 100" aria-hidden="true" focusable="false"><g transform="translate(120,120) scale(0.37591) translate(-532.0,-511.5)"><path fill-rule="evenodd" d="M 286 381 L 282 390 L 325 390 L 326 395 L 311 416 L 271 423 L 258 436 L 307 437 L 310 463 L 322 490 L 415 634 L 433 677 L 433 695 L 354 695 L 354 710 L 606 710 L 606 695 L 542 695 L 393 508 L 387 483 L 395 473 L 435 472 L 480 488 L 511 509 L 514 518 L 563 542 L 548 561 L 756 561 L 741 545 L 700 541 L 678 529 L 633 527 L 593 538 L 558 525 L 557 518 L 806 518 L 794 505 L 742 499 L 732 487 L 719 483 L 720 478 L 775 478 L 754 462 L 667 458 L 658 445 L 549 448 L 539 442 L 539 436 L 738 436 L 721 422 L 649 415 L 640 404 L 610 395 L 611 390 L 661 390 L 648 377 L 601 372 L 585 362 L 548 354 L 549 349 L 613 349 L 593 334 L 524 330 L 519 317 L 508 313 L 415 316 L 374 325 L 334 343 L 330 349 L 364 350 L 359 361 L 342 372 Z M 504 479 L 568 478 L 588 492 L 558 494 L 530 504 Z M 415 444 L 425 436 L 469 436 L 508 445 L 520 455 L 482 469 L 447 454 L 416 449 Z M 336 437 L 377 436 L 378 441 L 352 470 Z M 462 402 L 468 390 L 505 391 L 496 403 Z M 344 414 L 362 390 L 440 391 L 431 403 L 372 403 L 363 415 Z"/></g></svg>Aruba Webstudio</p>
+    <nav aria-label="Sections"><a href="#work">Work</a><a class="wide" href="#how">How it works</a><a href="#prices">Prices</a></nav>
+  </header>
+  <div class="intro">
+    <h1><span>Shaped by the wind.</span> <span>Still standing.</span></h1>
+    <div class="foot">
+      <p class="note">Websites, apps and AR for Aruban businesses, built in Oranjestad. We build yours before you pay.</p>
+      <a class="cta" href="https://wa.me/2977477794?text=Hi%20Aruba%20Webstudio%2C%20I%27d%20like%20to%20start%20a%20project.%0AWhat%20the%20business%20sells%3A%0AWhat%20a%20customer%20should%20be%20able%20to%20do%3A"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path id="wa" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Start a project<span class="vh"> on WhatsApp</span></a>
     </div>
   </div>
 </div>
+</div>
 
-<section id="work" aria-labelledby="work-h">
-  <div class="wrap rail-head">
-    <div>
-      <h2 class="h2" id="work-h">Judge a studio by what it has shipped.</h2>
-      <p class="sub">Four builds, all running today. Each one opens the real site.</p>
+<section class="work" id="work" aria-labelledby="work-h">
+  <header class="head grid">
+    <h2 id="work-h">Judge a studio by what it has shipped.</h2>
+    <p class="lede">Four builds, all running today. Each one opens the real site.</p>
+  </header>
+
+  <article class="build hom grid" aria-labelledby="hom-h">
+    <div class="txt">
+      <p class="tag"><b>House of Mosaic Art Villa</b>Art villa and gallery, Oranjestad</p>
+      <h3 id="hom-h">A gallery that tells its own stories.</h3>
+      <p>House of Mosaic Art Villa is a 1950 family home on Schotlandstraat that the artist Fernando Mansur has been covering in mosaics since 2004. The story behind each piece lived in his head, not on the wall.</p>
+      <p>Now a guest points a phone at an artwork and the piece starts talking. The camera recognises the artwork itself, so there is no QR code taped to the frame. Story Mode builds a collectible mosaic as they walk the house, and a VR gallery runs in the browser with nothing to install.</p>
     </div>
-    <div class="rail-btns">
-      <button type="button" data-dir="-1" aria-label="Previous build" aria-controls="rail">&#8249;</button>
-      <button type="button" data-dir="1" aria-label="Next build" aria-controls="rail">&#8250;</button>
+    <figure class="arv">
+      <video muted loop playsinline preload="none" width="390" height="386" poster="work/v2/hom-ar-poster-390.webp" aria-label="The Alto Vista Chapel artwork coming alive in the app"><source src="work/v2/hom-ar-loop.mp4" type="video/mp4"></video>
+      <figcaption class="cap">Recorded from the test build: Theo Brinkman’s Alto Vista Chapel, seen through the app.</figcaption>
+    </figure>
+    <ul class="spots">
+      <li><b>13</b><span>artworks recognised and narrated so far.</span></li>
+      <li><b>5</b><span>languages on the app’s screens: Papiamento, Dutch, Spanish, French and English.</span></li>
+      <li><b>1</b><span>codebase for the web app you can open today and the iOS and Android builds.</span></li>
+    </ul>
+    <figure class="rooms">
+      <picture><source type="image/avif" srcset="work/v2/hom-room-800.avif 800w, work/v2/hom-room-1400.avif 1400w" sizes="(min-width:900px) 48vw, 62vw"><img src="work/v2/hom-room-800.webp" srcset="work/v2/hom-room-800.webp 800w, work/v2/hom-room-1400.webp 1400w" sizes="(min-width:900px) 48vw, 62vw" width="800" height="533" loading="lazy" decoding="async" alt="A guest room at House of Mosaic, red walls, carved beams and mosaic frames"></picture>
+      <picture><source type="image/avif" srcset="work/v2/hom-narnia-480.avif 480w, work/v2/hom-narnia-900.avif 900w" sizes="(min-width:900px) 18vw, 30vw"><img src="work/v2/hom-narnia-480.webp" srcset="work/v2/hom-narnia-480.webp 480w, work/v2/hom-narnia-900.webp 900w" sizes="(min-width:900px) 18vw, 30vw" width="480" height="640" loading="lazy" decoding="async" alt="The entrance to the Narnia Suite, through a wardrobe"></picture>
+      <picture><source type="image/avif" srcset="work/v2/hom-velvet-480.avif 480w, work/v2/hom-velvet-900.avif 900w" sizes="(min-width:900px) 18vw, 30vw"><img src="work/v2/hom-velvet-480.webp" srcset="work/v2/hom-velvet-480.webp 480w, work/v2/hom-velvet-900.webp 900w" sizes="(min-width:900px) 18vw, 30vw" width="480" height="640" loading="lazy" decoding="async" alt="The Black Velvet room, dark walls and a chandelier"></picture>
+      <figcaption class="cap">The rooms the app walks you through. Photos: House of Mosaic Art Villa.</figcaption>
+    </figure>
+    <p class="end"><span class="mono">MindAR, Three.js, Capacitor, Vite</span><a class="go" href="https://victorfromaruba-stack.github.io/app-test/">Open the app</a></p>
+  </article>
+
+  <article class="build pidi grid" aria-labelledby="pidi-h">
+    <div class="txt">
+      <p class="tag"><b>Pidi</b>Late-night delivery, from 10 PM</p>
+      <h3 id="pidi-h">The part customers never see.</h3>
+      <p>Pidi takes late-night orders for several Aruban kitchens at once. Behind its ordering site we built the kitchen screen, where orders are accepted and marked ready, and the driver app, with the pickup list and one tap to Google Maps or Waze.</p>
     </div>
+    <ul class="strip" tabindex="0" aria-label="Pidi’s kitchen screen and driver app">
+      <li><figure><picture class="shot"><source type="image/avif" srcset="work/v2/pidi-kitchen-280.avif 280w, work/v2/pidi-kitchen-560.avif 560w" sizes="(min-width:900px) 18vw, (min-width:600px) 30vw, 54vw"><img src="work/v2/pidi-kitchen-280.webp" srcset="work/v2/pidi-kitchen-280.webp 280w, work/v2/pidi-kitchen-560.webp 560w" sizes="(min-width:900px) 18vw, (min-width:600px) 30vw, 54vw" width="280" height="606" loading="lazy" decoding="async" alt="Pidi kitchen screen: order 27 waiting to be accepted"></picture><figcaption class="cap">Kitchen: a new order to accept.</figcaption></figure></li>
+      <li><figure><picture class="shot"><source type="image/avif" srcset="work/v2/pidi-ready-280.avif 280w, work/v2/pidi-ready-560.avif 560w" sizes="(min-width:900px) 18vw, (min-width:600px) 30vw, 54vw"><img src="work/v2/pidi-ready-280.webp" srcset="work/v2/pidi-ready-280.webp 280w, work/v2/pidi-ready-560.webp 560w" sizes="(min-width:900px) 18vw, (min-width:600px) 30vw, 54vw" width="280" height="606" loading="lazy" decoding="async" alt="Pidi kitchen screen: two orders ready, waiting for a driver"></picture><figcaption class="cap">Kitchen: ready, waiting for a driver.</figcaption></figure></li>
+      <li><figure><picture class="shot"><source type="image/avif" srcset="work/v2/pidi-driver-280.avif 280w, work/v2/pidi-driver-560.avif 560w" sizes="(min-width:900px) 18vw, (min-width:600px) 30vw, 54vw"><img src="work/v2/pidi-driver-280.webp" srcset="work/v2/pidi-driver-280.webp 280w, work/v2/pidi-driver-560.webp 560w" sizes="(min-width:900px) 18vw, (min-width:600px) 30vw, 54vw" width="280" height="606" loading="lazy" decoding="async" alt="Pidi driver app: the pickup list with Google Maps and Waze buttons"></picture><figcaption class="cap">Driver: what to pick up, and where.</figcaption></figure></li>
+    </ul>
+    <p class="end"><span class="mono">All three screens show sample orders.</span><a class="go" href="https://victorfromaruba-stack.github.io/restaurant-/">Open Pidi</a></p>
+  </article>
+
+  <div class="pair">
+    <article class="mini" aria-labelledby="croes-h">
+      <picture class="shot"><source type="image/avif" srcset="work/v2/site-croes-280.avif 280w, work/v2/site-croes-560.avif 560w" sizes="(min-width:900px) 180px, 116px"><img src="work/v2/site-croes-280.webp" srcset="work/v2/site-croes-280.webp 280w, work/v2/site-croes-560.webp 560w" sizes="(min-width:900px) 180px, 116px" width="280" height="606" loading="lazy" decoding="async" alt="The Croes Accounting site on a phone: Your books, filed on time. Every month."></picture>
+      <div>
+        <h3 id="croes-h">Croes Accounting</h3>
+        <p class="tag">Accounting, Oranjestad</p>
+        <p>Bookkeeping, payroll and BBO filing in four languages, a client portal, and the next filing deadline counted down on the page.</p>
+        <a class="go" href="https://croesaccounting.com">croesaccounting.com</a>
+      </div>
+    </article>
+    <article class="mini" aria-labelledby="arusalt-h">
+      <picture class="shot"><source type="image/avif" srcset="work/v2/site-arusalt-280.avif 280w, work/v2/site-arusalt-560.avif 560w" sizes="(min-width:900px) 180px, 116px"><img src="work/v2/site-arusalt-280.webp" srcset="work/v2/site-arusalt-280.webp 280w, work/v2/site-arusalt-560.webp 560w" sizes="(min-width:900px) 180px, 116px" width="280" height="606" loading="lazy" decoding="async" alt="The AruSalt site on a phone: the crystal mark over the reef"></picture>
+      <div>
+        <h3 id="arusalt-h">AruSalt</h3>
+        <p class="tag">Sea salt producer</p>
+        <p>Hand-harvested sea salt from Aruba. The crystal mark over the reef it comes from, with the shop behind it.</p>
+        <a class="go" href="https://arusalt.com">arusalt.com</a>
+      </div>
+    </article>
   </div>
+</section>
 
-  <ul class="rail" id="rail" tabindex="0" aria-label="Four live builds. Scroll sideways for more.">
-    <li class="obj">
-      <a class="phone-link" href="https://victorfromaruba-stack.github.io/app-test/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-        <figure class="phone"><picture><source type="image/avif" srcset="work/v2/site-hom-280.avif 280w, work/v2/site-hom-560.avif 560w" sizes="268px"><img src="work/v2/site-hom-280.webp" srcset="work/v2/site-hom-280.webp 280w, work/v2/site-hom-560.webp 560w" sizes="268px" width="280" height="606" alt="" loading="lazy" decoding="async"></picture></figure>
-      </a>
-      <h3>House of Mosaic Art Villa</h3>
-      <p class="kind">Art villa and gallery, Oranjestad</p>
-      <p class="did">The guest app. Point a phone at a piece and it tells its story.</p>
-      <a class="open link" href="https://victorfromaruba-stack.github.io/app-test/" target="_blank" rel="noopener">Open the app</a>
+<section class="how" id="how" aria-labelledby="how-h">
+  <div class="relief" aria-hidden="true"><!--map:hooiberg--><svg viewBox="0 0 1600 221" preserveAspectRatio="xMidYMid slice" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path class="mi" d="M546 218l-6-10-13-5-2-10-20-27-4-18-6-13 0-5 5-10-2-5-6-4-1-3 2-18-1-2-11-5-13 2-6-1-8-4-13-9-7-10-5-21-9-9-9-13-7-5-2-5-1-8M1438 0l6 9 2 10 3 3 3-1 15-6 6-1 12 8 15 5 7 4 2 3 1 4-7 20 0 7 6 18 20 19 1 4-3 8 2 4 8 11 15 2 7 5 2 5-1 13 3 5 15 5 12 9 7 3M610 218l6-9 13-9 2-3-4-19 4-9 3-13 13-18 2-5-1-3-14-4-7-5-5 2-1 2 3 7-2 3-4 0-8-6-10 2-6-1-7-5-6-11-18-1-7-3-7-17 0-5 2-9 4-2 4 0 24 9 6 6 0 8 2 4 6 1 4-2 9-11 15-28 8-1 3-3 1-2-3-6-4-1-9 1-2-2-1-2 6-8 10-5 6-9 1-6-4-11-5-2-6 2-7 9-7 5-8 0-12-3-6-2-3-4-7-14M1339 0l1 6 3 0 4-1 3-5M1415 0l-3 8 1 4 4 2 12 1 5 6 11 9 7-1 13-7 5-1 32 13 2 2 0 4-7 20 0 12 3 8 5 6 17 15 0 4-7 4 1 4 12 10 5 10 5 2 11-1 5 3 1 2 0 29 9-3 9 1 6 3 12 9 6 3M652 73l-3-6-3-1-3 1 0 4 2 3 4 1 3-2zM860 218l3-3 11-3 2-3 0-4-7-7-17-5-4-2-1-4 14-8 11-4 4-2 3-8-1-4-3-2-13 3-28 0-17 10-1 4 7 17 1 17-1 8M755 218l-3-6-3-3-14-2-8 4-4 7M603 8l-5-2 0-3 3-3 3 1 1 2 0 3-2 2zM767 218l0-9 5-9 0-3-17-25 2-17-2-11-7-4-5 1-13 19-6 2-7-2-16-8-6-5-3-4-1-7 2-5 14-3 13-11 1-5-4-7 0-5 5-5 9-5 4-17-1-7-4-4-6-2-11-2-5-3-1-8 3-23-19-24M1287 0l-3 13 2 2 4 1 5-1 2-3 3-12M1334 0l-9 15 24-5 5-10M1410 0l-5 10 1 5 4 5 10 3 5 6 9 0 12 8 19-7 5-1 24 11 1 6-4 17 1 12 2 5 13 18-7 10 17 15 2 3 1 7 26 10 4 11-1 6-4 9 3 6 7 2 12-7 8 0 5 5 8 9 5 11 4 3M1314 33l5-11 0-3-6 2-3 4 0 7 3 2 1-1zM942 218l-3-18 5-7 3-9 7-9 2-5-2-3-4-2-6-1-9 1-5-3 3-8 9-14 6-17 2-8-2-4-6-3-5-4-2-5 9-16 13-6 3-3 1-6-4-4-29-1-16-4-13-9-5 3-4 5-1 7 1 10-3 5-8 3-8 8-7 1-7-2-12-6-9-8-1 1 0 10 3 9 7 12 15 12 3 5-1 2-5 1-12-6-4 0-21 16-26 10-1 4 3 15-2 20 3 3 12 5 8 8 3 7-1 8M867 0l-13 19-5 3-3-1-4-6-12-9-4-6M997 218l1-7 5-8 8-7 15-6 6-9 4-8-1-5-6-8 1-12-6-11-6-1-12 4-8 0-6-2-3-6 2-14 8-14 6-6 5-12 3-4 7-3 3-4 1-8-1-15-9-15-6-6-12-6-6-9-5-4-6-1-4 2-4 6-6 16-3 3-4 2-4-3-9-10-12-6-9-11-3-1-8 2-5-1-4-4-3-6M1088 0l4 7 4 3 6 1 14-2 3-4 1-5M1281 0l-7 15-1 10 18-2 7 1 2 6-2 11 2 2 13 1 3-1 4-3 3-13 4-6 10-6 13 1 3-3 5-13M1329 0l-8 10-11 4-3-1-2-3 1-10M1405 0l-7 10 0 4 8 10 9 5 6 6 12 0 10 8 3 2 21-8 9 2 8 5 3 6-2 13 2 13 9 14 1 5-1 3-8 7 0 3 2 4 4 3 9 4 5 4 3 6 1 10 14 1 15 8 2 2 1 6-5 9 0 4 8 13 4 0 18-5 4 0 5 5 10 18 9 7M802 136l-9 0-9-2-9-5-5-6-1-7 3-14 10-21 4-4 12 1 14 7 6 7 8 14 0 9-4 8-10 9-10 4zM778 188l-6-3-6-14 3-18 4-7 6 2 6 5 4 6 2 7-1 8-2 8-4 4-6 2zM777 218l0-7 2-5 9-8 8-2 10 3 9 7 2 6-1 6M1081 218l-1-10 2-10 4-8 8-8 0-4-1-6-6-10-2-8 0-7 5-12-1-5-3-4-8-1-2-3 1-3 19-11 4-6 1-5-5-5-22-8-3 0-8 6-4 0-3-2-2-5 0-9 3-3 11-3 4-8 2-2 15 5 10 1 15-12 6-2 12-2 9-5 4-3 1-4-2-17 1-7 2-3 10-6 2-3M1191 0l-1 7 2 11 2 18-4 7-3 9-11 9 3 15-11 13-2 8 4 8 13 9 6 7 4 5 0 7-3 6-5 1-3-2-11-15-2-2-6-1-13 3-1 3 2 10-4 12 2 6 3 4 5 3 17 2 4 3 0 3-3 7-8 5-7 10-13-2-5 2-3 4-4 14-7 9M1204 218l-7-26 1-20 3-4 7-3 18 1 1-4 2-11 8 1 4-1 18-16 3-15 12-19 0-13-2-13 5-17 4-2 11 3 12 1 2 5 1 12 3 3 2 0 2-3 6-21 3-4 9-3 0-4-2-12 3-7 1-1 4-2 11 5 3 0 4-3 8-16 8-3 4 1 3 3-1 13 1 5 11 0 16 7 4 2 0 9 2 2 5 0 13-5 4 3 9 11 20-3 4 1 2 8 7 12 4 14-1 3-13 6-1 5 14 9 2 4 1 7 3 3 9 3 3 6-2 6-4 4-4 2-7-1-3 2 31 7 5-1 6-4 5 1 2 3-1 7 1 4 11 16-2 7-3 6-7 3-12 3-3 3 0 4 2 2 16 4 4 0 17-10 9-11 5-1 7 5 2 7-2 3-11 5-1 7M1240 50l-9-3-11-1-4-3 0-3 10-19 14-5 4 2 3 4 3 6 2 8-2 7-10 8zM1064 44l-5-2-5-6-2-6 2-5 7 0 5 5 2 9-3 5zM802 129l-8 0-6-2-5-5-2-6 0-9 3-9 6-7 6-2 6 0 6 4 6 8 3 8 0 7-4 6-4 5-7 2zM781 173l-3 0-2-4 1-4 2-3 3 0 1 3 0 4-2 4zM1255 218l-1-6-5-2-5 2-2 6M1162 46l-3-3 0-7-5-12 0-6 2-3 3-1 11-1 10 6 2 7-2 3-9 6-5 8-4 3zM1291 218l-1-6-2-3-27-18 0-2 3-4 6-4 2-3-1-3-5-8 1-4 15-7 4-7-4-20 4-28-6-24 0-6 3-4 3-2 7 0 5 2 2 12 6 14 1 3 3-1 6-8 9-21 9-2 3-5 3-10-3-15 4-1 13 2 10-4 9 6 15-2 14 4 2 4-5 10 13 0 17-5 5 3 6 10 18 1 9 6 4 8 2 10-2 4-11 8-2 7 2 3 11 5 3 4-2 9 3 9-6 10 0 11 2 1 12-2 20 2 13 6 8 8 7 10 0 6-2 3-7 4-15 0-4 2 0 2 1 11 2 5 13 1 5 3M1134 84l-7 0-5-3-2-8 1-9 5-4 21-3 3 4 2 5 0 8-5 5-13 5zM802 127l-11-1-4-4-3-6 0-8 3-9 3-5 6-3 5 1 5 3 6 7 3 7 0 6-3 5-3 4-7 3zM1487 139l-3-1-1-3 6 0 0 3-1 1zM1087 218l-2-8 2-7 4-9 11-10 1-5-1-13 3-2 21 8 5 7-1 6-3 10 0 11-7 12M1539 218l3-4 5-2 2 2 3 4M1301 218l3-13-8-12 2-12-2-12 1-9-1-18-5-15 1-13 3-6 2-1 7 3 4-1 17-29 4-3 9-3 11-28 12-3 23 3-12 20 1 6 3 2 15-10 15-6 20-5 5 2 3 7 3 3 6 2 12-1 4 2 5 4 3 7 0 7-12 12-2 7 1 11 2 2 6 2 2 11-1 10 0 11-2 6-4 5 0 3 6 2 6-1 9-8 5-1 15 1 8 4 9 6 7 6 3 5-1 7-5 3-22-2-4 2 6 12 2 16M1295 95l-4-12-3-5 1-5 3 2 1 8 3 6-1 6zM805 124l-6 2-5-1-4-3-4-5-1-6 2-7 3-6 4-4 5 0 4 1 6 6 3 6 0 10-7 7zM1095 218l-3-3-2-6 3-9 14-10 7-7 6 1 1 19-1 6-3 3-12 3-6 3M1306 218l6-19-4-10 1-11-4-10-1-17 2-9-8-13 0-7 2-3 9-3 4-2 3-9 12-21 4-2 11-2 3-13 6-12 3-3 6-1 6 1 1 2-3 13 5 19 3 3 16-18 12-3 9-6 11-4 4 1 6 8 6 4 6 1 10-2 6 4 3 5-1 4-11 16-6 21 1 3 9 9 5 14 0 6-4 5-13 6-2 3 18 6 11 1 7-3 6-7 10-1 10 4 11 9 3 6-4 3-11 0-13-4-3 0-3 4 1 6 8 7 4 5 2 16M802 123l-8 0-4-3-2-6 0-6 2-7 3-3 4-2 3 0 4 3 5 6 2 4-2 9-7 5zM1098 209l-2-1 1-3 5-5 7-2 4 2 0 3-2 3-13 3zM1313 218l2-6 4-6 13-9 2-3-7-10-3-11-6-11 0-6 5-7 0-4-11-16 1-3 9-9 3-10 6-13 3-2 3-1 16 3 2 3 3 11-2 9-17 26-2 5 3 3 10-2 12 2 12-6 5-6 1-9 4-9-3-14 1-8 3-7 4-6 6-3 3 0 8 4 5 1 13-6 7 3 7 6-1 11-6 11-1 11 3 5 11 10 3 5 1 4-2 3-3 1-13 3-19-8-5 0-1 3 3 9-4 10 0 8 3 4 11 7 18-3 13-6 18 5 3 3 1 11 2 5 12 6 3 9M799 120l-5-3-2-5 1-8 4-3 7 2 3 8-1 6-7 3zM1316 218l3-6 4-4 8-6 9-3 1-2-1-6-9-13-3-15 4-2 8 1 11-6 13-1 12-5 8-5 7-22-4-15 0-6 2-6 6-3 10 3 16 3 1 2-2 9 5 19 3 5 9 6 3 4-3 4-5 0-10-3-12-7-7 0-5 3-1 6 5 12-3 13 2 12 3 3 12 7 20-2 13-7 12 5 3 4 4 16-1 2-7 6M1333 139l-4 1-4-2-4-5-1-4 6-9 5-17 4-5 6-1 9 4 3 5 1 6-2 4-11 17-7 6zM802 117l-5 0-3-3 0-6 3-4 3 0 4 4 1 5-3 4zM1330 132l-1-1-1-2 6-20 4-4 6-1 4 5-1 6-10 14-6 4zM799 114l-2-1 0-3 3-3 2 5-3 3zM1406 128l-5-2-1-8-3-6 1-3 3 1 1 7 6 8-2 3zM1321 218l2-6 5-4 6-3 10-1 2-3 0-7-7-15 0-4 2-3 11-10 12-2 25-10 5 4 3 5-2 22-3 10 12 3 9 6 11-1 4 0 3 3 1 4-1 12M1457 207l-5 2-8-3-4-4 1-5 7-4 7 1 3 3 1 2-2 7zM1326 218l2-6 5-3 13-1 5-3 1-7-6-17 1-5 3-5 6-4 29-9 4 1 1 3 0 18-3 5-12 11-2 4 1 3 4 1 14-5 9 0 8 7 13 2 2 4 0 6M1364 185l-1-1 1-3 1 3-1 1zM1387 218l5-3 5 3"/><path class="ix" d="M965 0l-2 9-5 4-4 1-4-1-2-3-4-10M1042 218l1-6-2-9 1-2 6-1 8 6 4 0 4-4 5-8 6-19 0-6-6-14 3-17-7-14-3-13-5 0-6 6-3 1-4-1-5-6 3-20 1-20 3-6 7-7 0-4-9-17-6-9-8-8-12-5-2-3 1-3 4 0 10 5 17-2 15 3 13 5 10 0 3 2-3 8 1 7 3 4 11 2 10-3 3-3 3-9 3-4 9-5 10-19M1201 0l2 16 1 3 3 3 4-2 8-12 10-4 2-4M1248 0l2 4 4 3 5-3 2-4M1274 0l-6 13-8 10 1 18-3 8-8 12-7 6-8 5-9 0-2 2 2 9-1 12 2 3 7 5 4-1 13-12 1-10 10-12 5-20 3-5 10-9 5-2 4 1 0 14 3 5 4 1 8-2 9 2 13-10 0-13 4-6 8-5 11 3 3-1 13-21M1399 0l-8 9-2 6 12 12 12 7 3 6 2 2 14-3 14 13 21-8 7 1 4 4 1 3-3 8 1 4 5 16 6 9 2 4-1 3-3 3-10 3 13 18 11 6 3 4 0 5-4 12 8 3 11-6 6 0 7 3 5 6-4 13 8 12 1 7-4 10-4 4-6 4-1 3 5 0 11-7 13-13 5-1 6 0 4 2 6 6 5 12-2 4-10 6-1 3M799 132l-8 0-6-3-5-6-3-9 1-10 5-9 5-7 9-3 8 2 7 5 6 9 3 9-2 8-5 8-7 5-8 1zM781 180l-6-1-4-8 2-11 3-4 2 0 4 1 3 2 2 6-1 10-5 5zM794 218l-3-12 2-4 5-1 8 2 7 5 1 4-2 6M1190 218l-1-6-3-5-14-1-10 3-12-1-3 3-4 7M1309 218l4-9 9-12 0-3-6-7 2-11-6-13 0-9 3-11-9-11-1-5 2-4 10-6 11-26 6-4 10 1 3-1 3-4 2-12 2-2 4 2 4 5 2 7-2 16 1 13-3 7-7 11-2 6 2 4 5 1 11-8 3-8 4-6 1-22 3-7 5-8 9-6 15 1 6-8 3-2 20 12 4 1 9-3 3 3-1 6-7 10-3 12-6 9-1 4 2 5 11 10 5 13-3 5-20 8-12-2-6 6-2 6 8 9 4 1 11-2 13-6 26 5 3 3 0 11 2 4 10 3 3 3 2 15M802 122l-8-2-4-6 1-9 2-5 4-2 7 3 5 9-1 7-6 4zM1363 199l-4-1-4-5-3-9 1-6 6-5 14-5 5-1 4 1 3 7-2 6-19 18zM1330 218l2-3 5-3 12 1 12-4 16 3 17-7 3 1 7 6 9 3 3 3"/><path class="co" d="M424 218l0-12-15-34-8-9-2-4-24-25-15-3-9 8-4 0-19-19 7-10 6 2 4-5-4-2-30-23-8 11 6 8 0 7-11-6-20-20-4-2 4-4 7-2-4-4-22-2 1-2 12-1 1-4-4-4-18 3-10-7-17-20-4-1-25-22 0-10M1466 0l-6 6 1 4 4 0 8-8 15 15 15 0 3 6 6 0 6 6 4-2 0 4-8 9-3 9 2 3-5 8 4 5 4 2 4 7-1 3-5 3 5 2 1 5 8 5 8 10 5 2-6 13 0 6 6 4 8-2 12 8 6 1 4 9-6 7 1 4 4 4 15 0 5 12 7 0"/></g></svg><!--/map:hooiberg--><span class="pin">Hooiberg <b>165</b></span></div>
+  <header class="head grid">
+    <h2 id="how-h">Nobody pays us to find out.</h2>
+  </header>
+  <ol class="steps">
+    <li><h3>Tell us what the business does</h3><p>An email or a call. What you sell, and what you want somebody to be able to do on the site. That’s the whole brief. You don’t need to know what you want it to look like.</p></li>
+    <li><h3>We build one before you pay</h3><p>A working site on a real address, with your words and your photos. Not a mockup, and not a template with your logo dropped on it. You look at it on your own phone.</p></li>
+    <li><h3>You decide</h3><p>If it isn’t right, you owe nothing and we shake hands. If it is, half up front and half the day it goes live. We write the scope down first, including how many rounds of changes, so nobody is guessing by round four.</p></li>
+    <li><h3>It goes on your domain</h3><p>Your domain, your hosting account, your Google listing. One week for a website, longer for the bigger work, and we tell you which before you commit to anything.</p></li>
+  </ol>
+</section>
+
+<section class="prices" id="prices" aria-labelledby="prices-h">
+  <div class="relief" aria-hidden="true"><!--map:jamanota--><svg viewBox="0 0 1600 221" preserveAspectRatio="xMidYMid slice" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path class="mi" d="M162 0l4 13-3 8-6 5-6 2-6-1-7-3-1 19-2 5-3 3-9 2-12 6-8-2-15-9-12-11-13-9-5-8 0-11-3-9M337 218l-5-6-9-5-3-4 0-19 4-10 2-8-3-7-6 6-20 30-4 2-4-1-14-9-2-10-5-5-12-5-20-14-5 0-8 2-1-8-11-15-7-3-22-14-10-3-3-4-1-5 3-13-4-15 8-13 1-16 5-12 2-8-1-6-4-7 0-4 6-9M1144 0l-6 11 2 4 8 1 11-5 5 1 10 12 9 7 6 13 12 7 12 11 6 8 6 16 15 15 6 21 9 16 5 13 4 6 17 12 17 5 17 0 14 5 15-9 4-1 5 2 4 4 3 5 1 14 8 15 1 9M105 121l-8-1-30-16-5-6 0-7 6-4 6-1 29 18 4 4 2 6 0 4-4 3zM582 218l-12-8-2-7-2-3-14-4-17-1-7-3-3-7 0-9-6-7-6-13 0-9 4-12 5-4 6-1 15 5 2 0 2-6-1-10-10 4-14-1-6 10-8 5-15 2-7 11-6 4-6-1-17-12-4 0-3 13-6 9 4 12-3 18-2 4-8 6 0 15M477 218l-5-9-2-7 2-6 6-2 14 3 9 10 12-7 15 6 19-2 7 1 13 7 3 6M631 218l6-21-1-1-6 0-9 3-19 11-10 1-7-2-3-4 1-3 13-8 2-3-1-5-28 7-29-3-6-3 0-5 3-8 19-23 0-30 3-7 9-9 1-4-1-9-12 7-7 0-4-4-5-9-1-7 1-11-5-7-1-6 3-6 8-9 1-4-6 1-9 6-12 12-5 10 1 11-1 11 18 24-4 0-11-6-9 2-3 6 6 8-1 6-6 4-12 1-3 2-6 9-4 3-6-1-9-6-8-7-3-6 1-3 12-11 2-4-7-7-1-2 2-4 5-1 10 4 6-3 2-2-2-20-4-5-4-3-17-3-9-12-6 1-6 4-1 3 2 7-2 11 9 10 3 7-2 16 3 16-13 25-15 6-2 4 3 7 14 4 2 3 1 3-1 2-4 1-5-2-10-6-6-1-4 1-2 6 3 17-4 7-3 10-6 2-17-11-12-11-20-5-4-2 0-3 1-6 2-4 8-5 2-2-2-16 4-22-4-14 4-21 3-6 16-8 6-6 3-9-1-11-1-3-5 0-13 5-28-3-5 2-5 4 0 8 7 9 3 6 2 23-3 8-24 6-38-1-13-9-20-10-10-2-7-4-4-5-5-9-9-8-15-19-1-5 1-5 6-13 9-8 5-7 2-5 0-7M280 0l4 8 0 7 1 5 2 2 5 2 7-2 4-5-1-5-5-6-1-6M1131 0l-3 10-4 5-23 9-9 19 13 4 9 6 5 1 2-2 0-8 2-4 12-10 6-2 4 1 8 11 27 27 14 0 5 2 4 5 6 15 11 12 3 13 8 19 14 24 13 12 16 23 22 20 5 6M530 163l-2 0-2-6-6-10 2-7 6-3 6 1 3 4 2 4-5 14-3 4zM518 218l1-4 1-1 29-2 7 2 6 5M264 0l11 12 2 10 6 15 11 15 8 17 6 5 15 5 4 4 2 10-3 7-9 2-12-4-17-2-16-7-25-16-3-5-2-13-10-13-4-10 0-5 8-5 0-3-6-13-2-6M383 0l-9 18-5 5-4 1-9-3-16-14 0-7M536 0l-2 9 1 12-3 5-5 1-11 0-5 12-11 9-5 1-12-1-12 4-3-1-2-2 0-11-1-4-4-2-38 11-9 4-3-1-1-6 4-9 0-7-3-3-10-3-11-18M639 218l4-15 4-7 10-8 14-4 3-4-2-1-21 1-11-2-6 9-4 3-29 12-1-2 4-7 1-11 6-13-7-21-3-3-4 2-5 9-3 22-9 5-6 5-5 1-9-1-16-4-2-3 0-4 4-5 24-24 0-4-9-17 1-7 6-6 13-3 0-14 1-2 7-3 12-18-2-3-4-4-9 0-12 8-13 3-5 11-4 0-3-3 1-6 11-12 3-5-1-5-5-9 1-3 5-9 4-3 6-1 10 1 8-6 10-4 11-6 1-3-8-7 1-8M1064 0l1 3 19 4 7 4 1 4-5 9-2 9-4 4-6 1-15 0-17-4-5 3 2 3 4 3 10 3 45 7 20 13 10 1 10-2 11 8 12 4 9 11 13-2 8 3 6 13 16 20 8 17 10 12 8 15 7 6 5 13 19 24 5 9M397 143l-12 0-6-4-3-11-8-14 0-19 3-3 14-2 13-8 3-3 9-15 5-2 5 2 4 5 0 4-3 7 1 4 13 1 7 6 0 5-2 12 2 13-1 3-4 3-27 8-12 8zM479 139l-6 0-8-4-5-6 0-4 3-4 11-7 9-9 6-2 6 1 2 7 0 9-11 9-7 10zM524 0l-1 9-3 3-17 4-3 3-2 12-4 2-5 1-7-2-8-14-3-2-3-1-22 8-4-1-1-3 5-12-2-7M646 218l2-14 4-7 8-5 17-4 15-15-1-4-6-3-13 7-19 3-6-2-7-7-3-1-4 4-2 11-2 4-8 5-9 1-3-3 0-5 10-15-7-20 2-9-1-4-7-2-5 0-15 13-2 0-10-11-6-9-1-3 6-4 19 1 2-1 2-3-1-11 6-9 2-8 3-2 10-4 4-4-1-7-7-9-25-10 5-2 5-13 18-9 6 0 4 2 3 4 3 12 4 1 5-1 2-5-2-9 1-4 2-4 9-5 3-4 4-8 0-7M1018 0l3 4 13 1 26 11 12 1 1 3-1 5-2 3-8 2-16-5-9 0-36 12 24 4 19 8 24 3 25 6 5 4 7 12 15 6 3 3 9 15 10 9 7 11 23 4 13 10 12 6 14 18 0 4-3 9 1 13 10 18 7 18M259 22l-4-3 0-5 4-2 5 0 3 3-1 4-7 3zM431 118l-22-1-18-2-8-4-2-6 11-7 6-6 4-2 8 0 10 6 9-5 4-1 3 2 1 4-3 10 0 8-3 4zM474 132l-5-3 0-4 10-6 6-6 4 0 0 4-11 13-4 2zM569 183l-5 0-8-2-4-3 0-3 13-14 18-9 0 5 0 7-7 8-6 11zM659 218l-3-13 2-5 6-2 13-1 6-2 8-5 6-9 4-2 9-2 31-1 10-4 19-3 7-6-5-2-14-2-11-3-17 4-26 2-8-1-6-11-1-9 4-7 12-7 3-7-3-3-9-3-16 6-4 4-4 12 4 13 1 10-2 4-3 3-7 2-10 0-3-2-6-9-15-1-3-1-2-3-1-4 2-4 10-14 12-7 3-3 0-3-3-6-4-3-15 3-11-1-3-3 2-10 4-4 11-4 16-9 26-5 4-2 5-5 0-3-8-3-4-6 4-10 1-10 13-21 5-2 17-4 1-4-3-5M927 0l5 3 15 4 45 3 14 5 4 4-2 3-42 19-9 2-12-5-14 1 6 9 0 5-17 24 7 0 11-7 16-5 25-11 22-7 20 2 18 7 23 6 5 5 2 10 8 18 7 25 15 15 5 10 2 9-3 18 1 4 4 0 8-10 4-2 5-2 4 0 6 16 4 3 11 4 11-2 2 1 8 22 9 12M706 218l-3-3-3-1-3 1-4 3M665 218l-3-11 2-4 23-4 11-5 3-9 4-3 26-3 14 2 10-6 17-2 9-5 20-5 7-3 6-6-3-2-18-3-12 6-8 2-12-1-15-5-14 6-31 2-4-2-3-6-1-5 1-5 5-4 14-5 11-7 13-2 0-3-6-8-6-5-14 2-14-5-15 10-16 4-8-5-6-12-8-6 2-6 6-4 27-2 4-2 5-7 4-2 19 0 4-1 2-2 1-2-3-2-9-7-6-14-3-2-7-2-1-4 2-12 4-4 36-9 1-2-1-3-7-3-2-3M903 0l-2 6 2 3 3 1 15 3 14-2 17 2 31 0 8 2 4 5-5 5-26 12-7 0-8-4-12 0-14-4-6 1-10 4-4 3-1 4 4 1 11-1 7 2 7 6 1 4-1 3-14 14-15 6-17 1-6 3-1 3 14 7 17-1 19-6 14-9 15-5 28-14 16-5 19 3 17 10 11 4 4 5 1 18 13 15 9 29 6 10 1 6 0 6-2 4-11 9-16 12-1 4 5 5 9 4 27 5 11-1 19-7 7 1 2 1 1 4-12 12 0 9M633 103l-5 1-2-2 0-2 2-2 6 0 1 3-2 1zM669 163l-5 1-6-1-3-3-3-7-18-3-2-4 2-5 5-6 4-3 12-5 6-1 3 3 2 10 7 13 0 7-3 4zM715 218l-5-7-10-2-9 3-4 6M727 218l-18-15 2-3 6-3 0-7 3-3 11-4 17 2 11-7 34-7 24-11 6-6 3-5-3-3-16 0-16-3-3 1-7 7-8 3-12-1-15-6-14 7-28 2-4-2-3-6 1-4 4-3 16-6 11-5 24 3 6-3 0-4-3-3-16-9-9-13-4-1-15 2-12-7-5 0-3 2-7 11-5 3-12 2-4-2-3-4-3-11 0-4 13-4 16 1 2-2 2-8 3-2 16 0 13-2 12 1 11-4 10-1 5-3-21-12-12 6-5 0-5-2-5-5-10-24 0-4 8-6 8-2 13-2 4-2 4-6 2-9M796 0l8 11 13-5 10 1 6-7M869 0l25 16 16 2 5 3-3 4-13 2-3 2-3 14 0 4 2 2 4 1 19-4 6 2 3 4-4 9-8 7-13 3-18 1-11 3-13 2-5 2 1 4 7 3 16 5 10 6 6 1 17-5 18-7 15-9 12-3 30-16 12-3 6 0 7 4 20 17 1 5-1 12 3 3 14 7 6 4 4 11 0 11-5 22-6 9-9 6-28 9 11 10 5 7 2 6 0 11 16 1 2 3 1 5M968 32l-8 1-10-6-14 1-5-3-2-4 3-3 5-1 14 2 20-2 9 2 2 3-2 2-12 8zM651 145l-8 0-2-1 0-2 4-4 10-2 2 3 0 3-6 3zM666 159l-3 0-3-2 0-5 2-4 2 0 4 3 1 4-2 4zM679 215l-3-2 0-4 4-1 3 0 1 1-1 3-4 3zM738 218l-8-9 2-9-4-8 3-4 17 2 15-9 19-5 15-1 24-14 20-19-3-1-25 2-25-4-5 2-5 8-9 2-8-1-7-5 0-4 2-2 14-7 0-3-6-9-16-6-7-7-2-6 2-9 0-10 4-4 4-2 23-3 14 0 9-5 2-4-9-11-4-2-3 0-9 7-7 1-12-3-7-8-5-1-7 2-6 7-7-1-9-16-1-6 1-4 8-6 17-4 13-19M783 0l8 6 3 3-1 8-8 11 5 4 4 0 6-3 16-16 4-1 7 4 4 1 3-1 2-7 3-4 11-4 6 0 14 7 8 11 6 6 5 11 0 15 4 6 6 1 15-7 7 1 0 6-3 3-4 3-18 0-23 7-14 1-17 5-8 4-1 2 2 1 42 10 18 13 4 0 7-6 32-13 11-8 11-3 29-14 8-1 8 5 9 14-1 12 3 5 6 5 18 8 4 4 1 4-2 4-5 6-11 7-5 12-5 6-11 5-38 7 1 3 18 9 14 11 1 5-7 9-1 3 9 12M726 93l-10 1-9-7-6-1-1-3 7 1 12-4 8 0 5 3 2 3-2 4-5 2zM678 108l-6 1-5-1-4-6 2-7 8-3 10 3 1 4 0 3-1 3-4 3zM729 151l-22 0-3-1-1-3 3-3 23-9 8 0 5 3 1 3-2 3-11 7zM729 41l-8-1-1-4 2-5 4-2 9-2 7-4 5-4 6-9 5-4 4-1 4 0 10 4 3 3-24 25-25 4zM847 68l-15 2-13-3-16-15-3-3-1-5 3-4 16-13 27-4 3-3 1-8 5-3 4 0 7 4 1 3 1 11 12 13 2 6 0 8-2 6-6 4-13 1-12 3zM828 218l-1-6-5-2-15-2-13-5-13 3-11-1-8-2-1-5 4-7 5-4 13-4 15 4 26-11 6-8 6-12 18-12 4-5 0-3-6-3-6-1-18 4-9 1-12-3-17-2-8-3-6-6-6-13-4-1-12-1-3-3 0-4 5-8 1-7 3-3 12-3 15 2 11-5 7 0 6 3 7 10 6 5 25-1 24 7 9 6 5 4 2 7-2 11 3 2 4-2 9-12 21-13 23-6 13-6 8 1 7 3 4 5 3 6 0 10 3 11-1 7-5 6-5 2-5 0-12-2-13 6-3 3-3 12-11 7-5 7 0 3 4 3 16 2 3 3-1 5-4 5-9 3-10 2-2 3 0 3 1 3 13 7M748 34l-7 0-2-3 13-10 5-9 5-2 4 2 1 3-3 4-11 12-5 3zM850 65l-16 2-12-3-11-9-5-6 0-4 3-5 12-10 12-2 14 1 5-1 2-4 0-9 4-1 3 1 1 2-2 11 15 16 2 8-1 4-4 3-21 6zM854 218l-1-9-6-6-10-4-22-3-4-2-1-3 5-4 12-1 6-5 6-9 0-11 2-3 10-7 11-9 3-4 0-3-4-3-10-2-8 0-21 5-14-4-15-1-8-3-6-5-6-14-12-7 3-11 3-4 7-2 14 2 11-5 4 0 5 2 7 10 7 6 5 0 12-2 11 0 6 2 10 6 10 2 5 4 4 5-4 17 3 3 6 2 3 0 3-3 5-10 4-5 19-11 33-7 6 0 6 3 2 4 5 19 0 4-2 3-5 1-12-2-6 2-12 8-7 13-9 5-7 8-12 1-14-3 0 4 4 6-1 2-15 7 1 3 8 7 2 5-1 5-6 11M778 197l-5 0-1-4 4-3 6 0 1 4-5 3zM847 62l-13 2-12-4-8-8-2-6 1-3 9-9 10-3 7 0 18 6 12 12 1 3-3 3-19 7zM823 132l-14-4-16-1-8-4-3-3-4-12-9-9 1-8 5-3 13 1 11-3 4 0 18 17 6 1 11-3 10 1 7 2 8 6 13 3 3 4-1 6-6 6-24-3-24 6zM911 163l-8-1-6-5-4-6 5-8 5-14 3-6 5-3 18-8 22-4 9 2 3 6 0 7-4 3-10 1-4 2-18 22-10 5-6 7zM868 173l-8 2-5-1-6-8-2-6 18-17 7-3 5 0 8 4 2 5-11 20-7 4zM844 60l-10 1-10-3-3-3-3-6 2-6 7-6 7-2 6 1 14 8 4 4-1 4-4 3-8 4zM826 130l-6-1-11-4-14 0-7-3-3-3-3-11-7-9 0-5 4-2 21-1 19 15 5 2 15-1 28 13-5 2-15 0-20 7zM914 148l-6 0-2-4 0-9 3-9 5-3 15-6 6 0 4 3-3 10-9 12-4 3-9 3zM865 164l-5-1-2-4 1-4 7-8 7 0 3 3-1 5-3 5-6 4zM835 50l-2 0-1-2 3 0 1 1 0 1zM799 120l-6-2-3-5 0-9 1-2 3-2 5 0 4 2 8 10-1 5-11 3zM824 123l-6-3-1-3 11 0 2 3-6 3zM802 115l-4 1-4-3 0-5 2-2 3-1 4 2 1 5-2 3z"/><path class="ix" d="M652 218l0-15 6-7 21-4 16-14 7-4 33-3 12-5 2-3-5-1-12 2-34 2-6-4-10-12-2 12-5 6-7 3-16 1-3-2-7-9-5-1-9 3-3-1-3-4-3-12 9-11 4-12 0-3-8-1-4 8-4 2-9-2-4-4 1-13 9-18 11-7 7-8 10-6 1-10 18-13 1-5-4-10 2-6 5-4 12-3 9-11 7-5 1-4M983 0l15 4 26 11 1 4-7 6-21 6-25 14-12 3-13 1-2 5 0 5 8 0 42-14 8-2 20 2 16 7 28 5 11 4 6 7 6 11 0 16 8 16 7 5 15 4 4 2 3 16 3 6 6 1 22-3 7 2 6 4 3 6 4 18 8 15 13 18 5 13M618 47l-4 0-1-4 2-4 3-1 2 1 1 4-3 4zM584 136l-5-4-1-3 1-3 7-1 6 4-2 4-5 3zM1152 174l1-3-2-1-3 5 2 1 2-1zM621 185l-4-1 0-3 4-4 3 0 1 4-4 3zM770 0l15 7 3 5-3 6-10 5-4 5-1 7 6 5-8 9-4 2-4-1-9-6-4-2-10 1-12 3-6-3-4-6 3-8 5-3 11-2 5-3 18-21M776 218l-3-3-4-3-15 1-8-3-1-4 4-9 6-4 9-9 18-5 15 2 19-11 8-5 12-13 13-7 3-4 0-3-8-2-17 3-11 1-35-7-5-4-10-15-14-2-6-5-1-5 4-9 0-10 4-3 16-3 18 1 12-5 11-2-3-7-13-15-1-5 1-4 21-18 4-1 11 1 9-2 3-2 1-9 12-3 5 0 6 3 4 6 2 10 10 9 3 6 0 19-5 5-7 4-13 0-24 6-17 0-1 4 3 7 3 4 26 2 25 6 12 9 7 8 3 2 23-15 24-9 7-6 18-7 17-3 5 0 2 3 0 11 8 21-6 26-8 9-11 7-5 0-11-4-7 1-3 4-7 15 3 3 14 3 12 9 2 5-1 5-10 12-1 3 17 9M675 105l-5-1-1-3 1-3 4-2 5 2 0 4-3 3zM729 146l-5-2 4-3 6 0 0 3-4 2zM769 148l-7-3 1-4 5-1 6 1 0 4-5 3zM841 56l-7 1-7-2-3-6 3-6 7-4 8 4 4 7 0 3-4 3zM826 127l-5-1-11-4-13 1-7-3-3-5-3-17 9-2 7 0 6 4 10 9 20 5 2 3-1 4-5 4-5 2zM920 133l-4-1 1-3 5 0-2 4z"/><path class="co" d="M1185 0l7 13 10 1 4 4 6 14-2 15 23 17 4 20 10 1 4 3 6 10-2 7 11 11 4 11 15 15 22 7 10 6 8-3 6 6 7-9 17 6 4-2 1 4 11 8 17 26 14 14 3 13M294 218l-11-5-5-5-7-1-1-5-6-2 0-7-8-7-3 0-3 6-3-6-11 0-10-6-12 0-1 2 6 7-8 18-9-5-3 2-6 0-31-16-3-4 2-3-11-9 2-3-5-10-1-17-4-5-18-3-4-3-8-1-4-2-8-1-49-25-22-22 4-2 13 6 7-11-3-8 2-4-3-7-13-4-5-8-16-7-2-5-13-13"/></g></svg><!--/map:jamanota--><span class="pin">Jamanota <b>188</b></span></div>
+  <header class="head grid">
+    <h2 id="prices-h">Four things, and nothing else.</h2>
+    <p class="lede">Starting prices in US dollars and florin, tax included. We build yours before you pay anything.</p>
+  </header>
+  <ul class="items">
+    <li>
+      <h3 id="web">Websites</h3>
+      <div class="cost"><p class="price"><span class="from">From</span> <span class="amt">US$800</span></p><p class="meta mono">ƒ1,432 · about one week</p></div>
+      <div class="say"><p class="what">Four to six pages, mobile first, a contact form whose mail reaches your inbox, and your Google listing wired up so people can find you.</p><a class="go" href="https://wa.me/2977477794?text=Hi%20Aruba%20Webstudio%2C%20I%27d%20like%20a%20quote%20for%20a%20website.">Ask on WhatsApp<span class="vh"> about a website</span></a></div>
     </li>
-    <li class="obj">
-      <a class="phone-link" href="https://victorfromaruba-stack.github.io/restaurant-/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-        <figure class="phone"><picture><source type="image/avif" srcset="work/v2/site-pidi-280.avif 280w, work/v2/site-pidi-560.avif 560w" sizes="268px"><img src="work/v2/site-pidi-280.webp" srcset="work/v2/site-pidi-280.webp 280w, work/v2/site-pidi-560.webp 560w" sizes="268px" width="280" height="606" alt="" loading="lazy" decoding="async"></picture></figure>
-      </a>
-      <h3>Pidi</h3>
-      <p class="kind">Late-night delivery, from 10 PM</p>
-      <p class="did">One order from several restaurants, one delivery fee. We built the ordering site, the kitchen screen and the driver app.</p>
-      <a class="open link" href="https://victorfromaruba-stack.github.io/restaurant-/" target="_blank" rel="noopener">Open Pidi</a>
+    <li>
+      <h3 id="apps">Mobile apps</h3>
+      <div class="cost"><p class="price"><span class="from">From</span> <span class="amt">US$4,500</span></p><p class="meta mono">ƒ8,055 · four to eight weeks</p></div>
+      <div class="say"><p class="what">Built once for iPhone and Android, shipped to both stores, sharing code with your website.</p><a class="go" href="https://wa.me/2977477794?text=Hi%20Aruba%20Webstudio%2C%20I%27d%20like%20a%20quote%20for%20a%20mobile%20app.">Ask on WhatsApp<span class="vh"> about an app</span></a></div>
     </li>
-    <li class="obj">
-      <a class="phone-link" href="https://croesaccounting.com" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-        <figure class="phone"><picture><source type="image/avif" srcset="work/v2/site-croes-280.avif 280w, work/v2/site-croes-560.avif 560w" sizes="268px"><img src="work/v2/site-croes-280.webp" srcset="work/v2/site-croes-280.webp 280w, work/v2/site-croes-560.webp 560w" sizes="268px" width="280" height="606" alt="" loading="lazy" decoding="async"></picture></figure>
-      </a>
-      <h3>Croes Accounting</h3>
-      <p class="kind">Accounting, Oranjestad</p>
-      <p class="did">Bookkeeping, payroll and BBO filing in four languages, a client portal, and the next filing deadline counted down on the page.</p>
-      <a class="open link" href="https://croesaccounting.com" target="_blank" rel="noopener">croesaccounting.com</a>
+    <li>
+      <h3 id="apis">APIs</h3>
+      <div class="cost"><p class="price"><span class="from">From</span> <span class="amt">US$1,200</span></p><p class="meta mono">ƒ2,148 · two to four weeks</p></div>
+      <div class="say"><p class="what">Your booking system, your POS and your website probably don’t talk to each other. We build the layer between them, with the authentication and rate limiting that hold up once real traffic arrives.</p><a class="go" href="https://wa.me/2977477794?text=Hi%20Aruba%20Webstudio%2C%20I%27d%20like%20a%20quote%20for%20an%20API.">Ask on WhatsApp<span class="vh"> about an API</span></a></div>
     </li>
-    <li class="obj">
-      <a class="phone-link" href="https://arusalt.com" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-        <figure class="phone"><picture><source type="image/avif" srcset="work/v2/site-arusalt-280.avif 280w, work/v2/site-arusalt-560.avif 560w" sizes="268px"><img src="work/v2/site-arusalt-280.webp" srcset="work/v2/site-arusalt-280.webp 280w, work/v2/site-arusalt-560.webp 560w" sizes="268px" width="280" height="606" alt="" loading="lazy" decoding="async"></picture></figure>
-      </a>
-      <h3>AruSalt</h3>
-      <p class="kind">Sea salt producer</p>
-      <p class="did">Hand-harvested sea salt from Aruba. The crystal mark over the reef it comes from, with the shop behind it.</p>
-      <a class="open link" href="https://arusalt.com" target="_blank" rel="noopener">arusalt.com</a>
+    <li>
+      <h3 id="ar">Augmented reality</h3>
+      <div class="cost"><p class="price"><span class="amt">Quoted</span></p><p class="meta mono">Per project</p></div>
+      <div class="say"><p class="what">AR that recognises real objects through a phone camera, and 3D that runs in a browser with nothing to install. We quote these one at a time, because no two are the same job.</p><a class="go" href="https://wa.me/2977477794?text=Hi%20Aruba%20Webstudio%2C%20I%27d%20like%20a%20quote%20for%20an%20AR%20project.">Ask on WhatsApp<span class="vh"> about AR</span></a></div>
     </li>
   </ul>
+  <p class="fine">Prices are in US dollars, tax included. Florin at the official rate of ƒ1.79 to US$1.</p>
 </section>
 
-<section aria-labelledby="hom-h">
-  <div class="wrap case">
-    <div class="case-copy">
-      <h2 class="h2" id="hom-h">A gallery that tells its own stories.</h2>
-      <p>House of Mosaic Art Villa is a 1950 family home on Schotlandstraat that the artist Fernando Mansur has been covering in mosaics since 2004. The story behind each piece lived in his head, not on the wall.</p>
-      <p>Now a guest points a phone at an artwork and <strong>the piece starts talking</strong>. The camera recognises the artwork itself, so there is no QR code taped to the frame. Story Mode builds a collectible mosaic as they walk the house, and <strong>a VR gallery runs in the browser</strong> with nothing to install.</p>
-      <ul class="facts">
-        <li><b>13</b>artworks recognised and narrated so far.</li>
-        <li><b>5</b>languages on the app’s screens: Papiamento, Dutch, Spanish, French and English.</li>
-        <li><b>1</b>codebase for the web app you can open today and the iOS and Android builds.</li>
-      </ul>
-      <p class="tech">MindAR, Three.js, Capacitor, Vite</p>
+<section class="close grid" id="contact" aria-labelledby="contact-h">
+  <h2 id="contact-h">Tell us what you’re building.</h2>
+  <figure class="isle">
+    <div class="isle-map" aria-hidden="true"><!--map:island--><svg viewBox="0 0 2499 2654" preserveAspectRatio="xMidYMid slice" focusable="false"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path class="mi" d="M325 293l-12 1-6-2-2-3 4-4 10-1 5 2 1 6zM431 391l-6 1-7-2-3-3 1-3 7-7 9-2 4 2 1 4-2 6-4 3zM391 407l-9 1-8-4-2-8 2-9 12-2 14 5 0 8-8 9zM579 565l-6-5-5-19-8-4-2-3 16-1 22-11 3-4 6-26-4-11-17-30-38-27-2-12 2-4 6-3 7 1 29 18 5 6 11 21 8 7 25 12 8 9 3 7-2 10-14 11-4 15-18 22-24 19-7 2zM2215 2434l-42-1-21-10 2-3 13-2 6-4 1-7-7-5-6 1-13 5-2 3-1 9-5 3-18 0-1-5 3-16 6-10-8-4-19-21-38-14-8-18-17-19-9-6-21-9-12-9-13-15-14-21-14-12-10-5-27-9-5-8-2-13-14-7-9-12-6-5-21-3-33-15-18 3-7-1-31-25-32-4-16-6-14-10-13-1-5-10-5-4-89-10-12-9-13-4-17-13-30-7-13-8-16-1-20-21-27-6-9-6-6-9-15-3-9-6-10-14-26-19-4-7 9-7 10-19 21-7 3-4-12-3-12 6-9 0-5-4-5-9-14 11-13 5-6 0-6-5-9-14-9-9-9-17-22-16-11-13-13-8-26-10-20-15 8-10 15-9-2-15 4-3 28-3 30 15 17 3 22-6 8-10 4-9 0-6-5-1-25 11-12 1-4-2-3-4 8-10-1-4-24 3-26-4-6-4-1-5 3-9 18-24 0-27 12-20-3-3-9 2-6-1-8-9-3-8 0-13-4-11 3-15-15 10-7 10-1 23 8 16-1 3-10 2-4 4 2 12-2 4-15 6-10 10-6 3-9-4-18-13-15 22-13 8-1 11-11 6-2 22-5 11-4 3-9-2-23-18-17-4-5-6 2-7 10-11-2-16 3-19-3-16 4-20 4-6 16-9 5-6 2-11-2-9-4-1-13 4-24-2-10 3-3 7 9 17 2 25-5 7-16 4-42 2-18-12-33-15-30-36-3-12 6-13 12-16 6-16 17-19-1-3-14-9-2-3 11-40 13-16 11-5 13-13 16-9 1-4-4-5-17-9-2-3 7-7 17-9 2-6-2-6-16 3-23-1-17 10-1 5 5 16 1 19-3 9-9 7-22 7-18 0-12-7-11-17-17-3-20 19-9 24-9 2-18-2-5 13-6 4-8 0-9-4-12-15-27-21-2-6 2-5 21-21-2-24 6-15 13-21 0-5-3-3-16-5-10 8-25-2-5-3-8-12-22-3-7-10-2-12 4-9 9 0 21 6 4 5 5 12 5 1 6-3 21-34 10-8-1-5-11-5 0-3 12-11 5-8 1-7-3-8-3-3-6 1-12 11-9 3-15-3-9-6-8-17 2-21-3-17 4-13-5-5-5 0-4 3-2 4 2 11-7 5-6 0-5-2-6-12-8-5-4 2-15 13-8 2-4-5-3-10 1-37-4-2-15-2-13 6-18 4-5 6-5 16-4 4-6 0-43-29-8-10-10-24 1-16-3-13 17-17 6 0 5 4 1 7-2 13 3 6 9 5 20 4 12-3 12-12 13-5 8-13 17-6 2-6-2-13 1-6 14-23 4-14 14-21-7-30-9-13-2-7 2-6 12-12 8-15 0-5-6-12 3-26 9-7 40-3 6-5 4-8-1-6-12-4-7-9 3-7 15-9 1-6-2-3-20-15-29 0-10-6-15-14-18-1-19-7-3-6 6-25 0-7-5-5-23-13-10-11 0-10 7-6 11-4 21-3 14-8 0-4-6-6-2-8 0-7 3-7 28-12 16-14 8 2 6 6 0 6-4 10 6 15 0 25-5 10-17 11 0 5 5 3 39-18 4 1 11 12 14-5 11-1 4-6-4-17 2-8 10-6 13 3 8 10 4 25 12 14 2 10-4 11-14 10-6 13-17 20 0 4 9 4 17-1 8 11 4 1 8-3 6-12 6-3 22-5 12 1 34 19 20 15 22 9 12 11 18 8 8 6 2 6-2 13 19 7 7 8 1 16 9 30 5 5 16 6 8 6 10 17 11 6 5 6 12 24 1 7-9 22-30 15 36 12 13 15 2 12-4 15 0 22-7 17 2 5 6 1 8-7 9-19 12-15 1-5-5-11 0-6 9-16 7-27 7-7 8-1 20 18 12 2 3 3 2 6-1 8-12 19 2 4 5 2 4 0 10-10 15-10 4-21 3-6 10-5 13 1 6 3 9 10 18 5 16 9 37 32 18 4 15 27 8 24-1 7-9 8-8 19-8 9-9 1-15-4-6 2-3 9 0 9 12 0 26-11 6 3 5 10 7 6 13 5 9-2 2-4-11-8-2-8 20-32 6-2 10 5 5 1 12-11 6-3 16 5 12-13 20-11 7-1 5 2 2 4-4 15 12 16 12 6 9 8 13 6 4 6 1 4-9 13-18 8-40 0-3 4 3 12 7 1 13-5 8 1 5 7-2 14 3 2 34-18 15-5 10 0 8 6 3 5-2 18 2 4 13 4 16 13 6 0 20-7 29 13 2 6-5 20 0 10 6 13 15 17 0 13 15 18 19 6 5 26 15 2 7 3 14 12 7 14 15 14-1 5-7 10 3 14-8 14 18 2 15 9 11 3 14 10 9 10 21 9 7 6 8 16 13 9 2 6-3 9-5 4-19 8-6 13 0 6 22 8 10-15 8-5 7-2 35 35 21 6 21 31 12 31 14 23 28 35 41 39 7 3 16-4 18 23 3 9-3 18 5 22 12 21 5 23 12 25 3 26 14 35 1 25 26 61 2 18 28 92 13 18 5 13 2 21 10 45 10 29-3 22 20 21 9 18 1 35-8 5-23 4zM500 943l-2-2 0-7 15-16-3 16-3 5-6 4zM1710 1522l0-12-5-1-6 5 1 10 5 2 5-3zM1013 1597l4-7-9-20 2-23-2-11-3-5-9-2-15 14-13 2-5 3 1 3 9 5 25 23 6 18 4 1 5-1zM829 1544l-6 0-4-3 3-3 8-1 2 3-2 4zM1173 1695l8-9-2-13 14-1 6-4-1-16-5-9-18-5-10-9-6-1-6 6 0 16 11 17-2 18 3 11 4 1 3-2zM1247 1735l-6-4-4-8 1-6 5-3 7 2 3 6-1 7-5 6zM1146 1752l-4-4 5 0 2 3-2 1zM1201 1831l-11-4-1-6 8-4 8 4 4 7-8 3zM2299 2468l-20-2-14-9-7-12 3-12 9-5 20-4 7 0 6 3 10 17 1 6-2 4-12 14zM633 489l-5 0-3-3 0-6 3-1 6 3 1 4-2 3zM693 762l-23-1-9-4-20-20-2-8 4-7 6-3 22-3 14 7 10 11 7 10-3 14-5 4zM723 738l-5-1-1-3 2-3 6 0 1 3-2 3zM2076 2261l-14-3-21-1-28-14-14-19-11-26-10-33-3-4-17 0-32-7-28-3-8-6-12-18-17-3-14-8-4-5-4-11-19-2-54-22-6-6 0-3 10-11 1-4-14-16-24 5-13 11-12 3-41-2-19-9-18 5-5-4 0-5 14-13 1-6-7-16-4-4-4-2-18 10-22 6-5 9 1 13-2 6-6 3-6 0-28-10-1-7 9-15 0-12-3-5-20-16-7-3-3 6 4 13 8 9 0 6-17 15-6 1-8-5-21-24-18-15-13-16-15-11-1-5 4-13 6-9 34-16-1-3-8-5-3-4 0-5 6-8-1-6-21-30-5-3-5 1-3 4 0 13 7 21 0 6-9 16-6 2-7-1-10-8-17-28-2-8 6-21 20-11 5-15-2-6-8-4-9 5-6 8-5 20-15 9-7 0-7-3-6-7-3-8 1-4 10-10-3-20 8-26 8-7 21-7 10-10 0-5-4-2-13 6-16 1-19-6-3 2-5 13-7 4-8 1-2-2-1-4 8-16-6-17-1-12-3-3-7-1-16 10-3 0-9-9-4-8 1-5 4-2 18-3 3-13 8-15 13-9 2-4-1-6-4-7-21-11 5-13 6-5 16-6 9 5 5 10 5 0 3-16 15-17-1-7-19-2-9-3-14-25-5 0-11 5-3-2-7-14-6-25-14-20-4-1-8 2-3 3-9 36-5 4-29 0-8-2-8-9-4-15-4 0-8 44 3 3 15 2 26 10 2 9-5 9-15 4-7 14-6 3-8-2-12-14-22 3-5-1 0-17-17-23-6-18-7-3-28-7-14-13-4-9 1-6 5-5 25-10 4-17 6-14 8-8 18-10 8-13 0-6-4-9-1-12-6-9-5-2-20 4-5-3-4-7 1-11 6-12 14-23 10-8 3-5 0-17-10-18-17-13-9-10-6-2-7 5-11 19-7 2-32-26-16-3-13-10-12-3-11 1-20 22-7 0-24-20-9-24-18-9-1-3 8-12-1-9-9-13-18-9-15-34-10-15-17-4-38 8-8-6-9-13-20-1-19-4-9-4-7-7-1-5 5-9 8-8 12-3 15 5 13-10 26-7 9-15 5-14-2-10-17-7-4-5-1-7 3-9 0-12 9-12 5-11 6-6 11-3 1-4-12-11-19-6-7-9-5-15-32-15-6-13 5-19 4-5 12-2 12 5 6-1 28-23 1-11-16-20-2-7 1-5 6 0 26 15 4 6 5 16 7 7 11 6 20 7 10 6 1 5-10 13-1 4 21 9 2 4 0 12 15 15 5 9-1 10-9 15 0 6 2 3 9 8 4 0 6-5 12-22 6-2 10 3 8 4 6 5 3 13 7 14 3 2 11 1 6 11 2 15-5 8-5 4-33 15-27 9-17-4-14-11-6-2-6 17-15 10-4 5 5 31 5 7 9-5 6-18 6-7 11-2 7 7 5 41 5 14 0 6-7 14-17 4-2 5 13 17 18 15 12 20 7 1 11-2 10-14 6-2 6 3 14 22 30 17 38 11 16-7 3-3-1-6-15-21 1-4 8-8 0-6-16-18-9-7 0-6 13 1 19-7 5 2 8 10 7 4 5-1 6-6 6-2 20 7 8-2-3-13 1-14-6-14 2-19-4-14 13-14 10-18 9-3 15 7 20 3 12 7 33 33 1 8-8 11 1 4 3 3 6 0 13-10 8 0 9 12 3 20-8 24-8 7-6 0-22-8-10-7-5 2-6 11 6 12 1 6-3 6-5 4-8 3-13 0-14 3-17-3-6 1-2 3-1 15-13 10 1 10 3 3 10 2 16 0 17 14 7 2 8-1 6-4 11-12 16-6 5-17 4-5 13-8 11-1 10 4 15 11 11 17 16-7 11-8 6 8 8 5 18-6 14 0 1 6-11 25-2 9 4 2 18 2 3 3 1 12 5 3 8 0 5-3 6-15 7-7 18-4 11-11 10-6 26-7 5 1 3 5-5 14 1 6 4 6 15 11 14 3 13 7 22-5 15 6 3 6-1 13 1 10 10 21-6 11 1 6 15 12 8 15 13 3 12 7 3 7-2 14 6 10 5 3 15-4 7 1 8 8 11 21-9 13 6 17-1 5-9 9-18 9-2 4 3 10-1 5-16 9-7 9 15 1 24-10 19 3 24-2 7 3 28 23 0 4-4 3-19-1-9 7 25 14 12 4 2 4-1 3-7 3-26-3-17 8-1 3 24 12 27 4 24 8 13 14 16 9 27 34 22 5 26 18 12 16 0 25 20 42 6 19 32 47 18 15 19 11 2 21 3 8 9 7 13 4 4 4 0 10-14 24 3 3 10 3 5 9 3 15-3 16 1 14-5 6-15-1-6 3 7 6 27 12 6 5 6 44 8 30 9 25 8 59-9 29-6 8-10 6zM874 869l6-3 1-3-8-1-5 3 1 4 5 0zM1022 1107l-7 1-12-9-19-25 0-6 2-6 7-9 9-6 7-1 5 2 9 15 1 8-2 14 4 15-3 7zM817 1152l-8 0-1-4 4-12 5-2 7 4 3 6-2 5-8 3zM1427 1202l-29 1-22-9-4-4 0-6 5-6 9-7 18-2 29-11 5 3 5 9 9 10 13 8 5 7 0 3-5 2-15 1-12-2-11 3zM1436 1260l-6-4 4-9 6-3 9 0 1 4-3 6-11 6zM929 1383l-12 1-11-3-9-5-4-8-1-8 3-14 8-15 6-7 13 1 13 5 8 8 6 13 1 10-3 9-9 9-9 4zM903 1434l-6-2-3-4-4-12 3-17 6-5 10 6 6 13-3 15-4 5-5 1zM917 1471l-12-3-3-6 1-6 6-9 5-3 8-1 8 3 8 8 0 7-6 6-15 4zM1143 1693l-34-2-8-4-2-5 19-15 7-1 10 5 12-2 3 6-2 14-4 4zM1282 1758l-11-4 0-6 12-13 12-4 2 5-1 6-8 12-6 4zM911 928l-9 2-5-2-7-18-11-9 3-7 6-1 14 4 19 12 1 4-1 6-10 9zM953 1020l-17-8-19-23 2-3 54-12 0-5-7-19 3-7 6-3 6 4 8 18-3 15 5 12 0 6-11 16-26 9zM911 986l-18-2-5-11 2-5 6-4 7 0 10 21-2 1zM895 1021l-5 1-11-3-13-7-11-13-1-5 2-5 11-5 20 2 3 4 1 14 6 12-1 4zM1212 1190l-6 0-7-4-8-12 2-7 4-5 13-7 6-7 6-28-2-5-31-15-6-7-2-11 0-7 11-21 5-3 37 9 22 18 7 12-10 16-2 22-7 12-3 15-9 18-19 17zM1294 1159l-5-1-15-10-5-9 0-6 17-4 12 5 4 5 0 6-3 11-5 3zM1237 1476l-12 1-11-4-8-7-3-9 3-14 11-18-8-24 3-22-7-11 15-14 3-5 0-6-6-5-17-7-17 4-3-4-1-7 1-3 10-5 8-9 24 4 16-12 19-5 8-6 4-6 0-22 15-16 1-24 7-7 10 0 11 6 7 11 0 9-6 15 4 29-8 16-8 10 0 15-10 13-2 8 5 9 18 14 2 10-2 5-5 2-16-16-6-1-9 2-2 4-3 19 1 7 7 7 18 5 1 7-15 18-14 0-5 3-9 19-19 17zM1946 2052l-15-2-18-10-3 1-8 9-6-1-19-26-21-7-2-4-1-15-5-4-13-3-6-12-21-22-3 1 0 2 1 15-2 11-5 13-6 7-18-9-10 0-9 3-14 12-12 4-20-10-7-2-4 2-11 16-14 5-7-3-5-7-7-23-2-15-6-16-7-3-10-1-15 7-20-2-7 6 1 12-2 1-5-4-7-18-15-13-6 0-3 15-4 5-7 1-16-7-12-14-6-1-5 2-4 5-6 30-14 0-10-7-16-32 1-8 12-8 17 5 5-1 20-25 5-15-15-2-8-4-12-18-12-8-22-32 1-7 4-11-2-4-17-6-8-7-6-2-7 3-17 14-10 2-6-8-1-19 4-8 22-5 20-16 37-3 29-10-2-3-21-5-40 5-10-2-7-9-1-10 3-6 12-9 2-5-3-4-6-2-14 5-8 8-2 9 4 17-3 9-8 4-11-1-10-9-15-3-3-5 1-5 8-12 14-12 0-7-7-4-20 1-4-2-2-4 5-9 22-13 9-4 21-4 6-4 1-5-7-10 4-20 12-19 17-7 3-3-2-4-16-12-6-12-10-9-3-6-2-15 10-33-2-10-11-10-6-10-5-1-16 30-6 3-4 0-5-10 1-16-14-8-7-22 1-15 3-6 6-3 17-2 5-10 13-5 16-15 5-15 10-19-1-27 7-16 23 4 9 14 8-17 12-11 0-14 3-6 5-2 14 1 11-15 8-3 4 1 2 3 2 13 24 10 9 11 16-1 14 11 19-1 5 3 8 16 3 14-1 5-10 9 11 12 6 10 10 8 1 6-4 10 3 3 9 3 19-1 13 27 0 6-4 7-17 9-1 4 4 3 14 3 18-9 11-10 6 2 3 5 0 3-9 9 0 3 10 18 0 7-26 25-8 21-18 13-22 8 0 3 10 15 6 3 4-2 7-10 6-4 27-6 16-7 7 1 13 7 5 6-3 7-6 4-30 8 6 3 25 5 7 5 1 2-1 3-38 20-9 1-13-3-7 1-2 3 1 12-9 15 3 2 23-8 34-14 14-3 19 2 38 13 8 6 17 51 20 24 2 28 3 1 8-6 10-3 3 2 11 17 8 2 12 1 3 2 7 19 10 12 3 18-9 21-9 4-13 2-4 7 6 4 41 7 22 19-6 27 19 43 2 16-4 18 10 26-6 29 2 13-4 4zM1361 1296l-16-4-3-5 8-17 12-6 8 6 4 13-4 9-9 4zM1188 1288l-4 0-4-4-3-6 1-3 6-1 4 3 2 7-1 4zM926 1377l-9 0-6-3-4-5-3-7 1-9 3-8 5-7 7-2 6 0 7 4 6 8 2 8 0 7-4 7-11 7zM1225 1524l-1-3 2-1-1 4zM1588 1563l-7 0 7 0zM1415 1881l-14-17 0-6 3-4 6 0 6 5 2 20-3 3zM1994 2087l-6 1-5-3-4-9 2-5 6-1 5 4 5 8-2 5zM956 1006l-8 1-6-2-4-4 1-6 7-4 11 1 4 9-5 4zM1237 1106l-21-4-15-8-8-10 0-9 4-4 21-7 9 2 14 9 7 7 3 7-7 13-7 4zM1209 1178l-5-2 0-3 3-3 4 2-1 5zM1303 1236l-5-1-3-3-2-6 3-5 5 0 6 4 0 7-3 4zM1720 1983l-7 0-32-11-8-10-4-16-6-5-7-1-13 4-16-3-12 10-5 1-15-6-19-1-18-13-14-5-13-7-3-8 2-16-6-19-24-24-24-7-5-6 0-11 13-17-2-6-44-18-7-6-2-6 4-10 7-4 6-2 16 0 14-6 34-8 21-11 6-6 0-3-4-3-26-3-21 9-9 0-15-6-16 6-27 1-5-7 5-7 26-10 22 2 4-3 0-4-13-10-16-15-14 1-17-6-12 13-12 4-7-2-5-7-2-9 7-5 22-2 6-8 5-2 38-2 17-8-1-3-10-7-15 4-9-2-5-7-9-20 0-4 5-5 24-8 4-3 1-8-7-7-1-5 13-8 5-9-1-3-12-4-10-8-13 2-5-2-10-13 0-6 11-31-1-15 4-18-6-14 0-48-5-21 4-13 12-3 18-26 12-9 10-22 6-6 11-1 15 4 1 5-5 14 2 4 28-12 19-4 5 1 10 10 15 2 7 3 5 6 0 7-11 16-2 8 2 8 6 7 2 7 0 22-3 12 7 3 13-6 9-1 13 3 11 5 8 8 2 8-5 6-21 1 5 25 4 3 39 5 6 5 3 5-1 4-8 9-4 12-13 13-1 12-9 9-12 5-46 8-33-2-35 22-1 5 3 6 5 1 20-3 15-5 15-1 18 6 19 12 11 4-9 9-1 15 4 4 15-3 7 2 3 6-3 7-10 7-27 4-24 8 6 6 23 10 7 1 16-5 75-33 15-3 13 5 13 12 4 6 1 14 17 11 7 10 1 15-4 19-4 8-9 8-25 11 0 3 11 15 2 12 3 3 12 4 1 4-10 20 2 34-22 30-2 5 5 7 19 11 4-1 6-15 9-7 10 3 10 13 5 13-10 46 1 24-4 2-12-7-6 0-31 5-15 7zM929 1371l-11 1-8-8 0-12 8-10 9 1 8 10 1 10-7 8zM1234 1460l-15 1-3-2-1-7 7-9 15-10 3 0 3 6 1 13-3 5-7 3zM1680 1607l-5 0-10-6-13 0-4-4 5-2 13 1 17-2 9 2-1 5-10 6zM1366 1717l-3 0 4 0zM1855 1961l-14-1-7-6 1-9 9-10 14 2 7 7-1 11-8 6zM1593 1539l-16 2-11-5-1-8 10-16-1-4-6-3-10 0-10 12-11 3-10-3-3-3-2-9-5-3-28 7-35-6-12 3-3-2-1-5 5-15-1-22 5-8 13-8 3-4-8-19 0-11 18-8 18-3 17-10 6-20-3-21 6-9 23 4 4 3 4 28 11 13-1 3-5 1-20-8-10 3-2 4 4 14-2 14 2 11 15 9 18-1 16-6 11 4 3 5 2 12-2 5-6 3-18 2-6 7-1 5 4 3 24 5 19 14 0 17 12 11 1 5-6 5-18 3zM1454 1386l-8-5 0-8 11-25 4-3 8 1 7 6 0 9-12 18-10 7zM923 1361l-3-4 4-3 2 4-3 3zM1514 1552l-17 0-2-4 2-6 7-6 8-3 10 0 6 2 0 7-13 10zM1463 1607l-2-1 1-2 8-7 3-6 4 0 0 4-14 12zM1563 1641l-16 1-12-3-11-11-2-6 1-4 13-12 12-2 17-1 8-5 4 9 12 12 2 9-5 7-23 6zM1584 1923l-6 2-5-2-14-12-3-6 4-19 12-10 2-4-8-34-12-20 3-12 10-12 0-9-10-9-27-7 1-3 12-5 7-6 4-7 3-13 17-15 4-9-4-3-8-3-28 5-37-7-6-5-7-13-10-10 1-8 6-6 34-3 19 16 27 0 25 9 8 7-1 17 7 6 5-2 12-16 22-11 31-7 8 3 5 6 3 16-2 7-4 2-12-1-7 2-10 9-9 12-15 12-21 3-4 9-9 8 6 12-2 14 2 6 30 11 22 0 9 3 9 7 12 16 2 8-4 4-28 13-11 9-1 8 9 18-4 11-14 7-41 7-9 4zM1490 1502l-21-4-12-6-5-8-2-18 5-8 15-4 5-4 0-6-4-16 3-9 8-5 27-7 4 5 0 14-12 16-1 5 4 2 13-3 7 1 19 9 3 6-15 25-40 15zM1560 1634l-11 2-10-4-4-7 1-7 7-5 7-2 17 8 3 3 0 5-10 7zM1547 1703l-9 1-32-5-6-7-7-17 1-4 22-4 18 14 20 3 16 8-22 11zM1635 1721l-8 2-4-2-1-7 2-9 6-6 9-4 13 0 1 5-3 7-14 14zM1584 1737l-6 0-2-4 5-7 6-1 2 5-5 7zM1493 1494l-12 0-17-7-6-11 2-9 4-2 35 1 16-3 7 2 3 7-4 8-27 14zM1520 1693l-7 1-5-4-2-7 3-5 6-1 7 6 3 6-4 4z"/><path class="ix" d="M1234 1094l-10 1-7-2-4-5 1-7 7-4 11 3 5 8-3 6zM1481 1624l-5 0-15-5-21 2-7-5-1-7 5-6 14-4 7-6 17-22 1-11 4-9 14-20 15-11-2-3-3 0-64 3-6-2-4-3-2-10 6-22-1-18 11-24-3-18-5-14 1-18-7-12 0-6 10-10 12-24 6-4 12-2 10-13 5 4 2 6 0 27-10 25 2 4 6-1 7-5 7-13 2-24 8-13 7-6 15-1 8-6 5 0 17 9 12 1 2 3-14 37 2 6 10 12 3 10-3 6-14 6-19 3-4 6 1 5 10 7 24-6 26 5 5 15 10 7 3 7-2 9-12 9 1 3 10 3 24-6 9 2 5 5 0 10 4 11-6 7-21 7 1 4 9 10-2 5-6 4-23 5-32 2-13-4-9-12-2 0-5 2-9 16-14 9-38 12 0 4 13 9 4 6-2 5-11 10 0 15-6 6zM926 1367l-8 0-4-6 1-8 5-6 7 1 5 8-1 7-5 4zM1608 1936l-14-2-18 2-29-19-5-12 1-23 2-6 8-8-1-7-6-3-11 8-10-3-3-6-3-21-10-11 2-17-2-10-24-10-18-2-3-1-2-4 3-8 17-13 15-4 16 0 21-11 30-28-4-4-26 2-38-5-5-4-9-14-16-6-3-3-2-6 4-16 5-5 15-3 18 0 17-7 1-6-11-16 0-8 21-18 21-3 9-10 8-3 7 1 6 3 7 14 8 9 3 9 1 16-5 5-8 4-51 9-1 5 4 5 5 3 22 2 24 7 21 15 23-13 34-14 18-7 14-2 6 3 9 30-4 23-4 8-16 11-17-2-5 1-5 6-3 10 2 4 15 7 8 7 1 8-7 12 0 3 16 10 6 6 7 18 12 18 1 12-11 11-31 17-1 5 8 18-6 21-18 3-41 2-15 11z"/><path class="co" d="M853 732l-6 5-6-3-2-3 5-7-13-16-8-3 5-5-8-9-6-3 0-5-12-12-8 1 3-5-2-4-5-4-5 1 1-6-6-4 0-3-7-8-5-1 1-3-9-9-2 1-3-6-8-6-4 3-3-1 1-6-6-5-3 3-4-2-5-14-4-4-4 1 3-5-14-17-10-23-9-7 1-6-6-4 1-4-2-7-9-11 2-2-6-10 0-8-4-7 1-4-3 0-1-4-4-4 0-4-3 0 1-2-9-5-11-13-6-15-10-11-10-8-28-13-16-13-15-2-12 5-2-1-25-34-13-13-17-11-18-2-8-4-18-19-43-29-23-25-8-16-1-13-9 0-10-7-5 1-12-4-12-12-8-4-28-9-9 0-7 7-3-4-7 19-16 16 0 12-9 3 2 2-3 1-4 14 13 12 9 12 20 16 1 4 18 18 6 10 3 13 2 25 7 9 11 25 0 14 1 3-2 12 5 10 7 6-1 1 4 5-1 6 3 2-1 4 2-1 1 3-2 8 2 5 1 11 6 7 11 40 6 10 9 25 4 33 9 10 5 21 3 40-10 40-3 20-27 62-13 20-13 8-9 9-2 0-5 6-7 2 2 4-11 19-6-2-7 10-3 22 1 11 2 2-6 1 2 2-2 2 2 2 3 21-2 15-8 20-24 38-49 59-10 20-1 13 8 20 10 7 2 4 27 11 14 10 5 7 7 27 11 14 14 3 17 9 10 15-4 10 4 5 4-2 6 1 8 10-3 5 10 11 8 3 19 16 1 5 19 16 20-1 5 4-1 3-15 1 3 3 21 0 5 6-15 3 32 28 8 5-4-5 2-4-7-9 9-10 9 6 1 4 2-1 7 5 2-2-2 2 3 2-1 5 3-3 7 6-2 4-7-1-6 8-6-4 25 25 3 1 11-8 2 1-1 3 10-2 13 10 21 24 10 18 7 25-2 13-6 9 10 9 8-2-3 4-5 0 8 18 36 17 16 4 11 0 6 5 8-1 3 6-1 7-5-5-1 2 7 6 14 3 2 5-2 2 4 6 12-7 0-5 8 3 7 10 24 16 26 30 12 4 13 12 9 1 1 11 3 3-3 3-1 9-5 5-15-8-10-14-12-11 8 8 10 16 21 24 46 24 44 11 9 5-1 9 6 20-1 3 2 3 9 5-2 7 33 15 15 2 5-2 5-12-4-11 9-1 15 7 11 1 3 5 1-7 12 9-1 6 5 3 2 3 34 16 13 9 18 5 17 13-2 3 6 5 4-1 25 22 0 2 9 8-2 3-2 0 0 2 10 12 11 4 9 9 21 14 18 16 23 10-4 11 3 0 10 7-2 4 2 3 10 3 9-3 24 18 3 6 11 10 3 10 15 6 9 0 3 8 7 5-4 13 3 3 1-2 2 0 3 6 11 2 3 6 10 2 9 6 2 7 9 4 2 6-1 4 8 1 9 17 8 1 5 6 2-1 1 2 2-1 10 2 23 14 13 14 48 34 12-2 14 3 3 2-3 7 6 5 10-1 12 7 1 4-3 1 4 1 2-4 9-1 4 6 5-1 1 2 2-2 1 3 2-4 4 1-1 6 4-5 8 1 7 9 4-1 2 3 23 0 19 6 12-4-1-3 3-2 1 4 9 0 5 5 20 4-1 4 9 6 2 9-12 24-17-9-45-15-6-3-17-6-6 2 71 26 11 11 22 11 21 15 7 13 7 5 32 3 36-10 9-1 3 3 33-4 11 2 27 14 12 13 14 10 6 8 7 4 2 12 20-4 0 5 7 2-27 4 29 0-2 3-23 2-10 6 9-1 4-4 19-1 13 13 1 4 23 12 4 1 3-5 7 1 25 14 12 1 5-2 3-5-13-11 4-2-1 2 9 7 6 1-2-5 2-1 4 5 7 1 7 5 8 2 7 8 11 1 8 10 12 7 18 26 2 7-1 8-5 10-5 5 10 11-4 0 9 5 4 6-8 0 1 1 13 4 7-1 0-3-5 1-6-12 6-8 9-4 18 3 7 10-1 8 55-1 9-1-1-6 2-5 13-9 35-13 0-2 2 1-1 2 12 0 12 6 2-14-6-5 3-6 15-10-6-5 1-3-3-6-5-1-3-3 1-3-2 0-1-4 2-3-3 0-2-5-10-8-22-81-9-15 0-10-9-10 1-5 6-2 0-2-8-47-7-7-13 0-7-12-1-9 4-16 11-21-6-16-4-2-9-20-6-27-12-18-4-21-12-31-3-22-10-18-2-13-6-8-1-9-9-13-11-1-4-3-2-7 6-8 3-17-7-27 0-7-5-1 3-3-3-19-6-1 0-3 4-1-4-25-4-1 3-1-7-27-12-26-11-10-20-32-11-9-18-3-5 0-5 7-4-4-12 1-7-6-12-2-13-8-11-11-10-16-5-5 0-9-5-9-5-4-10-2-1-7-4 2 2-5-2-9-23-16-1-4 4-3 1-6-10-19-12-3-7-15-9 2-2-7-4-1-6 5-4-3 2-8 5-5-3-4-13 1 1-3-3-2 3-7-17-17-7 0 0-5-9-7-10-1-10 6-1-18-9 2-5-9-4 2-8-7-8-2-10 4-3-1-6-8 3-4-7-3-1-5 7-3-5-11-10-9 2-4-7-2-1-2-8-1 0-11-8-3-2-5-9 0 1-2-4-9-8-1-4 2-7-3-1-6 6-9-1-2-4 2-1-9-6 0-12-8-9 2-3-3-1-7 7-9-7-6-4-9-11-4 1-7-7-1 0-2 4-2 1-4-3-5-5-2 3-5-5 2-2-3 2-4 6-3-3-3 3-11 4-7 5-3-2-2-6 1-4-4-7-1-2-4-15-3-14-14-11 9-5-5 1-3 5-1 0-3-6 2-2 5-7-2-2-4 4-8-4-5 0-5-15-9-5 0 0-4-5-7-12 1-7 4-3-7 3-5 6-4-3-9-12-11-4-1-7-13-4-2-4 2-2-3-5-1-1-4 3-3-11-12-3-1-4 5-6 1-2-17 2-2-4 0-1-6-5-5-12-1 2-4 3-1-6-1 3-3-7-4-3 1 1 5-7 2-2-2 1 3-7 9-2-3-13 0-1 5 3 4-4 3-5 0 1-7-3 0-29 10-12-1-3-3 1-5-4 7-10 0-1-9-8 1-4-2 3-14-9-10 5-7-2-2 2-16-2 0 1-1-3-3 6-11-10-3-14 7-5-4-8 3 0-3 3-5-7-4-7 4 4-6-2-3-4-2-1 2-3-4-5 4 1-5-14-10-5 6 3-8-12-7-3-8-10 1-2-10-2-1-2 3-8-3-4 5 2-6-22-13-12 11-4-2-3-3 6-10-4-3 0-3-14-9-5 3 1-4-12 3-4-1-2-3 4-6-5-8-17-13-30-16-7 2 0 3-4 0-2-3 6-8-10-6-13-4-7 8-4-2-9 1-13-4-17-10-6 0 0-3-7 0-4-4-3-14-6-2 2-3-5-10 0-4-3-1 0-2-8-6-4-2 2-3-4-4-3 0 1-6-6-7 1-3-19-11-11-22-3 1-9-8-4 0 0-4-6-5-3 4-3-1-1-4 1-4-3 1 1-4-8-6-6 3 3-5-6-6-7 5 3-6-1-4-11-9-15-8z"/></g></svg><!--/map:island-->
+      <span class="mark town" style="--x:19.2%;--y:50.58%">Oranjestad</span>
+      <span class="mark peak" style="--x:36.99%;--y:51.23%">Hooiberg <b>165</b></span>
+      <span class="mark peak low" style="--x:60.66%;--y:63.58%">Jamanota <b>188</b></span>
     </div>
-    <div class="case-media">
-      <figure class="ar">
-        <div class="phone">
-          <video id="ar" muted loop playsinline preload="none" width="390" height="386" poster="work/v2/hom-ar-poster-390.webp" aria-label="The Alto Vista Chapel artwork coming alive in the app">
-            <source src="work/v2/hom-ar-loop.webm" type="video/webm">
-            <source src="work/v2/hom-ar-loop.mp4" type="video/mp4">
-          </video>
-        </div>
-        <figcaption>Recorded from the test build: Theo Brinkman’s Alto Vista Chapel, seen through the app.</figcaption>
-      </figure>
-      <figure class="rooms">
-        <picture class="r1"><source type="image/avif" srcset="work/v2/hom-room-800.avif 800w, work/v2/hom-room-1400.avif 1400w" sizes="(min-width:960px) 40vw, 92vw"><img src="work/v2/hom-room-800.webp" srcset="work/v2/hom-room-800.webp 800w, work/v2/hom-room-1400.webp 1400w" sizes="(min-width:960px) 40vw, 92vw" width="800" height="533" alt="A guest room at House of Mosaic, red walls, carved beams and mosaic frames" loading="lazy" decoding="async"></picture>
-        <picture><source type="image/avif" srcset="work/v2/hom-narnia-480.avif 480w, work/v2/hom-narnia-900.avif 900w" sizes="(min-width:960px) 20vw, 34vw"><img src="work/v2/hom-narnia-480.webp" srcset="work/v2/hom-narnia-480.webp 480w, work/v2/hom-narnia-900.webp 900w" sizes="(min-width:960px) 20vw, 34vw" width="480" height="640" alt="The entrance to the Narnia Suite, through a wardrobe" loading="lazy" decoding="async"></picture>
-        <picture><source type="image/avif" srcset="work/v2/hom-velvet-480.avif 480w, work/v2/hom-velvet-900.avif 900w" sizes="(min-width:960px) 20vw, 34vw"><img src="work/v2/hom-velvet-480.webp" srcset="work/v2/hom-velvet-480.webp 480w, work/v2/hom-velvet-900.webp 900w" sizes="(min-width:960px) 20vw, 34vw" width="480" height="640" alt="The Black Velvet room, dark walls and a chandelier" loading="lazy" decoding="async"></picture>
-        <figcaption>The rooms the app walks you through. Photos: House of Mosaic Art Villa.</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section class="backstage" aria-labelledby="pidi-h">
-  <div class="wrap">
-    <div>
-      <h2 class="h2" id="pidi-h">The part customers never see.</h2>
-      <p class="sub">Pidi takes late-night orders for several Aruban kitchens at once. Behind its ordering site we built the kitchen screen, where orders are accepted and marked ready, and the driver app, with the pickup list and one tap to Google Maps or Waze.</p>
-      <p class="note">All three screens show sample orders.</p>
-    </div>
-    <ul class="screens">
-      <li><figure><div class="phone"><picture><source type="image/avif" srcset="work/v2/pidi-kitchen-280.avif 280w, work/v2/pidi-kitchen-560.avif 560w" sizes="(min-width:960px) 200px, 30vw"><img src="work/v2/pidi-kitchen-280.webp" srcset="work/v2/pidi-kitchen-280.webp 280w, work/v2/pidi-kitchen-560.webp 560w" sizes="(min-width:960px) 200px, 30vw" width="280" height="606" alt="Pidi kitchen screen: order 27 waiting to be accepted" loading="lazy" decoding="async"></picture></div><figcaption>Kitchen: a new order to accept.</figcaption></figure></li>
-      <li><figure><div class="phone"><picture><source type="image/avif" srcset="work/v2/pidi-ready-280.avif 280w, work/v2/pidi-ready-560.avif 560w" sizes="(min-width:960px) 200px, 30vw"><img src="work/v2/pidi-ready-280.webp" srcset="work/v2/pidi-ready-280.webp 280w, work/v2/pidi-ready-560.webp 560w" sizes="(min-width:960px) 200px, 30vw" width="280" height="606" alt="Pidi kitchen screen: two orders ready, waiting for a driver" loading="lazy" decoding="async"></picture></div><figcaption>Kitchen: ready, waiting for a driver.</figcaption></figure></li>
-      <li><figure><div class="phone"><picture><source type="image/avif" srcset="work/v2/pidi-driver-280.avif 280w, work/v2/pidi-driver-560.avif 560w" sizes="(min-width:960px) 200px, 30vw"><img src="work/v2/pidi-driver-280.webp" srcset="work/v2/pidi-driver-280.webp 280w, work/v2/pidi-driver-560.webp 560w" sizes="(min-width:960px) 200px, 30vw" width="280" height="606" alt="Pidi driver app: the pickup list with Google Maps and Waze buttons" loading="lazy" decoding="async"></picture></div><figcaption>Driver: what to pick up, and where.</figcaption></figure></li>
-    </ul>
-  </div>
-</section>
-
-<section id="prices" aria-labelledby="prices-h">
-  <div class="wrap">
-    <h2 class="h2" id="prices-h">Four things, and nothing else.</h2>
-    <p class="sub">Published, so the first conversation starts past the awkward part.</p>
-    <div class="rows">
-      <div class="row">
-        <h3>Websites</h3>
-        <p>Four to six pages, mobile first, a contact form whose mail reaches your inbox, and your Google listing wired up so people can find you.</p>
-        <p class="price">from $800<small>one week</small></p>
-      </div>
-      <div class="row">
-        <h3>Mobile apps</h3>
-        <p>Built once, shipped to both stores, sharing code with your website. We know what gets a build rejected by Apple and Google review before you write it.</p>
-        <p class="price">from $4,500<small>four to eight weeks</small></p>
-      </div>
-      <div class="row">
-        <h3>APIs</h3>
-        <p>Your booking system, your POS and your website probably don’t talk to each other. We build the layer between them, with the authentication and rate limiting that hold up once real traffic arrives.</p>
-        <p class="price">from $1,200<small>two to four weeks</small></p>
-      </div>
-      <div class="row">
-        <h3>Augmented reality</h3>
-        <p>AR that recognises real objects through a phone camera, and 3D that runs in a browser with nothing to install. We quote these one at a time, because no two are the same job.</p>
-        <p class="price">quoted<small>per project</small></p>
-      </div>
-    </div>
-    <p class="more"><a class="link" href="pricing/">Full price list, in US dollars and florin, tax included</a></p>
-  </div>
-</section>
-
-<section id="how" class="how" aria-labelledby="how-h">
-  <div class="wrap">
-    <h2 class="h2" id="how-h">Nobody pays us to find out.</h2>
-    <ol class="steps">
-      <li><span class="n" aria-hidden="true">1</span><h3>Tell us what the business does</h3>
-        <p>An email or a call. What you sell, and what you want somebody to be able to do on the site. That’s the whole brief. You don’t need to know what you want it to look like.</p></li>
-      <li><span class="n" aria-hidden="true">2</span><h3>We build one before you pay</h3>
-        <p>A working site on a real address, with your words and your photos. Not a mockup, and not a template with your logo dropped on it. You look at it on your own phone.</p></li>
-      <li><span class="n" aria-hidden="true">3</span><h3>You decide</h3>
-        <p>If it isn’t right, you owe nothing and we shake hands. If it is, half up front and half the day it goes live. We write the scope down first, including how many rounds of changes, so nobody is guessing by round four.</p></li>
-      <li><span class="n" aria-hidden="true">4</span><h3>It goes on your domain</h3>
-        <p>Your domain, your hosting account, your Google listing. One week for a website, longer for the bigger work, and we tell you which before you commit to anything.</p></li>
-    </ol>
-  </div>
-</section>
-
-<section id="contact" class="close" aria-labelledby="contact-h">
-  <div class="wrap">
-    <h2 id="contact-h">Tell us what you’re building.</h2>
-    <p>WhatsApp or email, two lines is enough: what the business sells, and what a customer should be able to do on the site.</p>
-    <div class="mail">
-      <a class="btn btn-primary" href="https://wa.me/2977477794?text=Hi%20Aruba%20Webstudio%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">WhatsApp us</a>
-      <a class="addr link" id="addr" href="mailto:info@arubawebstudio.com?subject=A%20project%20for%20Aruba%20Webstudio">info@arubawebstudio.com</a>
-      <button class="btn btn-quiet" type="button" id="copy">Copy address</button>
-    </div>
-    <p class="status" id="status" role="status" aria-live="polite"></p>
+    <figcaption class="cap">Aruba, contours every 20 m. Coastline © OpenStreetMap contributors.</figcaption>
+  </figure>
+  <div class="foot">
+    <p class="note">Two lines on WhatsApp is enough: what the business sells, and what a customer should be able to do.</p>
+    <a class="cta" href="https://wa.me/2977477794?text=Hi%20Aruba%20Webstudio%2C%20I%27d%20like%20to%20start%20a%20project.%0AWhat%20the%20business%20sells%3A%0AWhat%20a%20customer%20should%20be%20able%20to%20do%3A"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#wa"/></svg>Start a project<span class="vh"> on WhatsApp</span></a>
     <p class="langs" lang="pap">Nos ta papia Papiamento, Nederlands, Español y English.</p>
   </div>
 </section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <span>&copy; <span id="yr">2026</span> Aruba Webstudio, Oranjestad, Aruba</span>
-    <a class="link" href="pricing/">Prices</a>
-    <a class="link" href="brand/">Brand book</a>
-    <a class="link end" href="https://wa.me/2977477794?text=Hi%20Aruba%20Webstudio%2C%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">WhatsApp +297 747 7794</a>
-    <a class="link end" href="mailto:info@arubawebstudio.com">info@arubawebstudio.com</a>
-  </div>
+<footer class="colophon">
+  <p>© 2026 Aruba Webstudio, Oranjestad, Aruba</p>
+  <a href="https://wa.me/2977477794?text=Hi%20Aruba%20Webstudio%2C%20I%27d%20like%20to%20talk%20about%20a%20project.">WhatsApp +297 747 7794</a>
+  <!--email_off--><a href="mailto:info@arubawebstudio.com">info@arubawebstudio.com</a><!--/email_off-->
+  <p class="credit">Elevation: Copernicus DEM GLO-30, © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the European Union and ESA; all rights reserved. Map data © OpenStreetMap contributors (ODbL).</p>
 </footer>
 
 <script>
-(function () {
-  "use strict";
-  document.getElementById("yr").textContent = new Date().getFullYear();
-  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+(() => {
+'use strict';
+const hero = document.getElementById('top');
+const canvas = document.getElementById('land');
+const stillBox = document.getElementById('still');
+const reduceQ = matchMedia('(prefers-reduced-motion: reduce)');
+const darkQ = matchMedia('(prefers-color-scheme: dark)');
+const coarse = matchMedia('(pointer: coarse)').matches;
+const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+const smooth = x => { x = clamp(x, 0, 1); return x * x * x * (x * (x * 6 - 15) + 10); };
 
-  // Rail buttons: one build per press; disabled at either end.
-  var rail = document.getElementById("rail");
-  var btns = document.querySelectorAll(".rail-btns button");
-  var items = rail.children;
-  btns.forEach(function (b) {
-    b.addEventListener("click", function () {
-      var step = items[0].getBoundingClientRect().width + parseFloat(getComputedStyle(rail).columnGap || 24);
-      rail.scrollBy({ left: step * Number(b.dataset.dir), behavior: reduce ? "auto" : "smooth" });
-    });
-  });
-  if ("IntersectionObserver" in window) {
-    var edge = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        var i = e.target === items[0] ? 0 : 1;
-        btns[i].disabled = e.intersectionRatio > 0.95;
-      });
-    }, { root: rail, threshold: [0, 0.95, 1] });
-    edge.observe(items[0]); edge.observe(items[items.length - 1]);
+// ---- the land: one height function, written twice (GLSL for the live view, JS for the still frame) ----
+const HEIGHT = 1.5, LINES = 12.5, EYE = 4.6, FAR = 42;
+const WIND = [-0.52, 0.85];          // features drift left and toward you: the trade wind, bent southwest
+const SPEED = 0.2, MORPH = 0.028;
+
+function cameraFor(aspect, lean) {
+  const k = smooth((aspect - 0.5) / 1.1);           // 0 = tall phone, 1 = wide laptop
+  const pitch = (34 - 11 * k) * Math.PI / 180 + (lean ? lean.pitch : 0);
+  const yaw = lean ? lean.yaw : 0;
+  const vtan = 0.66 - 0.27 * k, htan = vtan * aspect;
+  const cp = Math.cos(pitch);
+  const f = [Math.sin(yaw) * cp, -Math.sin(pitch), -Math.cos(yaw) * cp];
+  const r = [-f[2], 0, f[0]]; const rl = Math.hypot(r[0], r[2]); r[0] /= rl; r[2] /= rl;
+  const u = [r[1] * f[2] - r[2] * f[1], r[2] * f[0] - r[0] * f[2], r[0] * f[1] - r[1] * f[0]];
+  const eye = [0, EYE, 0];
+  const bottom = Math.atan(vtan) + pitch;             // angle of the lowest ray below the horizon
+  const nearGround = EYE / Math.tan(Math.min(bottom, 1.45));
+  return { f, r, u, eye, vtan, htan, pitch, nearGround, fog: [9, 28 + 5 * k] };
+}
+function viewProj(c, aspect) {
+  const n = 0.1, fr = 80, t = 1 / c.vtan, nf = 1 / (n - fr);
+  const P = [t / aspect, 0, 0, 0, 0, t, 0, 0, 0, 0, (fr + n) * nf, -1, 0, 0, 2 * fr * n * nf, 0];
+  const { r, u, f, eye } = c, d = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const V = [r[0], u[0], -f[0], 0, r[1], u[1], -f[1], 0, r[2], u[2], -f[2], 0, -d(r, eye), -d(u, eye), d(f, eye), 1];
+  const M = new Float32Array(16);
+  for (let col = 0; col < 4; col++) for (let row = 0; row < 4; row++) {
+    let s = 0; for (let k = 0; k < 4; k++) s += P[k * 4 + row] * V[col * 4 + k]; M[col * 4 + row] = s;
   }
+  return M;
+}
+function project(M, x, y, z, w, h) {
+  const cx = M[0] * x + M[4] * y + M[8] * z + M[12], cy = M[1] * x + M[5] * y + M[9] * z + M[13], cw = M[3] * x + M[7] * y + M[11] * z + M[15];
+  return [(cx / cw * 0.5 + 0.5) * w, (0.5 - cy / cw * 0.5) * h, cw];
+}
+function gridShape(c) { return { near: Math.max(0.35, c.nearGround * 0.7), far: FAR, slope: c.htan * 1.35, margin: 2.4 }; }
 
-  // The AR recording plays only while on screen, never under reduced motion.
-  var v = document.getElementById("ar");
-  if (v && !reduce && "IntersectionObserver" in window) {
-    new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (e.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () { /* poster stays: autoplay refused */ }); }
-        else v.pause();
-      });
-    }, { threshold: 0.4 }).observe(v);
+// JS twin of the GLSL land(), for the still frame.
+const fract = x => x - Math.floor(x);
+function hash2(px, py) {
+  let a = fract(px * .1031), b = fract(py * .1030), c = fract(px * .0973);
+  const dd = a * (b + 33.33) + b * (c + 33.33) + c * (a + 33.33); a += dd; b += dd; c += dd;
+  return [fract((a + b) * c) * 2 - 1, fract((a + c) * b) * 2 - 1];
+}
+function gnoise(x, y) {
+  const ix = Math.floor(x), iy = Math.floor(y), fx = x - ix, fy = y - iy;
+  const ux = fx * fx * fx * (fx * (fx * 6 - 15) + 10), uy = fy * fy * fy * (fy * (fy * 6 - 15) + 10);
+  const g = (ox, oy) => { const h = hash2(ix + ox, iy + oy); return h[0] * (fx - ox) + h[1] * (fy - oy); };
+  const a = g(0, 0), b = g(1, 0), c = g(0, 1), d = g(1, 1);
+  return (a + (b - a) * ux) + ((c + (d - c) * ux) - (a + (b - a) * ux)) * uy;
+}
+function landJS(tx, tz, mx = 0, my = 0) {
+  let px = (.84 * tx + .54 * tz) * .29, py = (-.54 * tx + .84 * tz) * .41;
+  const wx = gnoise(px * .55 + mx, py * .55 + my), wy = gnoise(px * .55 + 4.7 - my, py * .55 + 1.9 - mx);
+  px += wx * .6; py += wy * .6;
+  let n = gnoise(px, py) * .62;
+  let qx = 1.6 * px - 1.2 * py + 6.1, qy = 1.2 * px + 1.6 * py + 2.3;
+  n += gnoise(qx, qy) * .2;
+  px = 1.6 * qx - 1.2 * qy + 1.7; py = 1.2 * qx + 1.6 * qy + 9.2;
+  n += gnoise(px, py) * .06;
+  const m = n + .12, s = .5 * (m + Math.sqrt(m * m + .005));
+  return s * 2.3 + n * .14;
+}
+
+const GLSL_LAND = `
+uniform vec2 uTravel; uniform vec2 uMorph; uniform float uHeight; uniform float uRise; uniform vec3 uNear;
+uniform vec4 uLift; uniform vec4 uTrail[12]; uniform vec4 uPulse[4];
+vec2 hash2(vec2 p){ vec3 q = fract(vec3(p.xyx) * vec3(.1031, .1030, .0973)); q += dot(q, q.yzx + 33.33); return fract((q.xx + q.yz) * q.zy) * 2. - 1.; }
+float gnoise(vec2 p){
+  vec2 i = floor(p), f = p - i, u = f * f * f * (f * (f * 6. - 15.) + 10.);
+  float a = dot(hash2(i), f), b = dot(hash2(i + vec2(1., 0.)), f - vec2(1., 0.));
+  float c = dot(hash2(i + vec2(0., 1.)), f - vec2(0., 1.)), d = dot(hash2(i + vec2(1., 1.)), f - vec2(1., 1.));
+  return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+}
+float land(vec2 t){
+  vec2 p = vec2(.84 * t.x + .54 * t.y, -.54 * t.x + .84 * t.y) * vec2(.29, .41);   // ridges run with the wind
+  p += vec2(gnoise(p * .55 + uMorph), gnoise(p * .55 + vec2(4.7, 1.9) - uMorph.yx)) * .6;
+  float n = gnoise(p) * .62;
+  p = mat2(1.6, 1.2, -1.2, 1.6) * p + vec2(6.1, 2.3); n += gnoise(p) * .2;
+  p = mat2(1.6, 1.2, -1.2, 1.6) * p + vec2(1.7, 9.2); n += gnoise(p) * .06;
+  float m = n + .12, s = .5 * (m + sqrt(m * m + .005));        // soft floor: plains, then hills
+  return s * 2.3 + n * .14;
+}
+float settle(float d){ float x = clamp((d - uNear.x) / (uNear.y - uNear.x), 0., 1.); return mix(uNear.z, 1., x * x * (3. - 2. * x)); }
+float field(vec2 p, out float heat){
+  float h = land(p + uTravel) * uHeight * settle(-p.y) * uRise;
+  vec2 q = p - uLift.xy; float g = exp(-dot(q, q) / (uLift.z * uLift.z));
+  h += uLift.w * g; heat = uLift.w * g * 1.1;
+  vec2 pt = p + uTravel;
+  for (int i = 0; i < 12; i++) { vec4 tr = uTrail[i]; if (tr.w > .002) { vec2 e = pt - tr.xy; float k = exp(-dot(e, e) / (tr.z * tr.z)); h += tr.w * k; heat += tr.w * k * .8; } }
+  for (int i = 0; i < 4; i++) { vec4 pu = uPulse[i]; if (pu.w > .002) { float x = (length(p - pu.xy) - pu.z) / .55; float k = exp(-x * x); h += pu.w * k; heat += pu.w * k * 2.2; } }
+  return h;
+}`;
+
+const VERT = `precision highp float;
+attribute vec2 aUV;
+uniform mat4 uVP; uniform vec4 uGrid;
+varying vec2 vP; varying vec3 vN; varying float vDist;
+${GLSL_LAND}
+void main(){
+  float d = uGrid.x * pow(uGrid.y / uGrid.x, aUV.y);
+  vec2 p = vec2(aUV.x * (d * uGrid.z + uGrid.w), -d);
+  float k, h = field(p, k), e = .06;
+  float hx = field(p + vec2(e, 0.), k), hz = field(p + vec2(0., -e), k);
+  vN = vec3(h - hx, e, hz - h);
+  vP = p; vDist = d;
+  gl_Position = uVP * vec4(p.x, h, p.y, 1.);
+}`;
+
+const FRAG = `#extension GL_OES_standard_derivatives : enable
+precision highp float;
+varying vec2 vP; varying vec3 vN; varying float vDist;
+uniform float uLines, uLineW, uPx, uMode, uBright;
+uniform vec3 uLit, uShade, uHeat;
+uniform vec4 uFog;          // fog start, fog end, near blur start, near blur end
+uniform vec4 uKnock[10]; uniform vec2 uKnockSoft;
+${GLSL_LAND}
+const vec3 SUN = vec3(-.78, .56, .28);
+float knockout(vec2 fc){
+  float k = 1.;
+  for (int i = 0; i < 10; i++) {
+    vec4 r = uKnock[i];
+    if (r.z <= r.x) continue;
+    vec2 c = (r.xy + r.zw) * .5, hs = (r.zw - r.xy) * .5;
+    float rad = min(hs.y, 44. * uPx);
+    vec2 q = abs(fc - c) - hs + rad;
+    float d = length(max(q, 0.)) + min(max(q.x, q.y), 0.) - rad;     // distance to a pill around the words
+    k = min(k, mix(uKnockSoft.y, 1., smoothstep(-10. * uPx, uKnockSoft.x, d)));
   }
+  return k;
+}
+void main(){
+  float heat, h = field(vP, heat);
+  float lc = h * uLines + .5;
+  float fw = max(fwidth(lc), 1e-4);
+  float dist = abs(fract(lc) - .5) / fw;                       // device px to the nearest contour
+  float major = 1. - step(.5, mod(floor(lc), 5.));             // index contour, every fifth level
+  float blur = 1. - smoothstep(uFog.z, uFog.w, vDist);         // the ground right under you is out of focus
+  float w = uLineW * uPx * (1. + .75 * major) * (1. + .35 * min(heat, 1.5));
+  float soft = uPx * (1. + 2.2 * blur);
+  float cover = max(0., min(min(w, soft), .5 * (w + soft) - dist)) / soft;
+  float crowd = smoothstep(.2, .55, fw * max(w, soft));
+  cover = mix(cover, min(w * fw, 1.) * .72, crowd);
+  float glow = uMode * exp(-dist / (2.6 * uPx)) * .16 * (1. - .6 * crowd);
+  vec3 n = normalize(vN);
+  float sun = clamp(dot(n, normalize(SUN)), 0., 1.);
+  float lvl = mix(.42, 1., smoothstep(-.05, 1.5, h)) * mix(.62, 1.15, sun) * (1. + .6 * major);
+  vec3 col = mix(uShade, uLit, smoothstep(.15, .85, sun));
+  float hot = smoothstep(.08, 1., heat);
+  col = mix(col, uHeat, hot);
+  lvl += hot * .55;
+  float fog = 1. - smoothstep(uFog.x, uFog.y, vDist);
+  float a = (cover + glow) * lvl * fog * knockout(gl_FragCoord.xy) * uBright;
+  a = mix(a, 1. - exp(-a * 1.6), uMode);
+  a = clamp(a * mix(.82, 1., uMode), 0., 1.);
+  gl_FragColor = vec4(col * a, a);
+}`;
 
-  // Copy address: the fallback for phones with no mail app behind mailto.
-  var copy = document.getElementById("copy"), status = document.getElementById("status");
-  var addr = "info@arubawebstudio.com";
-  copy.addEventListener("click", function () {
-    function done() { status.textContent = "Copied. Paste it into WhatsApp, Gmail or wherever you write from."; copy.textContent = "Copied"; setTimeout(function () { copy.textContent = "Copy address"; }, 2400); }
-    function failed() {
-      var r = document.createRange(); r.selectNodeContents(document.getElementById("addr"));
-      var s = getSelection(); s.removeAllRanges(); s.addRange(r);
-      status.textContent = "Your browser blocked copying. The address is selected: copy it from there.";
+// ---- shared state ----
+let palette = null, aspect = 1, W = 0, H = 0, cam = null;
+function readPalette() {
+  const s = getComputedStyle(document.documentElement);
+  const hex = n => { const v = s.getPropertyValue(n).trim().replace('#', ''); return [0, 2, 4].map(i => parseInt(v.slice(i, i + 2), 16) / 255); };
+  palette = { lit: hex('--land-lit'), shade: hex('--land-shade'), heat: hex('--land-heat'), mode: parseFloat(s.getPropertyValue('--land-mode')) || 0 };
+}
+
+// ---- the still frame: same land, frozen, drawn as SVG contours with hidden lines removed ----
+function drawStill() {
+  stillBox.textContent = '';
+  const w = hero.clientWidth, h = hero.clientHeight, asp = w / h, c = cameraFor(asp), M = viewProj(c, asp), g = gridShape(c);
+  const NU = Math.round(clamp(w / 4.5, 80, 220)), NV = Math.round(clamp(h / 4, 120, 230));
+  const near = g.near, ratio = g.far / near;
+  const xs = new Float32Array((NU + 1) * (NV + 1)), zs = new Float32Array(xs.length), hs = new Float32Array(xs.length);
+  for (let j = 0; j <= NV; j++) {
+    const d = near * Math.pow(ratio, j / NV), half = d * g.slope + g.margin;
+    const x0 = clamp((d - c.nearGround) / 3, 0, 1), set = 0.35 + 0.65 * x0 * x0 * (3 - 2 * x0);
+    for (let i = 0; i <= NU; i++) {
+      const k = j * (NU + 1) + i, x = (i / NU * 2 - 1) * half, z = -d;
+      xs[k] = x; zs[k] = z; hs[k] = landJS(x, z) * HEIGHT * set;
     }
-    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(addr).then(done, failed);
-    else failed();
-  });
+  }
+  const sp = new Float32Array(xs.length * 2);
+  for (let k = 0; k < xs.length; k++) { const p = project(M, xs[k], hs[k], zs[k], w, h); sp[k * 2] = p[0]; sp[k * 2 + 1] = p[1]; }
+  // floating horizon, near to far: a point is visible only if it sits above every nearer ridge in its column
+  const COLS = Math.ceil(w / 2) + 2, hor = new Float32Array(COLS).fill(1e9);
+  const bands = 6, paths = Array.from({ length: bands * 2 }, () => []);
+  const [fogStart, fogEnd] = c.fog;
+  const seen = (x, y) => { const col = Math.round(x / 2); return col < 0 || col >= COLS || y <= hor[col] + 0.75; };
+  const edge = (a, b, lv) => { const t = (lv - hs[a]) / (hs[b] - hs[a]); return [sp[a * 2] + (sp[b * 2] - sp[a * 2]) * t, sp[a * 2 + 1] + (sp[b * 2 + 1] - sp[a * 2 + 1]) * t]; };
+  for (let j = 0; j < NV; j++) {
+    const d = near * Math.pow(ratio, (j + 0.5) / NV);
+    const fog = 1 - smooth((d - fogStart) / (fogEnd - fogStart));
+    const band = Math.min(bands - 1, Math.floor((1 - fog) * bands));
+    if (fog > 0.02) for (let i = 0; i < NU; i++) {
+      const a = j * (NU + 1) + i, b = a + 1, cc = a + NU + 1, dd = cc + 1;
+      const lo = Math.min(hs[a], hs[b], hs[cc], hs[dd]) * LINES + .5, hi = Math.max(hs[a], hs[b], hs[cc], hs[dd]) * LINES + .5;
+      for (let L = Math.ceil(lo); L <= hi; L++) {
+        const lv = (L - .5) / LINES, pts = [];
+        for (const [p, q] of [[a, b], [b, dd], [dd, cc], [cc, a]]) if ((hs[p] < lv) !== (hs[q] < lv)) pts.push(edge(p, q, lv));
+        for (let s = 0; s + 1 < pts.length; s += 2) {
+          const [p1, p2] = [pts[s], pts[s + 1]];
+          if (!seen(p1[0], p1[1]) || !seen(p2[0], p2[1])) continue;
+          paths[band * 2 + (L % 5 === 0 ? 1 : 0)].push(`M${p1[0].toFixed(1)} ${p1[1].toFixed(1)}L${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`);
+        }
+      }
+    }
+    // raise the horizon with this row's surface
+    for (let i = 0; i < NU; i++) {
+      const k = j * (NU + 1) + i;
+      const x1 = sp[k * 2], y1 = sp[k * 2 + 1], x2 = sp[k * 2 + 2], y2 = sp[k * 2 + 3];
+      const c1 = Math.max(0, Math.floor(Math.min(x1, x2) / 2)), c2 = Math.min(COLS - 1, Math.ceil(Math.max(x1, x2) / 2));
+      for (let col = c1; col <= c2; col++) {
+        const t = x2 === x1 ? 0 : clamp((col * 2 - x1) / (x2 - x1), 0, 1), y = y1 + (y2 - y1) * t;
+        if (y < hor[col]) hor[col] = y;
+      }
+    }
+  }
+  const dark = palette.mode > 0.5, out = [];
+  for (let b = 0; b < bands; b++) for (let m = 0; m < 2; m++) {
+    const list = paths[b * 2 + m]; if (!list.length) continue;
+    const op = (1 - b / bands) * (dark ? (m ? .62 : .34) : (m ? .5 : .26));
+    out.push(`<path d="${list.join('')}" stroke="currentColor" stroke-opacity="${op.toFixed(2)}" stroke-width="${m ? 1.5 : 1}" fill="none" vector-effect="non-scaling-stroke" stroke-linecap="round"/>`);
+  }
+  const halos = textRects().map(([l, t, r, b, pad]) => { const hh = b - t + pad * 2; return `<rect x="${(l - pad).toFixed(1)}" y="${(t - pad).toFixed(1)}" width="${(r - l + pad * 2).toFixed(1)}" height="${hh.toFixed(1)}" rx="${Math.min(hh / 2, 44).toFixed(1)}"/>`; }).join('');
+  stillBox.innerHTML = `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice"><defs>` +
+    `<filter id="halo" filterUnits="userSpaceOnUse" x="0" y="0" width="${w}" height="${h}"><feGaussianBlur stdDeviation="18"/></filter>` +
+    `<mask id="words" maskUnits="userSpaceOnUse" x="0" y="0" width="${w}" height="${h}"><rect width="${w}" height="${h}" fill="#fff"/><g fill="#000" fill-opacity="${dark ? .86 : .8}" filter="url(#halo)">${halos}</g></mask>` +
+    `</defs><g mask="url(#words)">${out.join('')}</g></svg>`;
+}
+
+// ---- live view ----
+let gl = null, prog = null, U = {}, buf = null, ibuf = null, idxCount = 0, raf = 0, running = false;
+let visible = true, last = 0, clock = 0, dpr = 1, slowFrames = 0, frameAvg = 16;
+const st = { travel: [0, 0], morph: 0, rise: 0, lift: [0, -6], liftAmp: 0, liftTarget: 0, pulses: [], trail: [], lastDrop: null,
+  pointer: null, down: false, lean: { yaw: 0, pitch: 0, vy: 0, vp: 0 } };
+const knock = new Float32Array(40), trailBuf = new Float32Array(48), pulseBuf = new Float32Array(16);
+
+function compile(type, src) {
+  const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+  if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+  return s;
+}
+function setupGL() {
+  gl = canvas.getContext('webgl', { antialias: false, alpha: true, premultipliedAlpha: true, depth: true, powerPreference: 'default' });
+  if (!gl || !gl.getExtension('OES_standard_derivatives')) return false;
+  try {
+    prog = gl.createProgram();
+    gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
+    gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FRAG));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(prog));
+  } catch (e) { console.warn('land shader:', e.message); return false; }
+  gl.useProgram(prog);
+  for (const n of ['uVP', 'uGrid', 'uTravel', 'uMorph', 'uHeight', 'uRise', 'uNear', 'uLift', 'uTrail', 'uPulse', 'uLines', 'uLineW', 'uPx', 'uMode', 'uBright', 'uLit', 'uShade', 'uHeat', 'uFog', 'uKnock', 'uKnockSoft'])
+    U[n] = gl.getUniformLocation(prog, n);
+  // a trapezoid of ground in front of the camera; rows spaced so they stay even on screen
+  const NU = coarse ? 120 : 170, NV = 260;                    // under 65,536 vertices, so 16-bit indices work everywhere
+  const uv = new Float32Array((NU + 1) * (NV + 1) * 2);
+  for (let j = 0, k = 0; j <= NV; j++) for (let i = 0; i <= NU; i++) { uv[k++] = i / NU * 2 - 1; uv[k++] = j / NV; }
+  const idx = new Uint16Array(NU * NV * 6);
+  for (let j = 0, k = 0; j < NV; j++) for (let i = 0; i < NU; i++) {
+    const a = j * (NU + 1) + i, b = a + 1, c = a + NU + 1, d = c + 1;
+    idx[k++] = a; idx[k++] = c; idx[k++] = b; idx[k++] = b; idx[k++] = c; idx[k++] = d;
+  }
+  idxCount = idx.length;
+  buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.bufferData(gl.ARRAY_BUFFER, uv, gl.STATIC_DRAW);
+  ibuf = gl.createBuffer(); gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibuf); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, idx, gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, 'aUV'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  gl.enable(gl.DEPTH_TEST); gl.depthFunc(gl.LEQUAL); gl.clearColor(0, 0, 0, 0);
+  return true;
+}
+
+// Rects of the hero's words, in the hero's own coordinates (the hero scrolls now, so viewport coordinates would drift).
+function textRects() {
+  const out = [], r = document.createRange(), o = hero.getBoundingClientRect();
+  const at = (b, pad) => out.push([b.left - o.left, b.top - o.top, b.right - o.left, b.bottom - o.top, pad]);
+  for (const [sel, pad] of [['.cta', 4], ['.brand', 6], ['nav', 6]]) { const el = hero.querySelector(sel); if (el) at(el.getBoundingClientRect(), pad); }
+  for (const el of hero.querySelectorAll('h1 span, .note')) { r.selectNodeContents(el); for (const b of r.getClientRects()) at(b, 10); }
+  return out.slice(0, 10);
+}
+function measureKnockout() {
+  knock.fill(0);
+  textRects().forEach(([l, t, r, b, pad], i) => knock.set([(l - pad) * dpr, (H - b - pad) * dpr, (r + pad) * dpr, (H - t + pad) * dpr], i * 4));
+}
+
+function resize(force) {
+  const w = hero.clientWidth, h = hero.clientHeight;
+  if (!force && w === W && h === H) return;           // the phone's toolbar sliding away resizes the window, not the hero
+  W = w; H = h; aspect = W / H;
+  const cap = coarse ? 1.75 : 2;
+  dpr = Math.min(window.devicePixelRatio || 1, cap) * (resize.scale || 1);
+  if (gl) { canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); gl.viewport(0, 0, canvas.width, canvas.height); }
+  measureKnockout();
+  if (!gl || reduceQ.matches) { clearTimeout(resize.t); resize.t = setTimeout(drawStill, 120); }
+}
+
+// Where on the land is the finger? March the ray over the same terrain the shader draws, so the lift lands under it.
+function groundAt(x, z) {
+  const x0 = clamp((-z - cam.nearGround) / 3, 0, 1), set = 0.35 + 0.65 * x0 * x0 * (3 - 2 * x0);
+  return landJS(x + st.travel[0], z + st.travel[1], st.morph * .37, st.morph * .23) * HEIGHT * set * (0.12 + 0.88 * smooth(st.rise));
+}
+function pick(px, py) {
+  const c = cam; if (!c) return null;
+  const nx = px / W * 2 - 1, ny = 1 - py / H * 2;
+  const dx = c.f[0] + c.r[0] * nx * c.htan + c.u[0] * ny * c.vtan;
+  const dy = c.f[1] + c.r[1] * nx * c.htan + c.u[1] * ny * c.vtan;
+  const dz = c.f[2] + c.r[2] * nx * c.htan + c.u[2] * ny * c.vtan;
+  if (dy > -0.02) return null;
+  const below = t => EYE + dy * t <= groundAt(dx * t, dz * t);
+  for (let t = 0.3, i = 0; i < 90 && t < FAR; i++) {
+    const t1 = t + 0.12 + t * 0.035;
+    if (below(t1)) { let a = t, b = t1; for (let k = 0; k < 6; k++) { const m = (a + b) / 2; if (below(m)) b = m; else a = m; } return [dx * b, dz * b]; }
+    t = t1;
+  }
+  const t = (0.5 - EYE) / dy;
+  return [dx * t, dz * t];
+}
+
+function frame(now) {
+  raf = 0;
+  if (!running) return;
+  const dt = last ? clamp((now - last) / 1000, 0, 1 / 20) : 1 / 60;
+  last = now; clock += dt;
+  // keep it smooth on slow phones: step the resolution down if frames run long. 40 ms, not 33: Low Power Mode caps
+  // Safari at 30 fps, which is a cap, not a struggling GPU, and should not cost sharpness.
+  frameAvg += ((now - (frame.prev || now)) - frameAvg) * 0.05; frame.prev = now;
+  if (clock > 3 && frameAvg > 40 && (resize.scale || 1) > 0.7) { if (++slowFrames > 90) { resize.scale = (resize.scale || 1) - 0.15; slowFrames = 0; resize(true); } } else slowFrames = 0;
+
+  if (!st.t0) st.t0 = now;
+  st.rise = Math.min(1, (now - st.t0) / 2400);           // wall clock, so a slow phone still finishes rising on time
+  st.travel[0] -= WIND[0] * SPEED * dt; st.travel[1] -= WIND[1] * SPEED * dt;
+  st.morph += MORPH * dt;
+  // desktop: the camera leans a little toward the pointer (a spring, so it settles)
+  const lean = st.lean, tgt = st.pointer && !coarse ? st.pointer : null;
+  const ty = tgt ? (tgt[0] / W - .5) * .07 : 0, tp = tgt ? (tgt[1] / H - .5) * .035 : 0;
+  lean.vy += (40 * (ty - lean.yaw) - 12 * lean.vy) * dt; lean.yaw += lean.vy * dt;
+  lean.vp += (40 * (tp - lean.pitch) - 12 * lean.vp) * dt; lean.pitch += lean.vp * dt;
+  cam = cameraFor(aspect, lean);
+  // the lift follows the finger or cursor; it eases so a jump does not tear the land
+  if (st.pointer) {
+    const hit = pick(st.pointer[0], st.pointer[1]);
+    if (hit) {
+      const e = 1 - Math.exp(-dt / 0.07);
+      st.lift[0] += (hit[0] - st.lift[0]) * e; st.lift[1] += (hit[1] - st.lift[1]) * e;
+      // drop a ridge point every half unit of travel; it lives in land coordinates, so the wind carries it off
+      const tx = st.lift[0] + st.travel[0], tz = st.lift[1] + st.travel[1], lp = st.lastDrop;
+      if (st.liftAmp > 0.15 && (!lp || Math.hypot(tx - lp[0], tz - lp[1]) > 0.85)) {
+        st.trail.push({ x: tx, z: tz, amp: st.liftAmp * 0.55, age: 0 }); st.lastDrop = [tx, tz];
+        if (st.trail.length > 12) st.trail.shift();
+      }
+    }
+  }
+  st.liftAmp += (st.liftTarget - st.liftAmp) * (1 - Math.exp(-dt / (st.liftTarget > st.liftAmp ? 0.16 : 0.5)));
+  for (const p of st.pulses) p.age += dt;
+  st.pulses = st.pulses.filter(p => p.age < 3.2);
+  for (const t of st.trail) t.age += dt;
+  st.trail = st.trail.filter(t => t.age < 4.5);
+
+  const g = gridShape(cam);
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+  gl.uniformMatrix4fv(U.uVP, false, viewProj(cam, aspect));
+  gl.uniform4f(U.uGrid, g.near, g.far, g.slope, g.margin);
+  gl.uniform2f(U.uTravel, st.travel[0], st.travel[1]);
+  gl.uniform2f(U.uMorph, st.morph * .37, st.morph * .23);
+  gl.uniform1f(U.uHeight, HEIGHT);
+  gl.uniform1f(U.uRise, 0.12 + 0.88 * smooth(st.rise));
+  gl.uniform3f(U.uNear, cam.nearGround, cam.nearGround + 3, 0.35);
+  gl.uniform4f(U.uLift, st.lift[0], st.lift[1], 1.1, st.liftAmp);
+  const tr = trailBuf.fill(0);
+  st.trail.forEach((t, i) => tr.set([t.x, t.z, 0.85 + t.age * 0.25, t.amp * Math.exp(-t.age / 1.4) * smooth(t.age / 0.12)], i * 4));
+  gl.uniform4fv(U.uTrail, tr);
+  const pu = pulseBuf.fill(0);
+  st.pulses.slice(-4).forEach((p, i) => pu.set([p.x, p.z, p.age * 2.4, 0.32 * Math.exp(-p.age * 1.2) * smooth(p.age / 0.06)], i * 4));
+  gl.uniform4fv(U.uPulse, pu);
+  gl.uniform1f(U.uLines, LINES);
+  gl.uniform1f(U.uLineW, 1.05);
+  gl.uniform1f(U.uPx, dpr);
+  gl.uniform1f(U.uMode, palette.mode);
+  gl.uniform1f(U.uBright, smooth(st.rise * 1.6));
+  gl.uniform3fv(U.uLit, palette.lit); gl.uniform3fv(U.uShade, palette.shade); gl.uniform3fv(U.uHeat, palette.heat);
+  gl.uniform4f(U.uFog, cam.fog[0], cam.fog[1], cam.nearGround, cam.nearGround + 2.5);
+  gl.uniform4fv(U.uKnock, knock);
+  gl.uniform2f(U.uKnockSoft, 64 * dpr, palette.mode > 0.5 ? 0.14 : 0.2);
+  gl.drawElements(gl.TRIANGLES, idxCount, gl.UNSIGNED_SHORT, 0);
+  if (!canvas.classList.contains('on')) canvas.classList.add('on');
+  raf = requestAnimationFrame(frame);
+}
+function start() { if (!running && gl && visible && !document.hidden && !reduceQ.matches) { running = true; last = 0; frame.prev = 0; raf = requestAnimationFrame(frame); } }
+function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; }
+
+// ---- input: the land answers touch (pointer positions are kept in the hero's own coordinates) ----
+const local = e => { const o = canvas.getBoundingClientRect(); return [e.clientX - o.left, e.clientY - o.top]; };
+function onDown(e) {
+  if (!gl || !running) return;
+  st.pointer = local(e); st.down = true; st.liftTarget = 0.7; st.lastDrop = null;
+  const hit = pick(st.pointer[0], st.pointer[1]);
+  if (hit) { st.lift = hit.slice(); st.pulses.push({ x: hit[0], z: hit[1], age: 0 }); }
+  if (e.pointerType !== 'mouse') canvas.setPointerCapture?.(e.pointerId);
+}
+function onMove(e) {
+  if (!gl) return;
+  if (e.pointerType === 'mouse') { st.pointer = local(e); if (!st.down) st.liftTarget = 0.35; }
+  else if (st.down) st.pointer = local(e);
+}
+function onUp(e) {
+  st.down = false;
+  if (e.pointerType === 'mouse') { st.liftTarget = 0.35; return; }
+  st.liftTarget = 0; st.pointer = null;
+}
+canvas.addEventListener('pointerdown', onDown);
+canvas.addEventListener('pointermove', onMove);
+canvas.addEventListener('pointerup', onUp);
+canvas.addEventListener('pointercancel', onUp);
+canvas.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse' && !st.down) { st.liftTarget = 0; st.pointer = null; } });
+
+
+// ---- the AR recording plays only while it is on screen; with reduced motion it waits for a tap ----
+const arv = document.querySelector('.arv video');
+if (arv) {
+  if (reduceQ.matches || !('IntersectionObserver' in window)) arv.controls = true;
+  else new IntersectionObserver(es => { for (const e of es) e.isIntersecting ? arv.play().catch(() => { arv.controls = true; }) : arv.pause(); }, { threshold: .35 }).observe(arv);
+}
+
+// ---- boot ----
+readPalette();
+const live = !reduceQ.matches && setupGL();
+if (!live) gl = null;
+resize(true);
+if (live) requestAnimationFrame(start);      // let the words paint first; the land fades in on its own first frame
+addEventListener('resize', () => { resize(); });
+document.fonts?.ready.then(() => { measureKnockout(); if (!gl || reduceQ.matches) drawStill(); });
+document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+if ('IntersectionObserver' in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; visible ? start() : stop(); }).observe(canvas);
+darkQ.addEventListener?.('change', () => { readPalette(); if (!gl || reduceQ.matches) drawStill(); });
+reduceQ.addEventListener?.('change', () => { if (reduceQ.matches) { stop(); drawStill(); } else { stillBox.textContent = ''; if (!gl && setupGL()) resize(true); start(); } });
+canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); stop(); });
+canvas.addEventListener('webglcontextrestored', () => { if (setupGL()) { resize(true); start(); } });
 })();
 </script>
 </body>

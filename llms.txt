@@ -7,7 +7,7 @@
 - Mobile apps: from $4,500, four to eight weeks. One build for iOS and Android, sharing code with the website.
 - APIs: from $1,200, two to four weeks. Connects booking systems, POS and websites.
 - Augmented reality: quoted per project.
-- Prices are in US dollars, tax included. Florin at the official rate of ƒ1.79 per US$1. Full list: https://arubawebstudio.com/pricing/
+- Prices are in US dollars, tax included. Florin at the official rate of ƒ1.79 per US$1. Full list: https://arubawebstudio.com/#prices
 
 ## How a project works
 1. Tell us what the business does (email or call).

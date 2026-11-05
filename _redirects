@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects. The price list moved into the one page on 5 Nov 2026: same prices, at /#prices.
+/pricing /#prices 301
+/pricing/ /#prices 301
+/pricing/index.html /#prices 301

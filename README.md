@@ -5,16 +5,18 @@ is deliberate: it loads instantly, cannot break at deploy time, and demonstrates
 thing we sell.
 
 ```
-index.html          the whole site (HTML, CSS and ~60 lines of JS inline)
+index.html          the whole site on one page since 5 Nov 2026 (was demo C): hero with the live contour
+                    land (WebGL, inline), Work, How it works, Prices, Contact. Direction: agency/demos/c-DIRECTION.md
 404.html            "page not found"; Cloudflare Pages serves it with status 404 for any unknown address
-pricing/            the price list: US$ and ƒ, tax included (Victor, 31 Oct); SF Pro stack, no JS
-wind.js             the divi-divi in the trade wind (canvas), colours from CSS vars
+_redirects          /pricing, /pricing/ -> /#prices (301): the price list moved into the page, same prices
+check.py            the one check: old URLs, 404, Google basics, phone + laptop, WhatsApp brief, outside links
+assets/             Familjen Grotesk + Martian Mono (woff2, OFL, Latin-1 subsets), og.jpg (1200x630 card)
 work/v2/            every image the page uses: AVIF + WebP at two widths, the AR loop
 brand/              the design system: tokens, theme book, contrast check
   logo/             the vector marks and lockups
 favicon.ico         built from the small-size mark
 icon-*.png          32/48/180/192/512 + small-size variants
-og-image.png        1200x630 social card
+og-image.png        the old social card, kept so its URL still answers (pages use assets/og.jpg)
 site.webmanifest    installable web app (relative paths: works on a subpath)
 llms.txt            plain-text summary of offer, prices and live work for AI search
 Caddyfile           TLS + redirects + caching (VPS path, dormant)
@@ -58,10 +60,11 @@ python3 -m http.server 8000
 
 ## This repo is public, and it is the website
 
-A `CNAME` file was added, which means GitHub Pages serves this repository at
-arubawebstudio.com. Two consequences worth holding onto:
+Cloudflare Pages serves this repository at arubawebstudio.com (since 28 Oct 2026; GitHub Pages
+only redirects the old github.io address). Two consequences worth holding onto:
 
-**Pages serves the whole repo, not just `index.html`.** Every file committed here
+**Pages serves the whole repo, not just `index.html`.** Every file committed here (except
+`Caddyfile`, `deploy.sh` and `CNAME`, which the deploy leaves out)
 is reachable as a URL on the studio's own domain. That is why the studio's
 operating machinery — the prospect list, pricing, cold-email templates, memory —
 lives in the private repo under `system/studio/` and not here. The test for
@@ -74,9 +77,11 @@ does today, and the empty file means nothing here ever has to.
 
 ## Deploy
 
-Two paths exist and only one is live.
-
-**GitHub Pages — live.** Push to `main` and it publishes. Nothing else to do.
+**Cloudflare Pages, project `arubawebstudio` — live.** A push alone is not live. Push to `main`, then
+`sudo -u openclaw /home/openclaw/tools/deploy-arubawebstudio.sh` (wrangler uploads `origin/main`), then
+`python3 check.py` against https://arubawebstudio.com/. Roll back by promoting the previous deployment
+(Cloudflare dashboard, Pages, arubawebstudio, Deployments, "Rollback to this deployment", or the API's
+`.../deployments/<id>/rollback`). `.github/workflows/brand.yml` is the brand checks, not a deploy.
 
 **The VPS — set up, not in use.** `system/vps/deploy-agent.sh` in the private
 repo installs a systemd timer that pulls this branch over HTTPS and runs
@@ -133,26 +138,24 @@ them. Add them when a client asks.
 **Prices published.** Most studios hide them. Publishing filters out people who were
 never going to pay, and starts every conversation past the awkward part.
 
-**Day and night.** The page follows the system theme. Night is the original
-navy and amber; day is the brand's cream and sea blue, and the tree in the
-hero follows (wind.js reads `--tree`, `--sky-*`, `--sun-*`).
+**Day and night.** The page follows the system theme: night navy with limestone type and amber only on the
+button, day limestone with ink. The land in the hero reads its colours from the same CSS variables.
 
-**The lean.** Phones in the work rail lean downwind like the divi-divi and
-stand straight as they reach the middle (CSS scroll-driven animation, inline
-view timeline). No JS. Off under reduced motion and where unsupported.
+**The land.** The hero's contours are WebGL, drawn from a height field; they rise once on load, drift with the
+wind, lift under a finger, and stop when the hero scrolls away or the tab hides. No WebGL or reduced motion =
+a still SVG frame in the same composition. Below the hero the land is the real Aruba (Copernicus DEM GLO-30,
+OpenStreetMap coastline), drawn once into static paths; credits are in the footer.
 
-**The wind waits.** The tree draws one still frame at once and starts moving
-about four seconds after load (or when touched), and drops frames on a slow
-phone. A continuous canvas from the first frame kept Lighthouse TBT swinging
-between 20 ms and 5 s on this machine; with the wait it holds at ~100 ms.
+**Plain static, any host.** No build step, every URL relative (404.html uses absolute ones, because it is
+served at any depth), so the same folder serves from Cloudflare Pages or a subpath preview.
 
-**Plain static, any host.** No build step, every URL relative, so the same
-folder serves from GitHub Pages, Cloudflare Pages or a subpath preview.
+**Fonts.** One type family per site, chosen for the brand (Victor, 1 Nov: "every website different"): Familjen
+Grotesk for everything, Martian Mono for survey notes and labels, self-hosted, about 23 KB together. The logo
+lockups keep their embedded Bodoni wordmark because a logo is artwork.
 
-**No webfonts at all.** Every page sets type in Apple's SF Pro from the visitor's
-device (`-apple-system` stack, Victor 29 and 31 Oct), so there is no font file,
-no font request and no swap. Bodoni Moda and Archivo were retired on 31 Oct; the
-logo lockups keep their embedded Bodoni wordmark because a logo is artwork.
+**The email stays a plain link.** Cloudflare's Email Address Obfuscation is on for the zone and rewrites every
+`mailto:` into `/cdn-cgi/l/email-protection` plus an injected script. The footer address sits between
+`<!--email_off-->` markers so it stays a real link with nothing injected.
 
 **AR led with, not buried.** It is the one thing on this page a competitor in this
 market probably cannot match. It belongs in the first paragraph.
