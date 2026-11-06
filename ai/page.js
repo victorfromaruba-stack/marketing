@@ -66,9 +66,9 @@
   // moves the key under the finger between press and release, so the tap missed (6 Nov, found by the check). While the
   // key is held, blur checks wait; sending checks every field anyway.
   let pressing = false;
-  button.addEventListener('pointerdown', () => { pressing = true; });
-  addEventListener('pointerup', () => setTimeout(() => { pressing = false; }), true);
-  addEventListener('pointercancel', () => { pressing = false; }, true);
+  button.addEventListener('pointerdown', () => { pressing = true; }, { passive: true });
+  addEventListener('pointerup', () => setTimeout(() => { pressing = false; }), { capture: true, passive: true });
+  addEventListener('pointercancel', () => { pressing = false; }, { capture: true, passive: true });
   for (const key of ['name', 'whatsapp', 'email']) {
     el[key].addEventListener('blur', () => { if (!pressing && (el[key].value.trim() || flagged(key))) check(key); });
     el[key].addEventListener('input', () => { if (flagged(key)) check(key); });

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AI Courses Aruba: build your own AI, then give it a job</title>
-<meta name="description" content="Small-group AI courses in Aruba, taught in person. Level 1 starts Tuesday 24 November, 18:30 to 20:30, ƒ225 for the first group. Put your name down.">
+<meta name="description" content="Small-group AI courses in Aruba, taught in person. Level 1 starts Tuesday 24 November, 18:30 to 20:30, ƒ175. Put your name down.">
 <link rel="canonical" href="https://arubawebstudio.com/ai/">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#D7DADE">
@@ -41,12 +41,12 @@
       "@type": "Course",
       "@id": "https://arubawebstudio.com/ai/#level-1",
       "name": "Level 1: AI basics that save you hours",
-      "description": "Four evenings of 2 hours in a small group, in person in Aruba. No code and no installs: you learn to write, read, sort and check with the AI tools you already have on your phone. The first group pays ƒ225 in cash at session 1.",
+      "description": "Four evenings of 2 hours in a small group, in person in Aruba. No code and no installs: you learn to write, read, sort and check with the AI tools you already have on your phone. You pay ƒ175 in cash at session 1.",
       "url": "https://arubawebstudio.com/ai/#level-1",
       "provider": { "@id": "https://arubawebstudio.com/ai/#courses" },
       "inLanguage": "en",
       "timeRequired": "PT8H",
-      "offers": { "@type": "Offer", "category": "Paid", "price": "225", "priceCurrency": "AWG", "url": "https://arubawebstudio.com/ai/#join" },
+      "offers": { "@type": "Offer", "category": "Paid", "price": "175", "priceCurrency": "AWG", "url": "https://arubawebstudio.com/ai/#join" },
       "hasCourseInstance": {
         "@type": "CourseInstance",
         "courseMode": "Onsite",
@@ -199,9 +199,9 @@ h3{font-size:22px;line-height:1.2;letter-spacing:-.012em}
 .hero{
   position:relative;isolation:isolate;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;
   padding:max(22px,env(safe-area-inset-top)) max(24px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) var(--pad);
-  touch-action:pinch-zoom;-webkit-tap-highlight-color:transparent;
+  touch-action:pan-y pinch-zoom;-webkit-tap-highlight-color:transparent;   /* scrolls from the first paint, before any script has run */
 }
-.hero.scrolls{touch-action:pan-y pinch-zoom}
+.hero.fits{touch-action:pinch-zoom}   /* field.js adds this only when the whole page fits the screen, so a vertical stroke can draw */
 #field,.still{position:absolute;inset:0;width:100%;height:100%;z-index:-1;display:block}
 #field{opacity:0;transition:opacity .4s var(--ease-out)}
 #field.on{opacity:1}
@@ -490,7 +490,7 @@ h1 span{display:block}
             <h3 id="l1-h"><span class="soft">Level 1</span> AI basics that save you hours</h3>
             <p class="meta">4 evenings of 2 hours. No code, no installs. 18+</p>
             <p class="what">You learn to write, read, sort and check with the AI tools you already have on your phone.</p>
-            <p class="price"><b>ƒ225</b><span>first group, paid in cash at session&nbsp;1. Then ƒ295.</span></p>
+            <p class="price"><b>ƒ175</b><span>paid in cash at session&nbsp;1.</span></p>
             <p class="fine">If session 1 isn’t for you, tell me before session 2 and you get your money back.</p>
           </div>
           <div class="body">
@@ -501,7 +501,7 @@ h1 span{display:block}
               <li><span class="key a" aria-hidden="true"><span class="n">4</span></span><span><b>Your own saved assistant</b><span class="t">Plus one weekly task of yours, done start to finish</span></span></li>
             </ol>
             <dl class="specs">
-              <div><dt class="silk">First group</dt><dd>Tue 24 Nov, Thu 26 Nov, Tue 1 Dec and Thu 3 Dec, 18:30 to 20:30</dd></div>
+              <div><dt class="silk">Dates</dt><dd>Tue 24 Nov, Thu 26 Nov, Tue 1 Dec and Thu 3 Dec, 18:30 to 20:30</dd></div>
               <div><dt class="silk">You leave with</dt><dd>Your best prompts, a saved assistant that knows your business, and 30 days of questions in our WhatsApp group</dd></div>
               <div><dt class="silk">You need</dt><dd>A phone or laptop and a free ChatGPT, Claude or Gemini account. We set it up together.</dd></div>
             </dl>
@@ -512,7 +512,7 @@ h1 span{display:block}
             <h3 id="l2-h"><span class="soft">Level 2</span> Set up your own assistant</h3>
             <p class="meta">4 evenings of 2.5 hours, plus 1 hour 1:1. 18+</p>
             <p class="what">You install a personal AI assistant on a computer you control, and talk to it from your phone.</p>
-            <p class="price"><b>ƒ450</b><span>first group. Then ƒ595.</span></p>
+            <p class="price"><b>ƒ350</b></p>
           </div>
           <div class="body">
             <div class="row" style="--n:5" aria-hidden="true"><span class="key off b"><span class="n">1</span></span><span class="key off b"><span class="n">2</span></span><span class="key off b"><span class="n">3</span></span><span class="key off b"><span class="n">4</span></span><span class="key off b"><span class="n">1:1</span></span></div>
@@ -527,7 +527,7 @@ h1 span{display:block}
             <h3 id="l3-h"><span class="soft">Level 3</span> Build your first agents</h3>
             <p class="meta">5 evenings of 2.5 hours. 18+</p>
             <p class="what">You build an agent that does one real job for you every week, keeps a log, and tells you when it fails.</p>
-            <p class="price"><b>ƒ625</b><span>first group. Then ƒ795.</span></p>
+            <p class="price"><b>ƒ475</b></p>
           </div>
           <div class="body">
             <div class="row" style="--n:5" aria-hidden="true"><span class="key off c"><span class="n">1</span></span><span class="key off c"><span class="n">2</span></span><span class="key off c"><span class="n">3</span></span><span class="key off c"><span class="n">4</span></span><span class="key off c"><span class="n">5</span></span></div>
@@ -541,8 +541,8 @@ h1 span{display:block}
       <div class="also">
         <p><b>Just you, or your whole team?</b> If a group doesn’t suit you, I can set it up with you one to one. Companies can book a half-day workshop at their office, built around their own tasks. It ends with a one-page AI policy the team can follow.</p>
         <dl>
-          <div><dt>1:1 setup, 2 hours</dt><dd><b>ƒ275</b> at launch, then ƒ350</dd></div>
-          <div><dt>Company workshop, half a day, up to 12 people</dt><dd><b>ƒ1,500</b> at launch, then ƒ1,950</dd></div>
+          <div><dt>1:1 setup, 2 hours</dt><dd><b>ƒ195</b></dd></div>
+          <div><dt>Company workshop, half a day, up to 12 people</dt><dd><b>ƒ1,250</b></dd></div>
         </dl>
       </div>
     </div>
@@ -573,9 +573,9 @@ h1 span{display:block}
         <details><summary>Do I need to know how to code?</summary><p>Not for Level 1. Level 2 means typing a few commands, and I’ll walk you through each one. Level 3 is where you build things, with Claude Code doing most of the writing.</p></details>
         <details><summary>Which language are the classes in?</summary><p>The tools and handouts are in English. In the room we can talk in Papiamento, Spanish or English. The AI handles English and Spanish well, and its Papiamento needs checking, which we practise.</p></details>
         <details><summary>Mac or Windows?</summary><p>Level 1 works on anything, including a phone. Level 2 needs a Mac, a Windows 11 laptop or a Linux machine you’re allowed to install software on. A locked work laptop won’t do. If yours can’t run it, you can rent a small server in your own name for the length of the course.</p></details>
-        <details><summary>How do I pay?</summary><p>The first Level 1 group pays ƒ225 in cash at session 1. If session 1 isn’t for you, tell me before session 2 and you get your money back.</p></details>
+        <details><summary>How do I pay?</summary><p>Level 1 is ƒ175, paid in cash at session 1. If session 1 isn’t for you, tell me before session 2 and you get your money back.</p></details>
         <details><summary>Is there anything to pay on top?</summary><p>Not for Level 1: we use free accounts. For Levels 2 and 3 you need your own Claude API account, paid by you, with a hard monthly limit that you choose before anything runs. If you’d rather use a small rented server than your laptop, you rent it in your own name for a few dollars a month.</p></details>
-        <details><summary>When and where?</summary><p>The first Level 1 group meets on Tue 24 Nov, Thu 26 Nov, Tue 1 Dec and Thu 3 Dec, 18:30 to 20:30, in person in Aruba. The place goes to the list first, before anywhere else.</p></details>
+        <details><summary>When and where?</summary><p>Level 1 meets on Tue 24 Nov, Thu 26 Nov, Tue 1 Dec and Thu 3 Dec, 18:30 to 20:30, in person in Aruba. The place goes to the list first, before anywhere else.</p></details>
       </div>
     </div>
   </section>
@@ -584,7 +584,7 @@ h1 span{display:block}
     <div class="wrap">
       <div class="copy">
         <h2 id="join-h">Put your name down.</h2>
-        <p class="lede">Groups are small. The list hears about dates first, and the first group of each level pays the lower price.</p>
+        <p class="lede">Groups are small. The list hears about dates first.</p>
         <div class="taster plate">
           <span class="seg" role="img" aria-label="14 November"><svg viewBox="-2 -1 106 38" aria-hidden="true"><path transform="translate(0 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-off)"/><path transform="translate(0 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(0 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(0 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-off)"/><path transform="translate(0 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(0 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(0 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-off)"/><path transform="translate(25 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-off)"/><path transform="translate(25 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-off)"/><path transform="translate(25 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(25 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-on)"/><rect x="50" y="32.6" width="3.4" height="3.4" fill="var(--seg-on)"/><path transform="translate(55 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(55 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(55 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(80 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(80 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-off)"/></svg></span>
           <p><b>Free 45-minute taster, Sat 14 Nov</b><span>See one thing built live before you decide. Time and place go to the list first.</span></p>

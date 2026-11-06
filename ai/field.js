@@ -39,6 +39,7 @@
   let stepIdx = -1, nextAt = 0, stepDur = 130, chase = -1;
   let gl = null, ext = null, P = null, quad = null, inst = null, data = null, colors = null, swGL = false;
   let running = false, raf = 0, timer = 0, inView = true, reduced = reduceMq.matches, scrolls = false;
+  let dprCap = 2;                          // the governor lowers it (see "the governor" below)
 
   // A key is unlit (the Pattern "step not open yet") until it lands in its step; then it takes its bank colour.
   const mk = (c, r) => ({ col: c, row: r, bank: ((c / 4) | 0) % 4, ox: 0, oy: 0, or: 0, os: 0, m: 0, mFrom: 0, learnAt: -1e9,
@@ -297,7 +298,7 @@ float on=1.-step(.5,abs(cell.x-uChase));float a=mix(uSlotA,1.,on)*cov*(1.-uFogK*
       else rel(el.getBoundingClientRect());
     }
     scrolls = document.documentElement.scrollHeight > innerHeight + 2;
-    hero.classList.toggle('scrolls', scrolls);
+    hero.classList.toggle('fits', !scrolls);
   }
 
   function measure() {
@@ -308,7 +309,7 @@ float on=1.-step(.5,abs(cell.x-uChase));float a=mix(uSlotA,1.,on)*cov*(1.-uFogK*
     W = w; H = h; cols = nc; cw = W / cols; ch = cw * 1.16; rows = Math.ceil(H / ch) + 1; oy = (H - rows * ch) / 2;
     kw = cw * 0.64; kh = ch * 0.72; soft = cw * 0.55; pad = cw * 0.55;
     stepDur = (stepIdx >= cols * PASSES || reduced ? BAR_PLAY : BAR_LEARN) / cols;
-    dpr = Math.min(devicePixelRatio || 1, swGL ? 1 : 2, Math.sqrt(4.2e6 / Math.max(1, W * H)));
+    dpr = Math.min(devicePixelRatio || 1, swGL ? 1 : dprCap, Math.sqrt(4.2e6 / Math.max(1, W * H)));
     if (canvas.tagName === 'CANVAS') { canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); dpr = canvas.width / W; }
     measureWords();
     return changed;
@@ -321,14 +322,53 @@ float on=1.-step(.5,abs(cell.x-uChase));float a=mix(uSlotA,1.,on)*cov*(1.-uFogK*
     if (!reduced) tick(t);
     const busy = render(t);
     if (!running) return;
+    govern(t, busy || drag);
     if (busy || drag) raf = requestAnimationFrame(frame);
     else timer = setTimeout(() => { timer = 0; raf = requestAnimationFrame(frame); }, Math.max(0, nextAt - now()));
   }
   function start() {
     if (running || FRAMES || reduced || !inView || document.hidden || !gl) return;
-    running = true; frame();
+    running = true; gov.chained = false; frame();
   }
-  function stop() { running = false; cancelAnimationFrame(raf); clearTimeout(timer); raf = timer = 0; }
+  function stop() { running = false; gov.chained = false; cancelAnimationFrame(raf); clearTimeout(timer); raf = timer = 0; }
+
+  /* ---------- the governor: when frames come slowly, the field stops asking for more ----------
+     A slow phone, or Low Power Mode (Safari caps animation at 30 fps there), makes the 60 fps arc stutter. Only frames that
+     followed straight on from the last one count (the one-frame-per-step idle ones are slow by design). When the median of
+     twelve of them is over 24 ms (at least six of the twelve are slow; one hiccup cannot do it; four are enough when frames are so slow that
+     twelve would take half a second) the learning arc ends at once: the keys ease into their steps and the page goes quiet.
+     If frames are still slow later (a finger drawing), the canvas drops to 1.5x, then 1x. data-slow on the hero says which, data-slow-at when. */
+  const GOV_N = 12, GOV_MIN = 4, GOV_SPAN = 500, GOV_MS = 24, GOV_DPR = [2, 2, 1.5, 1];
+  const gov = { dts: [], span: 0, last: 0, chained: false, level: 0 };
+  function govern(t, next) {
+    if (gov.chained) {
+      const dt = Math.min(t - gov.last, 250);   // a very slow frame counts as slow, but one stall cannot fill the window alone
+      gov.dts.push(dt); gov.span += dt;
+      if (gov.dts.length >= GOV_N || (gov.dts.length >= GOV_MIN && gov.span >= GOV_SPAN)) {
+        const s = gov.dts.sort((a, b) => a - b), med = s[s.length >> 1];
+        gov.dts.length = gov.span = 0;
+        if (med > GOV_MS && gov.level < GOV_DPR.length - 1) slower(t);
+      }
+    }
+    gov.last = t; gov.chained = next;
+  }
+  function slower(t) {
+    hero.dataset.slow = ++gov.level; hero.dataset.slowAt = Math.round(t);
+    if (gov.level === 1) settle(t);
+    else { dprCap = GOV_DPR[gov.level]; measure(); render(now()); }   // a resized canvas is blank until drawn
+  }
+  // The learned state, reached with the engine's own ease (a key landing in its step): strays go, notes still to come appear.
+  function settle(ts) {
+    for (const k of keys) {
+      if (k.dieAt) continue;
+      if (k.stray) { k.dieAt = ts; continue; }
+      if (k.hidden) { k.hidden = false; k.bornAt = ts; k.mFrom = 0; }
+      else k.mFrom = mess(k, ts);                 // from where it is now, so a finished key does not jump back
+      k.m = 0; k.learnAt = ts; k.li = k.curve.length;
+      if (k.litAt > ts) k.litAt = ts + SNAP * 0.6;
+    }
+    stepIdx = Math.max(stepIdx, cols * PASSES); stepDur = BAR_PLAY / cols;
+  }
   function wake() {
     if (!gl) return;
     if (FRAMES) return;
@@ -378,7 +418,7 @@ float on=1.-step(.5,abs(cell.x-uChase));float a=mix(uSlotA,1.,on)*cov*(1.-uFogK*
     if (e.pointerType === 'touch' && scrolls) { held = { id: e.pointerId, x, y }; return; }
     down(x, y);
     if (drag && !scrolls && hero.setPointerCapture) try { hero.setPointerCapture(e.pointerId); } catch (_) {}
-  });
+  }, { passive: true });   // passive: none of these ever calls preventDefault, so a touch never has to wait for them before it can scroll
   hero.addEventListener('pointermove', e => {
     const [x, y] = local(e);
     if (held && e.pointerId === held.id) {
@@ -387,9 +427,9 @@ float on=1.-step(.5,abs(cell.x-uChase));float a=mix(uSlotA,1.,on)*cov*(1.-uFogK*
       return;
     }
     if (drag) move(x, y);
-  });
-  hero.addEventListener('pointerup', e => { if (held && e.pointerId === held.id) { down(held.x, held.y); held = null; } up(); });
-  hero.addEventListener('pointercancel', () => { held = null; up(); });
+  }, { passive: true });
+  hero.addEventListener('pointerup', e => { if (held && e.pointerId === held.id) { down(held.x, held.y); held = null; } up(); }, { passive: true });
+  hero.addEventListener('pointercancel', () => { held = null; up(); }, { passive: true });
 
   /* ---------- no WebGL: the learned pattern as a still drawing in the same place ---------- */
   function still() {
@@ -446,8 +486,8 @@ float on=1.-step(.5,abs(cell.x-uChase));float a=mix(uSlotA,1.,on)*cov*(1.-uFogK*
     start();
     if (FRAMES) window.__ac = {   // the recording and check harness (?frames) drives the clock itself
       at(ms, draw = true) { vt = ms; if (!reduced) tick(vt); if (draw) render(vt); },
-      down(x, y, ms) { vt = ms; down(x, y); }, move(x, y, ms) { vt = ms; move(x, y); }, up() { up(); },
-      info: () => ({ cols, rows, keys: keys.length, alive: keys.filter(k => !k.dieAt && !k.hidden).length, chase, stepIdx, dpr, W, H, fogN, swGL })
+      down(x, y, ms) { vt = ms; down(x, y); }, move(x, y, ms) { vt = ms; move(x, y); }, up() { up(); }, settle(ms) { vt = ms; settle(ms); },
+      info: () => ({ cols, rows, keys: keys.length, alive: keys.filter(k => !k.dieAt && !k.hidden).length, chase, stepIdx, dpr, W, H, fogN, swGL, slow: gov.level })
     };
   }
 })();
