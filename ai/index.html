@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Courses Aruba: build your own AI, then give it a job</title>
+<meta name="description" content="Small-group AI courses in Aruba, taught in person. Level 1 starts Tuesday 24 November, 18:30 to 20:30, ƒ225 for the first group. Put your name down.">
+<link rel="canonical" href="https://arubawebstudio.com/ai/">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#D7DADE">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1216">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AI Courses Aruba">
+<meta property="og:url" content="https://arubawebstudio.com/ai/">
+<meta property="og:title" content="AI Courses Aruba: build your own AI, then give it a job">
+<meta property="og:description" content="Small groups in Aruba, in person. Level 1 starts Tuesday 24 November at 18:30.">
+<meta property="og:image" content="https://arubawebstudio.com/ai/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Step keys in red, orange, yellow and white on brushed aluminium, settled into a pattern, beside the words Build your own AI. Then give it a job.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://arubawebstudio.com/ai/og.jpg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/ac-display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/ac-text.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://arubawebstudio.com/ai/#courses",
+      "name": "AI Courses Aruba",
+      "url": "https://arubawebstudio.com/ai/",
+      "logo": "https://arubawebstudio.com/ai/apple-touch-icon.png",
+      "telephone": "+297 747 7794",
+      "parentOrganization": { "@type": "Organization", "@id": "https://arubawebstudio.com/#studio", "name": "Aruba Webstudio", "url": "https://arubawebstudio.com/" }
+    },
+    {
+      "@type": "Course",
+      "@id": "https://arubawebstudio.com/ai/#level-1",
+      "name": "Level 1: AI basics that save you hours",
+      "description": "Four evenings of 2 hours in a small group, in person in Aruba. No code and no installs: you learn to write, read, sort and check with the AI tools you already have on your phone. The first group pays ƒ225 in cash at session 1.",
+      "url": "https://arubawebstudio.com/ai/#level-1",
+      "provider": { "@id": "https://arubawebstudio.com/ai/#courses" },
+      "inLanguage": "en",
+      "timeRequired": "PT8H",
+      "offers": { "@type": "Offer", "category": "Paid", "price": "225", "priceCurrency": "AWG", "url": "https://arubawebstudio.com/ai/#join" },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "Onsite",
+        "startDate": "2026-11-24",
+        "endDate": "2026-12-03",
+        "courseSchedule": {
+          "@type": "Schedule",
+          "byDay": ["https://schema.org/Tuesday", "https://schema.org/Thursday"],
+          "startTime": "18:30", "endTime": "20:30", "duration": "PT2H",
+          "repeatFrequency": "Weekly", "repeatCount": 2,
+          "startDate": "2026-11-24", "endDate": "2026-12-03", "scheduleTimezone": "America/Aruba"
+        },
+        "location": { "@type": "Place", "name": "Aruba", "address": { "@type": "PostalAddress", "addressCountry": "AW" } },
+        "instructor": { "@type": "Person", "name": "Victor" }
+      }
+    }
+  ]
+}
+</script>
+<!--
+  AI Courses Aruba at arubawebstudio.com/ai. Direction (type, colour, tokens, motion, do and don't):
+  agency/demos/ai-courses-DIRECTION.md in the private agency repo. The hero is the 5 Nov "pattern that learns" (field.js).
+  Facts: agency/ai-courses/PLAN-v1.md, plan.md (prices), PRODUCT.md and the unpublished interest page (site/), read 6 Nov
+  2026. Nothing here is invented: no ages for Level 1, no Level 2 or 3 dates, no numbers of students, no reviews.
+  Fonts: Hubot Sans 600 (width 86) and Mona Sans 420, both by GitHub, SIL Open Font License 1.1, instanced and subset to
+  Latin-1 (5 Nov) plus a florin-only companion each (6 Nov), renamed "AC Display" / "AC Text" because "Hubot" and "Mona"
+  are Reserved Font Names. WhatsApp glyph: Simple Icons, CC0. Everything else is drawn here.
+  Sign-up: page.js posts JSON to the form's data-endpoint; the server side is not in this folder.
+-->
+<style>
+@font-face{font-family:"AC Display";src:url(fonts/ac-display.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"AC Display";src:url(fonts/ac-display-florin.woff2) format("woff2");font-weight:600;font-display:swap;unicode-range:U+0192}
+@font-face{font-family:"AC Text";src:url(fonts/ac-text.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"AC Text";src:url(fonts/ac-text-florin.woff2) format("woff2");font-weight:400;font-display:swap;unicode-range:U+0192}
+/* Metric-matched stand-ins for the moment before the files land, so lines break in the same places. */
+@font-face{font-family:"AC Display Fallback";src:local("Arial Bold"),local("Arial-BoldMT"),local("Liberation Sans Bold");font-weight:600;size-adjust:83.2%;ascent-override:109%;descent-override:32%;line-gap-override:0%}
+@font-face{font-family:"AC Text Fallback";src:local("Arial"),local("ArialMT"),local("Liberation Sans");font-weight:400;size-adjust:101.6%;ascent-override:109%;descent-override:32%;line-gap-override:0%}
+
+/* ── Tokens. Components below never type a colour. Light is the default; dark follows the phone. ── */
+:root{
+  color-scheme:light dark;
+  --panel:#D7DADE; --panel-2:#C9CDD2; --face:#F4F5F6; --ink:#0F1216; --ink-soft:#444A53;
+  --hair:rgb(16 18 22 / .12); --brush:rgb(255 255 255 / .13); --highlight:rgb(255 255 255 / .65); --shadow:216 14% 18%;
+  --key-a:#E4432A; --key-b:#F0891B; --key-c:#F3C417; --key-d:#EEECE6; --key-off:#2B2F36; --keycap:#D7DADE;
+  --on-key:#101216; --on-key-off:#9AA1AB;
+  --led:#FF3A17; --led-hot:#FFD2C4; --led-off:rgb(16 18 22 / .26);
+  --seg-ground:#160E0B; --seg-on:#FF4A24; --seg-off:rgb(255 74 36 / .10);
+  --go:#15171B; --go-ink:#F2F3F5; --go-hover:#23262C; --focus:#101216;
+  /* read by field.js (WebGL cannot see CSS): the printed step LED, the shadow under a key, the light on a key's edge */
+  --slot:#101216; --slot-a:.13; --shade:#272D34; --shade-a:.42; --key-hi:.5; --key-lo:.16;
+  --sh-plate:inset 0 1px 0 var(--highlight), 0 1px 2px hsl(var(--shadow) / .16), 0 18px 32px -20px hsl(var(--shadow) / .45);
+  --sh-well:inset 0 0 0 1px rgb(16 18 22 / .36), inset 0 1px 3px hsl(var(--shadow) / .28);
+  --sh-key:inset 0 1px 0 rgb(255 255 255 / .5), inset 0 -2px 0 rgb(0 0 0 / .14), 0 1px 1px hsl(var(--shadow) / .35), 0 7px 10px -7px hsl(var(--shadow) / .6);
+  --sh-key-down:inset 0 1px 0 rgb(255 255 255 / .4), inset 0 -1px 0 rgb(0 0 0 / .14), 0 0 0 hsl(var(--shadow) / .35), 0 3px 6px -5px hsl(var(--shadow) / .6);
+  --sh-cap:inset 0 1px 0 rgb(255 255 255 / .55), inset 0 -2px 0 rgb(0 0 0 / .1), 0 1px 1px hsl(var(--shadow) / .3), 0 6px 9px -7px hsl(var(--shadow) / .5);
+  --sh-go:inset 0 1px 0 rgb(255 255 255 / .14), inset 0 -2px 0 rgb(0 0 0 / .4), 0 1px 1px hsl(var(--shadow) / .4), 0 10px 16px -10px hsl(var(--shadow) / .8);
+  --f-display:"AC Display","AC Display Fallback",sans-serif; --f-text:"AC Text","AC Text Fallback",sans-serif;
+  --r-key:4px; --r-plate:10px;
+  --ease-out:cubic-bezier(.22,1,.36,1); --d-press:90ms; --d-release:150ms; --d-hover:150ms; --d-sheet:300ms; --d-step:420ms;
+  --grain:repeating-linear-gradient(90deg,var(--brush) 0 1px,transparent 1px 3px);
+  --pad:max(24px,env(safe-area-inset-left));
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --panel:#0F1216; --panel-2:#0A0C10; --face:#181C22; --ink:#EDEFF1; --ink-soft:#A3AAB4;
+    --hair:rgb(237 239 242 / .12); --brush:rgb(255 255 255 / .025); --highlight:rgb(255 255 255 / .06); --shadow:220 30% 2%;
+    --key-d:#DAD8D2; --key-off:#252A31; --keycap:#1C2027; --led-off:rgb(16 18 22 / .45);
+    --go:#F0F1F3; --go-ink:#101216; --go-hover:#FFFFFF; --focus:#EDEFF2;
+    --slot:#FFFFFF; --slot-a:.06; --shade:#030507; --shade-a:.72; --key-hi:.18; --key-lo:.34;
+    --sh-plate:inset 0 1px 0 var(--highlight), 0 1px 2px hsl(var(--shadow) / .6), 0 18px 32px -20px hsl(var(--shadow) / .9);
+    --sh-well:inset 0 0 0 1px rgb(237 239 242 / .3), inset 0 1px 3px rgb(0 0 0 / .6);
+    --sh-cap:inset 0 1px 0 rgb(255 255 255 / .07), inset 0 -2px 0 rgb(0 0 0 / .4), 0 1px 1px rgb(0 0 0 / .5);
+    --sh-go:inset 0 1px 0 rgb(255 255 255 / .6), inset 0 -2px 0 rgb(0 0 0 / .16), 0 1px 1px hsl(var(--shadow) / .6), 0 10px 16px -10px hsl(var(--shadow) / .9);
+  }
+}
+
+/* ── Base ── */
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}   /* a component's own display (the form is a grid) must never beat hidden */
+html{background:var(--panel);-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:76px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  margin:0;min-height:100svh;color:var(--ink);background:var(--panel) var(--grain);
+  font:400 17px/1.5 var(--f-text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-synthesis:none;caret-color:var(--led);
+}
+::selection{background:var(--key-c);color:var(--on-key)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;margin:0;text-wrap:balance}
+p,li,dd{text-wrap:pretty}
+p,ol,ul,dl,dd,figure{margin:0}
+b,strong,dt{font-family:var(--f-display);font-weight:600}
+a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px;text-decoration-color:color-mix(in srgb,currentColor 40%,transparent)}
+@media (hover:hover){a:hover{text-decoration-color:currentColor}}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;z-index:20;display:flex;align-items:center;min-height:44px;padding:0 16px;border-radius:var(--r-key);background:var(--go);color:var(--go-ink);font:600 16px/1 var(--f-display);text-decoration:none}
+.skip:focus{top:12px}
+
+.wrap{width:100%;max-width:1440px;margin-inline:auto;padding-inline:var(--pad) max(24px,env(safe-area-inset-right))}
+section{padding-block:72px}
+h2{font-size:clamp(38px,1.5rem + 3.6vw,72px);line-height:.98;letter-spacing:-.028em;max-width:15ch}
+h3{font-size:22px;line-height:1.2;letter-spacing:-.012em}
+.lede{margin-top:20px;max-width:36ch;font-size:19px;line-height:1.45;color:var(--ink-soft)}
+.soft{color:var(--ink-soft)}
+.silk{font:600 11.5px/1.2 var(--f-display);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft)}
+.plate{background:var(--face);border-radius:var(--r-plate);box-shadow:var(--sh-plate)}
+
+/* ── The black key: the one primary action. Its LED is the only light on it. ── */
+.go{
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:56px;padding:0 26px 0 22px;
+  border:0;border-radius:var(--r-key);background:var(--go);color:var(--go-ink);box-shadow:var(--sh-go);cursor:pointer;
+  font:600 17px/1 var(--f-display);letter-spacing:.01em;text-decoration:none;white-space:nowrap;-webkit-tap-highlight-color:transparent;
+  transition:transform var(--d-release) var(--ease-out),background-color var(--d-hover) var(--ease-out);
+}
+.led{flex:none;width:12px;height:4px;border-radius:1px;background:radial-gradient(ellipse at 50% 40%,var(--led-hot) 0 18%,var(--led) 60%);box-shadow:0 1px 1px rgb(0 0 0 / .25)}
+.go:active{transform:translateY(1px) scale(.98);transition-duration:var(--d-press)}
+@media (hover:hover){.go:hover{background-color:var(--go-hover)}}
+
+/* ── Keys: colour says where in the course (Level 1 red, 2 orange, 3 yellow), the LED says done or now ── */
+.key{position:relative;display:block;flex:none;width:44px;height:48px;border-radius:var(--r-key);background:var(--k,var(--keycap));color:var(--on-key);box-shadow:var(--sh-key)}
+.key.a{--k:var(--key-a)} .key.b{--k:var(--key-b)} .key.c{--k:var(--key-c)} .key.d{--k:var(--key-d)}
+.key .n{position:absolute;left:7px;top:6px;font:600 12px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.key::after{content:"";position:absolute;left:50%;bottom:6px;width:12px;height:4px;margin-left:-6px;border-radius:1px;background:var(--led-off);box-shadow:inset 0 1px 1px rgb(0 0 0 / .25)}
+.key.lit::after{background:radial-gradient(ellipse at 50% 40%,var(--led-hot) 0 22%,var(--led) 64%);box-shadow:0 1px 1px rgb(0 0 0 / .25)}
+.key.off{--k:var(--key-off);color:var(--on-key-off);box-shadow:inset 0 1px 0 rgb(255 255 255 / .08),inset 0 -2px 0 rgb(0 0 0 / .3),0 1px 1px hsl(var(--shadow) / .35),0 6px 9px -7px hsl(var(--shadow) / .6)}
+.key.off::after{background:rgb(255 255 255 / .07)}
+.key.off.b::before,.key.off.c::before{content:"";position:absolute;inset:0 0 auto;height:2px;border-radius:var(--r-key) var(--r-key) 0 0;background:var(--bank);opacity:.9}
+.key.off.b{--bank:var(--key-b)} .key.off.c{--bank:var(--key-c)}
+
+/* ── The sticky key: after the hero, "Put your name down" stays one tap away until the form is on screen ── */
+.bar{
+  position:fixed;inset:0 0 auto;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  height:calc(60px + env(safe-area-inset-top));padding:env(safe-area-inset-top) max(12px,env(safe-area-inset-right)) 0 var(--pad);
+  background:var(--panel) var(--grain);box-shadow:0 1px 0 var(--hair),0 8px 18px -14px hsl(var(--shadow) / .5);
+  transform:translateY(-104%);visibility:hidden;transition:transform var(--d-sheet) var(--ease-out),visibility 0s linear var(--d-sheet);
+}
+.bar.show{transform:none;visibility:visible;transition:transform var(--d-sheet) var(--ease-out),visibility 0s}
+.bar .go{min-height:44px;padding:0 16px 0 14px;font-size:15px;gap:10px}
+.bar .led{width:10px}
+
+/* ── Brand ── */
+.brand{display:flex;align-items:center;gap:10px;margin:0;font:600 16px/1 var(--f-display);letter-spacing:.01em}
+.mark{width:27px;height:16px;flex:none}
+.mark rect:nth-child(1){fill:var(--key-a)} .mark rect:nth-child(2){fill:var(--key-b)}
+.mark rect:nth-child(3){fill:var(--key-c)} .mark rect:nth-child(4){fill:var(--key-d)}
+
+/* ── 1 Hero: the field, a few big words, one key (the 5 Nov hero, unchanged in look) ── */
+.hero{
+  position:relative;isolation:isolate;min-height:100svh;display:flex;flex-direction:column;overflow:hidden;
+  padding:max(22px,env(safe-area-inset-top)) max(24px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) var(--pad);
+  touch-action:pinch-zoom;-webkit-tap-highlight-color:transparent;
+}
+.hero.scrolls{touch-action:pan-y pinch-zoom}
+#field,.still{position:absolute;inset:0;width:100%;height:100%;z-index:-1;display:block}
+#field{opacity:0;transition:opacity .4s var(--ease-out)}
+#field.on{opacity:1}
+.still g{filter:drop-shadow(0 3px 3px hsl(var(--shadow) / .35))}
+.hero .brand{align-self:flex-start}
+.words{margin-top:auto;padding-top:48px}
+h1{font-size:clamp(46px,min(13.2vw + 3px,9.4svh + 10px),124px);line-height:.95;letter-spacing:-.028em;width:fit-content;max-width:100%}
+h1 span{display:block}
+.note{margin:22px 0 30px;width:fit-content;max-width:100%;color:var(--ink-soft)}
+.note span{display:block;text-wrap:balance}
+.hero .go{width:100%}
+
+/* ── 2 The teacher ── */
+.why .story{margin-top:40px;display:grid;gap:16px;max-width:60ch}
+.jobs{margin-top:48px;display:grid;gap:0}
+.jobs div{display:grid;gap:6px;padding:18px 0;border-top:1px solid var(--hair)}
+.jobs dt{font-size:17px}
+.jobs dd{color:var(--ink-soft);max-width:52ch}
+.why .aside{margin-top:28px;max-width:56ch;color:var(--ink-soft)}
+
+/* ── 3 The first lesson: a lazy request, then four keys ── */
+.lesson{padding-block:56px 80px}
+.prompt{margin-top:40px;padding:22px 20px 24px}
+.prompt .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px}
+.lazy{margin-top:20px;font-size:21px;line-height:1.35;color:var(--ink-soft);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:color-mix(in srgb,var(--ink-soft) 70%,transparent)}
+.parts{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:18px}
+.part{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;align-items:start}
+.part .t{padding-top:3px}
+.part b{display:block;font-size:17px;margin-bottom:2px}
+.part .key::after{transition:background-color 0s}
+.prompt.armed .part:not(.on) .key{--k:var(--keycap)}
+.prompt.armed .part:not(.on) .key::after{background:var(--led-off)}
+.prompt.armed .part .t{transition:color var(--d-hover) var(--ease-out)}
+.prompt.armed .part:not(.on) .t{color:var(--ink-soft)}
+.prompt figcaption{margin-top:24px;padding-top:18px;border-top:1px solid var(--hair);color:var(--ink-soft)}
+.more{display:inline-flex;align-items:center;min-height:44px;margin-top:20px;font:600 17px/1.2 var(--f-display);text-decoration:underline}
+
+/* ── 4 The levels: one instrument, three rows ── */
+.unit{margin-top:40px;padding:4px 0}
+.lvl{padding:24px 20px 26px}
+.lvl + .lvl{border-top:1px solid var(--hair)}
+.lvl h3 .soft{margin-inline-end:.2em}
+.lvl .meta{margin-top:6px;font-size:15px;color:var(--ink-soft)}
+.lvl .what{margin-top:14px;max-width:46ch}
+.sessions{list-style:none;padding:0;margin:20px 0 0}
+.sessions li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:center;min-height:64px;padding:8px 0}
+.sessions li + li{border-top:1px solid var(--hair)}
+.sessions b{display:block;font-size:16px;line-height:1.3}
+.sessions span.t{font-size:15px;line-height:1.4;color:var(--ink-soft)}
+.row{display:grid;grid-template-columns:repeat(var(--n),minmax(0,56px));gap:6px;margin-top:16px}
+.row .key{width:auto;height:38px}
+.row .key .n{font-size:11px;top:5px;left:6px}
+.specs{display:grid;gap:14px;margin-top:22px}
+.specs div{display:grid;gap:4px}
+.specs dd{font-size:16px;max-width:52ch}
+.price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-top:22px}
+.price b{font:400 36px/1 var(--f-text);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.price span{color:var(--ink-soft);font-size:15px}
+.fine{margin-top:10px;font-size:15px;color:var(--ink-soft);max-width:46ch}
+.also{margin-top:36px;display:grid;gap:18px}
+.also > p{max-width:60ch}
+.also dl{display:grid;gap:12px}
+.also dl div{display:grid;gap:4px 16px;align-items:baseline;padding-top:12px;border-top:1px solid var(--hair)}
+.also dd{color:var(--ink-soft)}
+.also dd b{color:var(--ink);font:400 20px/1 var(--f-text);font-variant-numeric:tabular-nums}
+
+/* ── 5 The rules ── */
+.rules ol{list-style:none;padding:0;margin:44px 0 0;display:grid;gap:30px 48px}   /* numbered as the course numbers them (learn./safety, ten rules): a selection */
+.rules li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;align-items:start}
+.rules .key{height:44px}
+.rules li b{display:block;font-size:18px;line-height:1.25;margin:2px 0 4px}
+.rules li span{color:var(--ink-soft)}
+.rules .more{margin-top:36px}
+
+/* ── 6 Questions ── */
+.qa .list{margin-top:36px;max-width:46rem;border-bottom:1px solid var(--hair)}
+.qa details{border-top:1px solid var(--hair)}
+.qa summary{position:relative;display:flex;align-items:center;min-height:60px;padding:14px 48px 14px 0;cursor:pointer;list-style:none;font:600 18px/1.3 var(--f-display);-webkit-tap-highlight-color:transparent}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"";position:absolute;right:8px;top:50%;width:9px;height:9px;margin-top:-7px;border-right:2px solid var(--ink-soft);border-bottom:2px solid var(--ink-soft);transform:rotate(45deg);transition:transform var(--d-release) var(--ease-out)}
+.qa details[open] summary::after{transform:translateY(4px) rotate(-135deg)}
+.qa details p{padding:0 0 20px;max-width:60ch;color:var(--ink-soft)}
+
+/* ── 7 Put your name down ── */
+.join{padding-block:80px 96px}
+.join .copy > p.lede{max-width:34ch}
+.taster{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;margin-top:32px;padding:16px;max-width:30rem}
+.seg{display:block;height:44px;padding:8px 10px;border-radius:6px;background:var(--seg-ground);box-shadow:inset 0 1px 3px rgb(0 0 0 / .6),0 1px 0 rgb(255 255 255 / .5)}
+.seg svg{display:block;height:100%;width:auto}
+.taster b{display:block;font-size:17px;line-height:1.3}
+.taster span{display:block;margin-top:2px;font-size:15px;line-height:1.4;color:var(--ink-soft)}
+.ask{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;margin-top:28px;color:var(--ink-soft)}
+.ask a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--ink);font:600 17px/1.2 var(--f-display);text-decoration:underline}
+.ask svg{width:19px;height:19px;fill:currentColor;flex:none}
+
+.form{margin-top:40px;padding:24px 20px 26px;display:grid;gap:22px}
+.field{display:grid;gap:8px;min-width:0;margin:0;padding:0;border:0}
+.field > label,.field > legend{font:600 15px/1.3 var(--f-display);padding:0}
+.opt{font:400 14px/1.3 var(--f-text);color:var(--ink-soft);margin-inline-start:6px}
+.hint{font-size:14px;line-height:1.4;color:var(--ink-soft)}
+.field input[type=text],.field input[type=tel],.field input[type=email]{
+  width:100%;min-height:52px;padding:12px 14px;border:0;border-radius:var(--r-key);background:var(--panel-2);box-shadow:var(--sh-well);
+  color:var(--ink);font:400 17px/1.3 var(--f-text);-webkit-appearance:none;appearance:none;
+}
+.field input:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.field input[aria-invalid=true]{box-shadow:var(--sh-well),inset 0 0 0 2px var(--led)}
+.err{display:flex;align-items:flex-start;gap:8px;font:400 15px/1.4 var(--f-text);color:var(--ink)}
+.err::before{content:"";flex:none;width:10px;height:4px;margin-top:.55em;border-radius:1px;background:var(--led)}
+.err[hidden]{display:none}
+.picks{display:flex;flex-wrap:wrap;gap:8px;padding-top:2px}
+.pick{position:relative;display:block}
+.pick input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.pick span{
+  position:relative;display:flex;align-items:center;min-height:50px;padding:0 16px 8px;border-radius:var(--r-key);
+  background:var(--k,var(--keycap));color:var(--on-key);box-shadow:var(--sh-cap);font:600 14px/1 var(--f-display);letter-spacing:.01em;
+  transition:transform var(--d-release) var(--ease-out),box-shadow var(--d-release) var(--ease-out);
+}
+.pick.a{--k:var(--key-a)} .pick.b{--k:var(--key-b)} .pick.c{--k:var(--key-c)}
+.pick:not(.a):not(.b):not(.c) span{color:var(--ink)}
+.pick span::after{content:"";position:absolute;left:50%;bottom:7px;width:12px;height:4px;margin-left:-6px;border-radius:1px;background:var(--led-off);box-shadow:inset 0 1px 1px rgb(0 0 0 / .25)}
+.pick input:checked + span{transform:translateY(1px);box-shadow:var(--sh-key-down)}
+.pick input:checked + span::after{background:radial-gradient(ellipse at 50% 40%,var(--led-hot) 0 22%,var(--led) 64%)}
+.pick input:focus-visible + span{outline:2px solid var(--focus);outline-offset:2px}
+.pick input:active + span{transform:translateY(1px) scale(.97);transition-duration:var(--d-press)}
+.field[data-invalid] .pick span{box-shadow:var(--sh-cap),inset 0 0 0 2px var(--led)}
+.field > .check{position:relative;display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;cursor:pointer;font:400 15px/1.45 var(--f-text)}
+.check input{position:absolute;left:0;top:0;width:28px;height:28px;margin:0;opacity:0;cursor:pointer}
+.check .box{position:relative;width:28px;height:28px;border-radius:var(--r-key);background:var(--panel-2);box-shadow:var(--sh-well)}
+.check input:checked + .box{background:var(--go)}
+.check input:checked + .box::after{content:"";position:absolute;left:10px;top:5px;width:6px;height:12px;border-right:2.5px solid var(--go-ink);border-bottom:2.5px solid var(--go-ink);transform:rotate(45deg)}
+.check input:focus-visible + .box{outline:2px solid var(--focus);outline-offset:2px}
+.check input[aria-invalid=true] + .box{box-shadow:var(--sh-well),inset 0 0 0 2px var(--led)}
+.check .t{padding-top:3px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.send{display:grid;gap:14px}
+.send .go{width:100%}
+.go[aria-busy=true] .led{animation:blink calc(var(--d-step) * 2) step-end infinite}
+@keyframes blink{50%{opacity:.25}}
+.status{font-size:15px;line-height:1.45}
+.status:empty{display:none}
+.status[data-kind]{padding:14px 16px;border-radius:var(--r-key);background:var(--panel-2);box-shadow:var(--sh-well)}
+.status a{font-weight:600}
+.sent{margin-top:40px;padding:28px 20px 30px}
+.sent .row{margin:0 0 22px}
+.sent h3{font-size:clamp(28px,1.2rem + 2vw,40px);line-height:1.05;letter-spacing:-.02em;outline:0}
+.sent p{margin-top:12px;max-width:44ch;color:var(--ink-soft)}
+.sent .again{margin-top:18px;min-height:44px;padding:0;border:0;background:none;color:var(--ink);font:600 17px/1.2 var(--f-display);text-decoration:underline;text-underline-offset:.22em;cursor:pointer}
+.sent.play .key::after{animation:land var(--d-step) step-end backwards;animation-delay:calc(200ms + var(--i) * var(--d-step))}
+@keyframes land{from{background:var(--led-off);box-shadow:inset 0 1px 1px rgb(0 0 0 / .25)}}
+
+/* ── Footer ── */
+.foot{padding-block:40px max(44px,env(safe-area-inset-bottom));border-top:1px solid var(--hair);display:grid;gap:14px;font-size:15px;color:var(--ink-soft)}
+.foot .brand{color:var(--ink)}
+.foot p{display:flex;flex-wrap:wrap;gap:4px 18px}
+.foot a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink)}
+
+/* ── Wide screens: one breakpoint, at the hero's ── */
+@media (min-width:900px){
+  .wrap{padding-inline:56px}
+  section{padding-block:112px}
+  .why{padding-top:128px}
+  .hero{padding:44px max(56px,calc((100% - 1328px) / 2)) 56px}
+  .hero .brand{font-size:17px}
+  .words{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,24rem);column-gap:clamp(40px,6vw,104px);align-items:end}
+  h1{grid-row:1 / span 2;font-size:clamp(64px,min(7.6vw,13.5svh),132px)}
+  .note{grid-column:2;margin:0 0 26px}
+  .hero .go{grid-column:2;justify-self:start;width:auto;min-width:17rem}
+  .bar{padding-inline:max(56px,calc((100% - 1328px) / 2))}
+
+  .why .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px}
+  .why h2,.why .lede{grid-column:1 / span 8}
+  .why .story{grid-column:1 / span 5;margin-top:56px;align-content:start}
+  .why .jobs{grid-column:7 / span 6;margin-top:56px}
+  .why .aside{grid-column:7 / span 6}
+
+  .lesson{padding-block:96px 120px}
+  .prompt{padding:32px 36px 34px;margin-top:56px}
+  .lazy{font-size:26px}
+  .parts{grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:30px}
+  .part{grid-template-columns:1fr;gap:14px}
+  .part .key{width:56px;height:60px}
+
+  .unit{margin-top:56px}
+  .lvl{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px;padding:36px 36px 38px}
+  .lvl > .head{grid-column:1 / span 5}
+  .lvl > .body{grid-column:7 / span 6}
+  .lvl > .body > :first-child{margin-top:0}
+  .sessions{margin-top:0}
+  .also{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px;margin-top:48px}
+  .also > p{grid-column:1 / span 5}
+  .also dl{grid-column:7 / span 6}
+  .also dl div{grid-template-columns:minmax(0,1fr) auto}
+  .also dd{text-align:right}
+
+  .rules .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px;align-items:start}
+  .rules .head{grid-column:1 / span 4;position:sticky;top:104px}
+  .rules ol{grid-column:6 / span 7;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:6px}
+  .rules .more{grid-column:6 / span 7}
+  .rules h2{font-size:clamp(38px,1rem + 3vw,60px)}
+
+  .qa .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px}
+  .qa h2{grid-column:1 / span 8}
+  .qa .list{grid-column:6 / span 7;max-width:none;margin-top:48px}
+
+  .join .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px;align-items:start}
+  .join .copy{grid-column:1 / span 5;position:sticky;top:104px}
+  .join{padding-block:120px 136px}
+  .join .form,.join .sent{grid-column:7 / span 6;margin-top:0;padding:32px 32px 34px}
+  .send{grid-template-columns:auto minmax(0,1fr);align-items:center}
+  .send .go{width:auto}
+  .foot{grid-template-columns:auto 1fr;align-items:center;column-gap:48px}
+  .foot p:last-child{justify-content:flex-end}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  #field,.go,.bar,.pick span,.qa summary::after,.prompt .t{transition:none !important}
+  .go[aria-busy=true] .led,.sent.play .key::after{animation:none}
+}
+</style>
+<script src="field.js" defer></script>
+<script src="page.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#join">Skip to the sign-up form</a>
+
+<div class="bar" id="bar" inert>
+  <p class="brand"><svg class="mark" viewBox="0 0 27 16" aria-hidden="true" focusable="false"><rect x="0" y="0" width="5.5" height="16" rx="1.5"/><rect x="7" y="0" width="5.5" height="16" rx="1.5"/><rect x="14" y="0" width="5.5" height="16" rx="1.5"/><rect x="21" y="0" width="5.5" height="16" rx="1.5"/></svg><span>AI Courses Aruba</span></p>
+  <a class="go" href="#join"><span class="led" aria-hidden="true"></span>Put your name down</a>
+</div>
+
+<main id="main">
+  <div class="hero" id="hero">
+    <canvas id="field" aria-hidden="true"></canvas>
+    <p class="brand" data-fog="box"><svg class="mark" viewBox="0 0 27 16" aria-hidden="true" focusable="false"><rect x="0" y="0" width="5.5" height="16" rx="1.5"/><rect x="7" y="0" width="5.5" height="16" rx="1.5"/><rect x="14" y="0" width="5.5" height="16" rx="1.5"/><rect x="21" y="0" width="5.5" height="16" rx="1.5"/></svg>AI Courses Aruba</p>
+    <div class="words">
+      <h1 data-fog="lines"><span>Build your own AI.</span> <span>Then give it a job.</span></h1>
+      <p class="note" data-fog="lines"><span>Small groups in Aruba, in person.</span> <span>Level&nbsp;1 starts Tuesday 24&nbsp;November at&nbsp;18:30.</span></p>
+      <a class="go" data-fog="box" href="#join"><span class="led" aria-hidden="true"></span>Put your name down</a>
+    </div>
+  </div>
+
+  <section class="why" id="teacher" aria-labelledby="why-h">
+    <div class="wrap">
+      <h2 id="why-h">I run my day with AI agents.</h2>
+      <p class="lede">Most of what I teach, I learned by building it for myself and fixing it when it broke.</p>
+      <div class="story">
+        <p>I’m Victor. I work full time in hospitality, and I build websites and apps for Aruba businesses through Aruba Webstudio. Around both, I set up a team of AI agents that run on my own server. They handle the boring, repeatable parts of my week, and they tell me when something needs a person.</p>
+        <p>You don’t need a computer science degree for any of this. You need patience and a few good habits, and I can save you most of the mistakes I made.</p>
+      </div>
+      <dl class="jobs">
+        <div><dt>Every morning</dt><dd>An agent opens a few of the websites I’ve built, the way a visitor would, and writes up anything that’s wrong.</dd></div>
+        <div><dt>All day</dt><dd>Agents read incoming email and messages, pull out what matters, and fill in spreadsheets I used to update by hand.</dd></div>
+        <div><dt>When it matters</dt><dd>A serious problem sends an alert to my phone, so I don’t have to keep checking.</dd></div>
+        <div><dt>Every job</dt><dd>Each agent writes down what it did, so I can read yesterday’s work and catch it when it’s wrong.</dd></div>
+      </dl>
+      <p class="aside">They get things wrong too. A good part of what I teach is how to notice, and the safety rules I follow because I learned them the hard way.</p>
+    </div>
+  </section>
+
+  <section class="lesson" id="lesson" aria-labelledby="lesson-h">
+    <div class="wrap">
+      <h2 id="lesson-h">The first ten minutes change how you use it.</h2>
+      <p class="lede">Most people type the lazy version and get a lazy answer. In session&nbsp;1 you learn to say four things instead.</p>
+      <figure class="prompt plate" aria-labelledby="prompt-cap">
+        <div class="top"><span class="silk">Session 1, exercise 1</span><span class="silk">The message you owe</span></div>
+        <p class="lazy"><span class="sr">The lazy version: </span>write email to supplier late</p>
+        <ol class="parts">
+          <li class="part"><span class="key a lit" aria-hidden="true"><span class="n">1</span></span><span class="t"><b>I am</b>the owner of a snack bar in Noord.</span></li>
+          <li class="part"><span class="key a lit" aria-hidden="true"><span class="n">2</span></span><span class="t"><b>It’s for</b>my bread supplier. I want to keep them.</span></li>
+          <li class="part"><span class="key a lit" aria-hidden="true"><span class="n">3</span></span><span class="t"><b>I want</b>deliveries before 7:30, or I’ll have to look elsewhere.</span></li>
+          <li class="part"><span class="key a lit" aria-hidden="true"><span class="n">4</span></span><span class="t"><b>Make it</b>short, friendly and firm, as a WhatsApp message.</span></li>
+        </ol>
+        <figcaption id="prompt-cap">The answer to the second version is one you would actually send. Everyone leaves session&nbsp;1 with theirs ready.</figcaption>
+      </figure>
+      <a class="more" href="https://learn.arubawebstudio.com/level-1/session-1/">Read all of session 1 on the course site</a>
+    </div>
+  </section>
+
+  <section class="levels" id="levels" aria-labelledby="levels-h">
+    <div class="wrap">
+      <h2 id="levels-h">Three levels. Start where you are.</h2>
+      <p class="lede">Level&nbsp;1 needs nothing but a phone or a laptop. Levels 2 and 3 are for people who want an assistant of their own.</p>
+      <div class="unit plate">
+        <article class="lvl" id="level-1" aria-labelledby="l1-h">
+          <div class="head">
+            <h3 id="l1-h"><span class="soft">Level 1</span> AI basics that save you hours</h3>
+            <p class="meta">4 evenings of 2 hours. No code, no installs.</p>
+            <p class="what">You learn to write, read, sort and check with the AI tools you already have on your phone.</p>
+            <p class="price"><b>ƒ225</b><span>first group, paid in cash at session&nbsp;1. Then ƒ295.</span></p>
+            <p class="fine">If session 1 isn’t for you, tell me before session 2 and you get your money back.</p>
+          </div>
+          <div class="body">
+            <ol class="sessions">
+              <li><span class="key a" aria-hidden="true"><span class="n">1</span></span><span><b>Your first useful hour</b><span class="t">One real message you’ve been putting off, written in three languages</span></span></li>
+              <li><span class="key a" aria-hidden="true"><span class="n">2</span></span><span><b>Read, sort, check</b><span class="t">Catch the AI’s mistakes, and turn a messy list into a spreadsheet</span></span></li>
+              <li><span class="key a" aria-hidden="true"><span class="n">3</span></span><span><b>Photos, voice and your phone</b><span class="t">Receipts, menus and voice notes</span></span></li>
+              <li><span class="key a" aria-hidden="true"><span class="n">4</span></span><span><b>Your own saved assistant</b><span class="t">Plus one weekly task of yours, done start to finish</span></span></li>
+            </ol>
+            <dl class="specs">
+              <div><dt class="silk">First group</dt><dd>Tue 24 Nov, Thu 26 Nov, Tue 1 Dec and Thu 3 Dec, 18:30 to 20:30</dd></div>
+              <div><dt class="silk">You leave with</dt><dd>Your best prompts, a saved assistant that knows your business, and 30 days of questions in our WhatsApp group</dd></div>
+              <div><dt class="silk">You need</dt><dd>A phone or laptop and a free ChatGPT, Claude or Gemini account. We set it up together.</dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="lvl" id="level-2" aria-labelledby="l2-h">
+          <div class="head">
+            <h3 id="l2-h"><span class="soft">Level 2</span> Set up your own assistant</h3>
+            <p class="meta">4 evenings of 2.5 hours, plus 1 hour 1:1. 18+</p>
+            <p class="what">You install a personal AI assistant on a computer you control, and talk to it from your phone.</p>
+            <p class="price"><b>ƒ450</b><span>first group. Then ƒ595.</span></p>
+          </div>
+          <div class="body">
+            <div class="row" style="--n:5" aria-hidden="true"><span class="key off b"><span class="n">1</span></span><span class="key off b"><span class="n">2</span></span><span class="key off b"><span class="n">3</span></span><span class="key off b"><span class="n">4</span></span><span class="key off b"><span class="n">1:1</span></span></div>
+            <dl class="specs">
+              <div><dt class="silk">You leave with</dt><dd>Your own assistant (OpenClaw and Claude) running and reachable from your phone, a written record of your setup, and a safety checklist</dd></div>
+              <div><dt class="silk">You need</dt><dd>Level 1 or regular AI use, a laptop you’re allowed to install software on, and your own Claude API account with a monthly limit you set</dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="lvl" id="level-3" aria-labelledby="l3-h">
+          <div class="head">
+            <h3 id="l3-h"><span class="soft">Level 3</span> Build your first agents</h3>
+            <p class="meta">5 evenings of 2.5 hours. 18+</p>
+            <p class="what">You build an agent that does one real job for you every week, keeps a log, and tells you when it fails.</p>
+            <p class="price"><b>ƒ625</b><span>first group. Then ƒ795.</span></p>
+          </div>
+          <div class="body">
+            <div class="row" style="--n:5" aria-hidden="true"><span class="key off c"><span class="n">1</span></span><span class="key off c"><span class="n">2</span></span><span class="key off c"><span class="n">3</span></span><span class="key off c"><span class="n">4</span></span><span class="key off c"><span class="n">5</span></span></div>
+            <dl class="specs">
+              <div><dt class="silk">You leave with</dt><dd>One working agent with a schedule, a log, a failure alert and an off switch, and a template for the next one</dd></div>
+              <div><dt class="silk">You need</dt><dd>Level 2 or a working setup of your own, and some comfort with a terminal</dd></div>
+            </dl>
+          </div>
+        </article>
+      </div>
+      <div class="also">
+        <p><b>Just you, or your whole team?</b> If a group doesn’t suit you, I can set it up with you one to one. Companies can book a half-day workshop at their office, built around their own tasks. It ends with a one-page AI policy the team can follow.</p>
+        <dl>
+          <div><dt>1:1 setup, 2 hours</dt><dd><b>ƒ275</b> at launch, then ƒ350</dd></div>
+          <div><dt>Company workshop, half a day, up to 12 people</dt><dd><b>ƒ1,500</b> at launch, then ƒ1,950</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="rules" id="rules" aria-labelledby="rules-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="rules-h">The rules come before the tools.</h2>
+        <p class="lede">An assistant that can act for you can also act against you. These come first in every level.</p>
+      </div>
+      <ol>
+        <li><span class="key" aria-hidden="true"><span class="n">1</span></span><div><b>Keys never go in a chat</b><span>Passwords and API keys live on your machine. You won’t paste them into a message, a screenshot or a shared document.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">2</span></span><div><b>No spending power</b><span>Your agent never gets a card, a bank login or a way to buy things, and every account it uses has a monthly limit.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">3</span></span><div><b>Other people’s data stays out</b><span>Clients, guests, patients and staff don’t go into an AI tool without their agreement. In class we only use made-up data.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">5</span></span><div><b>It asks before it sends</b><span>No messages, posts or deletions without your yes, at least until you’ve watched it work for weeks.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">7</span></span><div><b>You can always switch it off</b><span>You know the one command that stops it, and you can read what it did yesterday.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">10</span></span><div><b>It isn’t open to the internet</b><span>Its dashboard and controls stay private to you. We set up the firewall together and check it from outside.</span></div></li>
+      </ol>
+      <a class="more" href="https://learn.arubawebstudio.com/safety/">Read all 10 rules, as they’re taught</a>
+    </div>
+  </section>
+
+  <section class="qa" id="questions" aria-labelledby="qa-h">
+    <div class="wrap">
+      <h2 id="qa-h">Questions people ask</h2>
+      <div class="list">
+        <details><summary>Do I need to know how to code?</summary><p>Not for Level 1. Level 2 means typing a few commands, and I’ll walk you through each one. Level 3 is where you build things, with Claude Code doing most of the writing.</p></details>
+        <details><summary>Which language are the classes in?</summary><p>The tools and handouts are in English. In the room we can talk in Papiamento, Spanish or English. The AI handles English and Spanish well, and its Papiamento needs checking, which we practise.</p></details>
+        <details><summary>Mac or Windows?</summary><p>Level 1 works on anything, including a phone. Level 2 needs a Mac, a Windows 11 laptop or a Linux machine you’re allowed to install software on. A locked work laptop won’t do. If yours can’t run it, you can rent a small server in your own name for the length of the course.</p></details>
+        <details><summary>How do I pay?</summary><p>The first Level 1 group pays ƒ225 in cash at session 1. If session 1 isn’t for you, tell me before session 2 and you get your money back.</p></details>
+        <details><summary>Is there anything to pay on top?</summary><p>Not for Level 1: we use free accounts. For Levels 2 and 3 you need your own Claude API account, paid by you, with a hard monthly limit that you choose before anything runs. If you’d rather use a small rented server than your laptop, you rent it in your own name for a few dollars a month.</p></details>
+        <details><summary>When and where?</summary><p>The first Level 1 group meets on Tue 24 Nov, Thu 26 Nov, Tue 1 Dec and Thu 3 Dec, 18:30 to 20:30, in person in Aruba. The place goes to the list first, before anywhere else.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="join" id="join" aria-labelledby="join-h">
+    <div class="wrap">
+      <div class="copy">
+        <h2 id="join-h">Put your name down.</h2>
+        <p class="lede">Groups are small. The list hears about dates first, and the first group of each level pays the lower price.</p>
+        <div class="taster plate">
+          <span class="seg" role="img" aria-label="14 November"><svg viewBox="-2 -1 106 38" aria-hidden="true"><path transform="translate(0 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-off)"/><path transform="translate(0 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(0 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(0 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-off)"/><path transform="translate(0 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(0 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(0 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-off)"/><path transform="translate(25 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-off)"/><path transform="translate(25 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-off)"/><path transform="translate(25 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(25 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-on)"/><rect x="50" y="32.6" width="3.4" height="3.4" fill="var(--seg-on)"/><path transform="translate(55 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(55 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(55 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(80 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(80 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-off)"/></svg></span>
+          <p><b>Free 45-minute taster, Sat 14 Nov</b><span>See one thing built live before you decide. Time and place go to the list first.</span></p>
+        </div>
+        <p class="ask"><span>Rather ask first?</span> <a href="https://wa.me/2977477794?text=Hi%20Victor%2C%20a%20question%20about%20AI%20Courses%20Aruba%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Message Victor on WhatsApp</a></p>
+      </div>
+
+      <form class="form plate" id="join-form" data-endpoint="/api/ai-interest" novalidate aria-labelledby="join-h">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" required maxlength="80" aria-describedby="e-name">
+          <p class="err" id="e-name" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-wa">WhatsApp number</label>
+          <p class="hint" id="h-wa">Victor messages you here. An Aruban number needs no +297.</p>
+          <input id="f-wa" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="next" required maxlength="24" aria-describedby="h-wa e-wa">
+          <p class="err" id="e-wa" hidden></p>
+        </div>
+        <fieldset class="field" id="f-int" aria-describedby="e-int">
+          <legend>What are you interested in? <span class="opt">Pick any</span></legend>
+          <div class="picks">
+            <label class="pick a"><input type="checkbox" name="interest" value="Level 1"><span>Level 1</span></label>
+            <label class="pick b"><input type="checkbox" name="interest" value="Level 2"><span>Level 2</span></label>
+            <label class="pick c"><input type="checkbox" name="interest" value="Level 3"><span>Level 3</span></label>
+            <label class="pick"><input type="checkbox" name="interest" value="1:1 setup"><span>1:1 setup</span></label>
+            <label class="pick"><input type="checkbox" name="interest" value="Company workshop"><span>Company workshop</span></label>
+          </div>
+          <p class="err" id="e-int" hidden></p>
+        </fieldset>
+        <div class="field">
+          <label for="f-email">Email <span class="opt">optional</span></label>
+          <input id="f-email" name="email" type="email" autocomplete="email" autocapitalize="off" spellcheck="false" enterkeyhint="done" maxlength="120" aria-describedby="e-email">
+          <p class="err" id="e-email" hidden></p>
+        </div>
+        <div class="field">
+          <label class="check"><input id="f-ok" name="consent" type="checkbox" value="yes" required aria-describedby="e-ok"><span class="box" aria-hidden="true"></span><span class="t">Victor may message me on WhatsApp about AI Courses Aruba. He deletes my details when I ask.</span></label>
+          <p class="err" id="e-ok" hidden></p>
+        </div>
+        <div class="hp" aria-hidden="true" inert><label>Leave this empty <input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+        <div class="send">
+          <button class="go" type="submit"><span class="led" aria-hidden="true"></span><span class="label">Put my name down</span></button>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+
+      <div class="sent plate" id="sent" hidden>
+        <div class="row" style="--n:4" aria-hidden="true"><span class="key a lit" style="--i:0"><span class="n">1</span></span><span class="key a lit" style="--i:1"><span class="n">2</span></span><span class="key a lit" style="--i:2"><span class="n">3</span></span><span class="key a lit" style="--i:3"><span class="n">4</span></span></div>
+        <h3 id="sent-h" tabindex="-1">You’re on the list.</h3>
+        <p>The time and place of the free taster on Sat 14 Nov, and the Level 1 dates, come to your WhatsApp first.</p>
+        <button class="again" type="button" id="again">Put another name down</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <p class="brand"><svg class="mark" viewBox="0 0 27 16" aria-hidden="true" focusable="false"><rect x="0" y="0" width="5.5" height="16" rx="1.5"/><rect x="7" y="0" width="5.5" height="16" rx="1.5"/><rect x="14" y="0" width="5.5" height="16" rx="1.5"/><rect x="21" y="0" width="5.5" height="16" rx="1.5"/></svg>AI Courses Aruba</p>
+  <p><span>Taught by Victor. Part of <a href="/">Aruba Webstudio</a>.</span><a href="https://learn.arubawebstudio.com/">The course site</a><a href="https://wa.me/2977477794">WhatsApp +297 747 7794</a><!--email_off--><a href="mailto:info@arubawebstudio.com">info@arubawebstudio.com</a><!--/email_off--></p>
+</footer>
+</body>
+</html>
