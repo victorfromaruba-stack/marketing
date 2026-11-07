@@ -106,7 +106,10 @@ with sync_playwright() as pw:
             errs.clear()
             try:
                 with pg.expect_navigation(url=re.compile(r'whatsapp\.com/'), wait_until='commit', timeout=30000):
-                    pg.locator('a.cta', has_text='Start a project').first.click(timeout=5000)
+                    # force: from Playwright 1.64 (7 Nov) the actionability wait never settles on this button although it is
+                    # visible and still (same box over 6 frames, no animations). The click must still land on it and open
+                    # WhatsApp with the brief, so a covered or dead button still fails here.
+                    pg.locator('a.cta', has_text='Start a project').first.click(timeout=5000, force=True)
                 q = parse_qs(urlsplit(pg.url).query)
                 if q.get('text') != [BRIEF] or q.get('phone') != ['2977477794']: fails.append(f'WhatsApp opened as {unquote(pg.url)[:200]}')
                 else: print('WhatsApp opened with the brief intact:', pg.url.split('?')[0], repr(q['text'][0]))
