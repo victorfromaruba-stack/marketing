@@ -39,6 +39,9 @@
   const el = { name: form.elements.name, whatsapp: form.elements.whatsapp, email: form.elements.email, consent: form.elements.consent };
   const picks = [...form.querySelectorAll('input[name=interest]')], group = $('#f-int');
   const demo = new URLSearchParams(location.search).get('demo');   // ?demo=sent|error|offline|slow: the states without a server, for checks
+  // Which ad brought them: utm_content on the Meta ad links (taster, review-es, ...), '' when there is none. The server keeps
+  // it only as a code of 40 at most; cut at 41 so a longer one is still refused there and can't push a sign-up past 4 KB.
+  const src = (new URLSearchParams(location.search).get('utm_content') || '').slice(0, 41);
 
   // What each field needs. '' means fine. Empty required fields are only flagged on send, never while someone is tabbing through.
   const rules = {
@@ -84,6 +87,7 @@
     consent: el.consent.checked,
     website: form.elements.website.value,   // the honeypot: always empty from a person; the server drops any sign-up where it is not
     page: location.pathname,
+    src,
   });
   // The way out when sending fails: the same answers, typed into a WhatsApp chat with Victor. Nothing is sent until they press send.
   const viaWhatsApp = (a) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent([
