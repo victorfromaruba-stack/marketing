@@ -285,8 +285,27 @@ h1 span{display:block}
 .qa details[open] summary::after{transform:translateY(4px) rotate(-135deg)}
 .qa details p{padding:0 0 20px;max-width:60ch;color:var(--ink-soft)}
 
+/* ── 6b Everything in Level 1: the offer itemised. The four evenings carry their keys; what comes with them sits on the
+   same rule without one. No item gets a made-up value; the only number is the price. ── */
+.stack{padding-block:64px 88px}
+.tally{list-style:none;margin:40px 0 0;padding:4px 20px}
+.tally li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;align-items:start;padding:16px 0}
+.tally li + li{border-top:1px solid var(--hair)}
+.tally li.plus{padding-block:14px}
+.tally b{display:block;font-size:17px;line-height:1.3}
+.tally div > span{display:block;margin-top:3px;font-size:15px;line-height:1.45;color:var(--ink-soft)}
+.sum{margin-top:32px;max-width:40rem}
+.sum p:first-child{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.sum b{font:400 48px/1 var(--f-text);letter-spacing:-.02em}
+.sum span{color:var(--ink-soft);max-width:30ch}
+.sum .fine{margin-top:14px}
+
+/* ── 1b The 2-minute video, under the hero once it exists ── */
+.film video{display:block;width:100%;max-width:22rem;height:auto;aspect-ratio:9 / 16;margin-top:32px;border-radius:var(--r-plate);background:var(--seg-ground)}
+
 /* ── 7 Put your name down ── */
 .join{padding-block:80px 96px}
+.taster .seat{grid-column:1 / -1;display:flex;align-items:center;min-height:44px;margin-top:-4px;font:600 16px/1.2 var(--f-display);text-decoration:underline}
 .join .copy > p.lede{max-width:34ch}
 .taster{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;margin-top:32px;padding:16px;max-width:30rem}
 .seg{display:block;height:44px;padding:8px 10px;border-radius:6px;background:var(--seg-ground);box-shadow:inset 0 1px 3px rgb(0 0 0 / .6),0 1px 0 rgb(255 255 255 / .5)}
@@ -402,6 +421,17 @@ h1 span{display:block}
   .rules .more{grid-column:6 / span 7}
   .rules h2{font-size:clamp(38px,1rem + 3vw,60px)}
 
+  .film .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px;align-items:center}
+  .film .copy{grid-column:1 / span 6}
+  .film video{grid-column:8 / span 4;margin-top:0}
+
+  .stack{padding-block:120px 128px}
+  .stack .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px;align-items:start}
+  .stack .head{grid-column:1 / span 5;position:sticky;top:104px}
+  .stack .head h2{font-size:clamp(38px,1rem + 3vw,60px)}
+  .stack .tally{grid-column:7 / span 6;margin-top:6px;padding-inline:28px}
+  .stack .sum{grid-column:7 / span 6}
+
   .qa .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px}
   .qa h2{grid-column:1 / span 8}
   .qa .list{grid-column:6 / span 7;max-width:none;margin-top:48px}
@@ -441,7 +471,44 @@ h1 span{display:block}
       <p class="note" data-fog="lines"><span>Small groups in Aruba, in person.</span> <span>Level&nbsp;1 starts Tuesday 24&nbsp;November at&nbsp;18:30.</span></p>
       <a class="go" data-fog="box" href="#join"><span class="led" aria-hidden="true"></span>Put your name down</a>
     </div>
+    <script>
+    /* The headline answers the ad that brought them (utm_content on the Meta links, agency/ai-courses/marketing/ads/v2.mjs):
+       the taster ads land on the taster with a WhatsApp key to save a seat, the review ads on the review. It runs before
+       field.js, so the field keeps its keys off the words it really shows. Anything else keeps the page's own words. */
+    (() => {
+      const c = (new URLSearchParams(location.search).get('utm_content') || '').slice(0, 40), h = document.querySelector('.hero h1'),
+        n = document.querySelector('.hero .note'), k = document.querySelector('.hero .go');
+      const set = (el, a, b) => { el.children[0].textContent = a; el.children[1].textContent = b; };
+      if (/taster/.test(c)) {
+        set(h, 'Free AI taster.', 'Mon 23 Nov, 18:00.');
+        set(n, '45 minutes, in person, 10 seats.', 'Write the message you owe, on your own phone.');
+        k.href = 'https://wa.me/2977477794?text=' + encodeURIComponent(`Hi Victor, please save me a seat at the free AI taster on Mon 23 Nov. [${c}]`);
+        k.lastChild.textContent = 'Save a seat on WhatsApp';
+      } else if (/review/.test(c)) {
+        set(h, 'Answer a 2-\u2060star review', 'in 20 seconds.');
+        set(n, 'In English, Spanish and Papiamento, checked by you.', 'Level 1 starts Tuesday 24 November at 18:30.');
+      }
+    })();
+    </script>
   </div>
+
+  <!-- The 2-minute video (script: the film kit, agency/ai-courses/marketing/ads/v2.mjs VSL). Inert until it exists, so nothing
+       loads: to show it, put vsl.mp4 (1080x1920, H.264), vsl-poster.jpg and vsl.vtt (its captions) in this folder and delete the
+       two template lines around the section. -->
+  <template id="film-slot">
+  <section class="film" id="film" aria-labelledby="film-h">
+    <div class="wrap">
+      <div class="copy">
+        <h2 id="film-h">Level&nbsp;1 in two minutes.</h2>
+        <p class="lede">What the four evenings cover, what it costs, and the free taster, from me.</p>
+      </div>
+      <video class="plate" controls playsinline preload="none" poster="vsl-poster.jpg" width="1080" height="1920" aria-labelledby="film-h">
+        <source src="vsl.mp4" type="video/mp4">
+        <track kind="captions" src="vsl.vtt" srclang="en" label="English" default>
+      </video>
+    </div>
+  </section>
+  </template>
 
   <section class="why" id="teacher" aria-labelledby="why-h">
     <div class="wrap">
@@ -570,12 +637,40 @@ h1 span{display:block}
     <div class="wrap">
       <h2 id="qa-h">Questions people ask</h2>
       <div class="list">
+        <details><summary>I’ve never used AI. Is Level&nbsp;1 for me?</summary><p>Yes, it’s made for that. Bring a phone or a laptop. We set up a free ChatGPT, Gemini or Claude account together in session&nbsp;1, and every adult age is welcome.</p></details>
+        <details><summary>I already use ChatGPT. Will it be too basic?</summary><p>If you use it every day, there’s a stretch track in session&nbsp;1: you teach it to write in your style from two of your own messages. The other sessions cover catching its mistakes, receipts and voice notes, and an assistant with rules of your own.</p></details>
+        <details><summary>Doesn’t AI make things up?</summary><p>It does, and it sounds sure when it does. Session&nbsp;2 is about catching it against the source, and in session&nbsp;4 your assistant gets rules, like answering “let me check” when its facts don’t say.</p></details>
+        <details><summary>Is it safe to put my information in?</summary><p>Some things never go in: passwords and codes, ID scans, bank details, other people’s personal data, medical information and anything confidential. That’s session&nbsp;1. In class we only use made-up data.</p></details>
+        <details><summary>Is the free taster a sales pitch?</summary><p>25 of its 45 minutes are hands-on or built live in front of you: you write a real message on your own phone and watch an assistant get built. The part about Level&nbsp;1 takes 4 minutes.</p></details>
+        <details><summary>What if I miss an evening?</summary><p>Every lesson and exercise is on the course site, so you can catch up at home, and the class WhatsApp group is there for questions.</p></details>
         <details><summary>Do I need to know how to code?</summary><p>Not for Level 1. Level 2 means typing a few commands, and I’ll walk you through each one. Level 3 is where you build things, with Claude Code doing most of the writing.</p></details>
         <details><summary>Which language are the classes in?</summary><p>The tools and handouts are in English. In the room we can talk in Papiamento, Spanish or English. The AI handles English and Spanish well, and its Papiamento needs checking, which we practise.</p></details>
         <details><summary>Mac or Windows?</summary><p>Level 1 works on anything, including a phone. Level 2 needs a Mac, a Windows 11 laptop or a Linux machine you’re allowed to install software on. A locked work laptop won’t do. If yours can’t run it, you can rent a small server in your own name for the length of the course.</p></details>
         <details><summary>How do I pay?</summary><p>Level 1 is ƒ175, paid in cash at session 1. If session 1 isn’t for you, tell me before session 2 and you get your money back.</p></details>
         <details><summary>Is there anything to pay on top?</summary><p>Not for Level 1: we use free accounts. For Levels 2 and 3 you need your own Claude API account, paid by you, with a hard monthly limit that you choose before anything runs. If you’d rather use a small rented server than your laptop, you rent it in your own name for a few dollars a month.</p></details>
         <details><summary>When and where?</summary><p>Level 1 meets on Tue 24 Nov, Thu 26 Nov, Tue 1 Dec and Thu 3 Dec, 18:30 to 20:30, in person in Aruba. The place goes to the list first, before anywhere else.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="stack" id="stack" aria-labelledby="stack-h">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="stack-h">Everything in Level&nbsp;1, for&nbsp;ƒ175.</h2>
+        <p class="lede">Four evenings of two hours with me, in a group of 6 to 10. This is what they cover, and what comes with them.</p>
+      </div>
+      <ol class="tally plate">
+        <li><span class="key a" aria-hidden="true"><span class="n">1</span></span><div><b>The message you owe, in three languages</b><span>Written with the four parts, then in Spanish and Papiamento, and checked by you.</span></div></li>
+        <li><span class="key a" aria-hidden="true"><span class="n">2</span></span><div><b>A spreadsheet you keep using</b><span>A messy list from your own life sorted into a sheet, with the AI’s mistakes caught against the source.</span></div></li>
+        <li><span class="key a" aria-hidden="true"><span class="n">3</span></span><div><b>Receipts, menus and voice notes</b><span>A photo made into a table, a voice note into a reply, and how scammers use AI.</span></div></li>
+        <li><span class="key a" aria-hidden="true"><span class="n">4</span></span><div><b>Your own saved assistant</b><span>It knows your business and your rules. You show it at demo night with 2 guests and take home a certificate.</span></div></li>
+        <li class="plus"><i aria-hidden="true"></i><div><b>Homework from your own to-⁠do list</b><span>20 to 30 minutes after each evening, timed before and with AI, so you know what it saves you.</span></div></li>
+        <li class="plus"><i aria-hidden="true"></i><div><b>30 days in the class WhatsApp group</b><span>For the questions that come up once you use it at work.</span></div></li>
+        <li class="plus"><i aria-hidden="true"></i><div><b>The course site</b><span>Every lesson and exercise, to catch up on a missed evening or look something up later.</span></div></li>
+      </ol>
+      <div class="sum">
+        <p><b class="num">ƒ175</b><span>paid in cash at the first evening. 8 hours in the room, about ƒ22 an hour.</span></p>
+        <p class="fine">If the first evening isn’t for you, tell me before the second and you get your money back. Come to the free taster on Mon 23 Nov first, book that night, and Level&nbsp;1 is ƒ150.</p>
       </div>
     </div>
   </section>
@@ -587,7 +682,8 @@ h1 span{display:block}
         <p class="lede">Groups are small. The list hears about dates first.</p>
         <div class="taster plate">
           <span class="seg" role="img" aria-label="23 November"><svg viewBox="-2 -1 106 38" aria-hidden="true"><path transform="translate(0 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-on)"/><path transform="translate(0 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(0 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-off)"/><path transform="translate(0 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-on)"/><path transform="translate(0 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-on)"/><path transform="translate(0 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(0 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(25 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(25 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-on)"/><rect x="50" y="32.6" width="3.4" height="3.4" fill="var(--seg-on)"/><path transform="translate(55 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(55 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(55 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(80 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(80 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-off)"/></svg></span>
-          <p><b>Free 45-minute taster, Mon 23 Nov, 18:00</b><span>See one thing built live before you decide. The place goes to the list first.</span></p>
+          <p><b>Free 45-minute taster, Mon 23 Nov, 18:00</b><span>See one thing built live before you decide. 10 seats, and the place goes to the list first. Book Level&nbsp;1 that night and it’s ƒ150.</span></p>
+          <a class="seat" href="https://wa.me/2977477794?text=Hi%20Victor%2C%20please%20save%20me%20a%20seat%20at%20the%20free%20AI%20taster%20on%20Mon%2023%20Nov.">Save a seat on WhatsApp</a>
         </div>
         <p class="ask"><span>Rather ask first?</span> <a href="https://wa.me/2977477794?text=Hi%20Victor%2C%20a%20question%20about%20AI%20Courses%20Aruba%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Message Victor on WhatsApp</a></p>
       </div>

@@ -42,6 +42,9 @@
   // Which ad brought them: utm_content on the Meta ad links (taster, review-es, ...), '' when there is none. The server keeps
   // it only as a code of 40 at most; cut at 41 so a longer one is still refused there and can't push a sign-up past 4 KB.
   const src = (new URLSearchParams(location.search).get('utm_content') || '').slice(0, 41);
+  // The taster's WhatsApp key carries the same code at the end of the message, so a seat saved there is counted too.
+  const seat = $('.taster .seat');
+  if (seat && src) seat.href += encodeURIComponent(` [${src.slice(0, 40)}]`);
 
   // What each field needs. '' means fine. Empty required fields are only flagged on send, never while someone is tabbing through.
   const rules = {
