@@ -6,7 +6,7 @@
 #   that parses and whose prices, phone and email are the ones on the page; sitemap URLs answer 200; robots names it.
 #   The demos host keeps noindex, so the copy of this page at /c/ is never indexed.
 # Phone and laptop (390 and 1440 px): no console errors, no sideways scroll, every image loads, every #link has a
-#   target, both "Start a project" buttons open WhatsApp +297 747 7794 with the brief intact (checked in the browser
+#   target, all three "Start a project" buttons (hero, sticky key, contact) open WhatsApp +297 747 7794 with the brief intact (checked in the browser
 #   after wa.me hands it on), and every outside link answers.
 import json, re, subprocess, sys, urllib.error, urllib.request
 from urllib.parse import urlsplit, parse_qs, unquote
@@ -97,7 +97,7 @@ with sync_playwright() as pw:
         missing = J("[...document.querySelectorAll('a[href^=\"#\"]')].map(a=>a.getAttribute('href').slice(1)).filter(id=>id&&!document.getElementById(id))")
         if missing: fails.append(f'#links without a target: {missing}')
         ctas = J("[...document.querySelectorAll('a.cta')].filter(a=>a.textContent.trim().startsWith('Start a project')).map(a=>a.href)")
-        if len(ctas) != 2: fails.append(f'{w}: {len(ctas)} Start a project buttons, expected 2')
+        if len(ctas) != 3: fails.append(f'{w}: {len(ctas)} Start a project buttons, expected 3 (hero, sticky key, contact)')
         for href in ctas:
             q = parse_qs(urlsplit(href).query)
             if not href.startswith('https://wa.me/2977477794?') or q.get('text') != [BRIEF]: fails.append(f'Start a project link is {href}')

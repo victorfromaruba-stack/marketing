@@ -209,15 +209,19 @@ float on=1.-step(.5,abs(cell.x-uChase));float a=mix(uSlotA,1.,on)*cov*(1.-uFogK*
 
   // false: no usable WebGL here (the caller draws the still). true: the shaders are on their way; ready() runs once they exist.
   function initGL(ready) {
-    gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false, powerPreference: 'low-power' });
+    // WebGL with no GPU behind it gets the still drawing (false here = the caller's still()): the browser says so
+    // (failIfMajorPerformanceCaveat), or the renderer names itself (SwiftShader, llvmpipe). Even a 1x, already-learned
+    // field drawn in software blocked the main thread for 6.5 s (Lighthouse mobile 65, 13 Nov), and Lighthouse's own
+    // Chrome hands out a context despite the flag, hence the name check too.
+    // ponytail: a software renderer that names itself differently still animates, as before.
+    // The ?frames recording harness drives the clock in headless Chrome and keeps software WebGL.
+    gl = canvas.getContext('webgl', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false, stencil: false, powerPreference: 'low-power', failIfMajorPerformanceCaveat: !FRAMES });
     if (!gl) return false;
     ext = gl.getExtension('ANGLE_instanced_arrays');
     if (!ext) return false;
     const par = gl.getExtension('KHR_parallel_shader_compile'), dbg = gl.getExtension('WEBGL_debug_renderer_info');
-    // ponytail: a renderer with no GPU behind it (SwiftShader, llvmpipe) draws at 1x; it is matched by name, and a
-    // software renderer that names itself differently simply draws at full resolution, as before.
-    // The ?frames harness drives the clock itself, so a recording made here keeps the whole learning arc at full size.
     swGL = !FRAMES && /swiftshader|llvmpipe|softpipe|software/i.test(dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : '');
+    if (swGL) { gl = null; return false; }
     const hf = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.HIGH_FLOAT);
     const hp = !!(hf && hf.precision > 0);
     const L = [link(VS_FULL, FS_SLOT(hp)), link(VS_KEY, FS_HEAD(hp) + FS_SHADOW), link(VS_KEY, FS_HEAD(hp) + FS_KEY)];
@@ -309,7 +313,7 @@ float on=1.-step(.5,abs(cell.x-uChase));float a=mix(uSlotA,1.,on)*cov*(1.-uFogK*
     W = w; H = h; cols = nc; cw = W / cols; ch = cw * 1.16; rows = Math.ceil(H / ch) + 1; oy = (H - rows * ch) / 2;
     kw = cw * 0.64; kh = ch * 0.72; soft = cw * 0.55; pad = cw * 0.55;
     stepDur = (stepIdx >= cols * PASSES || reduced ? BAR_PLAY : BAR_LEARN) / cols;
-    dpr = Math.min(devicePixelRatio || 1, swGL ? 1 : dprCap, Math.sqrt(4.2e6 / Math.max(1, W * H)));
+    dpr = Math.min(devicePixelRatio || 1, dprCap, Math.sqrt(4.2e6 / Math.max(1, W * H)));
     if (canvas.tagName === 'CANVAS') { canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); dpr = canvas.width / W; }
     measureWords();
     return changed;
@@ -466,10 +470,7 @@ float on=1.-step(.5,abs(cell.x-uChase));float a=mix(uSlotA,1.,on)*cov*(1.-uFogK*
   if (!ok) { gl = null; still(); return; }
 
   function begin() {
-    // Software GL (no GPU behind it): the canvas again at 1x, and the pattern starts learned with the chase light
-    // stepping at the played tempo, because sixty frames a second of learning is a GPU's job. Phones keep the full arc.
-    if (swGL) { stepIdx = cols * PASSES - 1; measure(); }
-    build(reduced || swGL);
+    build(reduced);
     nextAt = now() + START;
     canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); stop(); });
     canvas.addEventListener('webglcontextrestored', () => { initGL(() => { readColors(); render(now()); start(); }); });

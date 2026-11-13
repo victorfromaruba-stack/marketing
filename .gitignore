@@ -12,3 +12,4 @@ brand/logo/logo-square.png
 
 .DS_Store
 node_modules/
+.impeccable/

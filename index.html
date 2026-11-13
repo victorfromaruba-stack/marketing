@@ -124,7 +124,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html{background:var(--bg);-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:8px}
+html{background:var(--bg);-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:72px}
 @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 body{
   margin:0;color:var(--fg);font-family:var(--font-display);font-size:1.0625rem;line-height:1.5;background:var(--bg);
@@ -171,7 +171,7 @@ h1 span{display:block;text-wrap:balance}
 .page .intro{display:grid;grid-template-rows:auto 1fr auto}
 .foot{grid-row:3;display:grid;gap:16px}
 .note{
-  margin:0;max-width:34ch;font-family:var(--font-note);font-size:.8125rem;line-height:1.62;
+  margin:0;max-width:34ch;font-family:var(--font-note);font-size:.9375rem;line-height:1.62;
   color:var(--fg-muted);letter-spacing:-.01em;text-wrap:pretty;
 }
 .cta{
@@ -187,6 +187,18 @@ h1 span{display:block;text-wrap:balance}
 .cta:active{transform:scale(.97);transition-duration:.09s}
 .cta:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
 @media (hover:hover){.cta:hover{background:var(--accent-hover)}}
+/* The sticky key, as on /ai: once the hero has scrolled away, Start a project stays one tap away (the island's best sites
+   keep their one action on screen: De Palm's Book now, Boardwalk's chat pill). It steps aside when the contact section shows. */
+.dock{
+  position:fixed;inset:0 0 auto;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  height:calc(64px + env(safe-area-inset-top));padding:env(safe-area-inset-top) var(--gutter) 0;
+  background:var(--bg);box-shadow:0 1px 0 var(--rule);
+  transform:translateY(-104%);visibility:hidden;transition:transform .3s var(--ease-out),visibility 0s linear .3s;
+}
+.dock.show{transform:none;visibility:visible;transition:transform .3s var(--ease-out),visibility 0s}
+.dock .cta{min-width:0;min-height:44px;padding:0 18px;font-size:.9375rem;gap:8px;white-space:nowrap;flex:none}
+.dock .cta svg{width:18px;height:18px}
+@media (max-width:419px){.dock .brand span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}}
 
 /* ================= the sheet below: the same voice, quieter ================= */
 main > section{position:relative;padding-inline:var(--gutter)}
@@ -387,6 +399,7 @@ h3{margin:0;font-weight:600;line-height:1.1;letter-spacing:-.026em;text-wrap:bal
 @media (prefers-reduced-motion:reduce){
   .land{display:none}
   .cta,.cta:active{transition:none;transform:none}
+  .dock,.dock.show{transition:none}
 }
 </style>
 </head>
@@ -399,7 +412,7 @@ h3{margin:0;font-weight:600;line-height:1.1;letter-spacing:-.026em;text-wrap:bal
 
 <div class="page">
   <header class="bar">
-    <p class="brand"><svg viewBox="70 70 100 100" aria-hidden="true" focusable="false"><g transform="translate(120,120) scale(0.37591) translate(-532.0,-511.5)"><path fill-rule="evenodd" d="M 286 381 L 282 390 L 325 390 L 326 395 L 311 416 L 271 423 L 258 436 L 307 437 L 310 463 L 322 490 L 415 634 L 433 677 L 433 695 L 354 695 L 354 710 L 606 710 L 606 695 L 542 695 L 393 508 L 387 483 L 395 473 L 435 472 L 480 488 L 511 509 L 514 518 L 563 542 L 548 561 L 756 561 L 741 545 L 700 541 L 678 529 L 633 527 L 593 538 L 558 525 L 557 518 L 806 518 L 794 505 L 742 499 L 732 487 L 719 483 L 720 478 L 775 478 L 754 462 L 667 458 L 658 445 L 549 448 L 539 442 L 539 436 L 738 436 L 721 422 L 649 415 L 640 404 L 610 395 L 611 390 L 661 390 L 648 377 L 601 372 L 585 362 L 548 354 L 549 349 L 613 349 L 593 334 L 524 330 L 519 317 L 508 313 L 415 316 L 374 325 L 334 343 L 330 349 L 364 350 L 359 361 L 342 372 Z M 504 479 L 568 478 L 588 492 L 558 494 L 530 504 Z M 415 444 L 425 436 L 469 436 L 508 445 L 520 455 L 482 469 L 447 454 L 416 449 Z M 336 437 L 377 436 L 378 441 L 352 470 Z M 462 402 L 468 390 L 505 391 L 496 403 Z M 344 414 L 362 390 L 440 391 L 431 403 L 372 403 L 363 415 Z"/></g></svg>Aruba Webstudio</p>
+    <p class="brand"><svg viewBox="70 70 100 100" aria-hidden="true" focusable="false"><g transform="translate(120,120) scale(0.37591) translate(-532.0,-511.5)"><path id="wsmark" fill-rule="evenodd" d="M 286 381 L 282 390 L 325 390 L 326 395 L 311 416 L 271 423 L 258 436 L 307 437 L 310 463 L 322 490 L 415 634 L 433 677 L 433 695 L 354 695 L 354 710 L 606 710 L 606 695 L 542 695 L 393 508 L 387 483 L 395 473 L 435 472 L 480 488 L 511 509 L 514 518 L 563 542 L 548 561 L 756 561 L 741 545 L 700 541 L 678 529 L 633 527 L 593 538 L 558 525 L 557 518 L 806 518 L 794 505 L 742 499 L 732 487 L 719 483 L 720 478 L 775 478 L 754 462 L 667 458 L 658 445 L 549 448 L 539 442 L 539 436 L 738 436 L 721 422 L 649 415 L 640 404 L 610 395 L 611 390 L 661 390 L 648 377 L 601 372 L 585 362 L 548 354 L 549 349 L 613 349 L 593 334 L 524 330 L 519 317 L 508 313 L 415 316 L 374 325 L 334 343 L 330 349 L 364 350 L 359 361 L 342 372 Z M 504 479 L 568 478 L 588 492 L 558 494 L 530 504 Z M 415 444 L 425 436 L 469 436 L 508 445 L 520 455 L 482 469 L 447 454 L 416 449 Z M 336 437 L 377 436 L 378 441 L 352 470 Z M 462 402 L 468 390 L 505 391 L 496 403 Z M 344 414 L 362 390 L 440 391 L 431 403 L 372 403 L 363 415 Z"/></g></svg>Aruba Webstudio</p>
     <nav aria-label="Sections"><a href="#work">Work</a><a class="wide" href="#how">How it works</a><a href="#prices">Prices</a></nav>
   </header>
   <div class="intro">
@@ -410,6 +423,11 @@ h3{margin:0;font-weight:600;line-height:1.1;letter-spacing:-.026em;text-wrap:bal
     </div>
   </div>
 </div>
+</div>
+
+<div class="dock" id="dock" inert>
+  <p class="brand"><svg viewBox="70 70 100 100" aria-hidden="true" focusable="false"><g transform="translate(120,120) scale(0.37591) translate(-532.0,-511.5)"><use href="#wsmark"/></g></svg><span>Aruba Webstudio</span></p>
+  <a class="cta" href="https://wa.me/2977477794?text=Hi%20Aruba%20Webstudio%2C%20I%27d%20like%20to%20start%20a%20project.%0AWhat%20the%20business%20sells%3A%0AWhat%20a%20customer%20should%20be%20able%20to%20do%3A"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#wa"/></svg>Start a project<span class="vh"> on WhatsApp</span></a>
 </div>
 
 <section class="work" id="work" aria-labelledby="work-h">
@@ -551,6 +569,16 @@ h3{margin:0;font-weight:600;line-height:1.1;letter-spacing:-.026em;text-wrap:bal
 (() => {
 'use strict';
 const hero = document.getElementById('top');
+
+// the sticky key (see .dock): shown once the hero's own button has scrolled off the top, until the contact section is
+// on screen; inert while hidden
+const dock = document.getElementById('dock'), end = document.getElementById('contact'), heroCta = hero.querySelector('.cta');
+if (dock && end && heroCta && 'IntersectionObserver' in window) {
+  let past = false, near = false;
+  const set = () => { const on = past && !near; dock.classList.toggle('show', on); dock.inert = !on; };
+  new IntersectionObserver(([e]) => { past = !e.isIntersecting && e.boundingClientRect.top < 64; set(); }, { rootMargin: '-64px 0px 0px 0px' }).observe(heroCta);
+  new IntersectionObserver(([e]) => { near = e.isIntersecting; set(); }, { threshold: 0.12 }).observe(end);
+}
 const canvas = document.getElementById('land');
 const stillBox = document.getElementById('still');
 const reduceQ = matchMedia('(prefers-reduced-motion: reduce)');
@@ -725,13 +753,18 @@ function readPalette() {
 }
 
 // ---- the still frame: same land, frozen, drawn as SVG contours with hidden lines removed ----
-function drawStill() {
-  stillBox.textContent = '';
+// Built in slices of 16 rows, yielding between them: one drawing is ~160 ms of script on a laptop (four times that on a
+// mid phone, Lighthouse 13 Nov), and the page has to answer taps meanwhile. A newer call cancels an older one, the old
+// frame stays up until the new one is ready, and nothing is written if the live land took over in the meantime.
+const slice = () => globalThis.scheduler?.yield ? scheduler.yield() : new Promise(r => setTimeout(r, 0));
+async function drawStill() {
+  const run = drawStill.run = (drawStill.run || 0) + 1, gone = async j => j % 16 === 15 && (await slice(), run !== drawStill.run);
   const w = hero.clientWidth, h = hero.clientHeight, asp = w / h, c = cameraFor(asp), M = viewProj(c, asp), g = gridShape(c);
   const NU = Math.round(clamp(w / 4.5, 80, 220)), NV = Math.round(clamp(h / 4, 120, 230));
   const near = g.near, ratio = g.far / near;
   const xs = new Float32Array((NU + 1) * (NV + 1)), zs = new Float32Array(xs.length), hs = new Float32Array(xs.length);
   for (let j = 0; j <= NV; j++) {
+    if (await gone(j)) return;
     const d = near * Math.pow(ratio, j / NV), half = d * g.slope + g.margin;
     const x0 = clamp((d - c.nearGround) / 3, 0, 1), set = 0.35 + 0.65 * x0 * x0 * (3 - 2 * x0);
     for (let i = 0; i <= NU; i++) {
@@ -748,6 +781,7 @@ function drawStill() {
   const seen = (x, y) => { const col = Math.round(x / 2); return col < 0 || col >= COLS || y <= hor[col] + 0.75; };
   const edge = (a, b, lv) => { const t = (lv - hs[a]) / (hs[b] - hs[a]); return [sp[a * 2] + (sp[b * 2] - sp[a * 2]) * t, sp[a * 2 + 1] + (sp[b * 2 + 1] - sp[a * 2 + 1]) * t]; };
   for (let j = 0; j < NV; j++) {
+    if (await gone(j)) return;
     const d = near * Math.pow(ratio, (j + 0.5) / NV);
     const fog = 1 - smooth((d - fogStart) / (fogEnd - fogStart));
     const band = Math.min(bands - 1, Math.floor((1 - fog) * bands));
@@ -775,6 +809,7 @@ function drawStill() {
       }
     }
   }
+  if (gl && !reduceQ.matches) return;   // the live land is running now: no still frame over it
   const dark = palette.mode > 0.5, out = [];
   for (let b = 0; b < bands; b++) for (let m = 0; m < 2; m++) {
     const list = paths[b * 2 + m]; if (!list.length) continue;
@@ -801,8 +836,14 @@ function compile(type, src) {
   return s;
 }
 function setupGL() {
-  gl = canvas.getContext('webgl', { antialias: false, alpha: true, premultipliedAlpha: true, depth: true, powerPreference: 'default' });
-  if (!gl || !gl.getExtension('OES_standard_derivatives')) return false;
+  // WebGL with no GPU behind it gets the still SVG frame, same as no WebGL at all: the browser says so
+  // (failIfMajorPerformanceCaveat), or the renderer names itself (SwiftShader, llvmpipe; Lighthouse's Chrome hands out a
+  // context despite the flag). Drawn in software, every frame of the ray-marched land was a 0.7-1.1 s long task
+  // (Lighthouse mobile 57, 166 s of blocking, 13 Nov). ponytail: a software renderer with another name still animates.
+  gl = canvas.getContext('webgl', { antialias: false, alpha: true, premultipliedAlpha: true, depth: true, powerPreference: 'default', failIfMajorPerformanceCaveat: true });
+  const dbg = gl && gl.getExtension('WEBGL_debug_renderer_info');
+  if (!gl || !gl.getExtension('OES_standard_derivatives') ||
+      (dbg && /swiftshader|llvmpipe|softpipe|software/i.test(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)))) { gl = null; return false; }
   try {
     prog = gl.createProgram();
     gl.attachShader(prog, compile(gl.VERTEX_SHADER, VERT));
@@ -988,11 +1029,14 @@ if (!live) gl = null;
 resize(true);
 if (live) requestAnimationFrame(start);      // let the words paint first; the land fades in on its own first frame
 addEventListener('resize', () => { resize(); });
-document.fonts?.ready.then(() => { measureKnockout(); if (!gl || reduceQ.matches) drawStill(); });
+// through the same 120 ms timer as resize: when the fonts land before the first still frame is drawn, it is drawn once
+// (each drawing is a ~120 ms task; two of them were most of the home page's blocking time on 13 Nov)
+document.fonts?.ready.then(() => { measureKnockout(); if (!gl || reduceQ.matches) { clearTimeout(resize.t); resize.t = setTimeout(drawStill, 120); } });
 document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
 if ('IntersectionObserver' in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; visible ? start() : stop(); }).observe(canvas);
 darkQ.addEventListener?.('change', () => { readPalette(); if (!gl || reduceQ.matches) drawStill(); });
-reduceQ.addEventListener?.('change', () => { if (reduceQ.matches) { stop(); drawStill(); } else { stillBox.textContent = ''; if (!gl && setupGL()) resize(true); start(); } });
+// motion back on: the still frame goes only if the live land can take over (no usable WebGL = the still stays)
+reduceQ.addEventListener?.('change', () => { if (reduceQ.matches) { stop(); drawStill(); } else { if (!gl && setupGL()) resize(true); if (gl) { stillBox.textContent = ''; start(); } } });
 canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); stop(); });
 canvas.addEventListener('webglcontextrestored', () => { if (setupGL()) { resize(true); start(); } });
 })();
