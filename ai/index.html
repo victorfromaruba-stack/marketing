@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AI Courses Aruba: build your own AI, then give it a job</title>
-<meta name="description" content="Small-group AI courses in Aruba, taught in person. Level 1 starts Tuesday 24 November, 18:30 to 20:30, ƒ175. Put your name down.">
+<meta name="description" content="Small-group AI courses in Aruba, taught in person. Level 1 is four evenings of two hours, ƒ175. New dates go to the list first. Put your name down.">
 <link rel="canonical" href="https://arubawebstudio.com/ai/">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#D7DADE">
@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="AI Courses Aruba">
 <meta property="og:url" content="https://arubawebstudio.com/ai/">
 <meta property="og:title" content="AI Courses Aruba: build your own AI, then give it a job">
-<meta property="og:description" content="Small groups in Aruba, in person. Level 1 starts Tuesday 24 November at 18:30.">
+<meta property="og:description" content="Small groups in Aruba, in person. New dates go to the list first.">
 <meta property="og:image" content="https://arubawebstudio.com/ai/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -50,15 +50,6 @@
       "hasCourseInstance": {
         "@type": "CourseInstance",
         "courseMode": "Onsite",
-        "startDate": "2026-11-24",
-        "endDate": "2026-12-03",
-        "courseSchedule": {
-          "@type": "Schedule",
-          "byDay": ["https://schema.org/Tuesday", "https://schema.org/Thursday"],
-          "startTime": "18:30", "endTime": "20:30", "duration": "PT2H",
-          "repeatFrequency": "Weekly", "repeatCount": 2,
-          "startDate": "2026-11-24", "endDate": "2026-12-03", "scheduleTimezone": "America/Aruba"
-        },
         "location": { "@type": "Place", "name": "Aruba", "address": { "@type": "PostalAddress", "addressCountry": "AW" } },
         "instructor": { "@type": "Person", "name": "Victor" }
       }
@@ -305,13 +296,7 @@ h1 span{display:block}
 
 /* ── 7 Put your name down ── */
 .join{padding-block:80px 96px}
-.taster .seat{grid-column:1 / -1;display:flex;align-items:center;min-height:44px;margin-top:-4px;font:600 16px/1.2 var(--f-display);text-decoration:underline}
 .join .copy > p.lede{max-width:34ch}
-.taster{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;margin-top:32px;padding:16px;max-width:30rem}
-.seg{display:block;height:44px;padding:8px 10px;border-radius:6px;background:var(--seg-ground);box-shadow:inset 0 1px 3px rgb(0 0 0 / .6),0 1px 0 rgb(255 255 255 / .5)}
-.seg svg{display:block;height:100%;width:auto}
-.taster b{display:block;font-size:17px;line-height:1.3}
-.taster span{display:block;margin-top:2px;font-size:15px;line-height:1.4;color:var(--ink-soft)}
 .ask{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;margin-top:28px;color:var(--ink-soft)}
 .ask a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--ink);font:600 17px/1.2 var(--f-display);text-decoration:underline}
 .ask svg{width:19px;height:19px;fill:currentColor;flex:none}
@@ -468,25 +453,21 @@ h1 span{display:block}
     <p class="brand" data-fog="box"><svg class="mark" viewBox="0 0 27 16" aria-hidden="true" focusable="false"><rect x="0" y="0" width="5.5" height="16" rx="1.5"/><rect x="7" y="0" width="5.5" height="16" rx="1.5"/><rect x="14" y="0" width="5.5" height="16" rx="1.5"/><rect x="21" y="0" width="5.5" height="16" rx="1.5"/></svg>AI Courses Aruba</p>
     <div class="words">
       <h1 data-fog="lines"><span>Build your own AI.</span> <span>Then give it a job.</span></h1>
-      <p class="note" data-fog="lines"><span>Small groups in Aruba, in person.</span> <span>Level&nbsp;1 starts Tuesday 24&nbsp;November at&nbsp;18:30.</span></p>
+      <p class="note" data-fog="lines"><span>Small groups in Aruba, in person.</span> <span>New dates go to the list first.</span></p>
       <a class="go" data-fog="box" href="#join"><span class="led" aria-hidden="true"></span>Put your name down</a>
     </div>
     <script>
     /* The headline answers the ad that brought them (utm_content on the Meta links, agency/ai-courses/marketing/ads/v2.mjs):
-       the taster ads land on the taster with a WhatsApp key to save a seat, the review ads on the review. It runs before
+       the review ads land on the review. The taster ads get the page's own words, the waitlist, while the course is on
+       hold (Victor 22 Nov). It runs before
        field.js, so the field keeps its keys off the words it really shows. Anything else keeps the page's own words. */
     (() => {
       const c = (new URLSearchParams(location.search).get('utm_content') || '').slice(0, 40), h = document.querySelector('.hero h1'),
         n = document.querySelector('.hero .note'), k = document.querySelector('.hero .go');
       const set = (el, a, b) => { el.children[0].textContent = a; el.children[1].textContent = b; };
-      if (/taster/.test(c)) {
-        set(h, 'Free AI taster.', 'Mon 23 Nov, 18:00.');
-        set(n, '45 minutes, in person, 10 seats.', 'Write the message you owe, on your own phone.');
-        k.href = 'https://wa.me/2977477794?text=' + encodeURIComponent(`Hi Victor, please save me a seat at the free AI taster on Mon 23 Nov. [${c}]`);
-        k.lastChild.textContent = 'Save a seat on WhatsApp';
-      } else if (/review/.test(c)) {
+      if (/review/.test(c)) {
         set(h, 'Answer a 2-\u2060star review', 'in 20 seconds.');
-        set(n, 'In English, Spanish and Papiamento, checked by you.', 'Level 1 starts Tuesday 24 November at 18:30.');
+        set(n, 'In English, Spanish and Papiamento, checked by you.', 'New dates go to the list first.');
       }
     })();
     </script>
@@ -500,7 +481,7 @@ h1 span{display:block}
     <div class="wrap">
       <div class="copy">
         <h2 id="film-h">Level&nbsp;1 in two minutes.</h2>
-        <p class="lede">What the four evenings cover, what it costs, and the free taster, from me.</p>
+        <p class="lede">What the four evenings cover and what they cost, from me.</p>
       </div>
       <video class="plate" controls playsinline preload="none" poster="vsl-poster.jpg" width="1080" height="1920" aria-labelledby="film-h">
         <source src="vsl.mp4" type="video/mp4">
@@ -568,7 +549,7 @@ h1 span{display:block}
               <li><span class="key a" aria-hidden="true"><span class="n">4</span></span><span><b>Your own saved assistant</b><span class="t">Plus one weekly task of yours, done start to finish</span></span></li>
             </ol>
             <dl class="specs">
-              <div><dt class="silk">Dates</dt><dd>Tue 24 Nov, Thu 26 Nov, Tue 1 Dec and Thu 3 Dec, 18:30 to 20:30</dd></div>
+              <div><dt class="silk">Dates</dt><dd>Not set yet. The next ones go to the list first.</dd></div>
               <div><dt class="silk">You leave with</dt><dd>Your best prompts, a saved assistant that knows your business, and 30 days of questions in our WhatsApp group</dd></div>
               <div><dt class="silk">You need</dt><dd>A phone or laptop and a free ChatGPT, Claude or Gemini account. We set it up together.</dd></div>
             </dl>
@@ -641,14 +622,13 @@ h1 span{display:block}
         <details><summary>I already use ChatGPT. Will it be too basic?</summary><p>If you use it every day, there’s a stretch track in session&nbsp;1: you teach it to write in your style from two of your own messages. The other sessions cover catching its mistakes, receipts and voice notes, and an assistant with rules of your own.</p></details>
         <details><summary>Doesn’t AI make things up?</summary><p>It does, and it sounds sure when it does. Session&nbsp;2 is about catching it against the source, and in session&nbsp;4 your assistant gets rules, like answering “let me check” when its facts don’t say.</p></details>
         <details><summary>Is it safe to put my information in?</summary><p>Some things never go in: passwords and codes, ID scans, bank details, other people’s personal data, medical information and anything confidential. That’s session&nbsp;1. In class we only use made-up data.</p></details>
-        <details><summary>Is the free taster a sales pitch?</summary><p>25 of its 45 minutes are hands-on or built live in front of you: you write a real message on your own phone and watch an assistant get built. The part about Level&nbsp;1 takes 4 minutes.</p></details>
         <details><summary>What if I miss an evening?</summary><p>Every lesson and exercise is on the course site, so you can catch up at home, and the class WhatsApp group is there for questions.</p></details>
         <details><summary>Do I need to know how to code?</summary><p>Not for Level 1. Level 2 means typing a few commands, and I’ll walk you through each one. Level 3 is where you build things, with Claude Code doing most of the writing.</p></details>
         <details><summary>Which language are the classes in?</summary><p>The tools and handouts are in English. In the room we can talk in Papiamento, Spanish or English. The AI handles English and Spanish well, and its Papiamento needs checking, which we practise.</p></details>
         <details><summary>Mac or Windows?</summary><p>Level 1 works on anything, including a phone. Level 2 needs a Mac, a Windows 11 laptop or a Linux machine you’re allowed to install software on. A locked work laptop won’t do. If yours can’t run it, you can rent a small server in your own name for the length of the course.</p></details>
         <details><summary>How do I pay?</summary><p>Level 1 is ƒ175, paid in cash at session 1. If session 1 isn’t for you, tell me before session 2 and you get your money back.</p></details>
         <details><summary>Is there anything to pay on top?</summary><p>Not for Level 1: we use free accounts. For Levels 2 and 3 you need your own Claude API account, paid by you, with a hard monthly limit that you choose before anything runs. If you’d rather use a small rented server than your laptop, you rent it in your own name for a few dollars a month.</p></details>
-        <details><summary>When and where?</summary><p>Level 1 meets on Tue 24 Nov, Thu 26 Nov, Tue 1 Dec and Thu 3 Dec, 18:30 to 20:30, in person in Aruba. The place goes to the list first, before anywhere else.</p></details>
+        <details><summary>When and where?</summary><p>In person in Aruba, in the evening. New dates aren’t set yet. When they are, the list hears first, with the place, before anywhere else.</p></details>
       </div>
     </div>
   </section>
@@ -670,7 +650,7 @@ h1 span{display:block}
       </ol>
       <div class="sum">
         <p><b class="num">ƒ175</b><span>paid in cash at the first evening. 8 hours in the room, about ƒ22 an hour.</span></p>
-        <p class="fine">If the first evening isn’t for you, tell me before the second and you get your money back. Come to the free taster on Mon 23 Nov first, book that night, and Level&nbsp;1 is ƒ150.</p>
+        <p class="fine">If the first evening isn’t for you, tell me before the second and you get your money back.</p>
       </div>
     </div>
   </section>
@@ -679,12 +659,7 @@ h1 span{display:block}
     <div class="wrap">
       <div class="copy">
         <h2 id="join-h">Put your name down.</h2>
-        <p class="lede">Groups are small. The list hears about dates first.</p>
-        <div class="taster plate">
-          <span class="seg" role="img" aria-label="23 November"><svg viewBox="-2 -1 106 38" aria-hidden="true"><path transform="translate(0 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-on)"/><path transform="translate(0 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(0 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-off)"/><path transform="translate(0 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-on)"/><path transform="translate(0 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-on)"/><path transform="translate(0 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(0 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-on)"/><path transform="translate(25 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(25 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(25 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-on)"/><rect x="50" y="32.6" width="3.4" height="3.4" fill="var(--seg-on)"/><path transform="translate(55 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(55 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(55 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(55 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M3.2 0H16.8L14.4 3.4H5.6Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M20 2.4V15.8L18.3 17.3L16.6 15.5V5.5Z" fill="var(--seg-on)"/><path transform="translate(80 0) skewX(-6)" d="M20 20.2V33.6L16.6 30.5V20.5L18.3 18.7Z" fill="var(--seg-on)"/><path transform="translate(80 0) skewX(-6)" d="M5.6 32.6H14.4L16.8 36H3.2Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M0 20.2L1.7 18.7L3.4 20.5V30.5L0 33.6Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M0 2.4L3.4 5.5V15.5L1.7 17.3L0 15.8Z" fill="var(--seg-off)"/><path transform="translate(80 0) skewX(-6)" d="M3.6 18L5.4 16.3H14.6L16.4 18L14.6 19.7H5.4Z" fill="var(--seg-off)"/></svg></span>
-          <p><b>Free 45-minute taster, Mon 23 Nov, 18:00</b><span>See one thing built live before you decide. 10 seats, and the place goes to the list first. Book Level&nbsp;1 that night and it’s ƒ150.</span></p>
-          <a class="seat" href="https://wa.me/2977477794?text=Hi%20Victor%2C%20please%20save%20me%20a%20seat%20at%20the%20free%20AI%20taster%20on%20Mon%2023%20Nov.">Save a seat on WhatsApp</a>
-        </div>
+        <p class="lede">Groups are small. New dates are coming. Leave your number and you’ll hear first.</p>
         <p class="ask"><span>Rather ask first?</span> <a href="https://wa.me/2977477794?text=Hi%20Victor%2C%20a%20question%20about%20AI%20Courses%20Aruba%3A%20"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>Message Victor on WhatsApp</a></p>
       </div>
 
@@ -730,7 +705,7 @@ h1 span{display:block}
       <div class="sent plate" id="sent" hidden>
         <div class="row" style="--n:4" aria-hidden="true"><span class="key a lit" style="--i:0"><span class="n">1</span></span><span class="key a lit" style="--i:1"><span class="n">2</span></span><span class="key a lit" style="--i:2"><span class="n">3</span></span><span class="key a lit" style="--i:3"><span class="n">4</span></span></div>
         <h3 id="sent-h" tabindex="-1">You’re on the list.</h3>
-        <p>The place of the free taster on Mon 23 Nov, 18:00, and the Level 1 dates, come to your WhatsApp first.</p>
+        <p>The new Level&nbsp;1 dates, and the place, come to your WhatsApp first.</p>
         <button class="again" type="button" id="again">Put another name down</button>
       </div>
     </div>
