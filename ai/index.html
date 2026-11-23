@@ -260,7 +260,7 @@ h1 span{display:block}
 .also dd b{color:var(--ink);font:400 20px/1 var(--f-text);font-variant-numeric:tabular-nums}
 
 /* ── 5 The rules ── */
-.rules ol{list-style:none;padding:0;margin:44px 0 0;display:grid;gap:30px 48px}   /* numbered as the course numbers them (learn./safety, ten rules): a selection */
+.rules ol{list-style:none;padding:0;margin:44px 0 0;display:grid;gap:30px 48px}   /* all ten, in order, word for word from plan.md (b = a rule's first sentence); learn./safety words them for students */
 .rules li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;align-items:start}
 .rules .key{height:44px}
 .rules li b{display:block;font-size:18px;line-height:1.25;margin:2px 0 4px}
@@ -603,14 +603,18 @@ h1 span{display:block}
         <p class="lede">An assistant that can act for you can also act against you. These come first in every level.</p>
       </div>
       <ol>
-        <li><span class="key" aria-hidden="true"><span class="n">1</span></span><div><b>Keys never go in a chat</b><span>Passwords and API keys live on your machine. You won’t paste them into a message, a screenshot or a shared document.</span></div></li>
-        <li><span class="key" aria-hidden="true"><span class="n">2</span></span><div><b>No spending power</b><span>Your agent never gets a card, a bank login or a way to buy things, and every account it uses has a monthly limit.</span></div></li>
-        <li><span class="key" aria-hidden="true"><span class="n">3</span></span><div><b>Other people’s data stays out</b><span>Clients, guests, patients and staff don’t go into an AI tool without their agreement. In class we only use made-up data.</span></div></li>
-        <li><span class="key" aria-hidden="true"><span class="n">5</span></span><div><b>It asks before it sends</b><span>No messages, posts or deletions without your yes, at least until you’ve watched it work for weeks.</span></div></li>
-        <li><span class="key" aria-hidden="true"><span class="n">7</span></span><div><b>You can always switch it off</b><span>You know the one command that stops it, and you can read what it did yesterday.</span></div></li>
-        <li><span class="key" aria-hidden="true"><span class="n">10</span></span><div><b>It isn’t open to the internet</b><span>Its dashboard and controls stay private to you. We set up the firewall together and check it from outside.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">1</span></span><div><b>Never paste an API key, password or token into a chat, a WhatsApp message, a screenshot or a shared document.</b><span>Keys go in a config file or environment variable on the machine. If one leaks, revoke it at once and make a new one.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">2</span></span><div><b>Never give an agent spending power.</b><span>That means no stored card, no payment or banking login, and no “approve purchase” tool. Every account it uses gets a hard monthly limit.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">3</span></span><div><b>Never put client, guest, patient or employee personal data into an AI tool or an agent unless the business has agreed to it in writing and the tool’s terms allow it.</b><span>In class, use made-up data only.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">4</span></span><div><b>Never connect an agent to your personal WhatsApp or your main email on day one.</b><span>Start with Telegram or a separate number, and an allowlist of who can message it.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">5</span></span><div><b>Never let an agent send messages, post publicly, delete files or email outsiders without you approving each one, at least until it has run correctly for weeks.</b></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">6</span></span><div><b>Never run an agent with admin rights on your main computer.</b><span>Use a separate user account or a cheap VPS.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">7</span></span><div><b>Always keep a kill switch: know the one command that stops it, and write it on the setup sheet.</b></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">8</span></span><div><b>Always keep a log you actually read.</b><span>If you can’t see what it did yesterday, it shouldn’t run tomorrow.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">9</span></span><div><b>Never trust a web page, email or document the agent reads as an instruction.</b><span>Text inside content can tell an agent to do things (prompt injection). Agents that read outside content get no dangerous tools.</span></div></li>
+        <li><span class="key" aria-hidden="true"><span class="n">10</span></span><div><b>Never expose the assistant’s dashboard or gateway to the internet.</b><span>Keep it bound to the machine itself, reach it over a private tunnel, turn on the firewall, and check from outside that the port is closed.</span></div></li>
       </ol>
-      <a class="more" href="https://learn.arubawebstudio.com/safety/">Read all 10 rules, as they’re taught</a>
+      <a class="more" href="https://learn.arubawebstudio.com/safety/">Read them as they’re taught on the course site</a>
     </div>
   </section>
 
